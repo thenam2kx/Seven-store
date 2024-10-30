@@ -1,0 +1,8 @@
+{
+  "description": "Your project description",
+  "require": {},
+  "scripts": {
+    "start-server": "php -S localhost:8000",
+    "compile-sass": "sass --watch path/to/scss:public/css"
+  }
+}
