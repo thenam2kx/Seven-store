@@ -1,0 +1,17 @@
+.card {
+  background-color: unset !important;
+  box-shadow: none !important;
+  border: none;
+  -webkit-box-shadow: none;
+  max-width: unset !important;
+}
+.card-body {
+  padding: 8px 12px;
+}
+.trunc-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
