@@ -33,14 +33,14 @@ class BlogDao {
   }
 }
 
-// try {
-//   $tinTucDAO = new BlogDao();
-//   $tinTucDAO->getAll();
-//   var_dump($tinTucDAO->getAll());
-//   echo "Bài viết đã lấy thành công!";
-// } catch (\Throwable $th) {
-//   throw $th;
-// }
+try {
+  $tinTucDAO = new BlogDao();
+  $tinTucDAO->getAll();
+  var_dump($tinTucDAO->getAll());
+  echo "Bài viết đã lấy thành công!";
+} catch (\Throwable $th) {
+  throw $th;
+}
 
 // try {
 //     $tinTucDAO = new BlogDao();

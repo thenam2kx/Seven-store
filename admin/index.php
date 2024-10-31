@@ -1,8 +1,8 @@
 <?php
 // Require file config
 require_once '../config/env.php'; // Config env
-require_once '../config/connect.php'; // Connect to database
 require_once '../config/helper.php'; // Helper function
+require_once '../config/connect.php'; // Connect to database
 
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';

@@ -1,6 +1,6 @@
 <?php
 
-require_once './config/env.php'; // Config env
+// require_once './config/env.php'; // Config env
 
 // function connectDB() {
 //   // Kết nối CSDL
