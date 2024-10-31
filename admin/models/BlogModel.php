@@ -1,6 +1,6 @@
 <?php
-require_once './config/connect.php';
-class BlogDao {
+// require_once './config/connect.php';
+class BlogModel {
   private $db;
 
   public function __construct() {
@@ -33,14 +33,14 @@ class BlogDao {
   }
 }
 
-try {
-  $tinTucDAO = new BlogDao();
-  $tinTucDAO->getAll();
-  var_dump($tinTucDAO->getAll());
-  echo "Bài viết đã lấy thành công!";
-} catch (\Throwable $th) {
-  throw $th;
-}
+// try {
+//   $tinTucDAO = new BlogModel();
+//   $tinTucDAO->getAll();
+//   var_dump($tinTucDAO->getAll());
+//   echo "Bài viết đã lấy thành công!";
+// } catch (\Throwable $th) {
+//   throw $th;
+// }
 
 // try {
 //     $tinTucDAO = new BlogDao();
