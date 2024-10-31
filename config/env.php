@@ -1,7 +1,7 @@
 <?php
 
-define('BASE_URL', 'http://localhost:8000/');
-define('BASE_URL_ADMIN', 'http://localhost:8000/admin');
+define('BASE_URL', 'http://localhost/seven-store/');
+define('BASE_URL_ADMIN', 'http://localhost/seven-store/admin');
 define('PATH_ROOT', __DIR__.'/../');
 
 define('PATH_MODEL_ADMIN', PATH_ROOT.'admin/models/');
