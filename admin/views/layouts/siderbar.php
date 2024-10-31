@@ -2,7 +2,7 @@
   <!-- LOGO -->
   <div class="navbar-brand-box">
     <!-- Dark Logo-->
-    <a href="index.html" class="logo logo-dark">
+    <a href="http://localhost/seven-store/admin/" class="logo logo-dark">
       <span class="logo-sm">
         <img src="assets/images/logo-sm.png" alt="" height="22">
       </span>
@@ -11,7 +11,7 @@
       </span>
     </a>
     <!-- Light Logo-->
-    <a href="index.html" class="logo logo-light">
+    <a href="http://localhost/seven-store/admin/" class="logo logo-light">
       <span class="logo-sm">
         <img src="assets/images/logo-sm.png" alt="" height="22">
       </span>
@@ -49,11 +49,14 @@
       </div>
       <ul class="navbar-nav" id="navbar-nav">
         <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
+        <!-- Dashboard -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#">
             <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
           </a>
         </li>
+
+        <!-- Category -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarDanhMuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
             <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
@@ -67,6 +70,27 @@
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link" data-key="t-nestable-list">
+                  Thêm mới
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarBaiviet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBaiviet">
+            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài viết</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarBaiviet">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=blog" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?act=addBlog" class="nav-link" data-key="t-nestable-list">
                   Thêm mới
                 </a>
               </li>
