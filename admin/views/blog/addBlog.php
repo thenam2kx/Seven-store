@@ -22,8 +22,8 @@
   <div id="layout-wrapper">
     <!-- HEADER -->
     <?php
-      require_once "views/layouts/header.php";
-      require_once "views/layouts/siderbar.php";
+    require_once "views/layouts/header.php";
+    require_once "views/layouts/siderbar.php";
     ?>
 
     <!-- Left Sidebar End -->
@@ -36,38 +36,60 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" novalidate>
+          <form class="row g-3 needs-validation" method="POST" action="?act=addBlog" enctype="multipart/form-data" novalidate>
             <div class="col-md-12">
               <label for="title" class="form-label">Tiêu đề</label>
-              <input type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết"  required>
-              <div class="valid-feedback">
-                Looks good!
+              <input name="title" type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" required>
+              <div class="invalid-feedback">
+                Vui lòng nhập tiêu đề bài viết.
               </div>
             </div>
 
             <div class="col-md-6 position-relative">
               <label for="select-status" class="form-label">Trạng thái</label>
-              <select class="form-select" id="select-status" required>
+              <select class="form-select" name="status" id="select-status" required>
                 <option selected value="1">Hiển thị</option>
-                <option value="0">Ản</option>
+                <option value="0">Ẩn</option>
               </select>
             </div>
 
             <div class="col-md-6">
               <label for="formFile" class="form-label">Chọn ảnh đại diện</label>
-              <input class="form-control" type="file" id="formFile">
+              <input class="form-control" name="file" type="file" id="formFile" required>
+              <div class="invalid-feedback">
+                Vui lòng chọn ảnh đại diện.
+              </div>
             </div>
 
             <div class="col-md-12">
               <label for="content" class="form-label">Nội dung</label>
-              <textarea class="form-control" id="content" rows="12" placeholder="Nội dung bài viết" required></textarea>
+              <textarea class="form-control" name="content" id="content" rows="12" placeholder="Nội dung bài viết" required></textarea>
+              <div class="invalid-feedback">
+                Vui lòng nhập nội dung bài viết.
+              </div>
             </div>
 
             <div class="col-12">
-              <button class="btn btn-primary" type="submit">Đăng bài</button>
+              <input class="btn btn-primary" type="submit" name="save" id="btnSave" value="Đăng bài" />
               <button class="btn btn-outline-primary" type="reset">Xóa</button>
             </div>
           </form>
+
+          <script>
+            (() => {
+              'use strict';
+              const form = document.querySelector('.needs-validation');
+              form.addEventListener('submit', (event) => {
+                // Kiểm tra tính hợp lệ của form
+                if (!form.checkValidity()) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                // Thêm lớp 'was-validated' để Bootstrap tự động áp dụng CSS cho các input không hợp lệ
+                form.classList.add('was-validated');
+              }, false);
+            })();
+          </script>
         </div>
         <!-- container-fluid -->
       </div>
