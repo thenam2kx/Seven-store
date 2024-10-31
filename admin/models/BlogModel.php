@@ -8,7 +8,7 @@ class BlogModel {
   }
 
   public function getAll() {
-    $sql = "SELECT * FROM `tin_tucs` WHERE 1";
+    $sql = "SELECT * FROM `tin_tucs` ORDER BY tin_tuc_id DESC";
     return $this->db->query($sql);
   }
 
@@ -22,9 +22,15 @@ class BlogModel {
     return $this->db->execute($sql, $tieu_de, $noi_dung, $anh_avt, $trang_thai);
   }
 
-  public function edit($tieu_de, $noi_dung, $anh_avt, $tin_tuc_id, $trang_thai = 1) {
-    $sql = "UPDATE tin_tucs SET tieu_de=?, noi_dung=?, anh_avt=?, trang_thai=? WHERE tin_tuc_id=?";
-    return $this->db->execute($sql, $tieu_de, $noi_dung, $anh_avt, $trang_thai, $tin_tuc_id);
+  public function edit($tieu_de, $noi_dung, $tin_tuc_id, $anh_avt, $trang_thai = 1) {
+    $sql = "";
+    if ($anh_avt !== '') {
+      $sql = "UPDATE tin_tucs SET tieu_de=?, noi_dung=?, anh_avt=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE tin_tuc_id=?";
+      return $this->db->execute($sql, $tieu_de, $noi_dung, $anh_avt, $trang_thai, $tin_tuc_id);
+    } else {
+      $sql = "UPDATE tin_tucs SET tieu_de=?, noi_dung=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE tin_tuc_id=?";
+      return $this->db->execute($sql, $tieu_de, $noi_dung, $trang_thai, $tin_tuc_id);
+    }
   }
 
   public function delete($tin_tuc_id) {

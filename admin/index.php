@@ -9,6 +9,8 @@ require_once 'controllers/DashboardController.php';
 require_once 'controllers/BlogController.php';
 
 // Require toàn bộ file Models
+require_once 'models/BlogModel.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -19,7 +21,9 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
   // Dashboards
   '/' => (new DashboardController())->index(),
-  'blog' => (new BlogController())->index(),
+  'blog' => (new BlogController())->getAll(),
   'addBlog' => (new BlogController())->add(),
-  'editBlog' => (new BlogController())->edit(),
+  'editBlog' => (new BlogController())->loadEditView(),
+  'handleDditBlog' => (new BlogController())->handleEdit(),
+  'deleteBlog' => (new BlogController())->delete(),
 };

@@ -11,7 +11,7 @@
 
   <!-- CSS -->
   <?php
-    require_once "views/layouts/libs_css.php";
+  require_once "views/layouts/libs_css.php";
   ?>
 
   <link rel="stylesheet" href="views/blog/listBlog.css" type="text/css" />
@@ -24,10 +24,27 @@
   <div id="layout-wrapper">
     <!-- HEADER -->
     <?php
-      require_once "views/layouts/header.php";
-      require_once "views/layouts/siderbar.php";
+    require_once "views/layouts/header.php";
+    require_once "views/layouts/siderbar.php";
     ?>
 
+    <?php
+    function fortmartTime($timestamp)  {
+      date_default_timezone_set('Asia/Ho_Chi_Minh');
+      $timeDifference = time() - strtotime($timestamp);
+      if ($timeDifference < 60) {
+        return $timeDifference . ' seconds ago';
+      } elseif ($timeDifference < 3600) {
+        return floor($timeDifference / 60) . ' minutes ago';
+      } elseif ($timeDifference < 86400) {
+        return floor($timeDifference / 3600) . ' hours ago';
+      } elseif ($timeDifference < 604800) {
+        return floor($timeDifference / 86400) . ' days ago';
+      } else {
+        return floor($timeDifference / 604800) . ' weeks ago';
+      }
+    }
+    ?>
     <!-- Left Sidebar End -->
     <!-- Vertical Overlay-->
     <div class="vertical-overlay"></div>
@@ -40,94 +57,53 @@
         <div class="container-fluid">
 
 
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#ID</th>
-              <th scope="col">Nội dung</th>
-              <th scope="col">Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row" class='text-center'>1</th>
-              <td>
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-2">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-10">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text trunc-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Nội dung</th>
+                <th scope="col">Hành động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($blogs as $blog): ?>
+                <tr>
+                  <th scope="row" class='text-center'><?= $blog['tin_tuc_id'] ?></th>
+                  <td>
+                    <div class="card mb-3" style="max-width: 540px;">
+                      <div class="row g-0">
+                        <div class="col-md-2">
+                          <img src="<?= $blog['anh_avt'] ?>" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-10">
+                          <div class="card-body">
+                            <h5 class="card-title"><?= $blog['tieu_de'] ?></h5>
+                            <p class="card-text trunc-text"><?= $blog['noi_dung'] ?></p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated <?= fortmartTime($blog['cap_nhat']) ?></small></p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </td>
-              <td class="d-flex flex-column gap-2">
-                <button type="button" class="btn btn-outline-danger">Xóa</button>
-                <a href="?act=editBlog" class="d-flex">
-                  <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">1</th>
-              <td>
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-2">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-10">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text trunc-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="d-flex flex-column gap-2">
-                <button type="button" class="btn btn-outline-danger">Xóa</button>
-                <a href="?act=editBlog" class="d-flex">
-                  <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">1</th>
-              <td>
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-2">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-10">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text trunc-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="d-flex flex-column gap-2">
-                <button type="button" class="btn btn-outline-danger">Xóa</button>
-                <a href="?act=editBlog" class="d-flex">
-                  <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  </td>
+                  <td class="d-flex flex-column gap-2">
+                    <!-- <a href="?act=deleteBlog&id=<?= $blog['tin_tuc_id'] ?>"> -->
+                    <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)">Xóa</button>
+                    <!-- </a> -->
+                    <a href="?act=editBlog&id=<?= $blog['tin_tuc_id'] ?>" class="d-flex">
+                      <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
+                    </a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+              <script>
+                function confirmDelete(id) {
+                  if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+                    window.location.href = "?act=deleteBlog&id=" + id;
+                  }
+                }
+              </script>
+            </tbody>
+          </table>
 
 
         </div>
