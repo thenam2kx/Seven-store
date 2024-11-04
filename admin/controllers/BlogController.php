@@ -4,7 +4,11 @@ class BlogController {
   public function getAll() {
     try {
         $blogModel = new BlogModel();
-        $blogs = $blogModel->getAll();
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5;
+        $totalResult = $blogModel->getTotalPage();
+        $blogs = $blogModel->getAll($limit, $page);
+        $totalPages = ceil($totalResult / $limit);
         require_once "./views/blog/listBlog.php";
       } catch (\Throwable $th) {
         throw $th;
