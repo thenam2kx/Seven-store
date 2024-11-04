@@ -14,6 +14,16 @@
   require_once "views/layouts/libs_css.php";
   ?>
 
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
+  <script type="importmap">
+    {
+      "imports": {
+          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
+          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
+          }
+      }
+  </script>
+
 </head>
 
 <body>
@@ -22,8 +32,8 @@
   <div id="layout-wrapper">
     <!-- HEADER -->
     <?php
-      require_once "views/layouts/header.php";
-      require_once "views/layouts/siderbar.php";
+    require_once "views/layouts/header.php";
+    require_once "views/layouts/siderbar.php";
     ?>
 
     <!-- Left Sidebar End -->
@@ -48,7 +58,7 @@
 
             <div class="col-md-12">
               <label for="title" class="form-label">Tiêu đề</label>
-              <input type="text" class="form-control" name="title" id="title" value="<?= $result['tieu_de'] ?>" placeholder="Tiêu đề bài viết"  required>
+              <input type="text" class="form-control" name="title" id="title" value="<?= $result['tieu_de'] ?>" placeholder="Tiêu đề bài viết" required>
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -57,7 +67,7 @@
             <div class="col-md-6 position-relative">
               <label for="select-status" class="form-label">Trạng thái</label>
               <select class="form-select" name="status" id="select-status" required>
-                <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?>  value="1">Hiển thị</option>
+                <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Hiển thị</option>
                 <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Ản</option>
               </select>
             </div>
@@ -82,6 +92,143 @@
               window.location.href = "?act=blog"
             }
           </script>
+
+          <script type="module">
+            import {
+              ClassicEditor,
+              Essentials,
+              Paragraph,
+              Bold,
+              Italic,
+              Underline,
+              Strikethrough,
+              Superscript,
+              Link,
+              List,
+              Font,
+              Alignment,
+              Subscript,
+              Indent,
+              BlockQuote,
+              Image,
+              ImageUpload,
+              MediaEmbed,
+              Table,
+              Code,
+              Highlight,
+              HorizontalLine,
+              PageBreak,
+              SpecialCharacters,
+              CodeBlock,
+              TodoList,
+              FontSize,
+              FontBackgroundColor,
+              FontColor
+            } from 'ckeditor5'
+
+            ClassicEditor
+              .create(document.querySelector('#content'), {
+                plugins: [
+                  Essentials,
+                  Paragraph,
+                  Bold,
+                  Italic,
+                  Alignment,
+                  Underline,
+                  Strikethrough,
+                  Subscript,
+                  Superscript,
+                  Link,
+                  List,
+                  Font,
+                  Indent,
+                  BlockQuote,
+                  Image,
+                  ImageUpload,
+                  MediaEmbed,
+                  Table,
+                  Code,
+                  Highlight,
+                  HorizontalLine,
+                  PageBreak,
+                  SpecialCharacters,
+                  CodeBlock,
+                  TodoList,
+                  FontSize,
+                  FontBackgroundColor,
+                  FontColor
+                ],
+                toolbar: {
+                  items: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '|',
+                    'link', 'bulletedList', 'numberedList', 'todoList', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                    'alignment', 'indent', 'outdent', '|',
+                    'blockQuote', 'insertTable', 'mediaEmbed', 'imageUpload', '|',
+                    'undo', 'redo', '|',
+                    'code', 'codeBlock', 'highlight', '|',
+                    'horizontalLine', 'pageBreak', '|',
+                    'removeFormat', 'specialCharacters'
+                  ]
+                },
+                image: {
+                  toolbar: [
+                    'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
+                  ]
+                },
+                table: {
+                  contentToolbar: [
+                    'tableColumn', 'tableRow', 'mergeTableCells'
+                  ]
+                },
+                alignment: {
+                  options: ['left', 'center', 'right', 'justify']
+                },
+                fontFamily: {
+                  options: [
+                    'default',
+                    'Ubuntu, Arial, sans-serif',
+                    'Ubuntu Mono, Courier New, Courier, monospace'
+                  ]
+                },
+                fontSize: {
+                  options: [9, 11, 13, 17, 19, 21]
+                },
+                fontColor: {
+                  colors: [{
+                      color: 'hsl(0, 0%, 0%)',
+                      label: 'Đen'
+                    },
+                    {
+                      color: 'hsl(0, 0%, 50%)',
+                      label: 'Xám'
+                    },
+                    {
+                      color: 'hsl(0, 100%, 100%)',
+                      label: 'Trắng'
+                    },
+                    {
+                      color: 'hsl(0, 100%, 60%)',
+                      label: 'Đỏ'
+                    },
+                    {
+                      color: 'hsl(120, 100%, 40%)',
+                      label: 'Xanh lá cây'
+                    },
+                    {
+                      color: 'hsl(240, 100%, 50%)',
+                      label: 'Xanh dương'
+                    },
+                  ]
+                },
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          </script>
+
+
         </div>
         <!-- container-fluid -->
       </div>

@@ -7,10 +7,16 @@ class BlogModel {
     $this->db = new Connect();
   }
 
-  public function getAll() {
-    $sql = "SELECT * FROM `tin_tucs` ORDER BY tin_tuc_id DESC";
+  public function getAll($limit = 10, $page = 1) {
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT * FROM `tin_tucs` ORDER BY tin_tuc_id DESC LIMIT $offset, $limit";
     return $this->db->query($sql);
   }
+  public function getTotalPage() {
+    $sql = "SELECT COUNT(*) AS total FROM `tin_tucs`";
+    $result = $this->db->query($sql);
+    return $result[0]['total'];
+}
 
   public function getOne($tin_tuc_id) {
     $sql = "SELECT * FROM `tin_tucs` WHERE tin_tuc_id=?";

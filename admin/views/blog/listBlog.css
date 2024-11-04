@@ -9,9 +9,10 @@
   padding: 8px 12px;
 }
 .trunc-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị */
+  line-height: 1.5; /* Cách dòng */
+  max-height: 3em;
 }

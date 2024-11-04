@@ -13,7 +13,15 @@
   <?php
   require_once "views/layouts/libs_css.php";
   ?>
-
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
+  <script type="importmap">
+    {
+      "imports": {
+          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
+          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
+          }
+      }
+  </script>
 </head>
 
 <body>
@@ -75,19 +83,145 @@
             </div>
           </form>
 
-          <!-- <form method="POST" action="?act=addBlog">
-              <textarea name="content" id="editor"></textarea>
-              <button type="submit">Lưu nội dung</button>
-          </form>
+          <script type="module">
+            import {
+              ClassicEditor,
+              Essentials,
+              Paragraph,
+              Bold,
+              Italic,
+              Underline,
+              Strikethrough,
+              Superscript,
+              Link,
+              List,
+              Font,
+              Alignment,
+              Subscript,
+              Indent,
+              BlockQuote,
+              Image,
+              ImageUpload,
+              MediaEmbed,
+              Table,
+              Code,
+              Highlight,
+              HorizontalLine,
+              PageBreak,
+              SpecialCharacters,
+              CodeBlock,
+              TodoList,
+              FontSize,
+              FontBackgroundColor,
+              FontColor
+            } from 'ckeditor5'
 
-          <script src="assets/ckeditor5/ckeditor5.js"></script>
-          <script>
             ClassicEditor
-                .create(document.querySelector('#editor'))
-                .catch(error => {
-                    console.error(error);
-                });
-          </script> -->
+              .create(document.querySelector('#content'), {
+                plugins: [
+                  Essentials,
+                  Paragraph,
+                  Bold,
+                  Italic,
+                  Alignment,
+                  Underline,
+                  Strikethrough,
+                  Subscript,
+                  Superscript,
+                  Link,
+                  List,
+                  Font,
+                  Indent,
+                  BlockQuote,
+                  Image,
+                  ImageUpload,
+                  MediaEmbed,
+                  Table,
+                  Code,
+                  Highlight,
+                  HorizontalLine,
+                  PageBreak,
+                  SpecialCharacters,
+                  CodeBlock,
+                  TodoList,
+                  FontSize,
+                  FontBackgroundColor,
+                  FontColor
+                ],
+                toolbar: {
+                  items: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '|',
+                    'link', 'bulletedList', 'numberedList', 'todoList', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                    'alignment', 'indent', 'outdent', '|',
+                    'blockQuote', 'insertTable', 'mediaEmbed', 'imageUpload', '|',
+                    'undo', 'redo', '|',
+                    'code', 'codeBlock', 'highlight', '|',
+                    'horizontalLine', 'pageBreak', '|',
+                    'removeFormat', 'specialCharacters'
+                  ]
+                },
+                image: {
+                  toolbar: [
+                    'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
+                  ]
+                },
+                imageUpload: {
+                    // Endpoint xử lý tải lên hình ảnh
+                    uploadUrl: '../config/upload.php',
+                },
+                table: {
+                  contentToolbar: [
+                    'tableColumn', 'tableRow', 'mergeTableCells'
+                  ]
+                },
+                alignment: {
+                  options: ['left', 'center', 'right', 'justify']
+                },
+                fontFamily: {
+                  options: [
+                    'default',
+                    'Ubuntu, Arial, sans-serif',
+                    'Ubuntu Mono, Courier New, Courier, monospace'
+                  ]
+                },
+                fontSize: {
+                  options: [9, 11, 13, 17, 19, 21]
+                },
+                fontColor: {
+                  colors: [{
+                      color: 'hsl(0, 0%, 0%)',
+                      label: 'Đen'
+                    },
+                    {
+                      color: 'hsl(0, 0%, 50%)',
+                      label: 'Xám'
+                    },
+                    {
+                      color: 'hsl(0, 100%, 100%)',
+                      label: 'Trắng'
+                    },
+                    {
+                      color: 'hsl(0, 100%, 60%)',
+                      label: 'Đỏ'
+                    },
+                    {
+                      color: 'hsl(120, 100%, 40%)',
+                      label: 'Xanh lá cây'
+                    },
+                    {
+                      color: 'hsl(240, 100%, 50%)',
+                      label: 'Xanh dương'
+                    },
+                  ]
+                },
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          </script>
+
 
           <script>
             (() => {

@@ -29,7 +29,8 @@
     ?>
 
     <?php
-    function fortmartTime($timestamp)  {
+    function fortmartTime($timestamp)
+    {
       date_default_timezone_set('Asia/Ho_Chi_Minh');
       $timeDifference = time() - strtotime($timestamp);
       if ($timeDifference < 60) {
@@ -78,7 +79,9 @@
                         <div class="col-md-10">
                           <div class="card-body">
                             <h5 class="card-title"><?= $blog['tieu_de'] ?></h5>
-                            <p class="card-text trunc-text"><?= $blog['noi_dung'] ?></p>
+                            <div class="card-text trunc-text">
+                              <?= $blog['noi_dung'] ?>
+                            </div>
                             <p class="card-text"><small class="text-body-secondary">Last updated <?= fortmartTime($blog['cap_nhat']) ?></small></p>
                           </div>
                         </div>
@@ -95,6 +98,9 @@
                   </td>
                 </tr>
               <?php endforeach; ?>
+
+
+
               <script>
                 function confirmDelete(id) {
                   if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
@@ -104,6 +110,32 @@
               </script>
             </tbody>
           </table>
+
+
+
+          <div class="d-flex align-content-center justify-content-center mt-3">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="?act=blog&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <?php for($i = 1; $i <= $totalPages; $i++){ ?>
+                  <li class="page-item">
+                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=blog&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i?></a>
+                  </li>
+                <?php }; ?>
+                <li class="page-item">
+                  <a class="page-link" href="?act=blog&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
 
 
         </div>
