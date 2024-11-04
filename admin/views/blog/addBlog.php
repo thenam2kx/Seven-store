@@ -75,6 +75,20 @@
             </div>
           </form>
 
+          <!-- <form method="POST" action="?act=addBlog">
+              <textarea name="content" id="editor"></textarea>
+              <button type="submit">Lưu nội dung</button>
+          </form>
+
+          <script src="assets/ckeditor5/ckeditor5.js"></script>
+          <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+          </script> -->
+
           <script>
             (() => {
               'use strict';
