@@ -8,7 +8,7 @@ require_once '../config/connect.php'; // Connect to database
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/BlogController.php';
 require_once 'controllers/CategoryController.php';
-require_once 'controllers/BannerContraoller.php';
+require_once 'controllers/BannerController.php';
 
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
