@@ -8,10 +8,12 @@ require_once '../config/connect.php'; // Connect to database
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/BlogController.php';
 require_once 'controllers/CategoryController.php';
+require_once 'controllers/BannerContraoller.php';
 
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
+require_once 'models/BannerModel.php';
 
 
 // Route
@@ -37,4 +39,11 @@ match ($act) {
   'editCategory' => (new CategoryController())->loadEditView(),
   'handleEditCategory' => (new CategoryController())->handleEdit(),
   'deleteCategory' => (new CategoryController())->delete(),
+
+    //Banner
+    'banners' => (new BannerController())->getAll(),
+    'addBanner' => (new BannerController())->addBanner(),
+    'editBanner' => (new BannerController())->loadEditView(),
+    'handleDditBanner' => (new BannerController())->handleEditBanner(),
+    'deleteBanner' => (new BannerController())->delete(),
 };
