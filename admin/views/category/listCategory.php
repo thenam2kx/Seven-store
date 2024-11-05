@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Blog | NN Shop</title>
+  <title>Category | NN Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -14,7 +14,7 @@
   require_once "views/layouts/libs_css.php";
   ?>
 
-  <link rel="stylesheet" href="views/blog/listBlog.css" type="text/css" />
+  <link rel="stylesheet" href="views/category/listCategory.css" type="text/css" />
 
 </head>
 
@@ -57,74 +57,64 @@
       <div class="page-content">
         <div class="container-fluid">
 
-          <table class="table table-striped table-hover">
+          <div class="card-header align-items-center d-flex py-3">
+            <h4 class="card-title mb-0 flex-grow-1">Danh mục sản phẩm</h4>
+            <div class="flex-shrink-0">
+              <a href="?act=addCategory">
+                <button class="btn btn-success" type="button">Thêm mới</button>
+              </a>
+            </div>
+          </div>
+
+          <table class="table table-nowrap">
             <thead>
               <tr>
-                <th scope="col">#ID</th>
+                <th scope="col">ID</th>
                 <th scope="col">Nội dung</th>
-                <th scope="col" style="white-space: nowrap;">Hành động</th>
+                <th scope="col">Thời gian</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Hành động</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($blogs as $blog): ?>
+              <?php foreach ($categories as $category): ?>
                 <tr>
-                  <th scope="row" class='text-center'><?= $blog['tin_tuc_id'] ?></th>
+                  <th scope="row"><a href="#" class="fw-semibold">#<?= $category['danh_muc_id'] ?></a></th>
+                  <td><?= $category['ten_danh_muc'] ?></td>
+                  <td><?= fortmartTime($category['cap_nhat']) ?></td>
                   <td>
-                    <div class="card" style="margin-bottom: 0">
-                      <div class="row g-0">
-                        <div class="col-md-1">
-                          <img src="<?= $blog['anh_avt'] ?>" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-11">
-                          <div class="card-body">
-                            <h5 class="card-title"><?= $blog['tieu_de'] ?></h5>
-                            <div class="card-text trunc-text">
-                              <?= $blog['noi_dung'] ?>
-                            </div>
-                            <p class="card-text"><small class="text-body-secondary">Last updated <?= fortmartTime($blog['cap_nhat']) ?></small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <span class="badge <?= $category['trang_thai'] === 1 ? 'bg-success' : 'bg-danger' ?>">
+                      <?= $category['trang_thai'] === 1 ? 'Hoạt động' : 'Ngừng Hoạt động' ?>
+                    </span>
                   </td>
                   <td>
                     <div class="hstack gap-3 flex">
-                      <a href="?act=editBlog&id=<?= $blog['tin_tuc_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                      <a href="?act=deleteBlog&id=<?= $blog['tin_tuc_id'] ?>" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                      <a href="?act=editCategory&id=<?= $category['danh_muc_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                      <a href="?act=deleteCategory&id=<?= $category['danh_muc_id'] ?>" onclick="confirmDelete(<?= $category['danh_muc_id'] ?>)" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                     </div>
                   </td>
                 </tr>
               <?php endforeach; ?>
-
-
-              <script>
-                function confirmDelete(id) {
-                  if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-                    window.location.href = "?act=deleteBlog&id=" + id;
-                  }
-                }
-              </script>
             </tbody>
           </table>
-
 
 
           <div class="d-flex align-content-center justify-content-center mt-3">
             <nav aria-label="Page navigation example">
               <ul class="pagination">
                 <li class="page-item">
-                  <a class="page-link" href="?act=blog&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
+                  <a class="page-link" href="?act=listCategory&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                   </a>
                 </li>
                 <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
                   <li class="page-item">
-                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=blog&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
+                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listCategory&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
                   </li>
                 <?php }; ?>
                 <li class="page-item">
-                  <a class="page-link" href="?act=blog&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
+                  <a class="page-link" href="?act=listCategory&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
                   </a>

@@ -7,9 +7,11 @@ require_once '../config/connect.php'; // Connect to database
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/BlogController.php';
+require_once 'controllers/CategoryController.php';
 
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
+require_once 'models/CategoryModel.php';
 
 
 // Route
@@ -21,9 +23,18 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
   // Dashboards
   '/' => (new DashboardController())->index(),
+
+  // Blogs
   'blog' => (new BlogController())->getAll(),
   'addBlog' => (new BlogController())->add(),
   'editBlog' => (new BlogController())->loadEditView(),
   'handleDditBlog' => (new BlogController())->handleEdit(),
   'deleteBlog' => (new BlogController())->delete(),
+
+  // Category
+  'listCategory' => (new CategoryController())->getAll(),
+  'addCategory' => (new CategoryController())->add(),
+  'editCategory' => (new CategoryController())->loadEditView(),
+  'handleEditCategory' => (new CategoryController())->handleEdit(),
+  'deleteCategory' => (new CategoryController())->delete(),
 };
