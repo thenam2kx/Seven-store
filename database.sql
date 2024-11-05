@@ -12,10 +12,23 @@ CREATE TABLE `nguoi_dungs` (
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
 );
 
+CREATE TABLE `lien_hes` (
+  `lien_he_id` int PRIMARY KEY AUTO_INCREMENT,
+  `nguoi_dung_id` int NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `ho_ten` varchar(50) NOT NULL,
+  `dia_chi` varchar(255),
+  `so_dien_thoai` varchar(10) NOT NULL,
+  `noi_dung` varchar(255) NOT NULL,
+  `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
+  `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
+);
+
 CREATE TABLE `danh_mucs` (
   `danh_muc_id` int PRIMARY KEY AUTO_INCREMENT,
   `ten_danh_muc` varchar(255) NOT NULL,
   `mo_ta` varchar(255),
+  `trang_thai` int DEFAULT 1 COMMENT '0: inActive, 1: active',
   `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
 );
@@ -24,9 +37,12 @@ CREATE TABLE `san_phams` (
   `san_pham_id` int PRIMARY KEY AUTO_INCREMENT,
   `danh_muc_id` int NOT NULL,
   `ten_san_pham` varchar(255) NOT NULL,
-  `mo_ta` text,
+  `mo_ta_ngan` varchar(255),
+  `mo_ta_chi_tiet` text,
   `gia_tien` decimal(10,2) NOT NULL,
+  `gia_khuyen_mai` decimal(10,2) NOT NULL,
   `so_luong` int DEFAULT 0,
+  `trang_thai` int DEFAULT 1 COMMENT '0: inActive, 1: active',
   `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
 );
@@ -43,6 +59,7 @@ CREATE TABLE `hinh_anhs` (
   `hinh_anh_id` int PRIMARY KEY AUTO_INCREMENT,
   `san_pham_id` int NOT NULL,
   `duong_dan` varchar(255) NOT NULL,
+  `trang_thai` int DEFAULT 1 COMMENT '0: inActive, 1: active',
   `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
 );
@@ -60,6 +77,7 @@ CREATE TABLE `danh_gias` (
 CREATE TABLE `gio_hangs` (
   `gio_hang_id` int PRIMARY KEY AUTO_INCREMENT,
   `nguoi_dung_id` int NOT NULL,
+  `so_luong` int,
   `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
 );
@@ -68,13 +86,18 @@ CREATE TABLE `gio_hang_cts` (
   `gio_hang_ct_id` int PRIMARY KEY AUTO_INCREMENT,
   `gio_hang_id` int,
   `san_pham_id` int NOT NULL,
-  `so_luong` int DEFAULT 1
+  `so_luong` int NOT NULL DEFAULT 1
 );
 
 CREATE TABLE `don_hangs` (
   `don_hang_id` int PRIMARY KEY AUTO_INCREMENT,
   `nguoi_dung_id` int NOT NULL,
   `thanh_toan` int DEFAULT 0 COMMENT '0: chua thanh toan, 1: da thanh toan',
+  `ho_ten` varchar(150),
+  `ghi_chu` varchar(255),
+  `email` varchar(50),
+  `so_dien_thoai` varchar(10) NOT NULL,
+  `dia_chi` varchar(255) NOT NULL,
   `trang_thai` ENUM ('cho_xac_nhan', 'da_xac_nhan', 'dang_dong_goi', 'da_giao_dvvc', 'dang_giao_hang', 'da_giao_hang', 'da_huy', 'da_hoan_tra', 'hoan_tat') DEFAULT 'cho_xac_nhan',
   `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
@@ -84,7 +107,8 @@ CREATE TABLE `don_hang_cts` (
   `don_hang_ct_id` int PRIMARY KEY AUTO_INCREMENT,
   `don_hang_id` int NOT NULL,
   `san_pham_id` int NOT NULL,
-  `so_luong` int
+  `so_luong` int NOT NULL,
+  `gia_tien` decimal(10,2) NOT NULL
 );
 
 CREATE TABLE `khuyen_mais` (
@@ -113,6 +137,8 @@ CREATE TABLE `banners` (
   `ngay_tao` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `cap_nhat` timestamp DEFAULT (CURRENT_TIMESTAMP)
 );
+
+ALTER TABLE `lien_hes` ADD FOREIGN KEY (`nguoi_dung_id`) REFERENCES `nguoi_dungs` (`nguoi_dung_id`);
 
 ALTER TABLE `san_phams` ADD FOREIGN KEY (`danh_muc_id`) REFERENCES `danh_mucs` (`danh_muc_id`);
 
