@@ -32,7 +32,7 @@ match ($act) {
   'blog' => (new BlogController())->getAll(),
   'addBlog' => (new BlogController())->add(),
   'editBlog' => (new BlogController())->loadEditView(),
-  'handleDditBlog' => (new BlogController())->handleEdit(),
+  'handleEditBlog' => (new BlogController())->handleEdit(),
   'deleteBlog' => (new BlogController())->delete(),
 
   // Category
