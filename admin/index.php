@@ -10,12 +10,14 @@ require_once 'controllers/BlogController.php';
 require_once 'controllers/CategoryController.php';
 require_once 'controllers/BannerController.php';
 require_once 'controllers/ContactController.php';
+require_once 'controllers/ProductController.php';
 
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
 require_once 'models/BannerModel.php';
 require_once 'models/ContactModel.php';
+require_once 'models/ProductModel.php';
 
 
 // Route
@@ -54,4 +56,11 @@ match ($act) {
   // 'editContact' => (new ContactController())->loadEditView(),
   // 'handleDditContact' => (new ContactController())->handleEditContact(),
   'deleteContact' => (new ContactController())->delete(),
+
+  // Products
+  'listProduct' => (new ProductController())->getAll(),
+  'addProduct' => (new ProductController())->add(),
+  'editProduct' => (new ProductController())->loadEditView(),
+  'handleEditProduct' => (new ProductController())->handleEdit(),
+  'deleteProduct' => (new ProductController())->delete(),
 };
