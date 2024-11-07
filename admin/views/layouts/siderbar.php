@@ -98,8 +98,8 @@
           </div>
         </li>
 
-         <!-- Banner -->
-         <li class="nav-item">
+        <!-- Banner -->
+        <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarBanner" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBanner">
             <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Banner</span>
           </a>
@@ -119,8 +119,8 @@
           </div>
         </li>
 
-         <!-- Contact -->
-         <li class="nav-item">
+        <!-- Contact -->
+        <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarContact" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarContact">
             <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý liên hệ</span>
           </a>
@@ -140,6 +140,27 @@
           </div>
         </li>
         <!-- end contact -->
+
+        <!-- Products -->
+        <li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarSanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanpham">
+            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý sản phẩm</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarSanpham">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=listProduct" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?act=addProduct" class="nav-link" data-key="t-nestable-list">
+                  Thêm mới
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
 
         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
 

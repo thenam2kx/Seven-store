@@ -9,18 +9,19 @@ if (!function_exists('debug')) {
   }
 }
 
-// if (!function_exists('upload_file')) {
-//   function upload_file($folder, $file)
-//   {
-//     $targetFile = $folder . '/' . time() . '-' . $file["name"];
+function formatVND($amount) {
+  // Kiểm tra nếu số tiền là hợp lệ
+  if (!is_numeric($amount)) {
+      return 'Invalid amount';
+  }
 
-//     if (move_uploaded_file($file["tmp_name"], PATH_ASSETS_UPLOADS_CLIENT . $targetFile)) {
-//       return $targetFile;
-//     }
-
-//     throw new Exception('Upload file không thành công!');
-//   }
-// }
+  // Nếu phần thập phân là 0, chỉ hiển thị số nguyên
+  if (intval($amount) == $amount) {
+      return number_format($amount, 0, ',', '.') . ' ₫';
+  } else {
+      return number_format($amount, 2, ',', '.') . ' ₫';
+  }
+}
 
 
 function uploadImage($file, $targetDir = "uploads/", $maxSize = 2 * 1024 * 1024)
