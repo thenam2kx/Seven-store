@@ -57,8 +57,7 @@ class BannerController {
     if ($success) {
       header("Location: ?act=banners");
     }
-    // $this->loadEditView();
-    // require_once "./views/blog/editBlog.php";
+
   }
 
 

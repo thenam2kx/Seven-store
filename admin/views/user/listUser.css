@@ -1,0 +1,19 @@
+.card {
+  background-color: unset !important;
+  box-shadow: none !important;
+  border: none;
+  -webkit-box-shadow: none;
+  max-width: unset !important;
+  margin-bottom: 0 !important;
+}
+.card-body {
+  padding: 8px 12px;
+}
+.trunc-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị */
+  line-height: 1.5; /* Cách dòng */
+  max-height: 3em;
+}
