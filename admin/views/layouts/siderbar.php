@@ -56,6 +56,27 @@
           </a>
         </li>
 
+<!-- User -->
+<li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarUser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUser">
+            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">User</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarUser">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=users" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?act=addUser" class="nav-link" data-key="t-nestable-list">
+                  Thêm mới
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
         <!-- Blog -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarBaiviet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBaiviet">
