@@ -20,9 +20,8 @@ class CategoryController {
       if (isset($_POST['save']) && ($_POST['save'])) {
         $title = $_POST['title'];
         $status = $_POST['status'];
-        $content = $_POST['content'];
         $CategoryModel = new CategoryModel();
-        $result = $CategoryModel->create($title, $content, $status);
+        $result = $CategoryModel->create($title,$status);
         if ($result) {
           echo "<script>alert('thanh cong')</script>";
           header("Location: ?act=listCategory");
@@ -46,14 +45,11 @@ class CategoryController {
     $id = $_GET['id'];
     $title = $_POST['title'];
     $status = $_POST['status'];
-    $content = $_POST['content'];
     $categoryModel = new CategoryModel();
-    $success = $categoryModel->edit($title, $status, $content, $id);
+    $success = $categoryModel->edit($title, $status, $id);
     if ($success) {
       header("Location: ?act=listCategory");
     }
-    // $this->loadEditView();
-    // require_once "./views/blog/editBlog.php";
   }
 
   public function delete() {

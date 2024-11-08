@@ -68,7 +68,7 @@
             <tbody>
               <?php foreach ($blogs as $blog): ?>
                 <tr>
-                  <th scope="row" class='text-center'><?= $blog['tin_tuc_id'] ?></th>
+                  <th scope="row" class='text-center'><?= $blog['id'] ?></th>
                   <td>
                     <div class="card" style="margin-bottom: 0">
                       <div class="row g-0">
@@ -89,8 +89,8 @@
                   </td>
                   <td>
                     <div class="hstack gap-3 flex">
-                      <a href="?act=editBlog&id=<?= $blog['tin_tuc_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                      <a href="?act=deleteBlog&id=<?= $blog['tin_tuc_id'] ?>" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                      <a href="?act=editBlog&id=<?= $blog['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                      <a href="?act=deleteBlog&id=<?= $blog['id'] ?>" onclick="confirmDelete(<?= $blog['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                     </div>
                   </td>
                 </tr>

@@ -10,7 +10,11 @@ require_once 'controllers/BlogController.php';
 require_once 'controllers/CategoryController.php';
 require_once 'controllers/BannerController.php';
 require_once 'controllers/ContactController.php';
+
 require_once 'controllers/UserController.php';
+
+
+require_once 'controllers/ProductController.php';
 
 
 // Require toàn bộ file Models
@@ -18,7 +22,10 @@ require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
 require_once 'models/BannerModel.php';
 require_once 'models/ContactModel.php';
+
 require_once 'models/UserModel.php';
+
+require_once 'models/ProductModel.php';
 
 
 
@@ -36,7 +43,7 @@ match ($act) {
   'blog' => (new BlogController())->getAll(),
   'addBlog' => (new BlogController())->add(),
   'editBlog' => (new BlogController())->loadEditView(),
-  'handleDditBlog' => (new BlogController())->handleEdit(),
+  'handleEditBlog' => (new BlogController())->handleEdit(),
   'deleteBlog' => (new BlogController())->delete(),
 
   // Category
@@ -59,10 +66,19 @@ match ($act) {
   // 'handleDditContact' => (new ContactController())->handleEditContact(),
   'deleteContact' => (new ContactController())->delete(),
 
+
   //User
   'users' => (new UserController())->getAll(),
   'addUser' => (new UserController())->addUser(),
   'editUser' => (new UserController())->loadEditView(),
   'handleDditUser' => (new UserController())->handleEditUser(),
   'deleteUser' => (new UserController())->delete(),
+
+  // Products
+  'listProduct' => (new ProductController())->getAll(),
+  'addProduct' => (new ProductController())->add(),
+  'editProduct' => (new ProductController())->loadEditView(),
+  'handleEditProduct' => (new ProductController())->handleEdit(),
+  'deleteProduct' => (new ProductController())->delete(),
+
 };

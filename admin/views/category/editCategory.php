@@ -14,16 +14,6 @@
   require_once "views/layouts/libs_css.php";
   ?>
 
-  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
-  <script type="importmap">
-    {
-      "imports": {
-          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
-          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
-          }
-      }
-  </script>
-
 </head>
 
 <body>
@@ -46,10 +36,10 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=handleEditCategory&id=<?= $result['danh_muc_id'] ?>" enctype="multipart/form-data">
+          <form class="row g-3 needs-validation" method="POST" action="?act=handleEditCategory&id=<?= $result['id'] ?>" enctype="multipart/form-data">
             <div class="col-md-12">
               <label for="title" class="form-label">ID</label>
-              <input type="text" class="form-control" name="id" id="title" value="<?= $result['danh_muc_id'] ?>" disabled>
+              <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
             </div>
 
             <div class="col-md-12">
@@ -68,11 +58,6 @@
               </select>
             </div>
 
-            <div class="col-md-12">
-              <label for="content" class="form-label">Mô tả</label>
-              <textarea class="form-control" name="content" id="content" rows="12" placeholder="Nội dung bài viết" required><?= $result['mo_ta'] ?></textarea>
-            </div>
-
             <div class="col-12">
               <button class="btn btn-primary" name="save" type="submit">Cập nhật</button>
               <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
@@ -83,142 +68,6 @@
               window.location.href = "?act=listCategory"
             }
           </script>
-
-          <script type="module">
-            import {
-              ClassicEditor,
-              Essentials,
-              Paragraph,
-              Bold,
-              Italic,
-              Underline,
-              Strikethrough,
-              Superscript,
-              Link,
-              List,
-              Font,
-              Alignment,
-              Subscript,
-              Indent,
-              BlockQuote,
-              Image,
-              ImageUpload,
-              MediaEmbed,
-              Table,
-              Code,
-              Highlight,
-              HorizontalLine,
-              PageBreak,
-              SpecialCharacters,
-              CodeBlock,
-              TodoList,
-              FontSize,
-              FontBackgroundColor,
-              FontColor
-            } from 'ckeditor5'
-
-            ClassicEditor
-              .create(document.querySelector('#content'), {
-                plugins: [
-                  Essentials,
-                  Paragraph,
-                  Bold,
-                  Italic,
-                  Alignment,
-                  Underline,
-                  Strikethrough,
-                  Subscript,
-                  Superscript,
-                  Link,
-                  List,
-                  Font,
-                  Indent,
-                  BlockQuote,
-                  Image,
-                  ImageUpload,
-                  MediaEmbed,
-                  Table,
-                  Code,
-                  Highlight,
-                  HorizontalLine,
-                  PageBreak,
-                  SpecialCharacters,
-                  CodeBlock,
-                  TodoList,
-                  FontSize,
-                  FontBackgroundColor,
-                  FontColor
-                ],
-                toolbar: {
-                  items: [
-                    'heading', '|',
-                    'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '|',
-                    'link', 'bulletedList', 'numberedList', 'todoList', '|',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
-                    'alignment', 'indent', 'outdent', '|',
-                    'blockQuote', 'insertTable', 'mediaEmbed', 'imageUpload', '|',
-                    'undo', 'redo', '|',
-                    'code', 'codeBlock', 'highlight', '|',
-                    'horizontalLine', 'pageBreak', '|',
-                    'removeFormat', 'specialCharacters'
-                  ]
-                },
-                image: {
-                  toolbar: [
-                    'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
-                  ]
-                },
-                table: {
-                  contentToolbar: [
-                    'tableColumn', 'tableRow', 'mergeTableCells'
-                  ]
-                },
-                alignment: {
-                  options: ['left', 'center', 'right', 'justify']
-                },
-                fontFamily: {
-                  options: [
-                    'default',
-                    'Ubuntu, Arial, sans-serif',
-                    'Ubuntu Mono, Courier New, Courier, monospace'
-                  ]
-                },
-                fontSize: {
-                  options: [9, 11, 13, 17, 19, 21]
-                },
-                fontColor: {
-                  colors: [{
-                      color: 'hsl(0, 0%, 0%)',
-                      label: 'Đen'
-                    },
-                    {
-                      color: 'hsl(0, 0%, 50%)',
-                      label: 'Xám'
-                    },
-                    {
-                      color: 'hsl(0, 100%, 100%)',
-                      label: 'Trắng'
-                    },
-                    {
-                      color: 'hsl(0, 100%, 60%)',
-                      label: 'Đỏ'
-                    },
-                    {
-                      color: 'hsl(120, 100%, 40%)',
-                      label: 'Xanh lá cây'
-                    },
-                    {
-                      color: 'hsl(240, 100%, 50%)',
-                      label: 'Xanh dương'
-                    },
-                  ]
-                },
-              })
-              .catch(error => {
-                console.error(error);
-              });
-          </script>
-
 
         </div>
         <!-- container-fluid -->

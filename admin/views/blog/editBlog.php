@@ -46,14 +46,14 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=handleDditBlog&id=<?= $result['tin_tuc_id'] ?>" enctype="multipart/form-data">
+          <form class="row g-3 needs-validation" method="POST" action="?act=handleEditBlog&id=<?= $result['id'] ?>" enctype="multipart/form-data">
             <div class="col-md-12">
               <img src="<?= $result['anh_avt'] ?>" class="img-rounded" alt="Cinque Terre" style="height: 180px; width: 180px">
             </div>
 
             <div class="col-md-12">
               <label for="title" class="form-label">ID</label>
-              <input type="text" class="form-control" name="id" id="title" value="<?= $result['tin_tuc_id'] ?>" disabled>
+              <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
             </div>
 
             <div class="col-md-12">

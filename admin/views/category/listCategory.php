@@ -27,25 +27,6 @@
     require_once "views/layouts/header.php";
     require_once "views/layouts/siderbar.php";
     ?>
-
-    <?php
-    function fortmartTime($timestamp)
-    {
-      date_default_timezone_set('Asia/Ho_Chi_Minh');
-      $timeDifference = time() - strtotime($timestamp);
-      if ($timeDifference < 60) {
-        return $timeDifference . ' seconds ago';
-      } elseif ($timeDifference < 3600) {
-        return floor($timeDifference / 60) . ' minutes ago';
-      } elseif ($timeDifference < 86400) {
-        return floor($timeDifference / 3600) . ' hours ago';
-      } elseif ($timeDifference < 604800) {
-        return floor($timeDifference / 86400) . ' days ago';
-      } else {
-        return floor($timeDifference / 604800) . ' weeks ago';
-      }
-    }
-    ?>
     <!-- Left Sidebar End -->
     <!-- Vertical Overlay-->
     <div class="vertical-overlay"></div>
@@ -71,7 +52,6 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nội dung</th>
-                <th scope="col">Thời gian</th>
                 <th scope="col">Trạng thái</th>
                 <th scope="col">Hành động</th>
               </tr>
@@ -79,9 +59,8 @@
             <tbody>
               <?php foreach ($categories as $category): ?>
                 <tr>
-                  <th scope="row"><a href="#" class="fw-semibold">#<?= $category['danh_muc_id'] ?></a></th>
+                  <th scope="row"><a href="#" class="fw-semibold">#<?= $category['id'] ?></a></th>
                   <td><?= $category['ten_danh_muc'] ?></td>
-                  <td><?= fortmartTime($category['cap_nhat']) ?></td>
                   <td>
                     <span class="badge <?= $category['trang_thai'] === 1 ? 'bg-success' : 'bg-danger' ?>">
                       <?= $category['trang_thai'] === 1 ? 'Hoạt động' : 'Ngừng Hoạt động' ?>
@@ -89,8 +68,8 @@
                   </td>
                   <td>
                     <div class="hstack gap-3 flex">
-                      <a href="?act=editCategory&id=<?= $category['danh_muc_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                      <a href="?act=deleteCategory&id=<?= $category['danh_muc_id'] ?>" onclick="confirmDelete(<?= $category['danh_muc_id'] ?>)" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                      <a href="?act=editCategory&id=<?= $category['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                      <a href="?act=deleteCategory&id=<?= $category['id'] ?>" onclick="confirmDelete(<?= $category['id'] ?>)" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                     </div>
                   </td>
                 </tr>
