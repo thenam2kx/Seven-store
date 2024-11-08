@@ -8,13 +8,13 @@ class BannerModel {
   }
 
   public function getAll() {
-    $sql = "SELECT * FROM `banners` ORDER BY bannerId DESC";
+    $sql = "SELECT * FROM `banners` ORDER BY id DESC";
     return $this->db->query($sql);
   }
 
-  public function getOne($bannerId) {
-    $sql = "SELECT * FROM `banners` WHERE bannerId=?";
-    return $this->db->queryOne($sql, $bannerId);
+  public function getOne($id) {
+    $sql = "SELECT * FROM `banners` WHERE id=?";
+    return $this->db->queryOne($sql, $id);
   }
 
   public function create($duong_dan, $trang_thai = 1) {
@@ -22,19 +22,19 @@ class BannerModel {
     return $this->db->execute($sql, $duong_dan, $trang_thai);
   }
 
-  public function edit($bannerId, $duong_dan, $trang_thai = 1) {
+  public function edit($id, $duong_dan, $trang_thai = 1) {
     $sql = "";
     if ($duong_dan !== '') {
-      $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE bannerId=?";
-      return $this->db->execute($sql, $duong_dan, $trang_thai, $bannerId);
+      $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE id=?";
+      return $this->db->execute($sql, $duong_dan, $trang_thai, $id);
     } else {
       $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE tin_tuc_id=?";
-      return $this->db->execute($sql, $duong_dan, $trang_thai, $bannerId);
+      return $this->db->execute($sql, $duong_dan, $trang_thai, $id);
     }
   }
 
-  public function delete($bannerId) {
-    $sql = "DELETE FROM `banners` WHERE bannerId=?";
-    return $this->db->execute($sql, $bannerId);
+  public function delete($id) {
+    $sql = "DELETE FROM `banners` WHERE id=?";
+    return $this->db->execute($sql, $id);
   }
 }

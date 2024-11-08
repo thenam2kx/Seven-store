@@ -12,7 +12,7 @@ class ContactModel
     public function getAll()
     {
        try {
-        $sql = "SELECT * FROM lien_hes ORDER BY lien_he_id asc";
+        $sql = "SELECT * FROM lien_hes ORDER BY id asc";
         return $this->db->query($sql);
        } catch (Exception $th) {
            echo $th->getMessage();
@@ -20,11 +20,11 @@ class ContactModel
     }
 
 
-    public function delete($lien_he_id)
+    public function delete($id)
     {
         try {
-            $sql = "DELETE FROM lien_hes WHERE lien_he_id=?";
-            return $this->db->execute($sql, $lien_he_id);
+            $sql = "DELETE FROM lien_hes WHERE id=?";
+            return $this->db->execute($sql, $id);
         } catch (Exception $th) {
             echo $th->getMessage();
         }
