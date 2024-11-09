@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>User | NN Shop</title>
+  <title>Banner | NN Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -96,7 +96,9 @@
         <!-- container-fluid -->
       </div>
       <!-- End Page-content -->
-
+      </div>
+      </div>
+      </div>
       <footer class="footer">
         <div class="container-fluid">
           <div class="row">
@@ -117,10 +119,7 @@
     <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
-  </div>
-      </div>
-      </div>
-
+ 
 
   <!--start back-to-top-->
   <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">

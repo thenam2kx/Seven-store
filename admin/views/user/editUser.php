@@ -134,6 +134,9 @@
               <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
             </div>
           </form>
+          </div>
+      </div>
+      </div>
           <script>
             function confirmCancel() {
               window.location.href = "?act=users"
@@ -164,9 +167,6 @@
     <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
-      </div>
-      </div>
-      </div>
 
 
 

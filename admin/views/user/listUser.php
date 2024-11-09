@@ -146,9 +146,7 @@
                   }
                  </script>
                 </div>
-              </div>
-            </div>
-          </div>
+
 
         </div>
         <!-- container-fluid -->
@@ -157,47 +155,29 @@
       </div>
       </div>
       </div>
-
-      <!-- <?php
-          $search = $_GET['search'] ?? '';
-          $filter = $_GET['filter'] ?? 'all';
-
-          $query = "SELECT * FROM users WHERE ";
-
-          if ($filter === 'email') {
-              $query .= "email LIKE :search";
-          } elseif ($filter === 'address') {
-              $query .= "address LIKE :search";
-          } else {
-              $query .= "email LIKE :search OR address LIKE :search";
-          }
-
-          $statement = $pdo->prepare($query);
-          $statement->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-          $statement->execute();
-          $results = $statement->fetchAll();
-      ?> -->
-
-     <footer class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <script>
-                document.write(new Date().getFullYear())
-              </script> © Velzon.
-            </div>
-            <div class="col-sm-6">
-              <div class="text-sm-end d-none d-sm-block">
-                Design & Develop by Themesbrand
+      <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <script>
+                  document.write(new Date().getFullYear())
+                </script> © Velzon.
+              </div>
+              <div class="col-sm-6">
+                <div class="text-sm-end d-none d-sm-block">
+                  Design & Develop by Themesbrand
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
     </div>
     <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
+  </div>
+            </div>
+          </div>
 
 
 
