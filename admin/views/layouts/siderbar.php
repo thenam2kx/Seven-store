@@ -59,7 +59,7 @@
 <!-- User -->
 <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarUser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUser">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">User</span>
+            <i class="ri-user-line"></i> <span data-key="t-advance-ui">User</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebarUser">
             <ul class="nav nav-sm flex-column">
@@ -122,7 +122,7 @@
         <!-- Banner -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarBanner" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBanner">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Banner</span>
+            <i class="ri-image-line"></i> <span data-key="t-advance-ui">Banner</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebarBanner">
             <ul class="nav nav-sm flex-column">

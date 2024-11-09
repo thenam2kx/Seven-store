@@ -71,7 +71,7 @@ match ($act) {
   'users' => (new UserController())->getAll(),
   'addUser' => (new UserController())->addUser(),
   'editUser' => (new UserController())->loadEditView(),
-  'handleDditUser' => (new UserController())->handleEditUser(),
+  'handleEditUser' => (new UserController())->handleEdit(),
   'deleteUser' => (new UserController())->delete(),
 
   // Products

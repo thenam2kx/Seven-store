@@ -13,7 +13,15 @@
   <?php
   require_once "views/layouts/libs_css.php";
   ?>
-
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
+  <script type="importmap">
+    {
+      "imports": {
+          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
+          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
+          }
+      }
+  </script>
 </head>
 
 <body>
@@ -36,77 +44,246 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=addUser" enctype="multipart/form-data" novalidate>
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Thêm người dùng</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Thêm người dùng</li>
+              </ol>
+            </div>
+          </div>
 
-          <div class="col-md-12">
-              <label for="name" class="form-label">Họ Tên</label>
-              <input name="name" type="text" class="form-control" id="name" placeholder="Họ tên" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập Họ tên.
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview">
+                <form class="row g-3 needs-validation" action="?act=addUser" method="POST" enctype="multipart/form-data" novalidate>
+                  <div class="col-md-12">
+                    <label for="name" class="form-label">Họ tên người dùng</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nhập họ tên người dùng" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập họ tên người dùng.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email người dùng" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập email người dùng.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input type="address" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ người dùng" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập địa chỉ người dùng.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại người dùng" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập số điện thoại người dùng.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="date" class="form-label">Ngày sinh</label>
+                    <input type="date" class="form-control" id="date" name="date" placeholder="Nhập ngày sinh người dùng" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập ngày sinh người dùng.
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="gender" class="form-label">Giới tính</label>
+                    <select class="form-select" name="gender" id="gender" required>
+                      <option selected value="1">Nam</option>
+                      <option value="0">Nữ</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Vui lòng chọn giới tính.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu người dùng" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập mật khẩu người dùng.
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="trang-thai" class="form-label">Trạng thái</label>
+                    <select class="form-select" name="status" id="trang-thai" required>
+                      <option selected value="1">Hoạt động</option>
+                      <option value="0">Ngừng hoạt động</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Vui lòng chọn trạng thái.
+                    </div>
+                  </div>
+
+
+                  <div class="col-12">
+                    <input class="btn btn-primary" type="submit" name="save" value="Thêm người dùng" />
+                    <button class="btn btn-outline-primary" type="reset">Xóa</button>
+                    <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
+                  </div>
+                </form>
+                <script>
+            function confirmCancel() {
+              window.location.href = "?act=users"
+            }
+          </script>
               </div>
             </div>
+          </div>
 
-            <div class="col-md-12">
-              <label for="email" class="form-label">Email</label>
-              <input name="email" type="text" class="form-control" id="email" placeholder="Email" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập Email.
-              </div>
-            </div>
 
-            <div class="col-md-12">
-              <label for="address" class="form-label">Địa chỉ</label>
-              <input name="address" type="text" class="form-control" id="address" placeholder="Địa chỉ" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập Địa chỉ.
-              </div>
-            </div>
+          <script type="module">
+            import {
+              ClassicEditor,
+              Essentials,
+              Paragraph,
+              Bold,
+              Italic,
+              Underline,
+              Strikethrough,
+              Superscript,
+              Link,
+              List,
+              Font,
+              Alignment,
+              Subscript,
+              Indent,
+              BlockQuote,
+              Image,
+              ImageUpload,
+              MediaEmbed,
+              Table,
+              Code,
+              Highlight,
+              HorizontalLine,
+              PageBreak,
+              SpecialCharacters,
+              CodeBlock,
+              TodoList,
+              FontSize,
+              FontBackgroundColor,
+              FontColor
+            } from 'ckeditor5'
 
-            <div class="col-md-12">
-              <label for="phone" class="form-label">Số điện thoại</label>
-              <input name="phone" type="number" class="form-control" id="phone" placeholder="Số điện thoại" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập Số điện thoại.
-              </div>
-            </div>
+            ClassicEditor
+              .create(document.querySelector('#content'), {
+                plugins: [
+                  Essentials,
+                  Paragraph,
+                  Bold,
+                  Italic,
+                  Alignment,
+                  Underline,
+                  Strikethrough,
+                  Subscript,
+                  Superscript,
+                  Link,
+                  List,
+                  Font,
+                  Indent,
+                  BlockQuote,
+                  Image,
+                  ImageUpload,
+                  MediaEmbed,
+                  Table,
+                  Code,
+                  Highlight,
+                  HorizontalLine,
+                  PageBreak,
+                  SpecialCharacters,
+                  CodeBlock,
+                  TodoList,
+                  FontSize,
+                  FontBackgroundColor,
+                  FontColor
+                ],
+                toolbar: {
+                  items: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '|',
+                    'link', 'bulletedList', 'numberedList', 'todoList', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                    'alignment', 'indent', 'outdent', '|',
+                    'blockQuote', 'insertTable', 'mediaEmbed', 'imageUpload', '|',
+                    'undo', 'redo', '|',
+                    'code', 'codeBlock', 'highlight', '|',
+                    'horizontalLine', 'pageBreak', '|',
+                    'removeFormat', 'specialCharacters'
+                  ]
+                },
+                image: {
+                  toolbar: [
+                    'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
+                  ]
+                },
+                imageUpload: {
+                  // Endpoint xử lý tải lên hình ảnh
+                  uploadUrl: '../config/upload.php',
+                },
+                table: {
+                  contentToolbar: [
+                    'tableColumn', 'tableRow', 'mergeTableCells'
+                  ]
+                },
+                alignment: {
+                  options: ['left', 'center', 'right', 'justify']
+                },
+                fontFamily: {
+                  options: [
+                    'default',
+                    'Ubuntu, Arial, sans-serif',
+                    'Ubuntu Mono, Courier New, Courier, monospace'
+                  ]
+                },
+                fontSize: {
+                  options: [9, 11, 13, 17, 19, 21]
+                },
+                fontColor: {
+                  colors: [{
+                      color: 'hsl(0, 0%, 0%)',
+                      label: 'Đen'
+                    },
+                    {
+                      color: 'hsl(0, 0%, 50%)',
+                      label: 'Xám'
+                    },
+                    {
+                      color: 'hsl(0, 100%, 100%)',
+                      label: 'Trắng'
+                    },
+                    {
+                      color: 'hsl(0, 100%, 60%)',
+                      label: 'Đỏ'
+                    },
+                    {
+                      color: 'hsl(120, 100%, 40%)',
+                      label: 'Xanh lá cây'
+                    },
+                    {
+                      color: 'hsl(240, 100%, 50%)',
+                      label: 'Xanh dương'
+                    },
+                  ]
+                },
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          </script>
 
-            <div class="col-md-12">
-              <label for="date" class="form-label">Ngày sinh</label>
-              <input name="date" type="date" class="form-control" id="date" placeholder="Ngày sinh" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập Ngày sinh.
-              </div>
-            </div>
-
-            <div class="col-md-6 position-relative">
-              <label for="select-gender" class="form-label">Giới tính</label>
-              <select class="form-select" name="gender" id="select-gender" required>
-                <option selected value="1">Nam</option>
-                <option value="0">Nữ</option>
-              </select>
-            </div>
-
-            <div class="col-md-12">
-              <label for="password" class="form-label">Mật khẩu</label>
-              <input name="password" type="password" class="form-control" id="password" placeholder="Mật khẩu" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập Mật khẩu.
-              </div>
-            </div>
-
-            <div class="col-md-6 position-relative">
-              <label for="select-status" class="form-label">Trạng thái</label>
-              <select class="form-select" name="status" id="select-status" required>
-                <option selected value="1">Hoạt động</option>
-                <option value="0">Ngừng hoạt động</option>
-              </select>
-            </div>
-
-            <div class="col-12">
-              <input class="btn btn-primary" type="submit" name="save" id="btnSave" value="Thêm" />
-              <button class="btn btn-outline-primary" type="reset">Xóa</button>
-            </div>
-          </form>
 
           <script>
             (() => {
@@ -148,7 +325,9 @@
     <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
-
+  </div>
+      </div>
+      </div>
 
 
   <!--start back-to-top-->
