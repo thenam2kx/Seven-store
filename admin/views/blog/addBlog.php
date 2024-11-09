@@ -44,223 +44,239 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=addBlog" enctype="multipart/form-data" novalidate>
-            <div class="col-md-12">
-              <label for="title" class="form-label">Tiêu đề</label>
-              <input name="title" type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập tiêu đề bài viết.
-              </div>
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Tạo tin tức mới</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Thêm bài viết</li>
+              </ol>
             </div>
+          </div>
 
-            <div class="col-md-6 position-relative">
-              <label for="select-status" class="form-label">Trạng thái</label>
-              <select class="form-select" name="status" id="select-status" required>
-                <option selected value="1">Hiển thị</option>
-                <option value="0">Ẩn</option>
-              </select>
-            </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview"></div>
+              <form class="row g-3 needs-validation" method="POST" action="?act=addBlog" enctype="multipart/form-data" novalidate>
+                <div class="col-md-12">
+                  <label for="title" class="form-label">Tiêu đề</label>
+                  <input name="title" type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" required>
+                  <div class="invalid-feedback">
+                    Vui lòng nhập tiêu đề bài viết.
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <label for="formFile" class="form-label">Chọn ảnh đại diện</label>
-              <input class="form-control" name="file" type="file" id="formFile" required>
-              <div class="invalid-feedback">
-                Vui lòng chọn ảnh đại diện.
-              </div>
-            </div>
+                <div class="col-md-6 position-relative">
+                  <label for="select-status" class="form-label">Trạng thái</label>
+                  <select class="form-select" name="status" id="select-status" required>
+                    <option selected value="1">Hiển thị</option>
+                    <option value="0">Ẩn</option>
+                  </select>
+                </div>
 
-            <div class="col-md-12">
-              <label for="content" class="form-label">Nội dung</label>
-              <textarea class="form-control" name="content" id="content" rows="12" placeholder="Nội dung bài viết" required></textarea>
-              <div class="invalid-feedback">
-                Vui lòng nhập nội dung bài viết.
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <label for="formFile" class="form-label">Chọn ảnh đại diện</label>
+                  <input class="form-control" name="file" type="file" id="formFile" required>
+                  <div class="invalid-feedback">
+                    Vui lòng chọn ảnh đại diện.
+                  </div>
+                </div>
 
-            <div class="col-12">
-              <input class="btn btn-primary" type="submit" name="save" id="btnSave" value="Đăng bài" />
-              <button class="btn btn-outline-primary" type="reset">Xóa</button>
-            </div>
-          </form>
+                <div class="col-md-12">
+                  <label for="content" class="form-label">Nội dung</label>
+                  <textarea class="form-control" name="content" id="content" rows="12" placeholder="Nội dung bài viết" required></textarea>
+                  <div class="invalid-feedback">
+                    Vui lòng nhập nội dung bài viết.
+                  </div>
+                </div>
 
-          <script type="module">
-            import {
-              ClassicEditor,
-              Essentials,
-              Paragraph,
-              Bold,
-              Italic,
-              Underline,
-              Strikethrough,
-              Superscript,
-              Link,
-              List,
-              Font,
-              Alignment,
-              Subscript,
-              Indent,
-              BlockQuote,
-              Image,
-              ImageUpload,
-              MediaEmbed,
-              Table,
-              Code,
-              Highlight,
-              HorizontalLine,
-              PageBreak,
-              SpecialCharacters,
-              CodeBlock,
-              TodoList,
-              FontSize,
-              FontBackgroundColor,
-              FontColor
-            } from 'ckeditor5'
-
-            ClassicEditor
-              .create(document.querySelector('#content'), {
-                plugins: [
-                  Essentials,
-                  Paragraph,
-                  Bold,
-                  Italic,
-                  Alignment,
-                  Underline,
-                  Strikethrough,
-                  Subscript,
-                  Superscript,
-                  Link,
-                  List,
-                  Font,
-                  Indent,
-                  BlockQuote,
-                  Image,
-                  ImageUpload,
-                  MediaEmbed,
-                  Table,
-                  Code,
-                  Highlight,
-                  HorizontalLine,
-                  PageBreak,
-                  SpecialCharacters,
-                  CodeBlock,
-                  TodoList,
-                  FontSize,
-                  FontBackgroundColor,
-                  FontColor
-                ],
-                toolbar: {
-                  items: [
-                    'heading', '|',
-                    'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '|',
-                    'link', 'bulletedList', 'numberedList', 'todoList', '|',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
-                    'alignment', 'indent', 'outdent', '|',
-                    'blockQuote', 'insertTable', 'mediaEmbed', 'imageUpload', '|',
-                    'undo', 'redo', '|',
-                    'code', 'codeBlock', 'highlight', '|',
-                    'horizontalLine', 'pageBreak', '|',
-                    'removeFormat', 'specialCharacters'
-                  ]
-                },
-                image: {
-                  toolbar: [
-                    'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
-                  ]
-                },
-                imageUpload: {
-                    // Endpoint xử lý tải lên hình ảnh
-                    uploadUrl: '../config/upload.php',
-                },
-                table: {
-                  contentToolbar: [
-                    'tableColumn', 'tableRow', 'mergeTableCells'
-                  ]
-                },
-                alignment: {
-                  options: ['left', 'center', 'right', 'justify']
-                },
-                fontFamily: {
-                  options: [
-                    'default',
-                    'Ubuntu, Arial, sans-serif',
-                    'Ubuntu Mono, Courier New, Courier, monospace'
-                  ]
-                },
-                fontSize: {
-                  options: [9, 11, 13, 17, 19, 21]
-                },
-                fontColor: {
-                  colors: [{
-                      color: 'hsl(0, 0%, 0%)',
-                      label: 'Đen'
-                    },
-                    {
-                      color: 'hsl(0, 0%, 50%)',
-                      label: 'Xám'
-                    },
-                    {
-                      color: 'hsl(0, 100%, 100%)',
-                      label: 'Trắng'
-                    },
-                    {
-                      color: 'hsl(0, 100%, 60%)',
-                      label: 'Đỏ'
-                    },
-                    {
-                      color: 'hsl(120, 100%, 40%)',
-                      label: 'Xanh lá cây'
-                    },
-                    {
-                      color: 'hsl(240, 100%, 50%)',
-                      label: 'Xanh dương'
-                    },
-                  ]
-                },
-              })
-              .catch(error => {
-                console.error(error);
-              });
-          </script>
-
-
-          <script>
-            (() => {
-              'use strict';
-              const form = document.querySelector('.needs-validation');
-              form.addEventListener('submit', (event) => {
-                // Kiểm tra tính hợp lệ của form
-                if (!form.checkValidity()) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                // Thêm lớp 'was-validated' để Bootstrap tự động áp dụng CSS cho các input không hợp lệ
-                form.classList.add('was-validated');
-              }, false);
-            })();
-          </script>
-        </div>
-        <!-- container-fluid -->
-      </div>
-      <!-- End Page-content -->
-
-      <footer class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <script>
-                document.write(new Date().getFullYear())
-              </script> © Velzon.
-            </div>
-            <div class="col-sm-6">
-              <div class="text-sm-end d-none d-sm-block">
-                Design & Develop by Themesbrand
-              </div>
+                <div class="col-12">
+                  <input class="btn btn-primary" type="submit" name="save" id="btnSave" value="Đăng bài" />
+                  <button class="btn btn-outline-primary" type="reset">Xóa</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </footer>
+
+        <script type="module">
+          import {
+            ClassicEditor,
+            Essentials,
+            Paragraph,
+            Bold,
+            Italic,
+            Underline,
+            Strikethrough,
+            Superscript,
+            Link,
+            List,
+            Font,
+            Alignment,
+            Subscript,
+            Indent,
+            BlockQuote,
+            Image,
+            ImageUpload,
+            MediaEmbed,
+            Table,
+            Code,
+            Highlight,
+            HorizontalLine,
+            PageBreak,
+            SpecialCharacters,
+            CodeBlock,
+            TodoList,
+            FontSize,
+            FontBackgroundColor,
+            FontColor
+          } from 'ckeditor5'
+
+          ClassicEditor
+            .create(document.querySelector('#content'), {
+              plugins: [
+                Essentials,
+                Paragraph,
+                Bold,
+                Italic,
+                Alignment,
+                Underline,
+                Strikethrough,
+                Subscript,
+                Superscript,
+                Link,
+                List,
+                Font,
+                Indent,
+                BlockQuote,
+                Image,
+                ImageUpload,
+                MediaEmbed,
+                Table,
+                Code,
+                Highlight,
+                HorizontalLine,
+                PageBreak,
+                SpecialCharacters,
+                CodeBlock,
+                TodoList,
+                FontSize,
+                FontBackgroundColor,
+                FontColor
+              ],
+              toolbar: {
+                items: [
+                  'heading', '|',
+                  'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '|',
+                  'link', 'bulletedList', 'numberedList', 'todoList', '|',
+                  'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                  'alignment', 'indent', 'outdent', '|',
+                  'blockQuote', 'insertTable', 'mediaEmbed', 'imageUpload', '|',
+                  'undo', 'redo', '|',
+                  'code', 'codeBlock', 'highlight', '|',
+                  'horizontalLine', 'pageBreak', '|',
+                  'removeFormat', 'specialCharacters'
+                ]
+              },
+              image: {
+                toolbar: [
+                  'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
+                ]
+              },
+              imageUpload: {
+                // Endpoint xử lý tải lên hình ảnh
+                uploadUrl: '../config/upload.php',
+              },
+              table: {
+                contentToolbar: [
+                  'tableColumn', 'tableRow', 'mergeTableCells'
+                ]
+              },
+              alignment: {
+                options: ['left', 'center', 'right', 'justify']
+              },
+              fontFamily: {
+                options: [
+                  'default',
+                  'Ubuntu, Arial, sans-serif',
+                  'Ubuntu Mono, Courier New, Courier, monospace'
+                ]
+              },
+              fontSize: {
+                options: [9, 11, 13, 17, 19, 21]
+              },
+              fontColor: {
+                colors: [{
+                    color: 'hsl(0, 0%, 0%)',
+                    label: 'Đen'
+                  },
+                  {
+                    color: 'hsl(0, 0%, 50%)',
+                    label: 'Xám'
+                  },
+                  {
+                    color: 'hsl(0, 100%, 100%)',
+                    label: 'Trắng'
+                  },
+                  {
+                    color: 'hsl(0, 100%, 60%)',
+                    label: 'Đỏ'
+                  },
+                  {
+                    color: 'hsl(120, 100%, 40%)',
+                    label: 'Xanh lá cây'
+                  },
+                  {
+                    color: 'hsl(240, 100%, 50%)',
+                    label: 'Xanh dương'
+                  },
+                ]
+              },
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        </script>
+
+
+        <script>
+          (() => {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+            form.addEventListener('submit', (event) => {
+              // Kiểm tra tính hợp lệ của form
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              // Thêm lớp 'was-validated' để Bootstrap tự động áp dụng CSS cho các input không hợp lệ
+              form.classList.add('was-validated');
+            }, false);
+          })();
+        </script>
+      </div>
+      <!-- container-fluid -->
     </div>
-    <!-- end main content-->
+    <!-- End Page-content -->
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <script>
+              document.write(new Date().getFullYear())
+            </script> © Velzon.
+          </div>
+          <div class="col-sm-6">
+            <div class="text-sm-end d-none d-sm-block">
+              Design & Develop by Themesbrand
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
 

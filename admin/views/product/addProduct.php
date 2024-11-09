@@ -141,9 +141,17 @@
                     </div>
                   </div>
 
+                  <div class="col-md-3">
+                    <label for="formMultipleFile" class="form-label">Chọn ảnh khác</label>
+                    <input class="form-control" name="fileMultiple[]" type="file" id="formMultipleFile" multiple required>
+                    <div class="invalid-feedback">
+                      Vui lòng chọn ảnh khác.
+                    </div>
+                  </div>
+
                   <div class="col-md-12">
                     <label for="content-short" class="form-label">Mô tả ngắn sản phẩm</label>
-                    <textarea class="form-control" name="contentShort" id="content-short" maxlength="255" rows="2" placeholder="Nhập mô tả sản phẩm" required></textarea>
+                    <textarea class="form-control" name="contentShort" id="content-short" maxlength="255" rows="1" placeholder="Nhập mô tả sản phẩm" required></textarea>
                     <div class="invalid-feedback">
                       Vui lòng nhập mô tả ngắn sản phẩm.
                     </div>

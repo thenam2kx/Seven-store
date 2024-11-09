@@ -19,7 +19,8 @@ class ProductController
     }
   }
 
-  public function add() {
+  public function add()
+  {
     try {
       $categoryModel = new CategoryModel();
       $categories = $categoryModel->getAll(20, 1);
@@ -52,6 +53,19 @@ class ProductController
           $thumbnail,
           $status
         );
+
+        foreach ($_FILES['fileMultiple']['name'] as $key => $name) {
+          $fileTmpName = $_FILES['fileMultiple']['tmp_name'][$key];
+          $fileName = basename($name);
+          $uploadPath = 'uploads/products/' . uniqid() . $fileName;
+
+          if (move_uploaded_file($fileTmpName, $uploadPath)) {
+            $ProductModel->createMultipleImage($uploadPath);
+          } else {
+            echo "Tải lên hình ảnh $fileName thất bại.<br>";
+          }
+        }
+        if ($result) $this->getAll();
       }
       require_once "./views/product/addProduct.php";
     } catch (\Throwable $th) {
@@ -59,7 +73,46 @@ class ProductController
     }
   }
 
-  public function loadEditView() {
+  public function listImages() {
+    $id = $_GET['id'];
+    $ProductModel = new ProductModel();
+    $result = $ProductModel->getAllImagesByProduct($id);
+    require_once "./views/product/listImages.php";
+  }
+  public function deleteImage() {
+    $idImg = $_GET['idImg'];
+    $ProductModel = new ProductModel();
+    $result = $ProductModel->deleteImagesByProduct($idImg);
+    $this->listImages();
+  }
+  public function addImage() {
+    $id = $_GET['id'];
+    $result = false;
+    if (isset($_POST['save']) && ($_POST['save'])) {
+      $ProductModel = new ProductModel();
+      foreach ($_FILES['fileMultiple']['name'] as $key => $name) {
+        $fileTmpName = $_FILES['fileMultiple']['tmp_name'][$key];
+        $fileName = basename($name);
+        $uploadPath = 'uploads/products/'. uniqid() . $fileName;
+
+        if (move_uploaded_file($fileTmpName, $uploadPath)) {
+          $ProductModel->addImagesByProduct($id, $uploadPath);
+          $result = true;
+        } else {
+          echo "Tải lên hình ảnh $fileName thất bại.<br>";
+          $result = false;
+        }
+      }
+    }
+    if ($result) {
+      $this->listImages();
+    } else {
+      require_once './views/product/addImage.php';
+    }
+  }
+
+  public function loadEditView()
+  {
     $id = $_GET['id'];
     $categoryModel = new CategoryModel();
     $categories = $categoryModel->getAll(20, 1);
@@ -117,12 +170,11 @@ class ProductController
     }
   }
 
-  public function delete() {
+  public function delete()
+  {
     $id = $_GET['id'];
     $ProductModel = new ProductModel();
     $ProductModel->delete($id);
     $this->getAll();
   }
-
-
 }

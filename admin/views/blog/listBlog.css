@@ -1,10 +1,10 @@
 .card {
-  background-color: unset !important;
-  box-shadow: none !important;
+  /* background-color: unset !important; */
+  /* box-shadow: none !important;
   border: none;
   -webkit-box-shadow: none;
   max-width: unset !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 0 !important; */
 }
 .card-body {
   padding: 8px 12px;
