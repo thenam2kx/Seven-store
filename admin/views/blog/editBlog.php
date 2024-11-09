@@ -46,47 +46,64 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=handleEditBlog&id=<?= $result['id'] ?>" enctype="multipart/form-data">
-            <div class="col-md-12">
-              <img src="<?= $result['anh_avt'] ?>" class="img-rounded" alt="Cinque Terre" style="height: 180px; width: 180px">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Cập nhật tin tức</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="?act=blog">Danh sách tin tức</a></li>
+                <li class="breadcrumb-item active">Cập nhật tin tức</li>
+              </ol>
             </div>
+          </div>
 
-            <div class="col-md-12">
-              <label for="title" class="form-label">ID</label>
-              <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
-            </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview">
+                <form class="row g-3 needs-validation" method="POST" action="?act=handleEditBlog&id=<?= $result['id'] ?>" enctype="multipart/form-data">
+                  <div class="col-md-12">
+                    <img src="<?= $result['anh_avt'] ?>" class="img-rounded" alt="Cinque Terre" style="height: 180px; width: 180px">
+                  </div>
 
-            <div class="col-md-12">
-              <label for="title" class="form-label">Tiêu đề</label>
-              <input type="text" class="form-control" name="title" id="title" value="<?= $result['tieu_de'] ?>" placeholder="Tiêu đề bài viết" required>
-              <div class="valid-feedback">
-                Looks good!
+                  <div class="col-md-12">
+                    <label for="title" class="form-label">ID</label>
+                    <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="title" class="form-label">Tiêu đề</label>
+                    <input type="text" class="form-control" name="title" id="title" value="<?= $result['tieu_de'] ?>" placeholder="Tiêu đề bài viết" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 position-relative">
+                    <label for="select-status" class="form-label">Trạng thái</label>
+                    <select class="form-select" name="status" id="select-status" required>
+                      <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Hiển thị</option>
+                      <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Ản</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="formFile" class="form-label">Chọn ảnh đại diện</label>
+                    <input class="form-control" name="file" type="file" id="formFile">
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="content" class="form-label">Nội dung</label>
+                    <textarea class="form-control" name="content" id="content" rows="12" placeholder="Nội dung bài viết" required><?= $result['noi_dung'] ?></textarea>
+                  </div>
+
+                  <div class="col-12">
+                    <button class="btn btn-primary" name="save" type="submit">Cập nhật</button>
+                    <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
+                  </div>
+                </form>
               </div>
             </div>
-
-            <div class="col-md-6 position-relative">
-              <label for="select-status" class="form-label">Trạng thái</label>
-              <select class="form-select" name="status" id="select-status" required>
-                <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Hiển thị</option>
-                <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Ản</option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label for="formFile" class="form-label">Chọn ảnh đại diện</label>
-              <input class="form-control" name="file" type="file" id="formFile">
-            </div>
-
-            <div class="col-md-12">
-              <label for="content" class="form-label">Nội dung</label>
-              <textarea class="form-control" name="content" id="content" rows="12" placeholder="Nội dung bài viết" required><?= $result['noi_dung'] ?></textarea>
-            </div>
-
-            <div class="col-12">
-              <button class="btn btn-primary" name="save" type="submit">Cập nhật</button>
-              <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
-            </div>
-          </form>
+          </div>
           <script>
             function confirmCancel() {
               window.location.href = "?act=blog"

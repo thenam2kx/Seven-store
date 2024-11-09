@@ -81,4 +81,8 @@ match ($act) {
   'handleEditProduct' => (new ProductController())->handleEdit(),
   'deleteProduct' => (new ProductController())->delete(),
 
+  // Images
+  'listImages' => (new ProductController())->listImages(),
+  'deleteImage' => (new ProductController())->deleteImage(),
+  'addImage' => (new ProductController())->addImage(),
 };

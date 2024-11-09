@@ -38,6 +38,34 @@ class ProductModel
     return $this->db->execute($sql, $danh_muc_id, $ten_san_pham, $mo_ta_ngan, $mo_ta_chi_tiet, $gia_nhap, $gia_ban, $gia_khuyen_mai, $ngay_nhap, $so_luong, $anh_dai_dien, $trang_thai);
   }
 
+  public function selectLastRecord () {
+    $sql = "SELECT MAX(Id) FROM san_phams";
+    return $this->db->queryOne($sql);
+  }
+
+  public function createMultipleImage($duong_dan)
+  {
+    $get_san_pham_id = $this->selectLastRecord();
+    $san_pham_id = $get_san_pham_id["MAX(Id)"];
+    $sql = "INSERT INTO `hinh_anhs` (san_pham_id, duong_dan) VALUES (?, ?)";
+    return $this->db->execute($sql, $san_pham_id , $duong_dan);
+  }
+
+  public function getAllImagesByProduct($id) {
+    $sql = "SELECT * FROM `hinh_anhs` WHERE san_pham_id=?";
+    return $this->db->query($sql, $id);
+  }
+
+  public function deleteImagesByProduct($id) {
+    $sql = "DELETE FROM `hinh_anhs` WHERE id=?";
+    return $this->db->execute($sql, $id);
+  }
+
+  public function addImagesByProduct($id, $duong_dan) {
+    $sql = "INSERT INTO `hinh_anhs`(`san_pham_id`, `duong_dan`) VALUES (?, ?)";
+    return $this->db->execute($sql, $id, $duong_dan);
+  }
+
   public function edit($danh_muc_id, $ten_san_pham, $mo_ta_ngan, $mo_ta_chi_tiet, $gia_nhap, $gia_ban, $gia_khuyen_mai, $so_luong, $anh_dai_dien, $trang_thai, $id) {
     $sql = "";
     if ($anh_dai_dien !== '') {
