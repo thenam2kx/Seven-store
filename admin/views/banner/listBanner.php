@@ -56,15 +56,6 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-            <h4 class="mb-sm-0">Danh sách sản phẩm</h4>
-            <div class="page-title-right">
-              <ol class="breadcrumb m-0">
-                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
-                <li class="breadcrumb-item active">danh sách sản phẩm</li>
-              </ol>
-            </div>
-          </div>
 
           <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
             <h4 class="mb-sm-0">Danh sách banner</h4>
@@ -78,16 +69,6 @@
 
           <div class="card">
             <div class="card-header d-flex align-items-center">
-              <!-- Search Form -->
-              <form class="d-flex me-3" action="?act=listBanner" role="search">
-                <input
-                  type="search"
-                  class="form-control me-2"
-                  placeholder="Search..."
-                  aria-label="Search"
-                  name="search" />
-                <input class="btn btn-outline-primary" type="submit" value="Search">
-              </form>
               <!-- Sort Button -->
               <a class="btn btn-primary" href="?act=addBanner">
                 <i class="bi bi-funnel"></i> Thêm banner
@@ -127,7 +108,7 @@
                             <div class="hstack gap-3 flex">
                               <a href="?act=editBanner&id=<?= $banner['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                               <a href="?act=deleteUser&id=<?= $banner['id'] ?>" onclick="confirmDelete(event, <?= $banner['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
-                             </div>
+                            </div>
                             </div>
                           </td>
                         </tr>

@@ -78,7 +78,7 @@
                                         <label for="ten-sp" class="form-label">Địa chỉ</label>
                                         <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['dia_chi'] ?>" disabled>
                                     </div>
-                                    
+
                                     <div class="col-md-6">
                                         <label for="ten-sp" class="form-label">Hình thức thanh toán</label>
                                         <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['hinh_thuc_thanh_toan'] == 0 ? 'Thanh toán cod' : 'Thanh toán MOMO' ?> " disabled>

@@ -79,7 +79,7 @@
                             </form>
                             <!-- Sort Button -->
                             <!-- <a class="btn btn-primary" href="?act=">
-                <i class="bi bi-funnel"></i> Thêm sản phẩm  
+                <i class="bi bi-funnel"></i> Thêm sản phẩm
               </a> -->
                         </div>
 
@@ -90,13 +90,13 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
-                                                <th scope="col">Tên Người nhận</th>
+                                                <!-- <th scope="col">Tên Người nhận</th>
                                                 <th scope="col">Số điện thoại</th>
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Ghi chú</th>
                                                 <th scope="col">Hình thức thanh toán</th>
                                                 <th scope="col">Trang thái thanh toán</th>
-                                                <th scope="col">Thời gian đặt hàng</th>
+                                                <th scope="col">Thời gian đặt hàng</th> -->
                                                 <th scope="col">Trạng thái đơn hàng</th>
                                                 <th scope="col">Hành động</th>
                                             </tr>
@@ -105,13 +105,13 @@
                                             <?php foreach ($listOrder as $Order): ?>
                                                 <tr>
                                                     <th scope="row"><a href="#" class="fw-medium">#<?= $Order['id'] ?></a></th>
-                                                    <td><?= $Order['ho_ten'] ?></td>
+                                                    <!-- <td><?= $Order['ho_ten'] ?></td>
                                                     <td><?= $Order['so_dien_thoai'] ?></td>
                                                     <td><?= $Order['email'] ?></td>
                                                     <td><?= $Order['ghi_chu'] ?></td>
                                                     <td><?= $Order['hinh_thuc_thanh_toan'] == 0 ? "Thanh toán COD" : "Thanh toán MOMO" ?></td>
                                                     <td><?= $Order['trang_thai_thanh_toan'] == 0 ? "Chưa thanh toán" : "Đã thanh toán" ?></td>
-                                                    <td><?= fortmartTime($Order['ngay_tao']) ?></td>
+                                                    <td><?= fortmartTime($Order['ngay_tao']) ?></td> -->
                                                     <td>
                                                         <div class="badge bg-danger-subtle text-danger">
                                                             <?= $Order['trang_thai'] ?>

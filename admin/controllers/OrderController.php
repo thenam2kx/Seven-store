@@ -16,14 +16,14 @@ class OrderController {
     $order_one = $this->orderModel->getOne($id);
     require_once "./views/Order/editOrder.php";
   }
-  
+
   public function handleEdit()
   {
       try {
         if (isset($_POST['save']) && ($_POST['save'])) {
             $id = $_POST['id'];
-            $trang_thai = $_POST[`trang_thai`];
-            $result = $this->orderModel->edit($id,$trang_thai);
+            $trang_thai = $_POST['trang_thai'];
+            $result = $this->orderModel->edit($trang_thai,$id);
             if ($result) {
               header("Location: ?act=listOrder");
             }
