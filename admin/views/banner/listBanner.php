@@ -56,6 +56,15 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Danh sách sản phẩm</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">danh sách sản phẩm</li>
+              </ol>
+            </div>
+          </div>
 
           <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
             <h4 class="mb-sm-0">Danh sách banner</h4>
@@ -138,12 +147,15 @@
               </div>
             </div>
 
+
           </div>
           <!-- container-fluid -->
         </div>
         <!-- End Page-content -->
+
         </div>
       </div>
+
       </div>
         <footer class="footer">
           <div class="container-fluid">
@@ -157,6 +169,7 @@
                 <div class="text-sm-end d-none d-sm-block">
                   Design & Develop by Themesbrand
                 </div>
+
               </div>
             </div>
           </div>

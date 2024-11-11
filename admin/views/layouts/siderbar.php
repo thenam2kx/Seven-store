@@ -56,8 +56,8 @@
           </a>
         </li>
 
-<!-- User -->
-<li class="nav-item">
+        <!-- User -->
+        <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarUser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUser">
             <i class="ri-user-line"></i> <span data-key="t-advance-ui">User</span>
           </a>
@@ -76,6 +76,28 @@
             </ul>
           </div>
         </li>
+
+        <!-- Order -->
+        <li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarOrder" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrder">
+            <i class="ri-currency-fill"></i> <span data-key="t-advance-ui">Quản lý đơn hàng</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarOrder">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=listOrder" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="?act=addOrder" class="nav-link" data-key="t-nestable-list">
+                  Thêm mới
+                </a>
+              </li> -->
+            </ul>
+          </div>
+        </li>
+        <!-- end Order -->
 
         <!-- Blog -->
         <li class="nav-item">
@@ -143,7 +165,7 @@
         <!-- Contact -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarContact" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarContact">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý liên hệ</span>
+            <i class="ri-customer-service-line"></i><span data-key="t-advance-ui">Quản lý liên hệ</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebarContact">
             <ul class="nav nav-sm flex-column">
