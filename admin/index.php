@@ -18,6 +18,9 @@ require_once 'controllers/ProductController.php';
 require_once 'controllers/DiscountController.php';
 
 
+require_once 'controllers/AuthController.php';
+
+
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
@@ -94,4 +97,11 @@ match ($act) {
   'editDiscount' => (new DiscountController())->edit(),
   'handleEditDiscount' => (new DiscountController())->handleEdit(),
   'deleteDiscount' => (new DiscountController())->delete(),
+
+
+
+  // Auth
+  'signin' => (new AuthController())->signIn(),
+  'signup' => (new AuthController())->signUp(),
+  'fogotPassword' => (new AuthController())->fogotPassword(),
 };
