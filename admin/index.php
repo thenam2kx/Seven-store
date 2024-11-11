@@ -15,6 +15,7 @@ require_once 'controllers/UserController.php';
 
 
 require_once 'controllers/ProductController.php';
+require_once 'controllers/DiscountController.php';
 
 
 // Require toàn bộ file Models
@@ -26,6 +27,7 @@ require_once 'models/ContactModel.php';
 require_once 'models/UserModel.php';
 
 require_once 'models/ProductModel.php';
+require_once 'models/DiscountModel.php';
 
 
 
@@ -85,4 +87,11 @@ match ($act) {
   'listImages' => (new ProductController())->listImages(),
   'deleteImage' => (new ProductController())->deleteImage(),
   'addImage' => (new ProductController())->addImage(),
+
+  // Discount
+  'listDiscount' => (new DiscountController())->getAll(),
+  'addDiscount' => (new DiscountController())->add(),
+  'editDiscount' => (new DiscountController())->edit(),
+  'handleEditDiscount' => (new DiscountController())->handleEdit(),
+  'deleteDiscount' => (new DiscountController())->delete(),
 };

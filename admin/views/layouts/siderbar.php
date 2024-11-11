@@ -80,7 +80,7 @@
         <!-- Blog -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarBaiviet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBaiviet">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài viết</span>
+            <i class="ri-newspaper-line"></i> <span data-key="t-advance-ui">Bài viết</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebarBaiviet">
             <ul class="nav nav-sm flex-column">
@@ -101,7 +101,7 @@
         <!-- Blog -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebardanhmuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebardanhmuc">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
+            <i class=" ri-list-check"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebardanhmuc">
             <ul class="nav nav-sm flex-column">
@@ -143,7 +143,7 @@
         <!-- Contact -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarContact" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarContact">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý liên hệ</span>
+            <i class="ri-contacts-line"></i> <span data-key="t-advance-ui">Quản lý liên hệ</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebarContact">
             <ul class="nav nav-sm flex-column">
@@ -165,7 +165,7 @@
         <!-- Products -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarSanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanpham">
-            <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý sản phẩm</span>
+            <i class="ri-shopping-basket-line"></i> <span data-key="t-advance-ui">Quản lý sản phẩm</span>
           </a>
           <div class="collapse menu-dropdown" id="sidebarSanpham">
             <ul class="nav nav-sm flex-column">
@@ -176,6 +176,27 @@
               </li>
               <li class="nav-item">
                 <a href="?act=addProduct" class="nav-link" data-key="t-nestable-list">
+                  Thêm mới
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Discount -->
+        <li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarkhuyenmai" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarkhuyenmai">
+            <i class="ri-percent-line"></i> <span data-key="t-advance-ui">Quản lý khuyến mãi</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarkhuyenmai">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=listDiscount" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?act=addDiscount" class="nav-link" data-key="t-nestable-list">
                   Thêm mới
                 </a>
               </li>
