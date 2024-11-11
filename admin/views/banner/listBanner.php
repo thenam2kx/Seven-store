@@ -70,7 +70,7 @@
           <div class="card">
             <div class="card-header d-flex align-items-center">
               <!-- Search Form -->
-              <form class="d-flex me-3" action="?act=listBanner" role="search">
+              <!-- <form class="d-flex me-3" action="?act=listBanner" role="search">
                 <input
                   type="search"
                   class="form-control me-2"
@@ -78,7 +78,7 @@
                   aria-label="Search"
                   name="search" />
                 <input class="btn btn-outline-primary" type="submit" value="Search">
-              </form>
+              </form> -->
               <!-- Sort Button -->
               <a class="btn btn-primary" href="?act=addBanner">
                 <i class="bi bi-funnel"></i> Thêm banner
