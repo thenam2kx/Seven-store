@@ -121,7 +121,7 @@
                           </td>
                           <td>
                             <div class="hstack gap-3 flex">
-                              <a href="/" class="link-success fs-15"><i class=" ri-image-add-line"></i></a>
+                              <a href="?act=listImages&id=<?= $product['id'] ?>" class="link-success fs-15"><i class=" ri-image-add-line"></i></a>
                               <a href="?act=editProduct&id=<?= $product['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                               <a href="?act=deleteProduct&id=<?= $product['id'] ?>" onclick="confirmDelete(<?= $product['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                             </div>

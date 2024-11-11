@@ -98,7 +98,7 @@
                         <th scope="col">Số điện thoại</th>
                         <th scope="col">Ngày sinh</th>
                         <th scope="col">Giới tính</th>
-                        <th scope="col">Mật khẩu</th>
+                        <!-- <th scope="col">Mật khẩu</th> -->
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Hành động</th>
                       </tr>
@@ -121,7 +121,7 @@
                               <?= $user['gioi_tinh'] == 1 ? 'Nam' : 'Nữ' ?>
                             </span>
                           </td>
-                          <td><?= $user['mat_khau'] ?></td>
+                          <!-- <td><?= $user['mat_khau'] ?></td> -->
                           <td>
                             <span class="badge <?= $user['trang_thai'] == 1 ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' ?> ">
                               <?= $user['trang_thai'] == 1 ? 'Hoạt động' : 'Ngừng hoạt động' ?>

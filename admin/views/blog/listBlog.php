@@ -14,7 +14,6 @@
   require_once "views/layouts/libs_css.php";
   ?>
 
-  <link rel="stylesheet" href="views/blog/listBlog.css" type="text/css" />
 
 </head>
 
@@ -56,81 +55,115 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Danh sách bài viết</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">danh sách bài viết</li>
+              </ol>
+            </div>
+          </div>
 
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">Nội dung</th>
-                <th scope="col" style="white-space: nowrap;">Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($blogs as $blog): ?>
-                <tr>
-                  <th scope="row" class='text-center'><?= $blog['id'] ?></th>
-                  <td>
-                    <div class="card" style="margin-bottom: 0">
-                      <div class="row g-0">
-                        <div class="col-md-1">
-                          <img src="<?= $blog['anh_avt'] ?>" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-11">
-                          <div class="card-body">
-                            <h5 class="card-title"><?= $blog['tieu_de'] ?></h5>
-                            <div class="card-text trunc-text">
-                              <?= $blog['noi_dung'] ?>
+          <div class="card">
+            <div class="card-header d-flex align-items-center">
+              <!-- Search Form -->
+              <form class="d-flex me-3" action="?act=listProduct" role="search">
+                <input
+                  type="search"
+                  class="form-control me-2"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  name="search" />
+                <input class="btn btn-outline-primary" type="submit" value="Search">
+              </form>
+              <!-- Sort Button -->
+              <a class="btn btn-primary" href="?act=addBlog">
+                <i class="bi bi-funnel"></i> Tạo bài viết mới
+              </a>
+            </div>
+
+            <div class="card-body">
+              <div class="live-preview">
+                <div class="table-responsive">
+                  <table class="table ">
+                    <thead>
+                      <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Thời gian</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col" style="white-space: nowrap;">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($blogs as $blog): ?>
+                        <tr>
+                          <th scope="row"><?= $blog['id'] ?></th>
+                          <td>
+                            <div class="d-flex gap-2 align-items-start">
+                              <div class="flex-shrink-0">
+                                <img src="<?= $blog['anh_avt'] ?>" alt="" class="avatar-md" />
+                              </div>
+                              <div class="flex-grow-1 fw-bold fs-6"><?= $blog['tieu_de'] ?></div>
                             </div>
-                            <p class="card-text"><small class="text-body-secondary">Last updated <?= fortmartTime($blog['cap_nhat']) ?></small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="hstack gap-3 flex">
-                      <a href="?act=editBlog&id=<?= $blog['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                      <a href="?act=deleteBlog&id=<?= $blog['id'] ?>" onclick="confirmDelete(<?= $blog['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
+                          </td>
+                          <td>
+                            <p class="card-text"><small class="text-body-secondary"><?= fortmartTime($blog['cap_nhat']) ?></small></p>
+                          </td>
+                          <td>
+                            <span class="badge <?= $blog['trang_thai'] == 1 ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' ?> ">
+                              <?= $blog['trang_thai'] == 1 ? 'Hiển thị' : 'Đang ẩn' ?>
+                            </span>
+                          </td>
+                          <td>
+                            <div class="hstack gap-3 flex">
+                              <a href="?act=editBlog&id=<?= $blog['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                              <a href="?act=deleteBlog&id=<?= $blog['id'] ?>" onclick="confirmDelete(<?= $blog['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
 
 
-              <script>
-                function confirmDelete(id) {
-                  if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-                    window.location.href = "?act=deleteBlog&id=" + id;
-                  }
-                }
-              </script>
-            </tbody>
-          </table>
+                      <script>
+                        function confirmDelete(id) {
+                          if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+                            window.location.href = "?act=deleteBlog&id=" + id;
+                          }
+                        }
+                      </script>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-
-
-          <div class="d-flex align-content-center justify-content-center mt-3">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="?act=blog&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-                  <li class="page-item">
-                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=blog&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
-                  </li>
-                <?php }; ?>
-                <li class="page-item">
-                  <a class="page-link" href="?act=blog&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <div class="card-footer d-flex justify-content-center">
+              <div class="d-flex align-content-center justify-content-center mt-3">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="?act=blog&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                      <li class="page-item">
+                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=blog&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
+                      </li>
+                    <?php }; ?>
+                    <li class="page-item">
+                      <a class="page-link" href="?act=blog&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
 
 
