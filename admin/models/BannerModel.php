@@ -25,10 +25,10 @@ class BannerModel {
   public function edit($id, $duong_dan, $trang_thai = 1) {
     $sql = "";
     if ($duong_dan !== '') {
-      $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE id=?";
+      $sql = "UPDATE banners SET duong_dan=?, trang_thai=? WHERE id=?";
       return $this->db->execute($sql, $duong_dan, $trang_thai, $id);
     } else {
-      $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE id=?";
+      $sql = "UPDATE banners SET duong_dan=?, trang_thai=? WHERE id=?";
       return $this->db->execute($sql, $duong_dan, $trang_thai, $id);
     }
   }

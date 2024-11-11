@@ -46,7 +46,7 @@ class UserController {
     require_once "./views/user/editUser.php";
   }
 
-  public function handleEditUser() {
+  public function handleEdit() {
     $id = $_GET['id'];
     $name = $_POST['name'];
         $email = $_POST['email'];
