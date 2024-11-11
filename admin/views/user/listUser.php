@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Banner | NN Shop</title>
+  <title>User | NN Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -14,7 +14,6 @@
   require_once "views/layouts/libs_css.php";
   ?>
 
-  <link rel="stylesheet" href="views/user/listUser.css" type="text/css" />
 
 </head>
 
@@ -29,7 +28,8 @@
     ?>
 
     <?php
-    function fortmartTime($timestamp)  {
+    function fortmartTime($timestamp)
+    {
       date_default_timezone_set('Asia/Ho_Chi_Minh');
       $timeDifference = time() - strtotime($timestamp);
       if ($timeDifference < 60) {
@@ -55,108 +55,129 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Danh sách người dùng</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">danh sách người dùng</li>
+              </ol>
+            </div>
+          </div>
 
+          <div class="card">
+            <div class="card-header d-flex align-items-center">
+              <!-- Search Form -->
+              <form class="d-flex me-3" action="?act=listUser" role="search">
+                <input
+                  type="search"
+                  class="form-control me-2"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  name="search"
+                />
+                <input class="btn btn-outline-primary" type="submit" value="Search">
+              </form>
+              <!-- Sort Button -->
 
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">Họ tên</th>
-                <th scope="col">Email</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Số điện thoại</th>
-                <th scope="col">Ngày sinh</th>
-                <th scope="col">Giới tính</th>
-                <th scope="col">Mật khẩu</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col">Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($users as $user): ?>
-                <tr>
-                  <th scope="row"><a href="#" class="fw-semibold">#<?= $user['id'] ?></a></th>
-                  <td><?= $user['ho_ten'] ?></td>
-                  <td><?= $user['email'] ?></td>
-                  <td><?= $user['dia_chi'] ?></td>
-                  <td><?= $user['so_dien_thoai'] ?></td>
-                  <td><?= $user['ngay_sinh'] ?></td>
-                  <td><?= $user['gioi_tinh'] == 0 ? 'NỮ' : 'Nam' ?></td>
-                  <td><?= $user['mat_khau'] ?></td>
-                  <td><?= $user['trang_thai'] == 0 ? 'Ngừng hoạt động' : 'Hoạt động'?></td>
+              <a class="btn btn-primary" href="?act=addUser">
+                <i class="bi bi-funnel"></i> Thêm người dùng
+              </a>
+            </div>
 
+            <div class="card-body">
+              <div class="live-preview">
+                <div class="table-responsive">
+                  <table class="table align-middle table-nowrap mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Họ tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Ngày sinh</th>
+                        <th scope="col">Giới tính</th>
+                        <th scope="col">Mật khẩu</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($users as $user): ?>
+                        <tr>
+                          <th scope="row"><a href="#" class="fw-medium">#<?= $user['id'] ?></a></th>
+                          <td>
+                            <div class="d-flex gap-2 align-items-center">
+                              <div class="flex-grow-1"><?= $user['ho_ten'] ?></div>
+                            </div>
+                          </td>
+                          <td><?= $user['email'] ?></td>
+                          <td><?= $user['dia_chi'] ?></td>
+                          <td><?= $user['so_dien_thoai'] ?></td>
+                          <td><?= $user['ngay_sinh'] ?></td>
+                          <td>
+                            <span class="badge <?= $user['gioi_tinh'] == 1 ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' ?> ">
+                              <?= $user['gioi_tinh'] == 1 ? 'Nam' : 'Nữ' ?>
+                            </span>
+                          </td>
+                          <td><?= $user['mat_khau'] ?></td>
+                          <td>
+                            <span class="badge <?= $user['trang_thai'] == 1 ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' ?> ">
+                              <?= $user['trang_thai'] == 1 ? 'Hoạt động' : 'Ngừng hoạt động' ?>
+                            </span>
+                          </td>
+                          <td>
+                            <div class="hstack gap-4 flex">
+                              <a href="?act=editUser&id=<?= $user['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                              <a href="?act=deleteUser&id=<?= $user['id'] ?>" onclick="confirmDelete(event, <?= $user['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>                            </div>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
+                    </tbody>
+                  </table>
+                  <script>
+                  function confirmDelete(event, id) {
+                    event.preventDefault();
 
-                  <td class="d-flex flex-column gap-2">
-                    <!-- <a href="?act=deleteUser&id=<?= $user['id'] ?>"> -->
-                    <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?= $user['id'] ?>)">Xóa</button>
-                    <!-- </a> -->
-                    <a href="?act=editUser&id=<?= $user['id'] ?>" class="d-flex">
-                      <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
-                    </a>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-              <script>
-                function confirmDelete(id) {
-                  if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-                    window.location.href = "?act=deleteUser&id=" + id;
+                    if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                      window.location.href = "?act=deleteUser&id=" + id;
+                    }
                   }
-                }
-              </script>
-            </tbody>
-
-          </table>
-
-          <!-- <div class="d-flex align-content-center justify-content-center mt-3">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="?act=users&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-                  <li class="page-item">
-                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=users&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
-                  </li>
-                <?php }; ?>
-                <li class="page-item">
-                  <a class="page-link" href="?act=users&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div> -->
+                 </script>
+                </div>
 
 
         </div>
         <!-- container-fluid -->
       </div>
       <!-- End Page-content -->
-
+      </div>
+      </div>
+      </div>
       <footer class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <script>
-                document.write(new Date().getFullYear())
-              </script> © Velzon.
-            </div>
-            <div class="col-sm-6">
-              <div class="text-sm-end d-none d-sm-block">
-                Design & Develop by Themesbrand
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <script>
+                  document.write(new Date().getFullYear())
+                </script> © Velzon.
+              </div>
+              <div class="col-sm-6">
+                <div class="text-sm-end d-none d-sm-block">
+                  Design & Develop by Themesbrand
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
     </div>
     <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
+  </div>
+            </div>
+          </div>
 
 
 
