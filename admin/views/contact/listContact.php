@@ -56,79 +56,94 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-
-          <div class="card-header align-items-center d-flex py-3">
-            <h4 class="card-title mb-0 flex-grow-1">Liên hệ hỗ trợ</h4>
-            <div class="flex-shrink-0">
-              <!-- <a href="?act=/">
-                <button class="btn btn-success" type="button">Thêm mới</button>
-              </a> -->
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0">Liên hệ hỗ trợ</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Liên hệ hỗ trợ</li>
+              </ol>
             </div>
           </div>
-
-          <table class="table table-nowrap">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Họ tên</th>
-                <th scope="col">Email</th>
-                <th scope="col">SĐT</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Nội dung</th>
-                <th scope="col">Thời gian</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col">Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($listContact as $Contact): ?>
-                <tr>
-                  <th scope="row"><a href="#" class="fw-semibold">#<?= $Contact['lien_he_id'] ?></a></th>
-                  <td><?= $Contact['ho_ten'] ?></td>
-                  <td><?= $Contact['email'] ?></td>
-                  <td><?= $Contact['so_dien_thoai'] ?></td>
-                  <td><?= $Contact['dia_chi'] ?></td>
-                  <td><?= $Contact['noi_dung'] ?></td>
-                  <td><?= fortmartTime($Contact['ngay_tao']) ?></td>
-                  <td class="text-center text-primary"><?= 'chưa xử lí' //fortmartTime($Contact['cap_nhat']) ?></td>
-                  
-                  <td>
-                    <div class="hstack gap-3 flex">
-                      <!-- <a href="?act=editContact&id=<?= $Contact['lien_he_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a> -->
-                      <a href="?act=deleteContact&id=<?= $Contact['lien_he_id'] ?>" onclick="return confirm('bạn có muốn xóa liên hệ hỗ trợ này?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-
-
-          <!-- <div class="d-flex align-content-center justify-content-center mt-3">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="?act=listContact&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-                  <li class="page-item">
-                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listContact&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
-                  </li>
-                <?php }; ?>
-                <li class="page-item">
-                  <a class="page-link" href="?act=listContact&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+          <div class="card ">
+            <div class="card-header d-flex align-items-center">
+              <!-- Search Form -->
+              <form class="d-flex me-3" action="?act=listContact" role="search">
+                <input type="search" class="form-control me-2" placeholder="Search..." aria-label="Search" name="search" />
+                <input class="btn btn-outline-primary" type="submit" value="Search">
+              </form>
+              <!-- Sort Button -->
+              <!-- <a class="btn btn-primary" href="?act=">
+                <i class="bi bi-funnel"></i> Thêm sản phẩm
+              </a> -->
+            </div>
+            <div class="card-body">
+              <div class="live-preview">
+                <div class="table-responsive">
+                  <table class="table align-middle table-nowrap mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">SĐT</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Thời gian</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($listContact as $Contact): ?>
+                        <tr>
+                          <th scope="row"><a href="#" class="fw-medium">#<?= $Contact['id'] ?></a></th>
+                          <td><?= $Contact['email'] ?></td>
+                          <td><?= $Contact['so_dien_thoai'] ?></td>
+                          <td><?= $Contact['noi_dung'] ?></td>
+                          <td><?= fortmartTime($Contact['ngay_tao']) ?></td>
+                          <td>
+                            <span class="badge <?= $Contact['trang_thai'] == 1 ? 'bg-success-subtle text-danger' : 'bg-danger-subtle text-success' ?> ">
+                              <?= $Contact['trang_thai'] == 1 ? 'Chưa xử lý' : 'Đang xử lý' ?>
+                            </span>
+                          </td>
+                          <td>
+                            <div class="hstack gap-3 flex">
+                              <!-- <a href="?act=editContact&id=<?= $Contact['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a> -->
+                              <a href="?act=deleteContact&id=<?= $Contact['id'] ?>" onclick="return confirm('bạn có muốn xóa liên hệ hỗ trợ này?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="card-footer d-flex justify-content-center">
+              <div class="d-flex align-content-center justify-content-center mt-3">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="?act=listProduct&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                      <li class="page-item">
+                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listProduct&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
+                      </li>
+                    <?php }; ?>
+                    <li class="page-item">
+                      <a class="page-link" href="?act=listProduct&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div> -->
           </div>
- -->
-
         </div>
         <!-- container-fluid -->
       </div>

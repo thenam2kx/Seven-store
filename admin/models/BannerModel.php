@@ -28,7 +28,7 @@ class BannerModel {
       $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE id=?";
       return $this->db->execute($sql, $duong_dan, $trang_thai, $id);
     } else {
-      $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE tin_tuc_id=?";
+      $sql = "UPDATE banners SET duong_dan=?, trang_thai=?, cap_nhat=CURRENT_TIMESTAMP WHERE id=?";
       return $this->db->execute($sql, $duong_dan, $trang_thai, $id);
     }
   }

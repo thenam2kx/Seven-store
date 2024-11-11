@@ -29,7 +29,8 @@
     ?>
 
     <?php
-    function fortmartTime($timestamp)  {
+    function fortmartTime($timestamp)
+    {
       date_default_timezone_set('Asia/Ho_Chi_Minh');
       $timeDifference = time() - strtotime($timestamp);
       if ($timeDifference < 60) {
@@ -55,60 +56,83 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Danh sách sản phẩm</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">danh sách sản phẩm</li>
+              </ol>
+            </div>
+          </div>
 
+          <div class="card">
+            <div class="card-header d-flex align-items-center">
+              <!-- Search Form -->
+              <form class="d-flex me-3" action="?act=listProduct" role="search">
+                <input
+                  type="search"
+                  class="form-control me-2"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  name="search" />
+                <input class="btn btn-outline-primary" type="submit" value="Search">
+              </form>
+              <!-- Sort Button -->
+              <a class="btn btn-primary" href="?act=addProduct">
+                <i class="bi bi-funnel"></i> Thêm sản phẩm
+              </a>
+            </div>
 
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">Nội dung</th>
-                <th scope="col">Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($banners as $banner): ?>
-                <tr>
-                  <th scope="row" class='text-center'><?= $banner['bannerId'] ?></th>
-                  <td>
-                    <div class="card mb-3" style="max-width: 540px;">
-                      <div class="row g-0">
-                        <div class="col-md-2">
-                          <img src="<?= $banner['duong_dan'] ?>" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-10">
-                          <div class="card-body">
-                          <p class="card-text"><small class="text-body-secondary">Last updated <?= fortmartTime($banner['cap_nhat']) ?></small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="d-flex flex-column gap-2">
-                    <!-- <a href="?act=deleteBanner&id=<?= $banner['bannerId'] ?>"> -->
-                    <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?= $banner['bannerId'] ?>)">Xóa</button>
-                    <!-- </a> -->
-                    <a href="?act=editBanner&id=<?= $banner['bannerId'] ?>" class="d-flex">
-                      <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
-                    </a>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-              <script>
-                function confirmDelete(id) {
-                  if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-                    window.location.href = "?act=deleteBanner&id=" + id;
-                  }
-                }
-              </script>
-            </tbody>
-          </table>
-
-
+            <div class="card-body">
+              <div class="live-preview">
+                <div class="table-responsive">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($banners as $banner): ?>
+                        <tr>
+                          <th scope="row" class='text-center'><?= $banner['id'] ?></th>
+                          <td>
+                            <div class="card mb-3">
+                              <div class="col-md-4">
+                                <img src="<?= $banner['duong_dan'] ?>" class="img-fluid rounded-start" alt="...">
+                              </div>
+                            </div>
+                          </td>
+                          <td class="d-flex flex-column gap-1">
+                            <!-- <a href="?act=deleteBanner&id=<?= $banner['id'] ?>"> -->
+                            <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?= $banner['id'] ?>)">Xóa</button>
+                            <!-- </a> -->
+                            <a href="?act=editBanner&id=<?= $banner['id'] ?>" class="d-flex">
+                              <button type="button" class="btn btn-warning w-100">Chỉnh sửa</button>
+                            </a>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
+                      <script>
+                        function confirmDelete(id) {
+                          if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+                            window.location.href = "?act=deleteBanner&id=" + id;
+                          }
+                        }
+                      </script>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- container-fluid -->
       </div>
       <!-- End Page-content -->
-
       <footer class="footer">
         <div class="container-fluid">
           <div class="row">
