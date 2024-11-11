@@ -69,16 +69,6 @@
 
           <div class="card">
             <div class="card-header d-flex align-items-center">
-              <!-- Search Form -->
-              <form class="d-flex me-3" action="?act=listBanner" role="search">
-                <input
-                  type="search"
-                  class="form-control me-2"
-                  placeholder="Search..."
-                  aria-label="Search"
-                  name="search" />
-                <input class="btn btn-outline-primary" type="submit" value="Search">
-              </form>
               <!-- Sort Button -->
               <a class="btn btn-primary" href="?act=addBanner">
                 <i class="bi bi-funnel"></i> Thêm banner
@@ -118,7 +108,7 @@
                             <div class="hstack gap-3 flex">
                               <a href="?act=editBanner&id=<?= $banner['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                               <a href="?act=deleteUser&id=<?= $banner['id'] ?>" onclick="confirmDelete(event, <?= $banner['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
-                             </div>
+                            </div>
                             </div>
                           </td>
                         </tr>
@@ -138,12 +128,15 @@
               </div>
             </div>
 
+
           </div>
           <!-- container-fluid -->
         </div>
         <!-- End Page-content -->
+
         </div>
       </div>
+
       </div>
         <footer class="footer">
           <div class="container-fluid">
@@ -157,6 +150,7 @@
                 <div class="text-sm-end d-none d-sm-block">
                   Design & Develop by Themesbrand
                 </div>
+
               </div>
             </div>
           </div>

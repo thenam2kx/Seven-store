@@ -10,11 +10,16 @@ require_once 'controllers/BlogController.php';
 require_once 'controllers/CategoryController.php';
 require_once 'controllers/BannerController.php';
 require_once 'controllers/ContactController.php';
-
 require_once 'controllers/UserController.php';
-
-
 require_once 'controllers/ProductController.php';
+
+require_once 'controllers/OrderController.php';
+
+require_once 'controllers/DiscountController.php';
+
+
+require_once 'controllers/AuthController.php';
+
 
 
 // Require toàn bộ file Models
@@ -22,10 +27,13 @@ require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
 require_once 'models/BannerModel.php';
 require_once 'models/ContactModel.php';
-
 require_once 'models/UserModel.php';
-
 require_once 'models/ProductModel.php';
+
+require_once 'models/OrderModel.php';
+
+require_once 'models/DiscountModel.php';
+
 
 
 
@@ -85,4 +93,26 @@ match ($act) {
   'listImages' => (new ProductController())->listImages(),
   'deleteImage' => (new ProductController())->deleteImage(),
   'addImage' => (new ProductController())->addImage(),
+
+  // Order
+  'listOrder' => (new OrderController())->getAll(),
+  'editOrder' => (new OrderController())->loadEditView(),
+  'handleEditOrder' => (new OrderController())->handleEdit(),
+  'deleteOrder' => (new OrderController())->delete(),
+
+
+
+  // Discount
+  'listDiscount' => (new DiscountController())->getAll(),
+  'addDiscount' => (new DiscountController())->add(),
+  'editDiscount' => (new DiscountController())->edit(),
+  'handleEditDiscount' => (new DiscountController())->handleEdit(),
+  'deleteDiscount' => (new DiscountController())->delete(),
+
+
+
+  // Auth
+  'signin' => (new AuthController())->signIn(),
+  'signup' => (new AuthController())->signUp(),
+  'fogotPassword' => (new AuthController())->fogotPassword(),
 };
