@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Banner | NN Shop</title>
+  <title>User | NN Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -13,6 +13,15 @@
   <?php
   require_once "views/layouts/libs_css.php";
   ?>
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
+  <script type="importmap">
+    {
+      "imports": {
+          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
+          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
+          }
+      }
+  </script>
 
 </head>
 
@@ -36,12 +45,22 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=handleDditUser&id=<?= $result['id'] ?>" enctype="multipart/form-data">
-
-            <div class="col-md-12">
-              <label for="title" class="form-label">ID</label>
-              <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Cập nhật người dùng</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="?act=listUser">Danh sách người dùng</a></li>
+                <li class="breadcrumb-item active">Cập nhật người dùng</li>
+              </ol>
             </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview">
+          <form class="row g-3 needs-validation" method="POST" action="?act=handleEditUser&id=<?= $result['id'] ?>" enctype="multipart/form-data">
+
 
             <div class="col-md-12">
               <label for="name" class="form-label">Họ tên</label>
@@ -115,9 +134,12 @@
               <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
             </div>
           </form>
+          </div>
+      </div>
+      </div>
           <script>
             function confirmCancel() {
-              window.location.href = "?act=banners"
+              window.location.href = "?act=users"
             }
           </script>
         </div>

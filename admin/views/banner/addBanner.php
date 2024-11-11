@@ -13,7 +13,15 @@
   <?php
   require_once "views/layouts/libs_css.php";
   ?>
-
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
+  <script type="importmap">
+    {
+      "imports": {
+          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
+          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
+          }
+      }
+  </script>
 </head>
 
 <body>
@@ -36,6 +44,19 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Thêm banner</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Thêm banner</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview">
           <form class="row g-3 needs-validation" method="POST" action="?act=addBanner" enctype="multipart/form-data" novalidate>
 
             <div class="col-md-6 position-relative">
@@ -79,7 +100,9 @@
         <!-- container-fluid -->
       </div>
       <!-- End Page-content -->
-
+      </div>
+      </div>
+      </div>
       <footer class="footer">
         <div class="container-fluid">
           <div class="row">
