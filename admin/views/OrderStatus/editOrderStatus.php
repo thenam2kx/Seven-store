@@ -45,12 +45,12 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                        <h4 class="mb-sm-0">Cập nhật đơn hàng</h4>
+                        <h4 class="mb-sm-0">Cập nhật trạng thái</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="?act=listOrder">Danh sách đơn hàng</a></li>
-                                <li class="breadcrumb-item active">Cập nhật đơn hàng</li>
+                                <li class="breadcrumb-item"><a href="?act=listOrderStatus">Danh sách trạng thái đơn hàng</a></li>
+                                <li class="breadcrumb-item active">Cập nhật trạng thái</li>
                             </ol>
                         </div>
                     </div>
@@ -58,57 +58,28 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="live-preview">
-                                <form class="row g-3 needs-validation" action="?act=handleEditOrder" method="POST" enctype="multipart/form-data" novalidate>
+                                <form class="row g-3 needs-validation" action="?act=handleEditOrderStatus" method="POST" enctype="multipart/form-data" novalidate>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" name="id" value="<?= $order_one['id'] ?>" hidden>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ten-sp" class="form-label">Tên người nhận</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['ho_ten'] ?>" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ten-sp" class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['so_dien_thoai'] ?>" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ten-sp" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['email'] ?>" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ten-sp" class="form-label">Địa chỉ</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['dia_chi'] ?>" disabled>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="ten-sp" class="form-label">Hình thức thanh toán</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['hinh_thuc_thanh_toan'] == 0 ? 'Thanh toán cod' : 'Thanh toán MOMO' ?> " disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ten-sp" class="form-label">Ngày đặt hàng</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['ngay_tao'] ?>" disabled>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="ten-sp" class="form-label">ghi chú</label>
-                                        <input type="text" class="form-control" id="tenNguoi" name="name" value="<?= $order_one['ghi_chu'] ?>" disabled>
+                                        <input type="text" class="form-control" name="id" value="<?= $orderStatus_one['id'] ?>" hidden>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="trang_thai_don_hang" class="form-label">Trang thái đơn hàng</label>
                                         <select class="form-select" id="trang_thai_don_hang" name="trang_thai">
-                                            <option value="cho_xac_nhan" <?= $order_one['trang_thai'] === 'cho_xac_nhan' ? 'selected' : '' ?>>Chờ xác nhận</option>
-                                            <option value="da_xac_nhan" <?= $order_one['trang_thai'] === 'da_xac_nhan' ? 'selected' : '' ?>>Đã xác nhận</option>
-                                            <option value="dang_dong_goi" <?= $order_one['trang_thai'] === 'dang_dong_goi' ? 'selected' : '' ?>>Đang đóng gói</option>
-                                            <option value="da_giao_dvvc" <?= $order_one['trang_thai'] === 'da_giao_dvvc' ? 'selected' : '' ?>>Đa giao đơn vị vận chuyển</option>
-                                            <option value="dang_giao_hang" <?= $order_one['trang_thai'] === 'dang_giao_hang' ? 'selected' : '' ?>>Đang giao hàng</option>
-                                            <option value="da_giao_hang" <?= $order_one['trang_thai'] === 'da_giao_hang' ? 'selected' : '' ?>>Đa giao hàng</option>
-                                            <option value="da_huy" <?= $order_one['trang_thai'] === 'da_huy' ? 'selected' : '' ?>>Đã Hủy</option>
-                                            <option value="da_hoan_tra" <?= $order_one['trang_thai'] === 'da_hoan_tra' ? 'selected' : '' ?>>Đã hoàn tra</option>
-                                            <option value="hoan_tat" <?= $order_one['trang_thai'] === 'hoan_tat' ? 'selected' : '' ?>>Hoàn thành</option>
+                                            <option value="cho_xac_nhan" <?= $orderStatus_one['trang_thai'] === 'cho_xac_nhan' ? 'selected' : '' ?>>Chờ xác nhận</option>
+                                            <option value="da_xac_nhan" <?= $orderStatus_one['trang_thai'] === 'da_xac_nhan' ? 'selected' : '' ?>>Đã xác nhận</option>
+                                            <option value="dang_dong_goi" <?= $orderStatus_one['trang_thai'] === 'dang_dong_goi' ? 'selected' : '' ?>>Đang đóng gói</option>
+                                            <option value="da_giao_dvvc" <?= $orderStatus_one['trang_thai'] === 'da_giao_dvvc' ? 'selected' : '' ?>>Đa giao đơn vị vận chuyển</option>
+                                            <option value="dang_giao_hang" <?= $orderStatus_one['trang_thai'] === 'dang_giao_hang' ? 'selected' : '' ?>>Đang giao hàng</option>
+                                            <option value="da_giao_hang" <?= $orderStatus_one['trang_thai'] === 'da_giao_hang' ? 'selected' : '' ?>>Đa giao hàng</option>
+                                            <option value="da_huy" <?= $orderStatus_one['trang_thai'] === 'da_huy' ? 'selected' : '' ?>>Đã Hủy</option>
+                                            <option value="da_hoan_tra" <?= $orderStatus_one['trang_thai'] === 'da_hoan_tra' ? 'selected' : '' ?>>Đã hoàn tra</option>
+                                            <option value="hoan_tat" <?= $orderStatus_one['trang_thai'] === 'hoan_tat' ? 'selected' : '' ?>>Hoàn thành</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <input class="btn btn-primary" type="submit" name="save" value="Cập nhật" />
-                                        <a class="btn btn-outline-primary" href="?act=listOrder" type="reset">Hủy</a>
-                                        <a href="?act=deleteOrder&id=<?= $Order['id'] ?>" onclick="return confirm('bạn có muốn xóa đơn hàng này?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                                        <a class="btn btn-outline-primary" href="?act=listOrderStatus" type="reset">Hủy</a>
+                                        <a href="?act=deleteOrderStatus&id=<?= $OrderStatus['id'] ?>" onclick="return confirm('bạn có muốn xóa đơn hàng này?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                                     </div>
                                 </form>
                             </div>
@@ -118,7 +89,7 @@
                     <script>
                         function confirmDelete(id) {
                             if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                                window.location.href = "?act=deleteOrder&id=" + id;
+                                window.location.href = "?act=deleteOrderStatus&id=" + id;
                             }
                         }
                     </script>
