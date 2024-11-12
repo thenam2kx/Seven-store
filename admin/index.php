@@ -20,6 +20,8 @@ require_once 'controllers/DiscountController.php';
 
 require_once 'controllers/AuthController.php';
 
+require_once 'controllers/OrderDetailController.php';
+
 
 
 // Require toàn bộ file Models
@@ -33,6 +35,7 @@ require_once 'models/ProductModel.php';
 require_once 'models/OrderStatusModel.php';
 
 require_once 'models/DiscountModel.php';
+require_once 'models/OrderDetailModel.php';
 
 
 
@@ -116,4 +119,7 @@ match ($act) {
   'signin' => (new AuthController())->signIn(),
   'signup' => (new AuthController())->signUp(),
   'fogotPassword' => (new AuthController())->fogotPassword(),
+
+  // Order detail
+  'orderDetail' => (new OrderDetailController())->getAll(),
 };

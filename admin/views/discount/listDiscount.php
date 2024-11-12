@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Discount | NN Shop</title>
+  <title>Danh sách mã khuyến mãi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -82,6 +82,24 @@
                     </thead>
                     <tbody>
                       <?php foreach ($results as $result): ?>
+                        <?php
+                          $status = '';
+                          $bg = '';
+                          $txt = '';
+                          if (new DateTime($result["ngay_ket_thuc"]) >= new DateTime() && new DateTime($result["ngay_bat_dau"]) <= new DateTime()) {
+                            $status = 'Đang diễn ra';
+                            $bg = 'bg-success-subtle';
+                            $txt = 'text-success';
+                          } else if (new DateTime($result['ngay_ket_thuc']) < new DateTime()) {
+                            $status = 'Đã hết hạn';
+                            $bg = 'bg-danger-subtle';
+                            $txt = 'text-danger';
+                          } else if (new DateTime($result['ngay_bat_dau']) > new DateTime()) {
+                            $status = 'Chưa diễn ra';
+                            $bg = 'bg-warning-subtle';
+                            $txt = 'text-warning';
+                          }
+                        ?>
                         <tr>
                           <th scope="row"><a href="#" class="fw-medium">#<?= $result['id'] ?></a></th>
                           <td class="fw-bold"><?= $result['ma_km'] ?></td>
@@ -89,8 +107,8 @@
                           <td><?= (new DateTime( $result['ngay_ket_thuc']))->format("d-m-Y") ?></td>
                           <td><?= $result['phan_tram'] ?></td>
                           <td>
-                            <span class="badge <?= $result['trang_thai'] == 1 ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' ?> ">
-                              <?= $result['trang_thai'] == 1 ? 'Hiển thị' : 'Đang ẩn' ?>
+                            <span class="badge <?= $bg ?> <?= $txt ?> ">
+                              <?= $status ?>
                             </span>
                           </td>
                           <td>
