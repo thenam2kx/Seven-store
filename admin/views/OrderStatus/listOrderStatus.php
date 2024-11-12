@@ -56,11 +56,11 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                        <h4 class="mb-sm-0">Danh sách Đơn Hàng</h4>
+                        <h4 class="mb-sm-0">Danh sách trang thái đơn hàng</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
-                                <li class="breadcrumb-item active">danh sách đơn hàng</li>
+                                <li class="breadcrumb-item active">danh sách trạng thái đơn hàng</li>
                             </ol>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
                             <!-- Search Form -->
-                            <form class="d-flex me-3" action="?act=listOrder" role="search">
+                            <!-- <form class="d-flex me-3" action="?act=listOrderStatus" role="search">
                                 <input
                                     type="search"
                                     class="form-control me-2"
@@ -76,11 +76,10 @@
                                     aria-label="Search"
                                     name="search" />
                                 <input class="btn btn-outline-primary" type="submit" value="Search">
-                            </form>
-                            <!-- Sort Button -->
-                            <!-- <a class="btn btn-primary" href="?act=">
-                <i class="bi bi-funnel"></i> Thêm sản phẩm
-              </a> -->
+                            </form> -->
+                            <a class="btn btn-primary" href="?act=addOrderStatus">
+                                <i class="bi bi-funnel"></i> Thêm trang thái đơn hàng   
+                            </a>
                         </div>
 
                         <div class="card-body">
@@ -90,37 +89,23 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
-                                                <!-- <th scope="col">Tên Người nhận</th>
-                                                <th scope="col">Số điện thoại</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Ghi chú</th>
-                                                <th scope="col">Hình thức thanh toán</th>
-                                                <th scope="col">Trang thái thanh toán</th>
-                                                <th scope="col">Thời gian đặt hàng</th> -->
                                                 <th scope="col">Trạng thái đơn hàng</th>
                                                 <th scope="col">Hành động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($listOrder as $Order): ?>
+                                            <?php foreach ($listOrderStatus as $OrderStatus): ?>
                                                 <tr>
-                                                    <th scope="row"><a href="#" class="fw-medium">#<?= $Order['id'] ?></a></th>
-                                                    <!-- <td><?= $Order['ho_ten'] ?></td>
-                                                    <td><?= $Order['so_dien_thoai'] ?></td>
-                                                    <td><?= $Order['email'] ?></td>
-                                                    <td><?= $Order['ghi_chu'] ?></td>
-                                                    <td><?= $Order['hinh_thuc_thanh_toan'] == 0 ? "Thanh toán COD" : "Thanh toán MOMO" ?></td>
-                                                    <td><?= $Order['trang_thai_thanh_toan'] == 0 ? "Chưa thanh toán" : "Đã thanh toán" ?></td>
-                                                    <td><?= fortmartTime($Order['ngay_tao']) ?></td> -->
+                                                    <th scope="row"><a href="#" class="fw-medium">#<?= $OrderStatus['id'] ?></a></th>
                                                     <td>
-                                                        <div class="badge bg-danger-subtle text-danger">
-                                                            <?= $Order['trang_thai'] ?>
+                                                        <div class="badge bg-warning-subtle text-success">
+                                                            <?= $OrderStatus['trang_thai'] ?>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="hstack gap-3 flex">
-                                                            <a href="?act=editOrder&id=<?= $Order['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                            <a href="?act=deleteOrder&id=<?= $Order['id'] ?>" onclick="return confirm('bạn có muốn xóa đơn hàng này?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                                                            <a href="?act=editOrderStatus&id=<?= $OrderStatus['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                            <a href="?act=deleteOrderStatus&id=<?= $OrderStatus['id'] ?>" onclick="return confirm('bạn có muốn xóa trang thái đơn hàng này không?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -136,18 +121,18 @@
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item">
-                      <a class="page-link" href="?act=listOrder&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
+                      <a class="page-link" href="?act=listOrderStatus&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                       </a>
                     </li>
                     <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
                       <li class="page-item">
-                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listOrder&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
+                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listOrderStatus&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
                       </li>
                     <?php }; ?>
                     <li class="page-item">
-                      <a class="page-link" href="?act=listOrder&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
+                      <a class="page-link" href="?act=listOrderStatus&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                       </a>
