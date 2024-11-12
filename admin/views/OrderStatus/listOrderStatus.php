@@ -68,7 +68,7 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
                             <!-- Search Form -->
-                            <form class="d-flex me-3" action="?act=listOrderStatus" role="search">
+                            <!-- <form class="d-flex me-3" action="?act=listOrderStatus" role="search">
                                 <input
                                     type="search"
                                     class="form-control me-2"
@@ -76,7 +76,7 @@
                                     aria-label="Search"
                                     name="search" />
                                 <input class="btn btn-outline-primary" type="submit" value="Search">
-                            </form>
+                            </form> -->
                             <a class="btn btn-primary" href="?act=addOrderStatus">
                                 <i class="bi bi-funnel"></i> Thêm trang thái đơn hàng   
                             </a>
@@ -98,7 +98,7 @@
                                                 <tr>
                                                     <th scope="row"><a href="#" class="fw-medium">#<?= $OrderStatus['id'] ?></a></th>
                                                     <td>
-                                                        <div class="badge bg-danger-subtle text-danger">
+                                                        <div class="badge bg-warning-subtle text-success">
                                                             <?= $OrderStatus['trang_thai'] ?>
                                                         </div>
                                                     </td>

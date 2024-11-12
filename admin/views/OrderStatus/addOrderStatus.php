@@ -58,31 +58,15 @@
             <div class="card-body">
               <div class="live-preview">
                 <form class="row g-3 needs-validation" action="?act=addOrderStatus" method="POST" enctype="multipart/form-data" novalidate>
+                  
                 <div class="col-md-3">
-                    <label for="don_hangs_id" class="form-label"> Mã đơn hàng</label>
-                    <input type="text" class="form-control" name="don_hangs_id" id="don_hangs_id" placeholder="Nhập mã đơn hàng" required>
+                    <label for="trang_thai" class="form-label">Trạng thái đơn hàng</label>
+                    <input type="text" class="form-control" name="trang_thai" id="don_hang" placeholder="Nhập trạng thái đơn hàng" required>
                     <div class="invalid-feedback">
-                      Vui lòng chọn ma đơn hàng.
+                      Vui lòng nhập trang thai don hang.
                     </div>
                   </div>
-                
-                  <div class="col-md-3">
-                    <label for="trang_thai" class="form-label">Trạng thái</label>
-                    <select class="form-select" name="trang_thai" id="trang_thai" required>
-                      <option selected value="cho_xac_nhan">Chờ xác nhận</option>
-                      <option value="da_xac_nhan">Đã xác nhận</option>
-                      <option value="dang_dong_goi">Đang đóng gói</option>
-                      <option value="da_giao_dvvc">Đa dịch vụ vận chuyển</option>
-                      <option value="dang_giao_hang">Đang giao hàng</option>
-                      <option value="da_giao_hang">Đã giao hang</option>
-                      <option value="da_huy">Đã Hủy</option>
-                      <option value="da_hoan_tra">Đã hoàn trả</option>
-                      <option value="hoan_tat">Hoàn thành</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Vui lòng chọn trạng thái.
-                    </div>
-                  </div>
+
                   <div class="col-12">
                     <input class="btn btn-primary" type="submit" name="save" value="Thêm trạng thái" />
                     <button class="btn btn-outline-primary" type="reset">Xóa</button>

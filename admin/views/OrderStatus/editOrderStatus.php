@@ -59,22 +59,17 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <form class="row g-3 needs-validation" action="?act=handleEditOrderStatus" method="POST" enctype="multipart/form-data" novalidate>
+
                                     <div class="col-md-12">
                                         <input type="text" class="form-control" name="id" value="<?= $orderStatus_one['id'] ?>" hidden>
                                     </div>
+
                                     <div class="col-md-12">
-                                        <label for="trang_thai_don_hang" class="form-label">Trang thái đơn hàng</label>
-                                        <select class="form-select" id="trang_thai_don_hang" name="trang_thai">
-                                            <option value="cho_xac_nhan" <?= $orderStatus_one['trang_thai'] === 'cho_xac_nhan' ? 'selected' : '' ?>>Chờ xác nhận</option>
-                                            <option value="da_xac_nhan" <?= $orderStatus_one['trang_thai'] === 'da_xac_nhan' ? 'selected' : '' ?>>Đã xác nhận</option>
-                                            <option value="dang_dong_goi" <?= $orderStatus_one['trang_thai'] === 'dang_dong_goi' ? 'selected' : '' ?>>Đang đóng gói</option>
-                                            <option value="da_giao_dvvc" <?= $orderStatus_one['trang_thai'] === 'da_giao_dvvc' ? 'selected' : '' ?>>Đa giao đơn vị vận chuyển</option>
-                                            <option value="dang_giao_hang" <?= $orderStatus_one['trang_thai'] === 'dang_giao_hang' ? 'selected' : '' ?>>Đang giao hàng</option>
-                                            <option value="da_giao_hang" <?= $orderStatus_one['trang_thai'] === 'da_giao_hang' ? 'selected' : '' ?>>Đa giao hàng</option>
-                                            <option value="da_huy" <?= $orderStatus_one['trang_thai'] === 'da_huy' ? 'selected' : '' ?>>Đã Hủy</option>
-                                            <option value="da_hoan_tra" <?= $orderStatus_one['trang_thai'] === 'da_hoan_tra' ? 'selected' : '' ?>>Đã hoàn tra</option>
-                                            <option value="hoan_tat" <?= $orderStatus_one['trang_thai'] === 'hoan_tat' ? 'selected' : '' ?>>Hoàn thành</option>
-                                        </select>
+                                        <label for="trang_thai" class="form-label">Trạng thái đơn hàng</label>
+                                        <input type="text" class="form-control" name="trang_thai" id="trang_thai" value="<?= $orderStatus_one['trang_thai'] ?>" required>
+                                        <div class="invalid-feedback">
+                                            Vui lòng nhập trạng thái đơn hàng.
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <input class="btn btn-primary" type="submit" name="save" value="Cập nhật" />

@@ -28,10 +28,10 @@ class OrderStatusModel
         }
     }
 
-    public function add($don_hangs_id, $trang_thai)
+    public function add($trang_thai)
     {
-      $sql = "INSERT INTO `trang_thai_don_hangs` (don_hangs_id, trang_thai) VALUES (?, ?)";
-      return $this->db->execute($sql, $don_hangs_id, $trang_thai);
+      $sql = "INSERT INTO `trang_thai_don_hangs` (trang_thai) VALUES (?)";
+      return $this->db->execute($sql, $trang_thai);
     }
 
 

@@ -18,9 +18,8 @@ class OrderStatusController
   public function add()
   {
     if (isset($_POST['save']) && ($_POST['save'])) {
-      $don_hangs_id = $_POST['don_hangs_id'];
       $trang_thai = $_POST['trang_thai'];
-      $result = $this->orderStatusModel->add($don_hangs_id, $trang_thai);
+      $result = $this->orderStatusModel->add($trang_thai);
       if ($result) {
         header("Location: ?act=listOrderStatus");
       }
