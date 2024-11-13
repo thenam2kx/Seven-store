@@ -121,5 +121,6 @@ match ($act) {
   'fogotPassword' => (new AuthController())->fogotPassword(),
 
   // Order detail
-  'orderDetail' => (new OrderDetailController())->getAll(),
+  'orderDetail' => (new OrderDetailController())->getDetail(),
+  'editOrderDetail' => (new OrderDetailController())->editDetail(),
 };
