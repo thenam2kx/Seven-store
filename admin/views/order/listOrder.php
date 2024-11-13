@@ -115,6 +115,7 @@
                           </td>
                           <td>
                             <div class="hstack gap-3 flex">
+                              <a href="?act=orderDetail&id=<?= $order['id'] ?>" class="link-success fs-15"><i class="ri-eye-line"></i></a>
                               <a href="?act=editOrder&id=<?= $order['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                               <a href="?act=deleteOrder&id=<?= $order['id'] ?>" onclick="confirmDelete(event, <?= $order['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                             </div>
