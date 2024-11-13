@@ -8,6 +8,12 @@ class OrderDetailModel
     $this->db = new Connect();
   }
 
+  public function getAllStatusOrder()
+  {
+    $sql = "SELECT * FROM `trang_thai_don_hangs` WHERE 1";
+    return $this->db->query($sql);
+  }
+
   public function getOrderDetail($id)
   {
     $sql = "SELECT * FROM `don_hang_cts` WHERE id=?";
@@ -42,5 +48,11 @@ class OrderDetailModel
   {
     $sql = "SELECT * FROM `don_hangs` WHERE id=?";
     return $this->db->queryOne($sql, $id);
+  }
+
+  public function updateDetailOrder($status, $id)
+  {
+    $sql = "UPDATE `don_hangs` SET `trang_thai_don_hang_id`=? WHERE id=?";
+    return $this->db->queryOne($sql, $status, $id);
   }
 }
