@@ -22,6 +22,7 @@ require_once 'controllers/AuthController.php';
 
 require_once 'controllers/OrderDetailController.php';
 
+require_once 'controllers/OrderController.php';
 
 
 // Require toàn bộ file Models
@@ -37,6 +38,7 @@ require_once 'models/OrderStatusModel.php';
 require_once 'models/DiscountModel.php';
 require_once 'models/OrderDetailModel.php';
 
+require_once 'models/OrderModel.php';
 
 
 
@@ -122,4 +124,11 @@ match ($act) {
 
   // Order detail
   'orderDetail' => (new OrderDetailController())->getAll(),
+
+  // Order
+  'listOrder' => (new OrderController())->getAll(),
+  'addOrder' => (new OrderController())->add(),
+  'editOrder' => (new OrderController())->loadEditView(),
+  'handleEditOrder' => (new OrderController())->handleEdit(),
+  'deleteOrder' => (new OrderController())->delete(),
 };
