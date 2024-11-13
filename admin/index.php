@@ -132,8 +132,6 @@ match ($act) {
 
   // Order detail
 
-  'orderDetail' => (new OrderDetailController())->getAll(),
-
   // Order
   'listOrder' => (new OrderController())->getAll(),
   'addOrder' => (new OrderController())->add(),
