@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Require file config
 require_once '../config/env.php'; // Config env
 require_once '../config/helper.php'; // Helper function
@@ -37,6 +39,7 @@ require_once 'models/OrderStatusModel.php';
 require_once 'models/DiscountModel.php';
 require_once 'models/OrderDetailModel.php';
 
+require_once 'models/AuthModel.php';
 
 
 
@@ -117,7 +120,9 @@ match ($act) {
 
   // Auth
   'signin' => (new AuthController())->signIn(),
-  'signup' => (new AuthController())->signUp(),
+  'handleSignin' => (new AuthController())->handleSignIn(),
+  // 'signup' => (new AuthController())->signUp(),
+  'signout' => (new AuthController())->signOut(),
   'fogotPassword' => (new AuthController())->fogotPassword(),
 
   // Order detail
