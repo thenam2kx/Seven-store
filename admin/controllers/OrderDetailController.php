@@ -3,9 +3,10 @@
 class OrderDetailController {
   public function getDetail() {
     try {
+        $id = $_GET['id'];
         $OrderDetailModel = new OrderDetailModel();
-        $resultInfoUserOrder = $OrderDetailModel->getInfoUserOrder(1);
-        $resultInfoOrder = $OrderDetailModel->getInfoOrder(1);
+        $resultInfoUserOrder = $OrderDetailModel->getInfoUserOrder($id);
+        $resultInfoOrder = $OrderDetailModel->getInfoOrder($id);
         $resultAllProducts = $OrderDetailModel->getAllProducts();
         $resultTotalPrice = $OrderDetailModel->getTotalPrice();
         $listStatusOrder = $OrderDetailModel->getAllStatusOrder();
