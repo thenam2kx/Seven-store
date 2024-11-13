@@ -14,8 +14,6 @@
   require_once "views/layouts/libs_css.php";
   ?>
 
-  <link rel="stylesheet" href="views/category/listCategory.css" type="text/css" />
-
 </head>
 
 <body>
@@ -37,70 +35,91 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-
-          <div class="card-header align-items-center d-flex py-3">
-            <h4 class="card-title mb-0 flex-grow-1">Danh mục sản phẩm</h4>
-            <div class="flex-shrink-0">
-              <a href="?act=addCategory">
-                <button class="btn btn-success" type="button">Thêm mới</button>
-              </a>
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Danh sách mục sản phẩm</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">danh mục sản phẩm</li>
+              </ol>
             </div>
           </div>
 
-          <table class="table table-nowrap">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nội dung</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col">Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($categories as $category): ?>
-                <tr>
-                  <th scope="row"><a href="#" class="fw-semibold">#<?= $category['id'] ?></a></th>
-                  <td><?= $category['ten_danh_muc'] ?></td>
-                  <td>
-                    <span class="badge <?= $category['trang_thai'] === 1 ? 'bg-success' : 'bg-danger' ?>">
-                      <?= $category['trang_thai'] === 1 ? 'Hoạt động' : 'Ngừng Hoạt động' ?>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="hstack gap-3 flex">
-                      <a href="?act=editCategory&id=<?= $category['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                      <a href="?act=deleteCategory&id=<?= $category['id'] ?>" onclick="confirmDelete(<?= $category['id'] ?>)" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
+          <div class="card">
+            <div class="card-header align-items-center d-flex py-3">
+              <h4 class="card-title mb-0 flex-grow-1"></h4>
+              <div class="flex-shrink-0">
+                <a href="?act=addCategory">
+                  <button class="btn btn-success" type="button">Thêm mới</button>
+                </a>
+              </div>
+            </div>
 
+            <div class="card-body">
+              <div class="live-preview">
+                <div class="table-responsive">
+                  <table class="table table-nowrap">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($categories as $category): ?>
+                        <tr>
+                          <th scope="row"><a href="#" class="fw-semibold">#<?= $category['id'] ?></a></th>
+                          <td><?= $category['ten_danh_muc'] ?></td>
+                          <td>
+                            <span class="badge <?= $category['trang_thai'] === 1 ? 'bg-success' : 'bg-danger' ?>">
+                              <?= $category['trang_thai'] === 1 ? 'Hoạt động' : 'Ngừng Hoạt động' ?>
+                            </span>
+                          </td>
+                          <td>
+                            <div class="hstack gap-3 flex">
+                              <a href="?act=editCategory&id=<?= $category['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                              <a href="?act=deleteCategory&id=<?= $category['id'] ?>" onclick="confirmDelete(<?= $category['id'] ?>)" onclick="confirmDelete(<?= $blog['tin_tuc_id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-          <div class="d-flex align-content-center justify-content-center mt-3">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="?act=listCategory&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-                  <li class="page-item">
-                    <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listCategory&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
-                  </li>
-                <?php }; ?>
-                <li class="page-item">
-                  <a class="page-link" href="?act=listCategory&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <div class="card-footer d-flex justify-content-center">
+              <div class="d-flex align-content-center justify-content-center mt-3">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="?act=listCategory&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                      <li class="page-item">
+                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listCategory&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
+                      </li>
+                    <?php }; ?>
+                    <li class="page-item">
+                      <a class="page-link" href="?act=listCategory&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
+
+
+
 
 
         </div>

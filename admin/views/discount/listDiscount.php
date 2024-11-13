@@ -86,19 +86,19 @@
                           $status = '';
                           $bg = '';
                           $txt = '';
-                          if (new DateTime($result["ngay_ket_thuc"]) >= new DateTime() && new DateTime($result["ngay_bat_dau"]) <= new DateTime()) {
-                            $status = 'Đang diễn ra';
-                            $bg = 'bg-success-subtle';
-                            $txt = 'text-success';
-                          } else if (new DateTime($result['ngay_ket_thuc']) < new DateTime()) {
-                            $status = 'Đã hết hạn';
-                            $bg = 'bg-danger-subtle';
-                            $txt = 'text-danger';
-                          } else if (new DateTime($result['ngay_bat_dau']) > new DateTime()) {
-                            $status = 'Chưa diễn ra';
-                            $bg = 'bg-warning-subtle';
-                            $txt = 'text-warning';
-                          }
+                            if ($result['trang_thai'] === 1) {
+                              $status = 'Đang diễn ra';
+                              $bg = 'bg-success-subtle';
+                              $txt = 'text-success';
+                            } else if ($result['trang_thai'] === 2) {
+                              $status = 'Đã hết hạn';
+                              $bg = 'bg-danger-subtle';
+                              $txt = 'text-danger';
+                            } else if ($result['trang_thai'] === 0) {
+                              $status = 'Chưa diễn ra';
+                              $bg = 'bg-warning-subtle';
+                              $txt = 'text-warning';
+                            }
                         ?>
                         <tr>
                           <th scope="row"><a href="#" class="fw-medium">#<?= $result['id'] ?></a></th>
