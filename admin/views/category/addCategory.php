@@ -44,29 +44,44 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Thêm danh mục sản phẩm</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Thêm danh mục sản phẩm</li>
+              </ol>
+            </div>
+          </div>
 
-          <form class="row g-3 needs-validation" method="POST" action="?act=addCategory" enctype="multipart/form-data" novalidate>
-            <div class="col-md-12">
-              <label for="title" class="form-label">Tên danh mục</label>
-              <input name="title" type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" required>
-              <div class="invalid-feedback">
-                Vui lòng nhập tên danh mục...
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview">
+                <form class="row g-3 needs-validation" method="POST" action="?act=addCategory" enctype="multipart/form-data" novalidate>
+                  <div class="col-md-12">
+                    <label for="title" class="form-label">Tên danh mục</label>
+                    <input name="title" type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" required>
+                    <div class="invalid-feedback">
+                      Vui lòng nhập tên danh mục...
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 position-relative">
+                    <label for="select-status" class="form-label">Trạng thái</label>
+                    <select class="form-select" name="status" id="select-status" required>
+                      <option selected value="1">Hiển thị</option>
+                      <option value="0">Ẩn</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <input class="btn btn-primary" type="submit" name="save" id="btnSave" value="Lưu" />
+                    <button class="btn btn-outline-primary" type="reset">Xóa</button>
+                  </div>
+                </form>
               </div>
             </div>
-
-            <div class="col-md-6 position-relative">
-              <label for="select-status" class="form-label">Trạng thái</label>
-              <select class="form-select" name="status" id="select-status" required>
-                <option selected value="1">Hiển thị</option>
-                <option value="0">Ẩn</option>
-              </select>
-            </div>
-
-            <div class="col-12">
-              <input class="btn btn-primary" type="submit" name="save" id="btnSave" value="Đăng bài" />
-              <button class="btn btn-outline-primary" type="reset">Xóa</button>
-            </div>
-          </form>
+          </div>
 
 
           <script>

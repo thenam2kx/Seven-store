@@ -89,8 +89,9 @@
                   <div class="col-md-3">
                     <label for="trang-thai" class="form-label">Trạng thái</label>
                     <select class="form-select" name="status" id="trang-thai" required>
-                    <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Hiển thị</option>
-                    <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Ản</option>
+                    <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Sắp diễn ra</option>
+                    <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Đang diễn ra</option>
+                    <option <?= $result['trang_thai'] === 2 ? 'selected' : '' ?> value="2">Hết hạn</option>
                     </select>
                     <div class="invalid-feedback">
                       Vui lòng chọn trạng thái.
