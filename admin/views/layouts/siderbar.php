@@ -228,6 +228,22 @@
           </div>
         </li>
 
+        <!-- Order -->
+        <li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarOrder" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrder">
+            <i class="ri-bill-line"></i> <span data-key="t-advance-ui">Quản lý đơn hàng</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarOrder">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=listOrder" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
 
       </ul>

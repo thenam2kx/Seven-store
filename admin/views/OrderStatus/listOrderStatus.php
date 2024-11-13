@@ -78,7 +78,7 @@
                                 <input class="btn btn-outline-primary" type="submit" value="Search">
                             </form> -->
                             <a class="btn btn-primary" href="?act=addOrderStatus">
-                                <i class="bi bi-funnel"></i> Thêm trang thái đơn hàng   
+                                <i class="bi bi-funnel"></i> Thêm trang thái đơn hàng
                             </a>
                         </div>
 
