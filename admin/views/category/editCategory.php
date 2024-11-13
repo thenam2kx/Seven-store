@@ -36,33 +36,50 @@
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
-          <form class="row g-3 needs-validation" method="POST" action="?act=handleEditCategory&id=<?= $result['id'] ?>" enctype="multipart/form-data">
-            <div class="col-md-12">
-              <label for="title" class="form-label">ID</label>
-              <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+            <h4 class="mb-sm-0">Sửa danh mục sản phẩm</h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
+                <li class="breadcrumb-item active">sửa danh mục sản phẩm</li>
+              </ol>
             </div>
+          </div>
 
-            <div class="col-md-12">
-              <label for="title" class="form-label">Tên danh mục</label>
-              <input type="text" class="form-control" name="title" id="title" value="<?= $result['ten_danh_muc'] ?>" placeholder="Nhập tên danh mục" required>
-              <div class="valid-feedback">
-                Looks good!
+          <div class="card">
+            <div class="card-body">
+              <div class="live-preview">
+                <form class="row g-3 needs-validation" method="POST" action="?act=handleEditCategory&id=<?= $result['id'] ?>" enctype="multipart/form-data">
+                  <div class="col-md-12">
+                    <label for="title" class="form-label">ID</label>
+                    <input type="text" class="form-control" name="id" id="title" value="<?= $result['id'] ?>" disabled>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="title" class="form-label">Tên danh mục</label>
+                    <input type="text" class="form-control" name="title" id="title" value="<?= $result['ten_danh_muc'] ?>" placeholder="Nhập tên danh mục" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 position-relative">
+                    <label for="select-status" class="form-label">Trạng thái</label>
+                    <select class="form-select" name="status" id="select-status" required>
+                      <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Hiển thị</option>
+                      <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Ản</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <button class="btn btn-primary" name="save" type="submit">Cập nhật</button>
+                    <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
+                  </div>
+                </form>
               </div>
             </div>
+          </div>
 
-            <div class="col-md-6 position-relative">
-              <label for="select-status" class="form-label">Trạng thái</label>
-              <select class="form-select" name="status" id="select-status" required>
-                <option <?= $result['trang_thai'] === 1 ? 'selected' : '' ?> value="1">Hiển thị</option>
-                <option <?= $result['trang_thai'] === 0 ? 'selected' : '' ?> value="0">Ản</option>
-              </select>
-            </div>
-
-            <div class="col-12">
-              <button class="btn btn-primary" name="save" type="submit">Cập nhật</button>
-              <button class="btn btn-outline-primary" type="reset" onclick='confirmCancel()'>Hủy</button>
-            </div>
-          </form>
           <script>
             function confirmCancel() {
               window.location.href = "?act=listCategory"

@@ -30,6 +30,14 @@ class DiscountController
         $newStartDate = new DateTime($startDate);
         $newEndDate = new DateTime($endDate);
 
+        if ($newStartDate < new DateTime() && $newEndDate < new DateTime() && $newStartDate < $newEndDate) {
+          $status = 0; // sap dien ra
+        } else if ($newStartDate <= new DateTime() && $newEndDate > new DateTime() && $newStartDate < $newEndDate) {
+          $status = 1; // dang dien ra
+        } else {
+          $status = 2; // ket thuc
+        }
+
         if ($newEndDate > $newStartDate) {
           $DiscountModel = new DiscountModel();
           $result = $DiscountModel->create($code, $startDate, $endDate, $percent, $status);
@@ -67,6 +75,16 @@ class DiscountController
         $endDate = $_POST['endDate'];
         $percent = $_POST['percent'];
         $status = $_POST['status'];
+        $newStartDate = new DateTime($startDate);
+        $newEndDate = new DateTime($endDate);
+
+        if ($newStartDate < new DateTime() && $newEndDate < new DateTime() && $newStartDate < $newEndDate) {
+          $status = 0; // sap dien ra
+        } else if ($newStartDate <= new DateTime() && $newEndDate > new DateTime() && $newStartDate < $newEndDate) {
+          $status = 1; // dang dien ra
+        } else {
+          $status = 2; // ket thuc
+        }
         $DiscountModel = new DiscountModel();
         $result = $DiscountModel->edit($code, $startDate, $endDate, $percent, $status, $id);
         if ($result) {

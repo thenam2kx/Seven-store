@@ -85,8 +85,9 @@
                   <div class="col-md-3">
                     <label for="trang-thai" class="form-label">Trạng thái</label>
                     <select class="form-select" name="status" id="trang-thai" required>
-                      <option selected value="1">Hiển thị</option>
-                      <option value="0">Ẩn</option>
+                      <option selected value="0">Sắp diễn ra</option>
+                      <option value="1">Đang diễn ra</option>
+                      <option value="2">Hết hạn</option>
                     </select>
                     <div class="invalid-feedback">
                       Vui lòng chọn trạng thái.
