@@ -77,27 +77,27 @@
           </div>
         </li>
 
-        <!-- Order -->
+        <!-- OrderStatus -->
         <li class="nav-item">
-          <a class="nav-link menu-link" href="#sidebarOrder" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrder">
-            <i class="ri-currency-fill"></i> <span data-key="t-advance-ui">Trạng thái đơn hàng</span>
+          <a class="nav-link menu-link" href="#sidebarOrderStatus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrderStatus">
+            <i class="ri-remixicon-line"></i> <span data-key="t-advance-ui">Trạng thái đơn hàng</span>
           </a>
-          <div class="collapse menu-dropdown" id="sidebarOrder">
+          <div class="collapse menu-dropdown" id="sidebarOrderStatus">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                <a href="?act=listOrder" class="nav-link" data-key="t-sweet-alerts">
+                <a href="?act=listOrderStatus" class="nav-link" data-key="t-sweet-alerts">
                   Danh sách
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="?act=addOrder" class="nav-link" data-key="t-nestable-list">
+              <li class="nav-item">
+                <a href="?act=addOrderStatus" class="nav-link" data-key="t-nestable-list">
                   Thêm mới
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </li>
-        <!-- end Order -->
+        <!-- end OrderStatus -->
 
         <!-- Blog -->
         <li class="nav-item">

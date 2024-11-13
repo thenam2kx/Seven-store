@@ -26,10 +26,18 @@ class DiscountController
         $endDate = $_POST['endDate'];
         $percent = $_POST['percent'];
         $status = $_POST['status'];
-        $DiscountModel = new DiscountModel();
-        $result = $DiscountModel->create($code, $startDate, $endDate, $percent, $status);
-        if ($result) {
-          header("Location: ?act=listDiscount");
+
+        $newStartDate = new DateTime($startDate);
+        $newEndDate = new DateTime($endDate);
+
+        if ($newEndDate > $newStartDate) {
+          $DiscountModel = new DiscountModel();
+          $result = $DiscountModel->create($code, $startDate, $endDate, $percent, $status);
+          if ($result) {
+            header("Location: ?act=listDiscount");
+          }
+        } else {
+          echo '<script>alert("Ngày hết hạn không hợp lệ")</script>';
         }
       }
       require_once "./views/discount/addDiscount.php";
