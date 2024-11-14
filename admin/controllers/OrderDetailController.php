@@ -7,12 +7,13 @@ class OrderDetailController {
         $OrderDetailModel = new OrderDetailModel();
         $resultInfoUserOrder = $OrderDetailModel->getInfoUserOrder($id);
         $resultInfoOrder = $OrderDetailModel->getInfoOrder($id);
-        $resultAllProducts = $OrderDetailModel->getAllProducts();
-        $resultTotalPrice = $OrderDetailModel->getTotalPrice();
+        $resultAllProducts = $OrderDetailModel->getAllProducts($resultInfoOrder['id']);
+        $resultTotalPrice = $OrderDetailModel->getTotalPrice($id);
+
         $listStatusOrder = $OrderDetailModel->getAllStatusOrder();
-
         $resultDiscount = 0.1;
-
+        $getProductsByOrder = $OrderDetailModel->getProductsByOrder($id);
+        $getUserAndInfoOrder = $OrderDetailModel->getUserAndInfoOrder($id);
         $resultTotalMoneyFinal = $resultTotalPrice['tong_tien'] - ($resultTotalPrice['tong_tien'] * $resultDiscount);
 
         require_once "./views/orderDetail/listOrderDetail.php";
@@ -29,7 +30,7 @@ class OrderDetailController {
           $id = $_POST["id"];
           $result = $OrderDetailModel->updateDetailOrder($status, $id);
         }
-        header("Location: http://localhost/seven-store/admin/");
+        header("Location: http://localhost/seven-store/admin/?act=listOrder");
       } catch (\Throwable $th) {
         throw $th;
       }

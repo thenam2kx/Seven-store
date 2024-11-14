@@ -6,7 +6,7 @@
 <script src="assets/js/plugins.js"></script>
 
 <!-- apexcharts -->
-<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+<!-- <script src="assets/libs/apexcharts/apexcharts.min.js"></script> -->
 
 <!-- Vector map-->
 <script src="assets/libs/jsvectormap/jsvectormap.min.js"></script>

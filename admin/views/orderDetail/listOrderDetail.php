@@ -62,7 +62,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($resultAllProducts as $result): ?>
+                        <?php foreach ($getProductsByOrder as $result): ?>
                           <tr>
                             <th scope="row"><a href="#" class="fw-medium">#<?= $result['san_pham_id'] ?></a></th>
                             <td>
@@ -73,8 +73,8 @@
                                 <div class="flex-grow-1"><?= $result['ten_san_pham'] ?></div>
                               </div>
                             </td>
-                            <td><?= ($OrderDetailModel->getTotalAndPriceProduct($result['san_pham_id']))['so_luong'] ?></td>
-                            <td><?= ($OrderDetailModel->getTotalAndPriceProduct($result['san_pham_id']))['gia_tien'] ?></td>
+                            <td><?= $result['so_luong'] ?></td>
+                            <td><?= $result['gia_tien'] ?></td>
                           </tr>
                         <?php endforeach ?>
                       </tbody>
@@ -95,27 +95,27 @@
                       <form class="row g-3 needs-validation" method="POST">
                         <div class="col-md-12">
                           <label for="name" class="form-label">Họ tên người nhận hàng</label>
-                          <input type="text" class="form-control" id="name" name="name" value="<?= $resultInfoOrder['ho_ten'] ?>" disabled>
+                          <input type="text" class="form-control" id="name" name="name" value="<?= $getUserAndInfoOrder['ho_ten'] ?>" disabled>
                         </div>
 
                         <div class="col-md-12 mt-3">
                           <label for="email" class="form-label">Email</label>
-                          <input type="email" class="form-control" id="email" name="email" value="<?= $resultInfoUserOrder['email'] ?>" disabled>
+                          <input type="email" class="form-control" id="email" name="email" value="<?= $getUserAndInfoOrder['email'] ?>" disabled>
                         </div>
 
                         <div class="col-md-12 mt-3">
                           <label for="phone" class="form-label">Số điện thoại</label>
-                          <input type="number" class="form-control" id="phone" name="phone" value="<?= $resultInfoUserOrder['so_dien_thoai'] ?>" disabled>
+                          <input type="number" class="form-control" id="phone" name="phone" value="<?= $getUserAndInfoOrder['so_dien_thoai'] ?>" disabled>
                         </div>
 
                         <div class="col-md-12 mt-3">
                           <label for="address" class="form-label">Địa chỉ nhận hàng</label>
-                          <input type="address" class="form-control" id="address" name="address" value="<?= $resultInfoOrder['dia_chi'] ?>" disabled>
+                          <input type="address" class="form-control" id="address" name="address" value="<?= $getUserAndInfoOrder['dia_chi'] ?>" disabled>
                         </div>
 
                         <div class="col-md-12 mt-3">
                           <label for="ghi-chu" class="form-label">Ghi chú</label>
-                          <input type="text" class="form-control" id="ghi-chu" name="text" value="<?= $resultInfoOrder['ghi_chu'] ?>" disabled>
+                          <input type="text" class="form-control" id="ghi-chu" name="text" value="<?= $getUserAndInfoOrder['ghi_chu'] ?>" disabled>
                         </div>
                     </div>
                   </div>
@@ -132,27 +132,27 @@
                       <form class="row g-3 needs-validation" method="POST" novalidate>
                         <div class="col-md-6">
                           <label for="phuong-thuc-thanh-toan" class="form-label">Mã đơn hàng</label>
-                          <input type="text" class="form-control" id="name" name="name" value="<?= $resultInfoOrder['id'] ?>" disabled>
+                          <input type="text" class="form-control" id="name" name="name" value="<?= $getUserAndInfoOrder['don_hang_id'] ?>" disabled>
                         </div>
 
                         <div class="col-md-6">
                           <label for="phuong-thuc-thanh-toan" class="form-label">Ngày đặt</label>
-                          <input type="text" class="form-control" id="name" name="name" value="<?= $resultInfoOrder['ngay_tao'] ?>" disabled>
+                          <input type="text" class="form-control" id="name" name="name" value="<?= $getUserAndInfoOrder['ngay_tao'] ?>" disabled>
                         </div>
 
                         <div class="col-md-12 mt-3">
                           <label for="phuong-thuc-thanh-toan" class="form-label">Phương thức thanh toán</label>
                           <select class="form-select" name="status" id="phuong-thuc-thanh-toan" disabled>
-                            <option <?= $resultInfoOrder['hinh_thuc_thanh_toan'] === 0 ? 'selected' : '' ?> value="0">COD</option>
-                            <option <?= $resultInfoOrder['hinh_thuc_thanh_toan'] === 0 ? '' : 'selected' ?> value="1">Online</option>
+                            <option <?= $getUserAndInfoOrder['hinh_thuc_thanh_toan'] === 0 ? 'selected' : '' ?> value="0">COD</option>
+                            <option <?= $getUserAndInfoOrder['hinh_thuc_thanh_toan'] === 0 ? '' : 'selected' ?> value="1">Online</option>
                           </select>
                         </div>
 
                         <div class="col-md-12 mt-3">
                           <label for="trang-thai-thanh-toan" class="form-label">Trạng thái thanh toán</label>
                           <select class="form-select" name="status" id="trang-thai-thanh-toan" disabled>
-                            <option <?= $resultInfoOrder['trang_thai_thanh_toan'] === 0 ? 'selected' : '' ?> value="0">Chưa thanh toán</option>
-                            <option <?= $resultInfoOrder['trang_thai_thanh_toan'] === 0 ? '' : 'selected' ?> value="1">Đã thanh toán</option>
+                            <option <?= $getUserAndInfoOrder['trang_thai_thanh_toan'] === 0 ? 'selected' : '' ?> value="0">Chưa thanh toán</option>
+                            <option <?= $getUserAndInfoOrder['trang_thai_thanh_toan'] === 0 ? '' : 'selected' ?> value="1">Đã thanh toán</option>
                           </select>
                         </div>
 
