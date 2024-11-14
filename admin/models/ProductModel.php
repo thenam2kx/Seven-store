@@ -12,11 +12,11 @@ class ProductModel
   public function getAll($limit = 10, $page = 1, $keySearch = "")
   {
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT * FROM san_phams ";
+    $sql = "SELECT * FROM san_phams as sp ";
     if ($keySearch !== '') {
-      $sql.= " and name LIKE '%".$keySearch."%'";
+      $sql.= " where sp.ten_san_pham LIKE '%".$keySearch."%'";
     }
-    $sql.= "ORDER BY id DESC LIMIT $offset, $limit";
+    $sql.= "ORDER BY sp.id DESC LIMIT $offset, $limit";
     return $this->db->query($sql);
   }
   public function getTotalPage()
@@ -25,6 +25,7 @@ class ProductModel
     $result = $this->db->query($sql);
     return $result[0]['total'];
   }
+
 
   public function getOne($id)
   {

@@ -5,13 +5,14 @@ class ProductController
   public function getAll()
   {
     try {
+      $key = isset($_POST['search']) ? $_POST['search'] : '';
       $categoryModel = new CategoryModel();
       $categories = $categoryModel->getAll(20, 1);
       $ProductModel = new ProductModel();
       $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
       $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5;
       $totalResult = $ProductModel->getTotalPage();
-      $products = $ProductModel->getAll($limit, $page);
+      $products = $ProductModel->getAll($limit, $page, $key);
       $totalPages = ceil($totalResult / $limit);
       require_once "./views/product/listProduct.php";
     } catch (\Throwable $th) {
@@ -65,13 +66,14 @@ class ProductController
             echo "Tải lên hình ảnh $fileName thất bại.<br>";
           }
         }
-        if ($result) $this->getAll();
+        if ($result) header("Location: ?act=listProduct");
       }
       require_once "./views/product/addProduct.php";
     } catch (\Throwable $th) {
       throw $th;
     }
   }
+
 
   public function listImages() {
     $id = $_GET['id'];

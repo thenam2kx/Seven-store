@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Product | NN Shop</title>
+  <title>Danh sách sản phẩm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -68,7 +68,7 @@
           <div class="card">
             <div class="card-header d-flex align-items-center">
               <!-- Search Form -->
-              <form class="d-flex me-3" action="?act=listProduct" role="search">
+              <form class="d-flex me-3" action="?act=listProduct" role="search" method="post">
                 <input
                   type="search"
                   class="form-control me-2"
