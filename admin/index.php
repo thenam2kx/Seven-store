@@ -44,6 +44,7 @@ require_once 'models/OrderDetailModel.php';
 require_once 'models/OrderModel.php';
 
 require_once 'models/AuthModel.php';
+require_once 'models/DashboardModel.php';
 
 
 
