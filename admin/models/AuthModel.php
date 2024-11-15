@@ -12,12 +12,12 @@ class AuthModel
     {
         try {
             $sql = "SELECT * FROM nguoi_dungs WHERE ho_ten = '$ho_ten' AND mat_khau = '$mat_khau'";
-            return $this->db->query($sql);
+            return $this->db->queryOne($sql);
             $user= $this->db->fetch();
             if ($user && password_verify($mat_khau, $user['mat_khau'])) {
-                if ($user['vai_tro']==1) {
+                if ($user['vai_tro'] == 1) {
                     if ($user['trang_thai']==1) {
-                        return true;
+                        return $user;
                     }else{
                         return "Tài khoản đang bị khóa";
                     }

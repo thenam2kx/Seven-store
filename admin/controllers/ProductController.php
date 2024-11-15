@@ -177,4 +177,11 @@ class ProductController
     $ProductModel->delete($id);
     $this->getAll();
   }
+
+  public function listComments() {
+    $id = $_GET['id'];
+    $ProductModel = new ProductModel();
+    $result = $ProductModel->getAllCommentsByProduct($id);
+    require_once "./views/product/listComment.php";
+  }
 }

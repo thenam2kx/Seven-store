@@ -46,12 +46,13 @@ require_once 'models/OrderModel.php';
 require_once 'models/AuthModel.php';
 
 
-
+$act = $_GET['act'] ?? '/';
+if (!isset($_SESSION['username']) && $act !== 'signin' && $act !== 'handleSignin' ) {
+   checkLoginAdmin();
+}
 
 // Route
 $act = $_GET['act'] ?? '/';
-
-
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
 match ($act) {
@@ -141,5 +142,8 @@ match ($act) {
 
   'orderDetail' => (new OrderDetailController())->getDetail(),
   'editOrderDetail' => (new OrderDetailController())->editDetail(),
+
+  //comment
+  'listComment' => (new ProductController())->listComments(),
 
 };
