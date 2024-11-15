@@ -7,8 +7,12 @@ class UserModel {
     $this->db = new Connect();
   }
 
-  public function getAll() {
+  public function getAll( $keySearch = "") {
     $sql = "SELECT * FROM `nguoi_dungs` ORDER BY id DESC";
+    $sql = "SELECT * FROM nguoi_dungs as nd ";
+    if ($keySearch !== '') {
+      $sql.= " where nd.email LIKE '%".$keySearch."%'";
+    }
     return $this->db->query($sql);
   }
 

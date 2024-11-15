@@ -14,12 +14,10 @@ class OrderModel
     $sql = "SELECT * FROM don_hangs ";
     $sql = "SELECT don_hangs.*, trang_thai_don_hangs.trang_thai AS trang_thai
     FROM don_hangs
-    LEFT JOIN trang_thai_don_hangs ON don_hangs.trang_thai_don_hang_id = trang_thai_don_hangs.id";
-    if ($keySearch !== '') {
-      if ($keySearch !== '') {
-        $sql .= " WHERE trang_thai_thanh_toan LIKE '%" . $keySearch . "%'";
-      }
-    }
+    INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_don_hang_id = trang_thai_don_hangs.id";
+     if ($keySearch !== '') {
+       $sql.= " where  don_hangs.hinh_thuc_thanh_toan || don_hangs.trang_thai_don_hang_id LIKE '%".$keySearch."%'";
+     }
     return $this->db->query($sql);
   }
   public function getTotalPage()
