@@ -25,7 +25,8 @@ class AuthController
         $username = $_POST['username'];
         $password = $_POST['password'];
         // var_dump($password);die();
-        $user=$this->modelAuth->checkSignin($username, $password);
+        $user = $this->modelAuth->checkSignin($username, $password);
+        // var_dump($user['vai_tro']);die();
         if ($user==true) {
           $_SESSION['username'] = $user;
           header("Location: ?act=/");
@@ -33,6 +34,7 @@ class AuthController
         }else{
           $_SESSION['error'] = $user;
           $_SESSION['flash'] = true;
+          // var_dump($user);die();
           header("Location: ?act=signin");
           exit ();
         }

@@ -46,15 +46,7 @@
         </div>
 
         <div class="dropdown ms-sm-3 header-item topbar-user">
-          <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="d-flex align-items-center">
-              <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
-              <span class="text-start ms-xl-2">
-                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna Adame</span>
-                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
-              </span>
-            </span>
-          </button>
+          
           <div class="account">
             <?php
             if (isset($_SESSION['username'])) {
@@ -62,7 +54,7 @@
             ?>
               <div class="dropdown-menu dropdown-menu-end">
                 <!-- item-->
-                <h6 class="dropdown-header">Welcome</h6>
+                <h6 class="dropdown-header">Welcome <?php echo $username['ho_ten'];?>!</h6>
                 <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                 <a class="dropdown-item" href="?act=signout"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
               </div>
@@ -74,6 +66,15 @@
             }
             ?>
           </div>
+          <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="d-flex align-items-center">
+              <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+              <span class="text-start ms-xl-2">
+                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?php echo $username['ho_ten'];?></span>
+                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"><?php echo $username['vai_tro'] == 1 ? 'Quản trị viên' : ''; ?></span>
+              </span>
+            </span>
+          </button>
         </div>
       </div>
     </div>

@@ -121,9 +121,10 @@
                           </td>
                           <td>
                             <div class="hstack gap-3 flex">
-                              <a href="?act=listImages&id=<?= $product['id'] ?>" class="link-success fs-15"><i class=" ri-image-add-line"></i></a>
-                              <a href="?act=editProduct&id=<?= $product['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                              <a href="?act=deleteProduct&id=<?= $product['id'] ?>" onclick="confirmDelete(<?= $product['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                              <a href="?act=listComment&id=<?= $product['id'] ?>" class="link-success fs-15"><i class="ri-message-3-line" title="Xem bình luận"></i></a>
+                              <a href="?act=listImages&id=<?= $product['id'] ?>" class="link-success fs-15"><i class=" ri-image-add-line" title="Thêm hình anh" ></i></a>
+                              <a href="?act=editProduct&id=<?= $product['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line" title="Sửa"></i></a>
+                              <a href="?act=deleteProduct&id=<?= $product['id'] ?>" onclick="confirmDelete(<?= $product['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line" title="Xóa"></i></a>
                             </div>
                           </td>
                         </tr>

@@ -23,6 +23,14 @@
 // }
 
 
+function checkLoginAdmin(){
+  if(!isset($_SESSION['username'])){
+    header("Location: " . BASE_URL_ADMIN . '?act=signin');
+    exit();
+  }
+}
+
+
 class Connect {
   private $host = DB_HOST;
   private $dbname = DB_NAME;
