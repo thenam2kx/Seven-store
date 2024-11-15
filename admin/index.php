@@ -27,6 +27,7 @@ require_once 'controllers/OrderDetailController.php';
 require_once 'controllers/OrderController.php';
 
 
+
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
@@ -143,4 +144,9 @@ match ($act) {
   'orderDetail' => (new OrderDetailController())->getDetail(),
   'editOrderDetail' => (new OrderDetailController())->editDetail(),
 
+
+
+  
+  // Evalua
+  'listEvaluate' => (new ProductController())->listEvaluates(),
 };

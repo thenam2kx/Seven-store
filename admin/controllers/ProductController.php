@@ -179,4 +179,27 @@ class ProductController
     $ProductModel->delete($id);
     $this->getAll();
   }
+
+
+
+
+
+
+
+
+  public function listEvaluates() {
+    $id = $_GET['id'];
+    $ProductModel = new ProductModel();
+    $result = $ProductModel->getAllEvaluatesByProduct($id);
+    require_once "./views/product/listEvaluate.php";
+  }
+
 }
+
+
+
+
+
+
+
+
