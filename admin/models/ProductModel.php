@@ -94,8 +94,24 @@ class ProductModel
     return $this->db->execute($sql, $id);
   }
 
+
   public function getAllCommentsByProduct($id) {
     $sql = "SELECT  *, binh_luans.id AS binh_luan_id FROM `binh_luans` INNER JOIN `nguoi_dungs` ON binh_luans.nguoi_dung_id = nguoi_dungs.id INNER JOIN `san_phams` ON binh_luans.san_pham_id = san_phams.id WHERE san_pham_id=? ";
+    return $this->db->query($sql, $id);
+  }
+
+
+
+
+
+
+
+
+
+
+  public function getAllEvaluatesByProduct($id) {
+    $sql = "SELECT  *, danh_gias.id AS danh_gia_id FROM `danh_gias` INNER JOIN `nguoi_dungs` ON danh_gias.nguoi_dung_id = nguoi_dungs.id INNER JOIN `san_phams` ON danh_gias.san_pham_id = san_phams.id WHERE san_pham_id=? ";
+
     return $this->db->query($sql, $id);
   }
 }

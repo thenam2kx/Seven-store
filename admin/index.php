@@ -27,6 +27,7 @@ require_once 'controllers/OrderDetailController.php';
 require_once 'controllers/OrderController.php';
 
 
+
 // Require toàn bộ file Models
 require_once 'models/BlogModel.php';
 require_once 'models/CategoryModel.php';
@@ -49,7 +50,10 @@ require_once 'models/DashboardModel.php';
 
 $act = $_GET['act'] ?? '/';
 if (!isset($_SESSION['username']) && $act !== 'signin' && $act !== 'handleSignin' ) {
-   checkLoginAdmin();
+  checkLoginAdmin();
+}
+if (isset($_SESSION['username']) && $_SESSION['username']['vai_tro'] === 0) {
+  header('Location: http://localhost/seven-store/');
 }
 
 // Route
@@ -143,8 +147,10 @@ match ($act) {
 
   'orderDetail' => (new OrderDetailController())->getDetail(),
   'editOrderDetail' => (new OrderDetailController())->editDetail(),
-
   //comment
   'listComment' => (new ProductController())->listComments(),
+
+  // Evalua
+  'listEvaluate' => (new ProductController())->listEvaluates(),
 
 };

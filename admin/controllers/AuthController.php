@@ -26,9 +26,12 @@ class AuthController
         $password = $_POST['password'];
         // var_dump($password);die();
         $user = $this->modelAuth->checkSignin($username, $password);
-        // var_dump($user['vai_tro']);die();
         if ($user==true) {
           $_SESSION['username'] = $user;
+          if ($user['vai_tro'] === 0) {
+            header("Location: http://localhost/seven-store");
+            exit ();
+          }
           header("Location: ?act=/");
           exit ();
         }else{

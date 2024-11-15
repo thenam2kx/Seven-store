@@ -50,7 +50,7 @@
                   <div class="col-12">
                     <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                       <div class="flex-grow-1">
-                        <h4 class="fs-16 mb-1">Chào mừng bạn đã quay trở lại, <?= $_SESSION['username'] ? $_SESSION['username'][0]['ho_ten'] : '' ?>!</h4>
+                        <h4 class="fs-16 mb-1">Chào mừng bạn đã quay trở lại, <?= $_SESSION['username'] ? $_SESSION['username']['ho_ten'] : '' ?>!</h4>
                         <p class="text-muted mb-0">Bảng báo cáo tổng quan</p>
                       </div>
                       <div class="mt-3 mt-lg-0">
