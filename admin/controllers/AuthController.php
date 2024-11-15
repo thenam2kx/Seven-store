@@ -25,14 +25,19 @@ class AuthController
         $username = $_POST['username'];
         $password = $_POST['password'];
         // var_dump($password);die();
-        $user=$this->modelAuth->checkSignin($username, $password);
+        $user = $this->modelAuth->checkSignin($username, $password);
         if ($user==true) {
           $_SESSION['username'] = $user;
+          if ($user['vai_tro'] === 0) {
+            header("Location: http://localhost/seven-store");
+            exit ();
+          }
           header("Location: ?act=/");
           exit ();
         }else{
           $_SESSION['error'] = $user;
           $_SESSION['flash'] = true;
+          // var_dump($user);die();
           header("Location: ?act=signin");
           exit ();
         }

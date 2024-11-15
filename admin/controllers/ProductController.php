@@ -179,4 +179,34 @@ class ProductController
     $ProductModel->delete($id);
     $this->getAll();
   }
+
+  public function listComments() {
+    $id = $_GET['id'];
+    $ProductModel = new ProductModel();
+    $result = $ProductModel->getAllCommentsByProduct($id);
+    // var_dump($result);
+    // die();
+    require_once "./views/product/listComment.php";
+  }
+
+
+
+
+
+
+  public function listEvaluates() {
+    $id = $_GET['id'];
+    $ProductModel = new ProductModel();
+    $result = $ProductModel->getAllEvaluatesByProduct($id);
+    require_once "./views/product/listEvaluate.php";
+  }
+
 }
+
+
+
+
+
+
+
+

@@ -151,6 +151,9 @@ ALTER TABLE `gio_hang_cts` ADD FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams
 
 ALTER TABLE `don_hangs` ADD FOREIGN KEY (`nguoi_dung_id`) REFERENCES `nguoi_dungs` (`id`);
 
+ALTER TABLE `don_hangs` ADD FOREIGN KEY (`khuyen_mai_id`) REFERENCES `khuyen_mais` (`id`);
+
 ALTER TABLE `don_hang_cts` ADD FOREIGN KEY (`don_hang_id`) REFERENCES `don_hangs` (`id`);
 
 ALTER TABLE `don_hang_cts` ADD FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`);
+

@@ -86,6 +86,15 @@
                     </div>
 
                     <div class="mt-4">
+                    <?php if (isset($_SESSION['error'])) { ?>
+                        <?php if (is_array($_SESSION['error'])) { ?>
+                            <p class="text-danger login-box-msg"><?= implode('<br>', $_SESSION['error']) ?></p>
+                        <?php } else { ?>
+                            <p class="text-danger login-box-msg"><?= $_SESSION['error'] ?></p>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p class="login-box-msg">Vui lòng đăng nhập</p>
+                    <?php } ?>
                       <form action="?act=handleSignin" method="post">
 
                         <div class="mb-3">
