@@ -50,6 +50,6 @@
 <link href="assets/css/style-skin-watches.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-weapons.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-yoga.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
