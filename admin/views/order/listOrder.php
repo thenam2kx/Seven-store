@@ -68,7 +68,7 @@
           <div class="card">
             <div class="card-header d-flex align-items-center">
               <!-- Search Form -->
-              <form class="d-flex me-3" action="?act=listOrder" role="search">
+              <form class="d-flex me-3" action="?act=listOrder" role="search" method="POST">
                 <input
                   type="search"
                   class="form-control me-2"

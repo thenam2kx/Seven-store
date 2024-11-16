@@ -3,8 +3,9 @@
 class UserController {
   public function getAll() {
     try {
+        $key = isset($_POST['search']) ? $_POST['search'] : '';
         $userModel = new UserModel();
-        $users = $userModel->getAll();
+        $users = $userModel->getAll($key);
         require_once "./views/user/listUser.php";
       } catch (\Throwable $th) {
         throw $th;
