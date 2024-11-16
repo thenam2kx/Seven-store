@@ -7,7 +7,10 @@ require_once './config/connect.php'; // Connect to database
 // Require all file Controllers
 require_once './controllers/HomeController.php';
 
+
 // Require all file Models
+require_once './models/HomeModel.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
