@@ -5,12 +5,13 @@ class OrderController
   public function getAll()
   {
     try {
+      $key = isset($_POST['search']) ? $_POST['search'] : '';
       $userModel = new UserModel();
       $users = $userModel->getAll();
       $orderStatusModel = new OrderStatusModel();
       $listOrderStatus = $orderStatusModel->getAll();
       $orderModel = new OrderModel();
-      $orders = $orderModel->getAll();
+      $orders = $orderModel->getAll($key);
       require_once "./views/order/listOrder.php";
     } catch (\Throwable $th) {
       throw $th;
