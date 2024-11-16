@@ -1,7 +1,6 @@
 <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-<link href="assets/css/index-skin-cosmetics.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/rtl.css" rel="stylesheet" type="text/css" />
+<!-- <link href="assets/css/index-skin-cosmetics.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-baby.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-base-ball.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-basketball.css" rel="stylesheet" type="text/css" />
@@ -49,7 +48,9 @@
 <link href="assets/css/style-skin-wallets.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-watches.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-weapons.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/style-skin-yoga.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style-skin-yoga.css" rel="stylesheet" type="text/css" /> -->
+<!-- <link href="assets/css/rtl.css" rel="stylesheet" type="text/css" /> -->
+<!-- <link href="assets/css/rtl.css" rel="stylesheet" type="text/css" /> -->
 
 <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
