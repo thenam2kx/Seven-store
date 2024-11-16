@@ -93,7 +93,7 @@
                         <div class="d-flex align-items-end justify-content-between mt-4">
                           <div>
                             <h4 class="fs-22 fw-semibold ff-secondary mb-4">
-                              $<span class="counter-value" data-target="<?= $getTotalEarningWithCurrentMonth['tong_thanh_toan'] ?>">0</span>k
+                              <span class="counter-value" data-target="<?= $getTotalEarningWithCurrentMonth['tong_thanh_toan'] ?>">0</span>k
                             </h4>
                             <a href="#" class="text-decoration-underline">Xem chi tiết</a>
                           </div>
@@ -154,7 +154,7 @@
                         </div>
                         <div class="d-flex align-items-end justify-content-between mt-4">
                           <div>
-                            <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?= $getTotalProfitWithCurrentMonth['loi_nhuan'] ?>">0</span>k </h4>
+                            <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $getTotalProfitWithCurrentMonth['loi_nhuan'] ?>">0</span>k </h4>
                             <a href="#" class="text-decoration-underline">Xem chi tiết</a>
                           </div>
                           <div class="avatar-sm flex-shrink-0">
@@ -183,7 +183,7 @@
                         </div>
                         <div class="d-flex align-items-end justify-content-between mt-4">
                           <div>
-                            <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $getTotalUsers['tong_nguoi_dung'] ?>">0</span>M </h4>
+                            <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $getTotalUsers['tong_nguoi_dung'] ?>">0</span> </h4>
                             <a href="?act=users" class="text-decoration-underline">Xem chi tiết</a>
                           </div>
                           <div class="avatar-sm flex-shrink-0">
