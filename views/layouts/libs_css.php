@@ -1,7 +1,7 @@
 <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-<!-- <link href="assets/css/index-skin-cosmetics.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/style-skin-baby.css" rel="stylesheet" type="text/css" />
+<!-- <link href="assets/css/index-skin-cosmetics.css" rel="stylesheet" type="text/css" /> -->
+<!-- <link href="assets/css/style-skin-baby.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-base-ball.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-basketball.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/style-skin-beer.css" rel="stylesheet" type="text/css" />
