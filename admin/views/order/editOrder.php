@@ -65,7 +65,7 @@
 
                   <div class="col-md-3">
                     <label for="OrderStatus" class="form-label">Trạng thái đơn hàng</label>
-                    <select class="form-select" name="OrderStatus" id="OrderStatus" required>
+                    <select class="form-select" name="OrderStatus" id="OrderStatus" <?= $result['trang_thai_don_hang_id'] === 9 ? 'disabled' : '' ?>>
                       <?php foreach ($listOrderStatus as $OrderStatus): ?>
                         <option value="<?= $OrderStatus['id'] ?>" <?= $result['trang_thai_don_hang_id'] === $OrderStatus['id'] ? 'selected' : '' ?>><?= $OrderStatus['trang_thai'] ?></option>
                       <?php endforeach ?>

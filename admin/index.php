@@ -56,6 +56,10 @@ if (isset($_SESSION['username']) && $_SESSION['username']['vai_tro'] === 0) {
   header('Location: http://localhost/seven-store/');
 }
 
+if (isset($_SESSION['username']) && ($act === 'signin' || $act === 'signup' )) {
+  header('Location: http://localhost/seven-store/');
+}
+
 // Route
 $act = $_GET['act'] ?? '/';
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
