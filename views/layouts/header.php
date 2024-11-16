@@ -278,4 +278,3 @@
     </div>
   </div>
 </header>
-<img src="assets/images/custom/banner.png" alt="">
