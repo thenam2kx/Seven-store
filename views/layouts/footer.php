@@ -7,13 +7,13 @@
             <div class="tt-newsletter">
               <div class="tt-mobile-collapse">
                 <h4 class="tt-collapse-title">
-                  BE IN TOUCH WITH US:
+                  Liên hệ với chúng tôi:
                 </h4>
                 <div class="tt-collapse-content">
                   <form id="newsletterform" class="form-inline form-default" method="post" novalidate="novalidate" action="#">
                     <div class="form-group">
-                      <input type="text" name="email" class="form-control" placeholder="Enter your e-mail">
-                      <button type="submit" class="btn">JOIN US</button>
+                      <input type="text" name="email" class="form-control" placeholder="Nhập email!">
+                      <button type="submit" class="btn">Xác Nhận</button>
                     </div>
                   </form>
                 </div>
@@ -39,16 +39,13 @@
         <div class="col-md-6 col-lg-2 col-xl-3">
           <div class="tt-mobile-collapse">
             <h4 class="tt-collapse-title">
-              CATEGORIES
+              MẶT HÀNG
             </h4>
             <div class="tt-collapse-content">
               <ul class="tt-list">
-                <li><a href="listing-collection.html">Women</a></li>
-                <li><a href="listing-collection.html">Men</a></li>
-                <li><a href="listing-collection.html">Accessories</a></li>
-                <li><a href="listing-collection.html">Shoes</a></li>
-                <li><a href="listing-collection.html">New Arrivals</a></li>
-                <li><a href="listing-collection.html">Clearence</a></li>
+                <li><a href="listing-collection.html">Quần áo Nữ</a></li>
+                <li><a href="listing-collection.html">Quần áo nam</a></li>
+                <li><a href="listing-collection.html">Mặt Hàng Mới</a></li>
               </ul>
             </div>
           </div>
@@ -56,15 +53,14 @@
         <div class="col-md-6 col-lg-2 col-xl-3">
           <div class="tt-mobile-collapse">
             <h4 class="tt-collapse-title">
-              MY ACCOUNT
+              TÀI KHOẢN CỦA TÔI
             </h4>
             <div class="tt-collapse-content">
               <ul class="tt-list">
-                <li><a href="account_order.html">Orders</a></li>
-                <li><a href="page404.html">Compare</a></li>
-                <li><a href="page404.html">Wishlist</a></li>
-                <li><a href="login.html">Log In</a></li>
-                <li><a href="create-account.html">Register</a></li>
+                <li><a href="account_order.html">Đơn đặt hàng</a></li>
+                <li><a href="page404.html">Danh sách yêu thích</a></li>
+                <li><a href="login.html">Đăng nhập</a></li>
+                <li><a href="create-account.html">Đăng kí</a></li>
               </ul>
             </div>
           </div>
@@ -72,11 +68,11 @@
         <div class="col-md-6 col-lg-4 col-xl-3">
           <div class="tt-mobile-collapse">
             <h4 class="tt-collapse-title">
-              ABOUT
+              Giới Thiệu
             </h4>
             <div class="tt-collapse-content">
               <p>
-                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, seddo eiusmod tempor incididunt ut labore etdolore.
+                Chúng tôi cung cấp các sản phẩm chất lượng cao với dịch vụ khách hàng tốt nhất. Hãy khám phá và trở thành một phần của cộng đồng yêu thích sản phẩm của chúng tôi.
               </p>
             </div>
           </div>
@@ -85,14 +81,14 @@
           <div class="tt-newsletter">
             <div class="tt-mobile-collapse">
               <h4 class="tt-collapse-title">
-                CONTACTS
+                Liên Hệ
               </h4>
               <div class="tt-collapse-content">
                 <address>
-                  <p><span>Address:</span> 2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America</p>
-                  <p><span>Phone:</span> +777 2345 7885; +777 2345 7886</p>
-                  <p><span>Hours:</span> 7 Days a week from 10 am to 6 pm</p>
-                  <p><span>E-mail:</span> <a href="mailto:info@mydomain.com">info@mydomain.com</a></p>
+                  <p><span>Địa chỉ:</span>Đường Trinh Văn Bô, Nam Từ Liên, Thành Phố Hà Nội</p>
+                  <p><span>Số điện thoại:</span>0123456789; 0987654321</p>
+                  <p><span>Thời Gian:</span> 7 Ngày một tuần từ 10 giờ sáng đến 6 giờ chiều</p>
+                  <p><span>Email:</span> <a href="#">seven@gamil.com</a></p>
                 </address>
               </div>
             </div>
@@ -108,14 +104,14 @@
           <div class="tt-col-item tt-logo-col">
             <!-- logo -->
             <a class="tt-logo tt-logo-alignment" href="index.html">
-              <img src="assets/images/custom/logo.png" data-src="assets/images/custom/logo.png" alt="" class="loaded" data-was-processed="true">
+              <a class="tt-logo tt-logo-alignment" href="index.php"><img src="assets/images/custom/logo2.png" alt=""></a>
             </a>
             <!-- /logo -->
           </div>
           <div class="tt-col-item">
             <!-- copyright -->
             <div class="tt-box-copyright">
-              © Wokiee 2020. All Rights Reserved
+              © Seven 2024.
             </div>
             <!-- /copyright -->
           </div>
