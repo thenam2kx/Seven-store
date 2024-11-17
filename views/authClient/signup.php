@@ -12,7 +12,7 @@
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
   <!-- App favicon -->
-  <link rel="shortcut icon" href="./admin/assets">
+  <link rel="shortcut icon" href="./admin/assets/images/favicon.ico">
 
   <!-- Layout config Js -->
   <script src="./admin/assets/js/layout.js"></script>
