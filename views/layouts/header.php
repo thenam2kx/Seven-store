@@ -2,7 +2,7 @@
   <nav class="panel-menu mobile-main-menu">
 
     <div class="mmpanels">
-  <div class="mmpanel mmhidden" id="mm5">
+      <div class="mmpanel mmhidden" id="mm5">
         <ul>
           <li><a href="#" data-target="#" class="mm-prev-level">Back</a></li>
           <li><a href="listing-left-column.html" class="mm-original-link">Danh mục sản phẩm</a></li>
@@ -83,7 +83,7 @@
             <div class="tt-desctop-menu tt-hover-03" id="js-include-desktop-menu">
               <nav>
                 <ul>
-                <li class="dropdown megamenu selected tt-submenu">
+                  <li class="dropdown megamenu selected tt-submenu">
                     <a href="#" title="Trang chủ"><span>Trang chủ</span></a>
                   </li>
                   <li class="dropdown megamenu tt-submenu">
@@ -93,8 +93,12 @@
                     <a href="#" title="Sale"><span>Sale</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                  <a href="#" title="Áo nam"><span>Áo nam<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128"><g><path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path></g></svg></span></a>
-                  <div class="dropdown-menu">
+                    <a href="#" title="Áo nam"><span>Áo nam<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128">
+                          <g>
+                            <path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path>
+                          </g>
+                        </svg></span></a>
+                    <div class="dropdown-menu">
                       <div class="row tt-col-list">
                         <div class="col">
                           <h6 class="tt-title-submenu"><a href="#" title="Áo khoác"><span>Áo khoác</span></a></h6>
@@ -107,11 +111,15 @@
                     </div>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                  <a href="#" title="Quần nam"><span>Quần nam <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128"><g><path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path></g></svg></span></a>
+                    <a href="#" title="Quần nam"><span>Quần nam <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128">
+                          <g>
+                            <path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path>
+                          </g>
+                        </svg></span></a>
                     <div class="dropdown-menu">
                       <div class="row tt-col-list">
                         <div class="col">
-                        <h6 class="tt-title-submenu"><a href="#" title="Quần Âu"><span>Quần Âu</span></a></h6>
+                          <h6 class="tt-title-submenu"><a href="#" title="Quần Âu"><span>Quần Âu</span></a></h6>
                           <h6 class="tt-title-submenu"><a href="#" title="Quần Jeans"><span>Quần Jeans</span></a></h6>
                           <h6 class="tt-title-submenu"><a href="#" title="Quần Dài Kaki"><span>Quần Dài Kaki</span></a></h6>
                           <h6 class="tt-title-submenu"><a href="#" title="Quần Short"><span>Quần Short</span></a></h6>
@@ -120,10 +128,10 @@
                     </div>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                  <a href="#" title="Bài viết"><span>Bài viết</span></a>
+                    <a href="#" title="Bài viết"><span>Bài viết</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                  <a href="#" title="Liên hệ"><span>Liên hệ</span></a>
+                    <a href="#" title="Liên hệ"><span>Liên hệ</span></a>
                   </li>
                 </ul>
               </nav>
@@ -245,20 +253,32 @@
 
             <div class="tt-account tt-dropdown-obj">
               <button class="tt-dropdown-toggle" data-tooltip="Tài khoản" data-tposition="bottom"><i class="icon-f-94"></i></button>
-              <div class="tt-dropdown-menu">
+              <?php if (isset($_SESSION['username'])) {  ?>
+                <div class="tt-dropdown-menu">
+                  <div class="tt-mobile-add">
+                    <button class="tt-close">Close</button>
+                  </div>
+                  <div class="tt-dropdown-inner">
+                    <ul>
+                      <li><a href="#"><i class="icon-f-94"></i>Tài khoản</a></li>
+                      <li><a href="#"><i class="icon-n-072"></i>Danh sách yêu thích</a></li>
+                      <li><a href="?act=signout"><i class="icon-f-77"></i>Đăng xuất</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php } else {  ?>
+                <div class="tt-dropdown-menu">
                 <div class="tt-mobile-add">
                   <button class="tt-close">Close</button>
                 </div>
                 <div class="tt-dropdown-inner">
                   <ul>
-                    <li><a href="#"><i class="icon-f-94"></i>Tài khoản</a></li>
-                    <li><a href="#"><i class="icon-n-072"></i>Danh sách yêu thích</a></li>
-                    <li><a href="?act=signin"><i class="icon-f-76"></i>Đăng nhập</a></li>
-                    <li><a href="signout.php"><i class="icon-f-77"></i>Đăng xuất</a></li>
-                    <li><a href="singup.php"><i class="icon-f-94"></i>Đăng ký</a></li>
+                    <li><a href="admin/?act=signin"><i class="icon-f-76"></i>Đăng nhập</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>?act=signup"><i class="icon-f-94"></i>Đăng ký</a></li>
                   </ul>
                 </div>
               </div>
+              <?php } ?>
             </div>
           </div>
         </div>
