@@ -140,7 +140,7 @@ match ($act) {
   'signout' => (new AuthController())->signOut(),
   'fogotPassword' => (new AuthController())->fogotPassword(),
 
-  // Order detail
+  
 
   // Order
   'listOrder' => (new OrderController())->getAll(),
@@ -149,8 +149,10 @@ match ($act) {
   'handleEditOrder' => (new OrderController())->handleEdit(),
   'deleteOrder' => (new OrderController())->delete(),
 
+  // Order detail
   'orderDetail' => (new OrderDetailController())->getDetail(),
   'editOrderDetail' => (new OrderDetailController())->editDetail(),
+  
   //comment
   'listComment' => (new ProductController())->listComments(),
 

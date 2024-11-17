@@ -12,18 +12,18 @@
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
   <!-- App favicon -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" href="./admin/assets">
 
   <!-- Layout config Js -->
-  <script src="assets/js/layout.js"></script>
+  <script src="./admin/assets/js/layout.js"></script>
   <!-- Bootstrap Css -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="./admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <!-- Icons Css -->
-  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <link href="./admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
   <!-- App Css-->
-  <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+  <link href="./admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
   <!-- custom Css-->
-  <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+  <link href="./admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -45,7 +45,7 @@
                     <div class="position-relative h-100 d-flex flex-column">
                       <div class="mb-4">
                         <a href="index.html" class="d-block">
-                          <img src="assets/images/logo-light.png" alt="" height="18">
+                          <img src="./admin/assets/images/logo-light.png" alt="" height="18">
                         </a>
                       </div>
                       <div class="mt-auto">
@@ -86,27 +86,56 @@
                     </div>
 
                     <div class="mt-4">
-                      <form class="needs-validation" novalidate action="https://themesbrand.com/velzon/html/master/index.html">
+                      <form class="needs-validation" novalidate action="?act=handleSignup" method="POST">
 
                         <div class="mb-3">
+                          <label for="username" class="form-label">Họ Tên <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" name="ho_ten" id="username" placeholder="Enter name" required>
+                          <div class="invalid-feedback">
+                            Vui lòng nhập tên
+                          </div>
+                        </div>
+                        <div class="mb-3">
                           <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                          <input type="email" class="form-control" id="useremail" placeholder="Enter email address" required>
+                          <input type="email" class="form-control" name="email" id="useremail" placeholder="Enter email " required>
                           <div class="invalid-feedback">
                             Vui lòng nhập email
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label for="username" class="form-label">Số điện thoại<span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                          <label for="phone" class="form-label">Số điện thoại<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" name="so_dien_thoai" id="phone" placeholder="Enter phone" required>
                           <div class="invalid-feedback">
                             Vui lòng nhập số điện thoại
                           </div>
                         </div>
 
                         <div class="mb-3">
-                          <label class="form-label" for="password-input">Mật khẩu</label>
+                          <label for="gender" class="form-label">Giới tính <span class="text-danger">*</span></label>
+                          <select id="gender" class="form-select" name="gioi_tinh" value="gioi_tinh">
+                            <option value="0">Nam</option>
+                            <option value="1">Nữ</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="birthdaytime" class="form-label">Ngày sinh <span class="text-danger">*</span></label>
+                          <input type="date" class="form-control" name="ngay_sinh" id="birthdaytime"required>
+                          <div class="invalid-feedback">
+                            Vui lòng nhập ngày sinh
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="address" class="form-label">Địa chỉ <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" name="dia_chi" id="address" placeholder="Enter address" required>
+                          <div class="invalid-feedback">
+                            Vui lòng nhập địa chỉ
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="password-input">Mật khẩu <span class="text-danger">*</span></label>
                           <div class="position-relative auth-pass-inputgroup">
-                            <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                            <input type="password" name="mat_khau" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                             <div class="invalid-feedback">
                               Vui lòng nhập mật khẩu
@@ -134,7 +163,6 @@
                           <div class="signin-other-title">
                             <h5 class="fs-13 mb-4 title text-muted">Đăng ký tài khoản với</h5>
                           </div>
-
                           <div>
                             <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
                             <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
@@ -146,7 +174,7 @@
                     </div>
 
                     <div class="mt-5 text-center">
-                      <p class="mb-0">Bạn đã có tài khoản ? <a href="?act=signin" class="fw-semibold text-primary text-decoration-underline"> Đăng nhập</a> </p>
+                      <p class="mb-0">Bạn đã có tài khoản ? <a href="admin/?act=signin" class="fw-semibold text-primary text-decoration-underline"> Đăng nhập</a> </p>
                     </div>
                   </div>
                 </div>
@@ -184,17 +212,17 @@
   <!-- end auth-page-wrapper -->
 
   <!-- JAVASCRIPT -->
-  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/libs/simplebar/simplebar.min.js"></script>
-  <script src="assets/libs/node-waves/waves.min.js"></script>
-  <script src="assets/libs/feather-icons/feather.min.js"></script>
-  <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-  <script src="assets/js/plugins.js"></script>
+  <script src="./admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./admin/assets/libs/simplebar/simplebar.min.js"></script>
+  <script src="./admin/assets/libs/node-waves/waves.min.js"></script>
+  <script src="./admin/assets/libs/feather-icons/feather.min.js"></script>
+  <script src="./admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+  <script src="./admin/assets/js/plugins.js"></script>
 
   <!-- validation init -->
-  <script src="assets/js/pages/form-validation.init.js"></script>
+  <script src="./admin/assets/js/pages/form-validation.init.js"></script>
   <!-- password create init -->
-  <script src="assets/js/pages/passowrd-create.init.js"></script>
+  <script src="./admin/assets/js/pages/passowrd-create.init.js"></script>
 </body>
 
 

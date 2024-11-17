@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Require file config
 require_once './config/env.php'; // Config env
 require_once './config/helper.php'; // Helper function
@@ -6,10 +7,12 @@ require_once './config/connect.php'; // Connect to database
 
 // Require all file Controllers
 require_once './controllers/HomeController.php';
+require_once './controllers/AuthClientController.php';
 
 
 // Require all file Models
 require_once './models/HomeModel.php';
+require_once './models/AuthClientModel.php';
 
 
 // Route
@@ -20,4 +23,12 @@ $id = $_GET['id'] ?? null;
 match ($act) {
   // Trang chủ
   '/' => (new HomeController())->index(),
+
+  //AuthClient
+  'signup' => (new AuthClientController())->signup(),
+  'handleSignup' => (new AuthClientController())->handleSignup(),
+  // 'fogotPassword' => (new AuthClientController())->fogotPassword(),
+  // 'handleFogotPassword' => (new AuthClientController())->handleFogotPassword(),
+
+  'signout' => (new AuthClientController())->Signout(),
 };
