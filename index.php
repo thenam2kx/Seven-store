@@ -9,12 +9,14 @@ require_once './config/connect.php'; // Connect to database
 require_once './controllers/HomeController.php';
 require_once './controllers/AuthClientController.php';
 require_once './controllers/ProductController.php';
+require_once './controllers/BlogClientController.php';
 
 
 // Require all file Models
 require_once './models/HomeModel.php';
 require_once './models/AuthClientModel.php';
 require_once './models/ProductModel.php';
+require_once './models/BlogClientModel.php';
 
 
 // Route
@@ -31,8 +33,12 @@ match ($act) {
   'handleSignup' => (new AuthClientController())->handleSignup(),
   // 'fogotPassword' => (new AuthClientController())->fogotPassword(),
   // 'handleFogotPassword' => (new AuthClientController())->handleFogotPassword(),
-
   'signout' => (new AuthClientController())->Signout(),
 
   'products' => (new ProductController())->index(),
+
+  //Blog
+  'blog' => (new BlogClientController())->viewBlog(),
+  'blog-post' => (new BlogClientController())->blogPost(),
+
 };
