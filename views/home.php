@@ -65,6 +65,7 @@
       object-fit: cover;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </head>
 
 <body>
@@ -116,7 +117,9 @@
                     <span class="tt-label-sale">Sale <?= number_format((($result['gia_ban'] - $result['gia_khuyen_mai']) / $result['gia_ban'] * 100), 0) ?>%</span>
                   </span>
                 </a>
-                <a href="#" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                <a href="?act=addToCard&idPrd=<?= $result['id'] ?>" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-target="?act=addToCard&idPrd=<?= $result['id'] ?>">
+                  Thêm vào giỏ hàng
+                </a>
               </div>
               <div class="tt-description">
                 <div class="tt-row">
@@ -166,7 +169,9 @@
                     <span class="tt-label-sale">Sale <?= number_format((($result['gia_ban'] - $result['gia_khuyen_mai']) / $result['gia_ban'] * 100), 0) ?>%</span>
                   </span>
                 </a>
-                <a href="#" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                <a href="?act=addToCard&idPrd=<?= $result['id'] ?>" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-target="?act=addToCard&idPrd=<?= $result['id'] ?>">
+                  Thêm vào giỏ hàng
+                </a>
               </div>
               <div class="tt-description">
                 <div class="tt-row">
@@ -259,7 +264,6 @@
   <?php
   require_once "layouts/libs_js.php";
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
   <a href="#" class="tt-back-to-top tt-show" id="js-back-to-top" style="right: 0px;">BACK TO TOP</a>
 
