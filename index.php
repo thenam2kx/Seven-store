@@ -51,6 +51,7 @@ match ($act) {
 
 
   'products' => (new ProductController())->index(),
+  'productDetail' => (new ProductController())->detailProduct(),
 
   //Blog
   'blog' => (new BlogClientController())->viewBlog(),
