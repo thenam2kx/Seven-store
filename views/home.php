@@ -65,6 +65,7 @@
       object-fit: cover;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </head>
 
 <body>
@@ -85,8 +86,7 @@
     centered-slides="true"
     autoplay-delay="4000"
     autoplay-disable-on-interaction="false"
-    loop='true'
-  >
+    loop='true'>
     <?php foreach ($resultsBanner as $row): ?>
       <swiper-slide>
         <img src="admin/<?= $row['duong_dan'] ?>" alt="">
@@ -117,7 +117,9 @@
                     <span class="tt-label-sale">Sale <?= number_format((($result['gia_ban'] - $result['gia_khuyen_mai']) / $result['gia_ban'] * 100), 0) ?>%</span>
                   </span>
                 </a>
-                <a href="#" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                <a href="?act=addToCard&idPrd=<?= $result['id'] ?>" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-target="?act=addToCard&idPrd=<?= $result['id'] ?>">
+                  Thêm vào giỏ hàng
+                </a>
               </div>
               <div class="tt-description">
                 <div class="tt-row">
@@ -167,7 +169,9 @@
                     <span class="tt-label-sale">Sale <?= number_format((($result['gia_ban'] - $result['gia_khuyen_mai']) / $result['gia_ban'] * 100), 0) ?>%</span>
                   </span>
                 </a>
-                <a href="#" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                <a href="?act=addToCard&idPrd=<?= $result['id'] ?>" class="tt-btn-addtocart btn-addCard thumbprod-button-bg" data-target="?act=addToCard&idPrd=<?= $result['id'] ?>">
+                  Thêm vào giỏ hàng
+                </a>
               </div>
               <div class="tt-description">
                 <div class="tt-row">
@@ -198,58 +202,58 @@
 
   <!-- CONTACT -->
   <div class="container-indent" style="margin-top: 80px">
-		<div class="container-fluid">
-			<div class="tt-block-title">
-				<h2 class="tt-title"><a target="_blank" href="https://www.instagram.com/wokieeshop/">@ Theo dõi chúng tôi</a></h2>
-				<div class="tt-description">FACEBOOK</div>
-			</div>
-			<div class="row">
-				<div id="instafeed" class="instafeed-fluid" data-access-token="IGQVJXX1hydHVETWFEMGIzeFFmYzIyU1ZAjTHREakhBU1ZAHU0JOZAXJmSWtfbUotMnNHVGxUTUxXckIwVUlhVk1QTEhfQXliNkVoejlILS1Kem40NU1fSWszOTZAhT0dOZAWZAqLXZA1QWxKSHNhSTdpRmN5WQZDZD" data-limitimg="6"></div>
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+      <div class="tt-block-title">
+        <h2 class="tt-title"><a target="_blank" href="https://www.instagram.com/wokieeshop/">@ Theo dõi chúng tôi</a></h2>
+        <div class="tt-description">FACEBOOK</div>
+      </div>
+      <div class="row">
+        <div id="instafeed" class="instafeed-fluid" data-access-token="IGQVJXX1hydHVETWFEMGIzeFFmYzIyU1ZAjTHREakhBU1ZAHU0JOZAXJmSWtfbUotMnNHVGxUTUxXckIwVUlhVk1QTEhfQXliNkVoejlILS1Kem40NU1fSWszOTZAhT0dOZAWZAqLXZA1QWxKSHNhSTdpRmN5WQZDZD" data-limitimg="6"></div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- MORE -->
   <div class="container-indent mt-5">
-		<div class="container">
-			<div class="row tt-services-listing">
-				<div class="col-xs-12 col-md-6 col-lg-4">
-					<a href="#" class="tt-services-block">
-						<div class="tt-col-icon">
-							<i class="icon-f-48"></i>
-						</div>
-						<div class="tt-col-description">
-							<h4 class="tt-title">Miễn phí giao hàng</h4>
-							<p>Miễn phí vận chuyển cho tất cả các đơn hàng tại Hoa Kỳ hoặc đơn hàng trên 200k</p>
-						</div>
-					</a>
-				</div>
-				<div class="col-xs-12 col-md-6 col-lg-4">
-					<a href="#" class="tt-services-block">
-						<div class="tt-col-icon">
-							<i class="icon-f-35"></i>
-						</div>
-						<div class="tt-col-description">
-							<h4 class="tt-title">Hỗ trợ 24/7</h4>
-							<p>Liên hệ đội ngũ hỗ trợ của chúng tôi để được tư vấn</p>
-						</div>
-					</a>
-				</div>
-				<div class="col-xs-12 col-md-6 col-lg-4">
-					<a href="#" class="tt-services-block">
-						<div class="tt-col-icon">
-							<i class="icon-e-09"></i>
-						</div>
-						<div class="tt-col-description">
-							<h4 class="tt-title">Miễn phí đổi trả trong 24 giờ</h4>
-							<p>Miễn phí đổi hàng trong vòng 24 giờ nếu bạn không hài lòng với sản phẩm.</p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+      <div class="row tt-services-listing">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <a href="#" class="tt-services-block">
+            <div class="tt-col-icon">
+              <i class="icon-f-48"></i>
+            </div>
+            <div class="tt-col-description">
+              <h4 class="tt-title">Miễn phí giao hàng</h4>
+              <p>Miễn phí vận chuyển cho tất cả các đơn hàng tại Hoa Kỳ hoặc đơn hàng trên 200k</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <a href="#" class="tt-services-block">
+            <div class="tt-col-icon">
+              <i class="icon-f-35"></i>
+            </div>
+            <div class="tt-col-description">
+              <h4 class="tt-title">Hỗ trợ 24/7</h4>
+              <p>Liên hệ đội ngũ hỗ trợ của chúng tôi để được tư vấn</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <a href="#" class="tt-services-block">
+            <div class="tt-col-icon">
+              <i class="icon-e-09"></i>
+            </div>
+            <div class="tt-col-description">
+              <h4 class="tt-title">Miễn phí đổi trả trong 24 giờ</h4>
+              <p>Miễn phí đổi hàng trong vòng 24 giờ nếu bạn không hài lòng với sản phẩm.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- FOOTER -->
@@ -260,7 +264,6 @@
   <?php
   require_once "layouts/libs_js.php";
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
   <a href="#" class="tt-back-to-top tt-show" id="js-back-to-top" style="right: 0px;">BACK TO TOP</a>
 

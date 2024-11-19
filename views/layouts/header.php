@@ -7,7 +7,7 @@
           <li><a href="#" data-target="#" class="mm-prev-level">Back</a></li>
           <li><a href="listing-left-column.html" class="mm-original-link">Danh mục sản phẩm</a></li>
           <li>
-            <a href="#mm6" data-target="#mm6" class="mm-next-level">Sản phẩm mới</a>
+            <a href="?act=products" data-target="?act=products" class="mm-next-level">Sản phẩm</a>
 
           </li>
           <li>
@@ -84,10 +84,10 @@
               <nav>
                 <ul>
                   <li class="dropdown megamenu selected tt-submenu">
-                    <a href="#" title="Trang chủ"><span>Trang chủ</span></a>
+                    <a href="http://localhost/seven-store/" title="Trang chủ"><span>Trang chủ</span></a>
                   </li>
                   <li class="dropdown megamenu tt-submenu">
-                    <a href="#" title="Sản phẩm mới"><span>Sản phẩm mới</span></a>
+                    <a href="?act=products" title="Sản phẩm mới"><span>Sản phẩm</span></a>
                   </li>
                   <li class="dropdown megamenu tt-submenu">
                     <a href="#" title="Sale"><span>Sale</span></a>
@@ -128,7 +128,7 @@
                     </div>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="#" title="Bài viết"><span>Bài viết</span></a>
+                    <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
                     <a href="#" title="Liên hệ"><span>Liên hệ</span></a>

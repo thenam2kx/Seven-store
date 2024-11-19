@@ -9,12 +9,22 @@ require_once './config/connect.php'; // Connect to database
 require_once './controllers/HomeController.php';
 require_once './controllers/AuthClientController.php';
 require_once './controllers/FavoriteProductController.php';
+require_once './controllers/ProductController.php';
+require_once './controllers/BlogClientController.php';
+require_once './controllers/CardController.php';
+
 
 
 // Require all file Models
 require_once './models/HomeModel.php';
 require_once './models/AuthClientModel.php';
+
 require_once './models/FavoriteProductModel.php';
+
+require_once './models/ProductModel.php';
+require_once './models/BlogClientModel.php';
+require_once './models/CardModel.php';
+
 
 
 // Route
@@ -31,12 +41,22 @@ match ($act) {
   'handleSignup' => (new AuthClientController())->handleSignup(),
   // 'fogotPassword' => (new AuthClientController())->fogotPassword(),
   // 'handleFogotPassword' => (new AuthClientController())->handleFogotPassword(),
-
   'signout' => (new AuthClientController())->Signout(),
+
 
   // Favorite Product
     'listFavorite' => (new FavoriteProductController())->index(),
     'addFavorite' => (new FavoriteProductController())->addFavorite(),
     'deleteFavorite' => (new FavoriteProductController())->delete(),
+
+
+  'products' => (new ProductController())->index(),
+
+  //Blog
+  'blog' => (new BlogClientController())->viewBlog(),
+  'blog-post' => (new BlogClientController())->blogPost(),
+
+  // Card Action
+  'addToCard' => (new CardController())->AddToCard(),
 
 };
