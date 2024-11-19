@@ -13,6 +13,7 @@ require_once './controllers/ProductController.php';
 require_once './controllers/BlogClientController.php';
 require_once './controllers/CardController.php';
 
+require_once './controllers/DiscountCilentController.php';
 
 
 // Require all file Models
@@ -24,6 +25,9 @@ require_once './models/FavoriteProductModel.php';
 require_once './models/ProductModel.php';
 require_once './models/BlogClientModel.php';
 require_once './models/CardModel.php';
+
+require_once './models/DiscountCilentModel.php';
+
 
 
 
@@ -59,5 +63,9 @@ match ($act) {
 
   // Card Action
   'addToCard' => (new CardController())->AddToCard(),
+
+
+  // Discount
+  'listDiscount' => (new DiscountCilentController())->index(),
 
 };
