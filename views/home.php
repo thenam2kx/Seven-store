@@ -108,7 +108,7 @@
             <div class="tt-product thumbprod-center">
               <div class="tt-image-box boxImage">
                 <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="Quick View" data-tposition="left"></a>
-                <a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
+                <a href="?act=addFavorite&id=<?= $result['id'] ;?>" class="tt-btn-wishlist" data-tooltip="Add to Favorite" data-tposition="left"></a>
                 <a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
                 <a href="product.html">
                   <span class="tt-img"><img src="admin/<?= $result['anh_dai_dien'] ?>" data-src="admin/<?= $result['anh_dai_dien'] ?>" alt="" class="loaded" data-was-processed="true"></span>
@@ -160,7 +160,7 @@
             <div class="tt-product thumbprod-center">
               <div class="tt-image-box boxImage">
                 <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="Quick View" data-tposition="left"></a>
-                <a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
+                <a href="?act=addFavorite&id=<?php echo $result['id'] ;?>" class="tt-btn-wishlist" data-tooltip="Add to Favorite" data-tposition="left"></a>
                 <a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
                 <a href="product.html">
                   <span class="tt-img"><img src="admin/<?= $result['anh_dai_dien'] ?>" data-src="admin/<?= $result['anh_dai_dien'] ?>" alt="" class="loaded" data-was-processed="true"></span>

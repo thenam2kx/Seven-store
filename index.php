@@ -8,17 +8,24 @@ require_once './config/connect.php'; // Connect to database
 // Require all file Controllers
 require_once './controllers/HomeController.php';
 require_once './controllers/AuthClientController.php';
+
 require_once './controllers/ProductController.php';
 require_once './controllers/BlogClientController.php';
 require_once './controllers/CardController.php';
+
+require_once './controllers/FavoriteProductController.php';
 
 
 // Require all file Models
 require_once './models/HomeModel.php';
 require_once './models/AuthClientModel.php';
+
 require_once './models/ProductModel.php';
 require_once './models/BlogClientModel.php';
 require_once './models/CardModel.php';
+
+require_once './models/FavoriteProductModel.php';
+
 
 
 // Route
@@ -37,6 +44,7 @@ match ($act) {
   // 'handleFogotPassword' => (new AuthClientController())->handleFogotPassword(),
   'signout' => (new AuthClientController())->Signout(),
 
+
   'products' => (new ProductController())->index(),
 
   //Blog
@@ -45,4 +53,10 @@ match ($act) {
 
   // Card Action
   'addToCard' => (new CardController())->AddToCard(),
+
+  // Favorite Product
+    'listFavorite' => (new FavoriteProductController())->index(),
+    'addFavorite' => (new FavoriteProductController())->addFavorite(),
+    'deleteFavorite' => (new FavoriteProductController())->delete(),
+
 };
