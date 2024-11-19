@@ -41,4 +41,18 @@ class ProductController
     require_once 'views/products/listProducts.php';
   }
 
+
+  public function detailProduct()
+  {
+    $idPrd = isset($_GET['id']) ? $_GET['id'] : 0;
+    $infoProduct = $this->ProductModel->getDetailProduct($idPrd);
+    $imageByProduct = $this->ProductModel->getImagesByProduct($idPrd);
+    $productTheSame = $this->ProductModel->getProductThesSame($infoProduct['danh_muc_id'], $idPrd);
+    $rateProduct = $this->ProductModel->getRateProduct($idPrd);
+    $totalRateAndCount = $this->ProductModel->getTotalRateAndCount($idPrd);
+
+
+    require_once 'views/products/detailProduct.php';
+  }
+
 }
