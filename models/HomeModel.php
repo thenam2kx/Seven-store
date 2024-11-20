@@ -28,4 +28,14 @@ class HomeModel {
     $sql = "select  * from banners b  where 1";
     return $this->db->query($sql);
   }
+
+  public function getTotalRateAndCount($id) {
+    $sql = "SELECT
+      AVG(dg.diem_danh_gia) AS trung_binh_diem,
+      COUNT(dg.diem_danh_gia) AS tong_danh_gia
+      FROM san_phams sp
+      JOIN danh_gias dg ON sp.id = dg.san_pham_id
+      WHERE sp.id = ?";
+    return $this->db->queryOne($sql, $id);
+  }
 }
