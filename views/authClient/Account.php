@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Trang chủ</title>
+  <title>Tài khoản cá nhân</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -79,18 +79,18 @@
   <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li>Account</li>
+			<li><a href="index.html">Trâng chủ</a></li>
+			<li>Tài khoản</li>
 		</ul>
 	</div>
 </div>
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container container-fluid-custom-mobile-padding">
-			<h1 class="tt-title-subpages noborder">ACCOUNT</h1>
+			<h1 class="tt-title-subpages noborder">Tài khoản cá nhân</h1>
 			<div class="tt-shopping-layout">
 				<div class="tt-wrapper">
-					<h2 class="tt-title">Profile</h2>
+					<h2 class="tt-title">Chi tiết</h2>
 					<div class="tt-table-responsive">
 						<table class="tt-table-shop-02">
 							<tbody>
