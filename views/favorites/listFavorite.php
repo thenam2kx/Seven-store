@@ -26,7 +26,14 @@
   <!-- CONTENT -->
   <!-- BANNERS -->
 
-
+  <div class="tt-breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="http://localhost/seven-store/">Trang chủ</a></li>
+        <li>Danh sách yêu thích</li>
+      </ul>
+    </div>
+  </div>
 
   <div id="tt-pageContent">
     <div class="container-indent">

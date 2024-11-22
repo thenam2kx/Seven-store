@@ -74,7 +74,7 @@
       <div class="tt-header-holder">
         <div class="tt-col-obj tt-obj-logo">
           <!-- logo -->
-          <a class="tt-logo tt-logo-alignment" href="index.php"><img src="assets/images/custom/logo2.png" alt="" class="loading" data-was-processed="true"></a>
+          <a class="tt-logo tt-logo-alignment" href="http://localhost/seven-store/"><img src="assets/images/custom/logo2.png" alt="" class="loading" data-was-processed="true"></a>
           <!-- /logo -->
         </div>
         <div class="tt-col-obj tt-obj-menu">
@@ -90,42 +90,7 @@
                     <a href="?act=products" title="Sản phẩm mới"><span>Sản phẩm</span></a>
                   </li>
                   <li class="dropdown megamenu tt-submenu">
-                    <a href="#" title="Sale"><span>Sale</span></a>
-                  </li>
-                  <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="#" title="Áo nam"><span>Áo nam<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128">
-                          <g>
-                            <path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path>
-                          </g>
-                        </svg></span></a>
-                    <div class="dropdown-menu">
-                      <div class="row tt-col-list">
-                        <div class="col">
-                          <h6 class="tt-title-submenu"><a href="#" title="Áo khoác"><span>Áo khoác</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Áo Sơ Mi"><span>Áo Sơ Mi</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Áo Polo"><span>Áo Polo</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Áo Thun"><span>Áo Thun</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Áo khoác"><span>Áo khoác</span></a></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="#" title="Quần nam"><span>Quần nam <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128">
-                          <g>
-                            <path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path>
-                          </g>
-                        </svg></span></a>
-                    <div class="dropdown-menu">
-                      <div class="row tt-col-list">
-                        <div class="col">
-                          <h6 class="tt-title-submenu"><a href="#" title="Quần Âu"><span>Quần Âu</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Quần Jeans"><span>Quần Jeans</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Quần Dài Kaki"><span>Quần Dài Kaki</span></a></h6>
-                          <h6 class="tt-title-submenu"><a href="#" title="Quần Short"><span>Quần Short</span></a></h6>
-                        </div>
-                      </div>
-                    </div>
+                    <a href="?act=listDiscount" title="khuyến mãi"><span>Khuyến mãi</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
                     <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
