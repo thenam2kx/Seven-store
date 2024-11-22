@@ -19,8 +19,8 @@ class AuthClientModel {
     return $this->db->execute($sql, $name, $email, $address, $phone, $date, $gender, $id);
   }
 
-  public function updatePassWord($id){
+  public function updatePassWord($id,$new_pass){
     $sql = "UPDATE nguoi_dungs SET mat_khau = ? WHERE id = ?";
-    return $this->db->execute($sql, $id);
+    return $this->db->execute($sql, $new_pass, $id);
   }
 }

@@ -93,15 +93,15 @@
                         <form class="form-default" action="?act=handleUpdatePassword" method="post">
                             <div class="form-group">
                                 <label for="pass" class="control-label">Nhập mật khẩu</label>
-                                <input type="text" name="old_pass" class="form-control" id="mat_khau">
+                                <input type="text" name="old_pass" class="form-control" id="mat_khau" required>
                             </div>
                             <div class="form-group">
                                 <label for="new_pass" class="control-label">Nhập mật khẩu mới</label>
-                                <input type="text" name="new_pass" class="form-control" id="new_pass">
+                                <input type="text" name="new_pass" class="form-control" id="new_pass" required>
                             </div>
                             <div class="form-group">
                                 <label for="re_pass" class="control-label">Nhập lại mật khẩu</label>
-                                <input type="text" name="re_pass" class="form-control" id="re_pass">
+                                <input type="text" name="re_pass" class="form-control" id="re_pass" required>
                             </div>
                             <div class="row tt-offset-21">
                                 <div class="col-auto">
