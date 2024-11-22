@@ -15,5 +15,4 @@ class BlogClientController
     $blogPost = $this->BlogClientModel->getBlogById($id);
     require_once 'views/Blog/BlogPost.php';
   }
-
 }

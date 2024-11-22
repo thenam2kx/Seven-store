@@ -60,4 +60,15 @@ match ($act) {
   // Card Action
   'addToCard' => (new CardController())->AddToCard(),
 
+
+  //Comment
+  'addComment' => (new ProductController())->addComment(),
+
+  //account
+  'account' => (new AuthClientController())->getAccount(),
+  'editAccount' => (new AuthClientController())->editAccount(),
+  'handleEditAccount' => (new AuthClientController())->handleEditAccount(),
+  'changePassword' => (new AuthClientController())->changePassword(),
+  'handleUpdatePassword' => (new AuthClientController())->handleChangePassword(),
+
 };
