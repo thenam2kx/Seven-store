@@ -225,7 +225,7 @@
                   </div>
                   <div class="tt-dropdown-inner">
                     <ul>
-                      <li><a href="#"><i class="icon-f-94"></i>Tài khoản</a></li>
+                      <li><a href="?act=account"><i class="icon-f-94"></i>Tài khoản</a></li>
                       <li><a href="?act=listFavorite&id=<?php echo $_SESSION['username']['id']; ?>"><i class="icon-n-072"></i>Danh sách yêu thích</a></li>
                       <li><a href="?act=signout"><i class="icon-f-77"></i>Đăng xuất</a></li>
                     </ul>
