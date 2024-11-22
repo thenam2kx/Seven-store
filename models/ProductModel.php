@@ -83,4 +83,14 @@ class ProductModel {
     return $this->db->queryOne($sql, $id);
   }
 
+  public function getComment($idPrd) {
+    $sql ="SELECT * from binh_luans inner join nguoi_dungs on binh_luans.nguoi_dung_id = nguoi_dungs.id where binh_luans.san_pham_id = ? ORDER BY binh_luans.ngay_tao DESC";
+    return $this->db->query($sql, $idPrd);
+  }
+
+  public function addComment($idProduct, $idUser, $content) {
+    $sql = "INSERT INTO binh_luans (san_pham_id, nguoi_dung_id, noi_dung) VALUES (?, ?, ?)";
+    return $this->db->query($sql, $idProduct, $idUser, $content);
+  }
+
 }
