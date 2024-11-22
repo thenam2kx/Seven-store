@@ -72,7 +72,7 @@ public function signup()
       $gender = $_POST['gioi_tinh'];
       $result = $this->AuthClientModel->updateAccount($id, $name, $email, $address, $phone, $date, $gender);
       if ($result){
-        header("Location: ?act=account");
+        header("Location: ?act=account&=$id");
       }
     }
   }
@@ -88,17 +88,29 @@ public function signup()
   public function handleChangePassword(){
     if($_SERVER['REQUEST_METHOD']== 'POST'){
       $id = $_SESSION['username']['id'];
+      // var_dump($id); die();
       $old_pass=$_POST['old_pass'];
+      // var_dump($old_pass); die();
       $new_pass=$_POST['new_pass'];
+      // var_dump($new_pass); die();
       $re_pass=$_POST['re_pass'];
+      // var_dump($_SESSION['username']); die();
       if(isset($old_pass)&& $old_pass!==''&& $old_pass!==null&& $old_pass == $_SESSION['username']['mat_khau']){
+        // var_dump($old_pass);die();
         if($new_pass == $re_pass){
-          $result=$this->AuthClientModel->updatePassWord($id);
+        // var_dump($new_pass);die();
+          $result=$this->AuthClientModel->updatePassWord($id,$new_pass);
+          // var_dump($result);die();
           if($result){
-            header('location: ?act=account');
+            $_SESSION['username']['mat_khau'] = $new_pass;
+            header('location: ?act=account&='.$id);
           }
-          
+        }else{
+          header('location: ?act=changePassword');
         }
+      }else{
+        // header('location: ?act=changePassword');
+        echo"balbal";
       }
     }
   }
