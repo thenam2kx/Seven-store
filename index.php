@@ -12,7 +12,7 @@ require_once './controllers/FavoriteProductController.php';
 require_once './controllers/ProductController.php';
 require_once './controllers/BlogClientController.php';
 require_once './controllers/CardController.php';
-
+require_once './controllers/ContactController.php';
 require_once './controllers/DiscountCilentController.php';
 
 
@@ -27,6 +27,7 @@ require_once './models/BlogClientModel.php';
 require_once './models/CardModel.php';
 
 require_once './models/DiscountCilentModel.php';
+require_once './models/ContactModel.php';
 
 
 
@@ -79,5 +80,7 @@ match ($act) {
   // Discount
   'listDiscount' => (new DiscountCilentController())->index(),
 
-
+    // contact
+    'contact'  =>  (new  ContactController())->create(),
+    'addContact'  =>  (new  ContactController())->add(),
 };
