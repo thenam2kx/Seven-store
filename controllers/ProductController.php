@@ -9,20 +9,37 @@ class ProductController
   }
   public function index()
   {
-    // $results = $this->ProductModel->getProducts();
     $result = [];
     $resultCategory = $this->ProductModel->getAllCategory();
     $keySearch = isset($_POST['keysearch']) ? $_POST['keysearch'] : '';
     $sortPrice = isset($_GET['sortPrice']) ? $_GET['sortPrice'] : '';
     $sortLimit = isset($_GET['sortLimit']) ? $_GET['sortLimit'] : '';
-    $sortCategory = isset($_GET['category']) ? $_GET['category'] : '';
-    $priceMin = isset($_GET['priceMin']) ? $_GET['priceMin'] : '';
-    $priceMax = isset($_GET['priceMax']) ? $_GET['priceMax'] : '';
 
+    // Pagiante
     $limit = isset($_GET['limit']) ? $_GET['limit'] : 16;
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $totalResult = $this->ProductModel->getTotalPage();
     $totalPages = ceil($totalResult / $limit);
+
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+
+    $getMaxPriceFromProducts = $this->ProductModel->getMaxPriceFromProducts();
+    $minPrice= 0;
+    $maxPrice =  $getMaxPriceFromProducts['gia_lon_nhat'];
+    $interval = ceil(($maxPrice - $minPrice) / 3 / 100000) * 100000;
+    $priceRanges = [
+      ['min' => $minPrice, 'max' => $minPrice + $interval],
+      ['min' => $minPrice + $interval, 'max' => $minPrice + 2 * $interval],
+      ['min' => $minPrice + 2 * $interval, 'max' => $maxPrice],
+    ];
+
+    $priceMax = null;
+    $priceMin = null;
+    $priceDetails = isset($_POST['price']) ? json_decode($_POST['price'], true) : null;
+    if ($priceDetails) {
+      $priceMax = $priceDetails['max'];
+      $priceMin = $priceDetails['min'];
+    }
 
     if ($keySearch !== '') {
       $results = $this->ProductModel->getProducts($limit = 16, $page = 1, $keySearch);
@@ -30,14 +47,11 @@ class ProductController
       $results = $this->ProductModel->getProductsByPriceSort($limit = 16, $page = 1, $sortPrice);
     } else if ($sortLimit !== '') {
       $results = $this->ProductModel->getProducts($sortLimit, $page = 1);
-    } else if ($sortCategory !== '') {
-      $results = $this->ProductModel->getProductsByCategory($sortCategory);
-    } else if ($priceMin !== '' && $priceMax !== '') {
-      $results = $this->ProductModel->getProductsByPrice($priceMin, $priceMax);
+    } else if (isset($_POST['submit']) && $category !== '' || $priceMax) {
+      $results = $this->ProductModel->getProductsByPriceAndCategory($category, $priceMax, $priceMin);
     } else {
       $results = $this->ProductModel->getProducts($limit, $page);
     }
-
 
     require_once 'views/products/listProducts.php';
   }
