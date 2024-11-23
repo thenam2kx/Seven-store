@@ -15,6 +15,9 @@ require_once './controllers/CardController.php';
 
 require_once './controllers/DiscountCilentController.php';
 
+require_once './controllers/OrderController.php';
+
+
 
 // Require all file Models
 require_once './models/HomeModel.php';
@@ -28,6 +31,7 @@ require_once './models/CardModel.php';
 
 require_once './models/DiscountCilentModel.php';
 
+require_once './models/OrderModel.php';
 
 
 
@@ -68,4 +72,8 @@ match ($act) {
   // Discount
   'listDiscount' => (new DiscountCilentController())->index(),
 
+
+  // Order Management
+'listOrders' => (new OrderController())->index(),
+'deleteOrder' => (new OrderController())->deleteOrder(),
 };

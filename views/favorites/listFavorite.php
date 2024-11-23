@@ -56,7 +56,7 @@
                 </div>
                 <div class="tt-col-btn">
                   <a href="#" class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct"><i class="icon-f-39"></i>Thêm vào giỏ</a>
-                  <a class="btn-link" href="#" data-toggle="modal" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem sản phẩm</a>
+                  <a class="btn-link" href="?act=productDetail&id=<?= $result['id'] ?>" class="tt-btn-quickview" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem sản phẩm</a>
                   <a class="btn-link js-removeitem" href="?act=listFavorite&id=<?php echo $_SESSION['username']['id']; ?>" onclick="confirmDelete(<?= $result['id'] ?>)"><i class="icon-h-02"></i>Xóa</a>
                 </div>
               </div>
@@ -78,10 +78,7 @@
   <style>
     .loading {
       width: 100px;
-      /* Set your fixed width */
       height: 100px;
-      /* Set your fixed height */
-
     }
   </style>
   <!-- FOOTER -->

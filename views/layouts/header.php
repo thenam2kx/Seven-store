@@ -1,37 +1,20 @@
 <header id="tt-header">
   <nav class="panel-menu mobile-main-menu">
-
     <div class="mmpanels">
       <div class="mmpanel mmhidden" id="mm5">
         <ul>
-          <li><a href="#" data-target="#" class="mm-prev-level">Back</a></li>
-          <li><a href="listing-left-column.html" class="mm-original-link">Danh mục sản phẩm</a></li>
           <li>
-            <a href="?act=products" data-target="?act=products" class="mm-next-level">Sản phẩm</a>
-
+          <a href="?act=products" title="Sản phẩm"><span>Sản phẩm</span></a>
           </li>
           <li>
-            <a href="#mm7" data-target="#mm7" class="mm-next-level">Sale</a>
-
+            <a href="?act=listDiscount" title="Mã khuyến mãi"><span>Khuyến mãi</span></a>
           </li>
           <li>
-            <a href="#mm8" data-target="#mm8" class="mm-next-level">Áo phông</a>
+            <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
           </li>
           <li>
-            <a href="#mm8" data-target="#mm8" class="mm-next-level">Áo khoác</a>
+            <a href="#" title="Liên hệ"><span>Liên hệ</span></a>
           </li>
-          <li>
-            <a href="#mm8" data-target="#mm8" class="mm-next-level">Áo sơ mi</a>
-          </li>
-          <li>
-            <a href="#mm9" data-target="#mm9" class="mm-next-level">Quần nam</a>
-          </li>
-        </ul>
-      </div>
-      <div class="mmpanel mmhidden" id="mm6">
-        <ul>
-          <li><a href="#" data-target="#" class="mm-prev-level">Back</a></li>
-          <li><a href="#" class="mm-original-link">Sản phẩm mới</a></li>
         </ul>
       </div>
   </nav>
@@ -62,7 +45,7 @@
       <div class="row">
         <div class="tt-logo-container">
           <!-- mobile logo -->
-          <a class="tt-logo tt-logo-alignment" href="index.php"><img src="assets/images/custom/logo2.png" alt=""></a>
+          <a class="tt-logo tt-logo-alignment" href="http://localhost/seven-store/"><img src="assets/images/custom/logo2.png" alt=""></a>
           <!-- /mobile logo -->
         </div>
       </div>
@@ -226,6 +209,7 @@
                   <div class="tt-dropdown-inner">
                     <ul>
                       <li><a href="#"><i class="icon-f-94"></i>Tài khoản</a></li>
+                      <li><a href="?act=listOrders"><i class="icon-f-43"></i>Đơn hàng của tôi</a></li>
                       <li><a href="?act=listFavorite&id=<?php echo $_SESSION['username']['id']; ?>"><i class="icon-n-072"></i>Danh sách yêu thích</a></li>
                       <li><a href="?act=signout"><i class="icon-f-77"></i>Đăng xuất</a></li>
                     </ul>
