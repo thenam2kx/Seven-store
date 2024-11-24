@@ -133,7 +133,7 @@
             <div class="tt-cart tt-dropdown-obj" data-tooltip="Giỏ hàng" data-tposition="bottom">
               <button class="tt-dropdown-toggle">
                 <i class="icon-f-39"></i>
-                <span class="tt-badge-cart"><?= $totalProductsFromCart['tong_so_luong'] ?></span>
+                <span class="tt-badge-cart"><?= isset($totalProductsFromCart['tong_so_luong']) ? $totalProductsFromCart['tong_so_luong'] : 0 ?></span>
               </button>
               <div class="tt-dropdown-menu">
                 <div class="tt-mobile-add">
@@ -161,7 +161,7 @@
                       </div>
                       <div class="tt-cart-total-row">
                         <div class="tt-cart-total-title">Tổng tiền:</div>
-                        <div class="tt-cart-total-price"><?= formatCurrency($totalPrice['tong_tien']) ?></div>
+                        <div class="tt-cart-total-price"><?= formatCurrency(isset($totalPrice['tong_tien']) ? $totalPrice['tong_tien'] : 0) ?></div>
                       </div>
                       <div class="tt-cart-btn">
                         <div class="tt-item">

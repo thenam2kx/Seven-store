@@ -29,6 +29,8 @@ class CartController
         } else {
           header('Location: ?act=listCart');
         }
+      } else {
+        header('Location: http://localhost/seven-store/admin/?act=signin');
       }
       // header('Location: ?act=products');
     } catch (\Throwable $th) {
