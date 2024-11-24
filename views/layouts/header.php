@@ -1,3 +1,15 @@
+<?php
+  $listProductsFromCardHeader = [];
+  $idUserCart = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
+  if(isset($idUserCart) && $idUserCart !== 0) {
+    $cartModelHeader = new CartModel();
+    $getGhid = $cartModelHeader->getCartOfUser($idUserCart);
+    $ghid = isset($getGhid) ? $getGhid['ghid'] : 0;
+    $totalPrice = $cartModelHeader->totalPriceFromCart($ghid);
+    $totalProductsFromCart = $cartModelHeader->totalProductsFromCart($ghid);
+    $listProductsFromCardHeader = $cartModelHeader->getProductsFromCard($idUserCart);
+  }
+?>
 <header id="tt-header">
   <nav class="panel-menu mobile-main-menu">
 
@@ -96,7 +108,7 @@
                     <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="#" title="Liên hệ"><span>Liên hệ</span></a>
+                    <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>
                   </li>
                 </ul>
               </nav>
@@ -138,7 +150,7 @@
             <div class="tt-cart tt-dropdown-obj" data-tooltip="Giỏ hàng" data-tposition="bottom">
               <button class="tt-dropdown-toggle">
                 <i class="icon-f-39"></i>
-                <span class="tt-badge-cart">3</span>
+                <span class="tt-badge-cart"><?= $totalProductsFromCart['tong_so_luong'] ?></span>
               </button>
               <div class="tt-dropdown-menu">
                 <div class="tt-mobile-add">
@@ -147,63 +159,34 @@
                 </div>
                 <div class="tt-dropdown-inner">
                   <div class="tt-cart-layout">
-                    <!-- layout emty cart -->
-                    <!-- <a href="empty-cart.html" class="tt-cart-empty">
-											<i class="icon-f-39"></i>
-											<p>No Products in the Cart</p>
-										</a> -->
                     <div class="tt-cart-content">
                       <div class="tt-cart-list">
-                        <div class="tt-item">
-                          <a href="#">
-                            <div class="tt-item-img">
-                              <img src="assets/images/loader.svg" data-src="assets/images/product/product-01.jpg" alt="">
-                            </div>
-                            <div class="tt-item-descriptions">
-                              <h2 class="tt-title">Flared Shift Dress</h2>
-                              <ul class="tt-add-info">
-                                <li>Yellow, Material 2, Size 58,</li>
-                                <li>Vendor: Addidas</li>
-                              </ul>
-                              <div class="tt-quantity">1 X</div>
-                              <div class="tt-price">$12</div>
-                            </div>
-                          </a>
-                          <div class="tt-item-close">
-                            <a href="#" class="tt-btn-close"></a>
+                        <?php foreach($listProductsFromCardHeader as $row): ?>
+                          <div class="tt-item">
+                            <a href="?act=productDetail&id=<?= $row['spid'] ?>">
+                              <div class="tt-item-img">
+                                <img src="admin/<?= $row['anh_dai_dien'] ?>" data-src="admin/<?= $row['anh_dai_dien'] ?>" alt="">
+                              </div>
+                              <div class="tt-item-descriptions">
+                                <h2 class="tt-title"><?= $row['ten_san_pham'] ?></h2>
+                                <div class="tt-quantity mt-2"><?= $row['so_luong'] ?> X</div>
+                                <div class="tt-price"><?= formatCurrency($row['gia_khuyen_mai']) ?></div>
+                              </div>
+                            </a>
                           </div>
-                        </div>
-                        <div class="tt-item">
-                          <a href="#">
-                            <div class="tt-item-img">
-                              <img src="assets/images/loader.svg" data-src="assets/images/product/product-02.jpg" alt="">
-                            </div>
-                            <div class="tt-item-descriptions">
-                              <h2 class="tt-title">Flared Shift Dress</h2>
-                              <ul class="tt-add-info">
-                                <li>Yellow, Material 2, Size 58,</li>
-                                <li>Vendor: Addidas</li>
-                              </ul>
-                              <div class="tt-quantity">1 X</div>
-                              <div class="tt-price">$18</div>
-                            </div>
-                          </a>
-                          <div class="tt-item-close">
-                            <a href="#" class="tt-btn-close"></a>
-                          </div>
-                        </div>
+                        <?php endforeach ?>
                       </div>
                       <div class="tt-cart-total-row">
-                        <div class="tt-cart-total-title">SUBTOTAL:</div>
-                        <div class="tt-cart-total-price">$324</div>
+                        <div class="tt-cart-total-title">Tổng tiền:</div>
+                        <div class="tt-cart-total-price"><?= formatCurrency($totalPrice['tong_tien']) ?></div>
                       </div>
                       <div class="tt-cart-btn">
                         <div class="tt-item">
-                          <a href="#" class="btn">TIẾN HÀNH THANH TOÁN</a>
+                          <a href="#" class="btn">TIẾN HÀNH ĐẶT HÀNG</a>
                         </div>
                         <div class="tt-item">
-                          <a href="#" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>
-                          <a href="#" class="btn btn-border tt-hidden-desctope">Xem giỏ hàng</a>
+                          <a href="?act=listCart" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>
+                          <a href="?act=listCart" class="btn btn-border tt-hidden-desctope">Xem giỏ hàng</a>
                         </div>
                       </div>
                     </div>

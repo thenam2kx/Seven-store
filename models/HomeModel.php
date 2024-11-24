@@ -9,7 +9,7 @@ class HomeModel {
   public function getProductsNew($limit = 8, $page = 1, $keySearch = "")
   {
     $offset = ($page - 1) * $limit;
-    $sql = "select sp.id, sp.ten_san_pham, sp.gia_ban, sp.gia_khuyen_mai, sp.anh_dai_dien, dm.ten_danh_muc
+    $sql = "select sp.id, sp.ten_san_pham, sp.gia_ban, sp.gia_khuyen_mai, sp.anh_dai_dien, dm.ten_danh_muc, dm.id as dmid
       from san_phams sp
       join danh_mucs dm on sp.danh_muc_id = dm.id ";
     if ($keySearch !== '') {

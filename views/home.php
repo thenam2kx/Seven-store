@@ -123,7 +123,7 @@
               <div class="tt-description">
                 <div class="tt-row">
                   <ul class="tt-add-info">
-                    <li><a href="#"><?= $result['ten_danh_muc'] ?></a></li>
+                    <li><a href="?act=products&category=<?= $result['dmid'] ?>"><?= $result['ten_danh_muc'] ?></a></li>
                   </ul>
                   <div class="tt-rating">
                     <?php
@@ -146,10 +146,10 @@
                     ?>
                   </div>
                 </div>
-                <h2 class="tt-title"><a href="?act=productDetail&id=<?= $result['id'] ?>" style="display: inline-block; margin: 4px 0;"><?= $result['ten_san_pham'] ?></a></h2>
+                <h2 class="tt-title"><a href="?act=productDetail&id=<?= $result['id'] ?>" style="display: inline-block; margin: 4px 0;"><?=  $result['ten_san_pham'] ?></a></h2>
                 <div class="tt-price prdPrice">
-                  <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= preg_replace('/\.00$/', '', $result['gia_ban']) ?><sup>đ</sup></div>
-                  <div><?= preg_replace('/\.00$/', '', $result['gia_khuyen_mai']) ?><sup>đ</sup></div>
+                  <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= formatCurrency($result['gia_ban']) ?><sup>đ</sup></div>
+                  <div><?= formatCurrency($result['gia_khuyen_mai']) ?><sup>đ</sup></div>
                 </div>
               </div>
             </div>
@@ -158,6 +158,7 @@
       </div>
     </div>
   </div>
+
 
 
   <!-- PRODUCTS BEST SELLING -->
@@ -212,8 +213,8 @@
                 </div>
                 <h2 class="tt-title"><a href="product.html" style="display: inline-block; margin: 4px 0;"><?= $result['ten_san_pham'] ?></a></h2>
                 <div class="tt-price prdPrice">
-                  <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= preg_replace('/\.00$/', '', $result['gia_ban']) ?> VND</div>
-                  <div><?= preg_replace('/\.00$/', '', $result['gia_khuyen_mai']) ?> VND</div>
+                  <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= formatCurrency($result['gia_ban'])  ?> VND</div>
+                  <div><?= formatCurrency($result['gia_khuyen_mai']) ?></div>
                 </div>
               </div>
             </div>
