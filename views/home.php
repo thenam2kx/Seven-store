@@ -168,7 +168,7 @@
         <h1 class="tt-title">Sản phẩm nổi bật</h1>
       </div>
       <div class="row tt-layout-product-item">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($resultProductPopular as $result): ?>
           <div class="col-6 col-md-4 col-lg-3">
             <div class="tt-product thumbprod-center">
               <div class="tt-image-box boxImage">
