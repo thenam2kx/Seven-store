@@ -17,6 +17,9 @@ require_once './controllers/CartController.php';
 require_once './controllers/ContactController.php';
 require_once './controllers/DiscountCilentController.php';
 
+require_once './controllers/OrderController.php';
+
+
 
 // Require all file Models
 require_once './models/HomeModel.php';
@@ -29,7 +32,13 @@ require_once './models/BlogClientModel.php';
 require_once './models/CartModel.php';
 
 require_once './models/DiscountCilentModel.php';
+
+
+require_once './models/OrderModel.php';
+
+
 require_once './models/ContactModel.php';
+
 
 
 // Route
@@ -81,7 +90,14 @@ match ($act) {
   // Discount
   'listDiscount' => (new DiscountCilentController())->index(),
 
+
+
+  // Order Management
+'listOrders' => (new OrderController())->index(),
+'deleteOrder' => (new OrderController())->deleteOrder(),
+
     // contact
     'contact'  =>  (new  ContactController())->create(),
     'addContact'  =>  (new  ContactController())->add(),
+
 };
