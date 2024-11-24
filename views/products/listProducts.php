@@ -184,7 +184,7 @@
                         </div>
                         <div class="tt-product-inside-hover">
                           <div class="tt-row-btn">
-                            <a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">Thêm vào giỏ hàng</a>
+                            <a href="?act=addToCard&idPrd=<?= $result['spid'] ?>" class="tt-btn-addtocart thumbprod-button-bg" data-target="#modalAddToCartProduct">Thêm vào giỏ hàng</a>
                           </div>
                           <div class="tt-row-btn">
                             <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
