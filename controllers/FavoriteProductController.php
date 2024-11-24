@@ -10,7 +10,9 @@ class FavoriteProductController
   public function addFavorite()
   {
     try {
-      $FavoriteProductModel = new FavoriteProductModel();
+      $checkUser = isset($_SESSION['username']) ? $_SESSION['username']['id'] : null;
+      if ($checkUser) {
+        $FavoriteProductModel = new FavoriteProductModel();
         $san_pham_id = $_GET['id'];
         // var_dump($san_pham_id); die();
         $nguoi_dung_id = $_SESSION['username']['id'];
@@ -20,6 +22,9 @@ class FavoriteProductController
           $nguoi_dung_id,
         );
         header('location: ?act=listFavorite&id='.$nguoi_dung_id);
+      } else {
+        header('Location: http://localhost/seven-store/admin/?act=signin');
+      }
     } catch (\Throwable $th) {
       throw $th;
     }

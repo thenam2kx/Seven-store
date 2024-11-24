@@ -171,11 +171,24 @@
                             <li><a href="#"><?= $result['ten_danh_muc'] ?></a></li>
                           </ul>
                           <div class="tt-rating">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star-half"></i>
-                            <i class="icon-star-empty"></i>
+                          <?php
+                            $point = ($this->ProductModel->getTotalRateAndCount($result['spid']))['trung_binh_diem'];
+                            $rating = isset($point) ? $point : 0;
+                            $fullStars = floor($rating);
+                            $hasHalfStar = ($rating - $fullStars) >= 0.5;
+                            $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
+                            for ($i = 0; $i < $fullStars; $i++) {
+                              echo '<i class="icon-star"></i>';
+                            }
+                            // Render sao nửa (nếu có)
+                            if ($hasHalfStar) {
+                              echo '<i class="icon-star-half"></i>';
+                            }
+                            // Render sao rỗng
+                            for ($i = 0; $i < $emptyStars; $i++) {
+                              echo '<i class="icon-star-empty"></i>';
+                            }
+                            ?>
                           </div>
                         </div>
                         <h2 class="tt-title"><a href="?act=productDetail&id=<?= $result['spid'] ?>"><?= $result['ten_san_pham'] ?></a></h2>

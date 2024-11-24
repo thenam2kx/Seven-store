@@ -53,7 +53,7 @@ class ProductModel {
   }
 
   public function getDetailProduct($id) {
-    $sql = "select *, sp.id as spid, dm.id as dmid from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.id = ?";
+    $sql = "select *, sp.id as spid, sp.so_luong, dm.id as dmid from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.id = ?";
     return $this->db->queryOne($sql, $id);
   }
 
