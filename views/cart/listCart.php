@@ -118,13 +118,13 @@
                   <tbody>
                     <tr>
                       <th>Tổng tiền trong giỏ hàng</th>
-                      <td><?= formatCurrency($totalPrice['tong_tien']) ?></td>
+                      <td><?= formatCurrency($totalPrice['tong_tien'] > 0 ? $totalPrice['tong_tien'] : 0) ?></td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
                       <th>Thanh toán</th>
-                      <td><?= formatCurrency($totalPrice['tong_tien']) ?></td>
+                      <td><?= formatCurrency($totalPrice['tong_tien'] > 0 ? $totalPrice['tong_tien'] : 0) ?></td>
                     </tr>
                   </tfoot>
                 </table>

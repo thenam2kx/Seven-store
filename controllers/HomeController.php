@@ -11,6 +11,8 @@ class HomeController
     $results = $this->HomeModel->getProductsNew();
     $resultsBanner = $this->HomeModel->getImageBanner();
     // $getImageSecond = $this->HomeModel->getImageSecond();
+    $resultProductPopular = $this->HomeModel->getProductsPopular();
+
     require_once 'views/home.php';
   }
 
