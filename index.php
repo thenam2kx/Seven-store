@@ -11,8 +11,10 @@ require_once './controllers/AuthClientController.php';
 require_once './controllers/FavoriteProductController.php';
 require_once './controllers/ProductController.php';
 require_once './controllers/BlogClientController.php';
-require_once './controllers/CardController.php';
 
+require_once './controllers/CartController.php';
+
+require_once './controllers/ContactController.php';
 require_once './controllers/DiscountCilentController.php';
 
 require_once './controllers/OrderController.php';
@@ -27,11 +29,15 @@ require_once './models/FavoriteProductModel.php';
 
 require_once './models/ProductModel.php';
 require_once './models/BlogClientModel.php';
-require_once './models/CardModel.php';
+require_once './models/CartModel.php';
 
 require_once './models/DiscountCilentModel.php';
 
+
 require_once './models/OrderModel.php';
+
+
+require_once './models/ContactModel.php';
 
 
 
@@ -66,14 +72,32 @@ match ($act) {
   'blog-post' => (new BlogClientController())->blogPost(),
 
   // Card Action
-  'addToCard' => (new CardController())->AddToCard(),
+  'addToCard' => (new CartController())->AddToCard(),
+  'listCart' => (new CartController())->ListCart(),
+  'deleteProductFromCart' => (new CartController())->deleteProductFromCart(),
+  'deleteAllProductFromCart' => (new CartController())->deleteAllProductFromCart(),
 
+  //Comment
+  'addComment' => (new ProductController())->addComment(),
+
+  //account
+  'account' => (new AuthClientController())->getAccount(),
+  'editAccount' => (new AuthClientController())->editAccount(),
+  'handleEditAccount' => (new AuthClientController())->handleEditAccount(),
+  'changePassword' => (new AuthClientController())->changePassword(),
+  'handleUpdatePassword' => (new AuthClientController())->handleChangePassword(),
 
   // Discount
   'listDiscount' => (new DiscountCilentController())->index(),
 
 
+
   // Order Management
 'listOrders' => (new OrderController())->index(),
 'deleteOrder' => (new OrderController())->deleteOrder(),
+
+    // contact
+    'contact'  =>  (new  ContactController())->create(),
+    'addContact'  =>  (new  ContactController())->add(),
+
 };

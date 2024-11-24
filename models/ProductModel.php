@@ -9,7 +9,7 @@ class ProductModel {
   public function getProducts($limit = 8, $page = 1, $keySearch = "")
   {
     $offset = ($page - 1) * $limit;
-    $sql = "select sp.id, sp.ten_san_pham, sp.gia_ban, sp.gia_khuyen_mai, sp.anh_dai_dien, dm.ten_danh_muc
+    $sql = "select sp.id as spid, sp.ten_san_pham, sp.gia_ban, sp.gia_khuyen_mai, sp.anh_dai_dien, dm.ten_danh_muc
       from san_phams sp
       join danh_mucs dm on sp.danh_muc_id = dm.id ";
     if ($keySearch !== '') {
@@ -29,19 +29,22 @@ class ProductModel {
   public function getProductsByPriceSort($limit = 16, $page = 1, $condition = "")
   {
     $offset = ($page - 1) * $limit;
-    $sql = "select * from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id ORDER BY sp.gia_khuyen_mai $condition LIMIT $offset, $limit";
+    $sql = "select *, sp.id as spid, dm.id as dmid from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id ORDER BY sp.gia_khuyen_mai $condition LIMIT $offset, $limit";
     return $this->db->query($sql);
   }
 
-  public function getProductsByCategory($condition = 1)
-  {
-    $sql = "select * from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where dm.id =?";
-    return $this->db->query($sql, $condition);
+  public function getMaxPriceFromProducts() {
+    $sql = 'select max(sp.gia_khuyen_mai) as gia_lon_nhat from san_phams sp';
+    return $this->db->queryOne($sql);
   }
 
-  public function getProductsByPrice($min, $max) {
-    $sql = "select * from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.gia_khuyen_mai > ? and sp.gia_khuyen_mai < ?";
-    return $this->db->query($sql, $min, $max);
+  public function getProductsByPriceAndCategory($categoryId, $priceMax, $priceMin) {
+    if ($categoryId !== '' &&  $priceMax !== null && $priceMin !== null) {
+      $sql = 'select *, sp.id as spid, dm.id as dmid from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.danh_muc_id = ? and sp.gia_khuyen_mai between ? and ?';
+    } else if ($categoryId !== '' || $priceMax !== null || $priceMin !== null) {
+      $sql = 'select *, sp.id as spid, dm.id as dmid from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.danh_muc_id = ? or sp.gia_khuyen_mai between ? and ?';
+    }
+    return $this->db->query($sql, $categoryId, $priceMin, $priceMax);
   }
 
   public function getAllCategory() {
@@ -50,7 +53,7 @@ class ProductModel {
   }
 
   public function getDetailProduct($id) {
-    $sql = "select * from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.id = ?";
+    $sql = "select *, sp.id as spid, dm.id as dmid from san_phams sp join danh_mucs dm on sp.danh_muc_id = dm.id where sp.id = ?";
     return $this->db->queryOne($sql, $id);
   }
 
@@ -81,6 +84,16 @@ class ProductModel {
       JOIN danh_gias dg ON sp.id = dg.san_pham_id
       WHERE sp.id = ?";
     return $this->db->queryOne($sql, $id);
+  }
+
+  public function getComment($idPrd) {
+    $sql ="SELECT * from binh_luans inner join nguoi_dungs on binh_luans.nguoi_dung_id = nguoi_dungs.id where binh_luans.san_pham_id = ? ORDER BY binh_luans.ngay_tao DESC";
+    return $this->db->query($sql, $idPrd);
+  }
+
+  public function addComment($idProduct, $idUser, $content) {
+    $sql = "INSERT INTO binh_luans (san_pham_id, nguoi_dung_id, noi_dung) VALUES (?, ?, ?)";
+    return $this->db->query($sql, $idProduct, $idUser, $content);
   }
 
 }

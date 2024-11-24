@@ -142,7 +142,11 @@
               <h1 class="tt-title"><?= $infoProduct['ten_san_pham'] ?></h1>
               <div class="tt-price">
                 <span class="new-price">
-                  <?= preg_replace('/\.00$/', '', $infoProduct['gia_khuyen_mai']) ?> <sup>đ</sup>
+                  <?= formatCurrency($infoProduct['gia_khuyen_mai']) ?>
+                </span>
+
+                <span class="new-price" style="color: gray; font-size: 16px; text-decoration: line-through; margin-left: 10px;">
+                  <?= formatCurrency($infoProduct['gia_ban']) ?>
                 </span>
               </div>
               <div class="tt-review">
@@ -293,6 +297,53 @@
                     </div>
                   </form>
                 </div>
+              </div>
+            </div>
+          </div>
+          <!-- Comment -->
+          <div class="tt-item" id="comment">
+            <div class="tt-collapse-title tt-poin-comments">Bình luận (<?= sizeof($comment) ?>)</div>
+            <div class="tt-collapse-content" style="display: none;">
+              <div class="tt-review-block">
+                <!-- <div class="tt-row-custom-02">
+                  <div class="col-item"></div>
+                  <div class="col-item">
+                    <a href="#">Viết bình luận</a>
+                  </div>
+                </div> -->
+                <div class="tt-review-form #ffffff">
+                  <div class="tt-message">
+                    Viết bình luận của bạn cho sản phẩm
+                  </div>
+                  <form class="form-comment flex" action="?act=addComment&id=<?= $idPrd ?>" method="post">
+                    <div class="form-group">
+                      <input class="form-control " name="content" placeholder="Enter your review" rows="8"></input>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary">Thêm bình luận</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="tt-review-comments">
+                  <?php foreach ($comment as $item): ?>
+                    <div class="tt-item">
+                      <div class="tt-avatar">
+                        <a href="#">
+                          <img data-src="images/product/single/review-comments-img-01.jpg" alt="" class="loaded" src="images/product/single/review-comments-img-01.jpg" data-was-processed="true">
+                        </a>
+                      </div>
+                      <div class="tt-content">
+                        <div class="tt-comments-title">
+                          <span class="username"><span><?= $item['ho_ten'] ?></span></span>
+                          <span class="time"> - <?= date('d-m-Y', strtotime($item['ngay_tao'])) ?></span></span>
+                        </div>
+                        <p><?= $item['noi_dung'] ?></p>
+                      </div>
+                    </div>
+                  <?php endforeach ?>
+                </div>
+
               </div>
             </div>
           </div>
