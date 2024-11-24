@@ -108,7 +108,7 @@
                     <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="#" title="Liên hệ"><span>Liên hệ</span></a>
+                    <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>
                   </li>
                 </ul>
               </nav>
