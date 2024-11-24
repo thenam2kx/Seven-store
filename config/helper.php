@@ -1,5 +1,9 @@
 <?php
 
+function formatCurrency($amount) {
+  return number_format($amount, 0, '', '.') . '<sup>đ</sup>';
+}
+
 if (!function_exists('debug')) {
   function debug($data)
   {

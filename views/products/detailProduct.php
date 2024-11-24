@@ -142,7 +142,11 @@
               <h1 class="tt-title"><?= $infoProduct['ten_san_pham'] ?></h1>
               <div class="tt-price">
                 <span class="new-price">
-                  <?= preg_replace('/\.00$/', '', $infoProduct['gia_khuyen_mai']) ?> <sup>đ</sup>
+                  <?= formatCurrency($infoProduct['gia_khuyen_mai']) ?>
+                </span>
+
+                <span class="new-price" style="color: gray; font-size: 16px; text-decoration: line-through; margin-left: 10px;">
+                  <?= formatCurrency($infoProduct['gia_ban']) ?>
                 </span>
               </div>
               <div class="tt-review">
@@ -302,7 +306,7 @@
             <div class="tt-collapse-content" style="display: none;">
               <div class="tt-review-block">
                 <!-- <div class="tt-row-custom-02">
-                  <div class="col-item"></div>  
+                  <div class="col-item"></div>
                   <div class="col-item">
                     <a href="#">Viết bình luận</a>
                   </div>
@@ -339,7 +343,7 @@
                     </div>
                   <?php endforeach ?>
                 </div>
-                
+
               </div>
             </div>
           </div>

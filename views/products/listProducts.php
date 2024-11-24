@@ -37,66 +37,52 @@
     <div class="container-indent">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-lg-3 col-xl-3 leftColumn aside" id="js-leftColumn-aside">
-            <div class="tt-btn-col-close">
-              <a href="#">Close</a>
-            </div>
-            <div class="tt-collapse open tt-filter-detach-option">
-              <div class="tt-collapse-content">
-                <div class="filters-mobile">
-                  <div class="filters-row-select">
+          <!-- Sort -->
+            <div class="col-md-4 col-lg-3 col-xl-3 leftColumn aside" id="js-leftColumn-aside">
+              <form action="?act=products" method="post">
+                <div class="tt-collapse open tt-filter-detach-option">
+                  <div class="tt-collapse-content">
+                    <div class="filters-mobile">
+                      <div class="filters-row-select">
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div class="tt-collapse open">
+                  <h3 class="tt-collapse-title">Sản phẩm theo danh mục</h3>
+                  <div class="tt-collapse-content">
+                    <?php foreach ($resultCategory as $row): ?>
+                      <div class="form-check">
+                        <input class="form-check-input" name="category" type="radio" value="<?= $row['id'] ?>" id="flexCheck<?= $row['id'] ?>">
+                        <label class="form-check-label" for="flexCheck<?= $row['id'] ?>">
+                          <?= $row['ten_danh_muc'] ?>
+                        </label>
+                      </div>
+                    <?php endforeach ?>
+                  </div>
+                </div>
+                <div class="tt-collapse open">
+                  <h3 class="tt-collapse-title">Lọc theo giá</h3>
+                  <div class="tt-collapse-content">
+                      <?php foreach($priceRanges as $row): ?>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="price" value='<?= json_encode(["min" => $row["min"], "max" => $row["max"]]) ?>' id="checkbox-<?= $row['min'] ?>">
+                          <label class="form-check-label" for="checkbox-<?= $row['min'] ?>">
+                            <?= formatCurrency($row['min']) ?> — <?= formatCurrency($row['max']) ?>
+                          </label>
+                        </div>
+                      <?php endforeach ?>
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-outline-primary" name="submit" value="Lọc" class="w-100">
+              </form>
             </div>
-            <div class="tt-collapse">
-              <h3 class="tt-collapse-title">Lọc theo</h3>
-              <div class="tt-collapse-content">
-                <ul class="tt-filter-list">
-                  <li class="active">
-                    <a href="#">Shirts &amp; Tops</a>
-                  </li>
-                  <li>
-                    <a href="#">XS</a>
-                  </li>
-                  <li>
-                    <a href="#">White</a>
-                  </li>
-                </ul>
-                <a href="#" class="btn-link-02">Clear All</a>
-              </div>
-            </div>
-            <div class="tt-collapse open">
-              <h3 class="tt-collapse-title">Sản phẩm theo danh mục</h3>
-              <div class="tt-collapse-content">
-                <ul class="tt-list-row">
-                  <li class="active"><a href="?act=products">Tất cả</a></li>
-                  <?php foreach ($resultCategory as $row): ?>
-                    <li><a href="?act=products&category=<?= $row['id'] ?>"><?= $row['ten_danh_muc'] ?></a></li>
-                  <?php endforeach ?>
-                </ul>
-              </div>
-            </div>
-            <div class="tt-collapse open">
-              <h3 class="tt-collapse-title">Lọc theo giá</h3>
-              <div class="tt-collapse-content">
-                <ul class="tt-list-row">
-                  <li class="active"><a href="?act=products">Tất cả</a></li>
-                  <li><a href="?act=products&priceMin=0&priceMax=50000">$0 — $50000</a></li>
-                  <li><a href="?act=products&priceMin=50000&priceMax=200000">$50000 — $200000</a></li>
-                  <li><a href="?act=products&priceMin=200000&priceMax=500000">$200000 — $500000</a></li>
-                  <li><a href="?act=products&priceMin=500000&priceMax=2000000">$500000 — $2000000</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="tt-content-aside">
-              <a href="listing-left-column.html" class="tt-promo-03">
-                <img src="images/custom/listing_promo_img_07.jpg" alt="">
-              </a>
-            </div>
-          </div>
 
+
+
+
+          <!-- main content -->
           <div class="col-md-12 col-lg-9 col-xl-9">
             <div class="content-indent container-fluid-custom-mobile-padding-02">
               <div class="d-flex align-items-center justify-content-between">
@@ -108,13 +94,13 @@
                 </form>
                 <div class="tt-filters-options" id="js-tt-filters-options">
                   <div class="tt-btn-toggle">
-                    <a href="#">FILTER</a>
+                    <a href="#">Lọc</a>
                   </div>
                   <div class="tt-sort">
                     <select name="sortPrice" class="select-price" id="select-price">
                       <option value="?act=products">Mặc định</option>
-                      <option value="?act=products&sortPrice=asc">Giá từ cao đến thấp</option>
-                      <option value="?act=products&sortPrice=desc">Giá từ thấp đến cao</option>
+                      <option value="?act=products&sortPrice=asc">Giá từ thấp đến cao</option>
+                      <option value="?act=products&sortPrice=desc">Giá từ cao đến thấp</option>
                     </select>
                     <script>
                       $(document).ready(function() {
@@ -156,7 +142,6 @@
                     </script>
                   </div>
 
-
                   <div class="tt-quantity">
                     <a href="#" class="tt-col-one" data-value="tt-col-one"></a>
                     <a href="#" class="tt-col-two" data-value="tt-col-two"></a>
@@ -168,16 +153,14 @@
               </div>
 
 
-
               <div class="tt-product-listing row">
                 <?php foreach ($results as $result): ?>
                   <div class="col-6 col-md-4 tt-col-item">
                     <div class="tt-product thumbprod-center">
                       <div class="tt-image-box">
-                        <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="Quick View" data-tposition="left"></a>
-                        <a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-                        <a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
-                        <a href="product.html">
+                        <a href="?act=productDetail&id=<?= $result['spid'] ?>" class="tt-btn-quickview" data-target="#ModalquickView" data-tooltip="Xem chi tiết" data-tposition="left"></a>
+                        <a href="?act=addFavorite&id=<?= $result['spid'] ?>" class="tt-btn-quickview" style="top: 70px" data-tooltip="Thêm vào sản phẩm yêu thích" data-tposition="left"></a>
+                        <a href="?act=productDetail&id=<?= $result['spid'] ?>">
                           <span class="tt-img"><img src="images/loader.svg" data-src="admin/<?= $result['anh_dai_dien'] ?>" alt=""></span>
                           <span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-18-01.jpg" alt=""></span>
                         </a>
@@ -195,13 +178,13 @@
                             <i class="icon-star-empty"></i>
                           </div>
                         </div>
-                        <h2 class="tt-title"><a href="product.html"><?= $result['ten_san_pham'] ?></a></h2>
+                        <h2 class="tt-title"><a href="?act=productDetail&id=<?= $result['spid'] ?>"><?= $result['ten_san_pham'] ?></a></h2>
                         <div class="tt-price">
-                          <?= $result['gia_khuyen_mai'] ?> VND
+                          <?= formatCurrency($result['gia_khuyen_mai']) ?>
                         </div>
                         <div class="tt-product-inside-hover">
                           <div class="tt-row-btn">
-                            <a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                            <a href="?act=addToCard&idPrd=<?= $result['spid'] ?>" class="tt-btn-addtocart thumbprod-button-bg" data-target="#modalAddToCartProduct">Thêm vào giỏ hàng</a>
                           </div>
                           <div class="tt-row-btn">
                             <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
@@ -215,11 +198,10 @@
                 <?php endforeach ?>
               </div>
               <div class="text-center tt_product_showmore d-flex justify-content-center mt-5">
-                <!-- <a href="#" class="btn btn-border">LOAD MORE</a> -->
                 <nav aria-label="...">
                   <ul class="pagination">
                     <li class="page-item disabled">
-                      <a class="page-link" href="?act=products&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" tabindex="-1" aria-disabled="true">Prev</a>
+                      <a class="page-link" href="?act=products&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" tabindex="-1" aria-disabled="true">Trang trước</a>
                     </li>
                     <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
                       <li class="page-item">
@@ -227,7 +209,7 @@
                       </li>
                     <?php }; ?>
                     <li class="page-item">
-                      <a class="page-link" href="?act=products&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>">Next</a>
+                      <a class="page-link" href="?act=products&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>">Trang tiếp</a>
                     </li>
                   </ul>
                 </nav>

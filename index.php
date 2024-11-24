@@ -11,7 +11,9 @@ require_once './controllers/AuthClientController.php';
 require_once './controllers/FavoriteProductController.php';
 require_once './controllers/ProductController.php';
 require_once './controllers/BlogClientController.php';
-require_once './controllers/CardController.php';
+
+require_once './controllers/CartController.php';
+
 require_once './controllers/ContactController.php';
 require_once './controllers/DiscountCilentController.php';
 
@@ -24,12 +26,10 @@ require_once './models/FavoriteProductModel.php';
 
 require_once './models/ProductModel.php';
 require_once './models/BlogClientModel.php';
-require_once './models/CardModel.php';
+require_once './models/CartModel.php';
 
 require_once './models/DiscountCilentModel.php';
 require_once './models/ContactModel.php';
-
-
 
 
 // Route
@@ -63,9 +63,10 @@ match ($act) {
   'blog-post' => (new BlogClientController())->blogPost(),
 
   // Card Action
-  'addToCard' => (new CardController())->AddToCard(),
-
-
+  'addToCard' => (new CartController())->AddToCard(),
+  'listCart' => (new CartController())->ListCart(),
+  'deleteProductFromCart' => (new CartController())->deleteProductFromCart(),
+  'deleteAllProductFromCart' => (new CartController())->deleteAllProductFromCart(),
 
   //Comment
   'addComment' => (new ProductController())->addComment(),
