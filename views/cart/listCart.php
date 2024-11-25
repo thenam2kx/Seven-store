@@ -128,7 +128,7 @@
                     </tr>
                   </tfoot>
                 </table>
-                <a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>Tiến hành đặt hàng</a>
+                <a href="?act=pay" class="btn btn-lg"><span class="icon icon-check_circle"></span>Tiến hành đặt hàng</a>
               </div>
             </div>
           </div>

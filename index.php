@@ -18,6 +18,7 @@ require_once './controllers/ContactController.php';
 require_once './controllers/DiscountCilentController.php';
 
 require_once './controllers/OrderController.php';
+require_once './controllers/PaycodController.php';
 
 
 
@@ -38,6 +39,7 @@ require_once './models/OrderModel.php';
 
 
 require_once './models/ContactModel.php';
+require_once './models/PaycodModel.php';
 
 
 
@@ -100,4 +102,8 @@ match ($act) {
     'contact'  =>  (new  ContactController())->create(),
     'addContact'  =>  (new  ContactController())->add(),
 
+
+    // pay cod
+      'pay'  =>  (new  PaycodController())->create(),
+      // 'hendlpay'  =>  (new  PaycodController())->postPay(),
 };
