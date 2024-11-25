@@ -49,25 +49,25 @@
                   </div>
                   <div class="tt-description">
                     <h2 class="tt-title"><a href="#"><?= $result['ten_san_pham'] ?></a></h2>
-                    <div class="tt-price">
-                      <?= $result['gia_ban'] ?>Đ
+                    <div class="tt-price pt-3">
+                      <?= formatCurrency($result['gia_ban']) ?><sup>₫</sup>
                     </div>
                   </div>
                 </div>
                 <div class="tt-col-btn">
-                  <a href="#" class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct"><i class="icon-f-39"></i>Thêm vào giỏ</a>
-                  <a class="btn-link" href="?act=productDetail&id=<?= $result['id'] ?>" class="tt-btn-quickview" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem sản phẩm</a>
-                  <a class="btn-link js-removeitem" href="?act=listFavorite&id=<?php echo $_SESSION['username']['id']; ?>" onclick="confirmDelete(<?= $result['id'] ?>)"><i class="icon-h-02"></i>Xóa</a>
+                  <a href="?act=addToCard&idPrd=<?= $result['spid'] ?>" class="tt-btn-addtocart" data-target="#modalAddToCartProduct"><i class="icon-f-39"></i>Thêm vào giỏ</a>
+                  <a class="btn-link" href="?act=productDetail&id=<?= $result['spid'] ?>" class="tt-btn-quickview" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem sản phẩm</a>
+                  <a class="btn-link js-removeitem" href="?act=deleteFavorite&id=<?= $result['id'] ?>&idUser=<?= $_SESSION['username']['id'] ?>" onclick="confirmDelete(<?= $result['id'] ?>, <?= $_SESSION['username']['id'] ?>)"><i class="icon-h-02"></i>Xóa</a>
                 </div>
               </div>
             <?php endforeach ?>
             <script>
-                    function confirmDelete(id) {
-                      if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                        window.location.href = "?act=deleteFavorite&id=" + id;
-                      }
-                    }
-                  </script>
+              function confirmDelete(id, idUser) {
+                if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                  window.location.href = "?act=deleteFavorite&id=" + id + "&idUser=" + idUser;
+                }
+              }
+            </script>
           </div>
         </div>
       </div>

@@ -59,9 +59,9 @@ match ($act) {
 
 
   // Favorite Product
-    'listFavorite' => (new FavoriteProductController())->index(),
-    'addFavorite' => (new FavoriteProductController())->addFavorite(),
-    'deleteFavorite' => (new FavoriteProductController())->delete(),
+  'listFavorite' => (new FavoriteProductController())->index(),
+  'addFavorite' => (new FavoriteProductController())->addFavorite(),
+  'deleteFavorite' => (new FavoriteProductController())->delete(),
 
 
   'products' => (new ProductController())->index(),
@@ -93,11 +93,10 @@ match ($act) {
 
 
   // Order Management
-'listOrders' => (new OrderController())->index(),
-'deleteOrder' => (new OrderController())->deleteOrder(),
+  'listOrders' => (new OrderController())->index(),
+  'deleteOrder' => (new OrderController())->deleteOrder(),
 
-    // contact
-    'contact'  =>  (new  ContactController())->create(),
-    'addContact'  =>  (new  ContactController())->add(),
-
+  // contact
+  'contact'  => (new  ContactController())->create(),
+  'addContact'  => (new  ContactController())->add(),
 };
