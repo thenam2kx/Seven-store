@@ -59,9 +59,9 @@ match ($act) {
 
 
   // Favorite Product
-    'listFavorite' => (new FavoriteProductController())->index(),
-    'addFavorite' => (new FavoriteProductController())->addFavorite(),
-    'deleteFavorite' => (new FavoriteProductController())->delete(),
+  'listFavorite' => (new FavoriteProductController())->index(),
+  'addFavorite' => (new FavoriteProductController())->addFavorite(),
+  'deleteFavorite' => (new FavoriteProductController())->delete(),
 
 
   'products' => (new ProductController())->index(),
@@ -76,6 +76,8 @@ match ($act) {
   'listCart' => (new CartController())->ListCart(),
   'deleteProductFromCart' => (new CartController())->deleteProductFromCart(),
   'deleteAllProductFromCart' => (new CartController())->deleteAllProductFromCart(),
+  'addQuantityProduct' => (new CartController())->addQuantityProduct(),
+  'removeQuantityProduct' => (new CartController())->removeQuantityProduct(),
 
   //Comment
   'addComment' => (new ProductController())->addComment(),
@@ -93,11 +95,13 @@ match ($act) {
 
 
   // Order Management
-'listOrders' => (new OrderController())->index(),
-'deleteOrder' => (new OrderController())->deleteOrder(),
+  'order' => (new OrderController())->order(),
+  'createOrder'=> (new OrderController())->addOrder(),
+  'listOrders' => (new OrderController())->index(),
+  'deleteOrder' => (new OrderController())->deleteOrder(),
+  'detailOrder' => (new OrderController())->detailOrder(),
 
-    // contact
-    'contact'  =>  (new  ContactController())->create(),
-    'addContact'  =>  (new  ContactController())->add(),
-
+  // contact
+  'contact'  => (new ContactController())->create(),
+  'addContact'  => (new  ContactController())->add(),
 };

@@ -38,6 +38,53 @@ class CartController
     }
   }
 
+  public function addQuantityProduct()
+  {
+    try {
+      $idPrd = isset($_GET['idPrd']) ? $_GET['idPrd'] : 0;
+      $idUser = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
+      $getCartUser = $this->CartModel->getCartOfUser($idUser);
+      $idCart = $getCartUser['ghid'];
+      $getProductFormCartDetail = $this->CartModel->getProductFormCartDetail($idCart, $idPrd);
+
+      $totalNumberProduct = $this->CartModel->totalNumberProduct($idPrd);
+      if ($totalNumberProduct['so_luong'] <= $getProductFormCartDetail['so_luong']) {
+        echo '<script>alert("Số lượng không hợp lệ")</script>';
+        exit('<script>window.location.href = "?act=listCart"</script>');
+      } else {
+        $addQuantityProduct = $this->CartModel->addQuantityProductOnCart($getProductFormCartDetail['id'], $idCart, $idPrd);
+        header('Location: ?act=listCart');
+      }
+
+    } catch (\Throwable $th) {
+      throw $th;
+    }
+  }
+
+  public function removeQuantityProduct()
+  {
+    try {
+      $idPrd = isset($_GET['idPrd']) ? $_GET['idPrd'] : 0;
+      $idUser = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
+      $getCartUser = $this->CartModel->getCartOfUser($idUser);
+      $idCart = $getCartUser['ghid'];
+      $getProductFormCartDetail = $this->CartModel->getProductFormCartDetail($idCart, $idPrd);
+
+      $totalNumberProduct = $this->CartModel->totalNumberProduct($idPrd);
+      if ($getProductFormCartDetail['so_luong'] <= 1) {
+        echo '<script>alert("Số lượng không hợp lệ")</script>';
+        exit('<script>window.location.href = "?act=listCart"</script>');
+      } else {
+        $addQuantityProduct = $this->CartModel->removeQuantityProductOnCart($getProductFormCartDetail['id'], $idCart, $idPrd);
+        header('Location: ?act=listCart');
+      }
+
+
+    } catch (\Throwable $th) {
+      throw $th;
+    }
+  }
+
   public function ListCart() {
     try {
       $idUser = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;

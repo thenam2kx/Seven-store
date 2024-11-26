@@ -63,4 +63,19 @@ class CartModel {
     $sql = "select sp.so_luong from san_phams sp where sp.id = ?";
     return $this->db->queryOne($sql, $spid);
   }
+
+  public function getProductFormCartDetail($ghid, $spid) {
+    $sql = "select * from gio_hang_cts ghct where ghct.gio_hang_id = ? and ghct.san_pham_id = ?";
+    return $this->db->queryOne($sql, $ghid, $spid);
+  }
+
+  public function addQuantityProductOnCart($cartDetailId, $cartId, $productId) {
+    $sql = "update gio_hang_cts ghct set ghct.so_luong = ghct.so_luong + 1 where ghct.id = ? and ghct.gio_hang_id = ? and ghct.san_pham_id = ?";
+    return $this->db->execute($sql, $cartDetailId, $cartId, $productId);
+  }
+
+  public function removeQuantityProductOnCart($cartDetailId, $cartId, $productId) {
+    $sql = "update gio_hang_cts ghct set ghct.so_luong = ghct.so_luong - 1 where ghct.id = ? and ghct.gio_hang_id = ? and ghct.san_pham_id = ?";
+    return $this->db->execute($sql, $cartDetailId, $cartId, $productId);
+  }
 }

@@ -75,9 +75,9 @@
                       <td>
                         <div class="detach-quantity-desctope">
                           <div class="tt-input-counter style-01">
-                            <span class="minus-btn"></span>
+                            <a href="?act=removeQuantityProduct&idPrd=<?= $product['spid'] ?>"><span class="minus-btn"></span></a>
                             <input type="text" value="<?= $product['so_luong'] ?>" size="<?= ($this->CartModel->totalNumberProduct($product['spid']))['so_luong'] ?>">
-                            <span class="plus-btn"></span>
+                            <a href="?act=addQuantityProduct&idPrd=<?= $product['spid'] ?>"><span class="plus-btn"></span></a>
                           </div>
                         </div>
                       </td>
@@ -128,7 +128,7 @@
                     </tr>
                   </tfoot>
                 </table>
-                <a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>Tiến hành đặt hàng</a>
+                <a href="?act=order&cartId=<?= $ghid ?>" class="btn btn-lg" style="pointer-events: <?= count($listProductsFromCard) <= 0 ? 'none' : 'auto' ?>;" ><span class="icon icon-check_circle"></span>Tiến hành đặt hàng</a>
               </div>
             </div>
           </div>
