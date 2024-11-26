@@ -76,6 +76,8 @@ match ($act) {
   'listCart' => (new CartController())->ListCart(),
   'deleteProductFromCart' => (new CartController())->deleteProductFromCart(),
   'deleteAllProductFromCart' => (new CartController())->deleteAllProductFromCart(),
+  'addQuantityProduct' => (new CartController())->addQuantityProduct(),
+  'removeQuantityProduct' => (new CartController())->removeQuantityProduct(),
 
   //Comment
   'addComment' => (new ProductController())->addComment(),
@@ -93,10 +95,13 @@ match ($act) {
 
 
   // Order Management
+  'order' => (new OrderController())->order(),
+  'createOrder'=> (new OrderController())->addOrder(),
   'listOrders' => (new OrderController())->index(),
   'deleteOrder' => (new OrderController())->deleteOrder(),
+  'detailOrder' => (new OrderController())->detailOrder(),
 
   // contact
-  'contact'  => (new  ContactController())->create(),
+  'contact'  => (new ContactController())->create(),
   'addContact'  => (new  ContactController())->add(),
 };

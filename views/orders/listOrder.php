@@ -164,7 +164,7 @@
                     </div>
                   </div>
                   <div class="tt-col-btn">
-                    <a class="btn-link" href="#" data-toggle="modal" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem chi tiết</a>
+                    <a class="btn-link" href="?act=detailOrder&orderId=<?= $order['dhid'] ?>" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem chi tiết</a>
                     <a class="btn-link js-removeitem <?= $order['trang_thai_don_hang_id'] == 7 ? 'disabled' : '' ?>"
                       href="<?= $order['trang_thai_don_hang_id'] != 7 ? '?act=deleteOrder&id=' . $order['id'] : '#' ?>"
                       onclick="<?= $order['trang_thai_don_hang_id'] != 7 ? "return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');" : "return false;" ?>"
