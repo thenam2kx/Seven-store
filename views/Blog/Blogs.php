@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Trang chủ</title>
+  <title>Tin tức</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -13,58 +13,6 @@
   <?php
   require_once "./views/layouts/libs_css.php";
   ?>
-  <style>
-    .boxImage {
-      position: relative;
-    }
-
-    .btn-addCard {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 99;
-      background-color: #2879fe;
-      color: #ffffff;
-      padding: 6px 12px;
-      border-radius: 0px 0px 6px 6px;
-      width: 100%;
-      opacity: 0;
-      visibility: hidden;
-      transition: all linear .15s;
-    }
-
-    .tt-product:hover .btn-addCard {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .prdPrice {
-      /* display: flex !important; */
-      align-items: center;
-      gap: 20x;
-    }
-
-    swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-
-    swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
 </head>
 
 <body>

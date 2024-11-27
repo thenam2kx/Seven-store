@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Chi tiết sản phẩm</title>
+  <title><?= $infoProduct['ten_san_pham'] ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -424,6 +424,14 @@
       <div style="z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: -207px -9.60755px; width: 393px; height: 491px; float: left; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(&quot;images/product/product-01.jpg&quot;); top: 0px; left: 0px; display: none;" class="zoomWindow">&nbsp;</div>
     </div>
   </div>
+
+  <script>
+    const elements =document.querySelectorAll('.tt-btn-wishlist')
+    for (const element of elements) {
+      const newElement = element.cloneNode(true);
+      element.parentNode.replaceChild(newElement, element);
+    }
+  </script>
 
   <a href="#" class="tt-back-to-top tt-show" id="js-back-to-top" style="right: 0px;">BACK TO TOP</a>
 

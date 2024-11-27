@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Trang chủ</title>
+  <title>Danh sách sản phẩm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -38,46 +38,46 @@
       <div class="container">
         <div class="row">
           <!-- Sort -->
-            <div class="col-md-4 col-lg-3 col-xl-3 leftColumn aside" id="js-leftColumn-aside">
-              <form action="?act=products" method="post">
-                <div class="tt-collapse open tt-filter-detach-option">
-                  <div class="tt-collapse-content">
-                    <div class="filters-mobile">
-                      <div class="filters-row-select">
+          <div class="col-md-4 col-lg-3 col-xl-3 leftColumn aside" id="js-leftColumn-aside">
+            <form action="?act=products" method="post">
+              <div class="tt-collapse open tt-filter-detach-option">
+                <div class="tt-collapse-content">
+                  <div class="filters-mobile">
+                    <div class="filters-row-select">
 
-                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="tt-collapse open">
-                  <h3 class="tt-collapse-title">Sản phẩm theo danh mục</h3>
-                  <div class="tt-collapse-content">
-                    <?php foreach ($resultCategory as $row): ?>
-                      <div class="form-check">
-                        <input class="form-check-input" name="category" type="radio" value="<?= $row['id'] ?>" id="flexCheck<?= $row['id'] ?>">
-                        <label class="form-check-label" for="flexCheck<?= $row['id'] ?>">
-                          <?= $row['ten_danh_muc'] ?>
-                        </label>
-                      </div>
-                    <?php endforeach ?>
-                  </div>
+              </div>
+              <div class="tt-collapse open">
+                <h3 class="tt-collapse-title">Sản phẩm theo danh mục</h3>
+                <div class="tt-collapse-content">
+                  <?php foreach ($resultCategory as $row): ?>
+                    <div class="form-check">
+                      <input class="form-check-input" name="category" type="radio" value="<?= $row['id'] ?>" id="flexCheck<?= $row['id'] ?>">
+                      <label class="form-check-label" for="flexCheck<?= $row['id'] ?>">
+                        <?= $row['ten_danh_muc'] ?>
+                      </label>
+                    </div>
+                  <?php endforeach ?>
                 </div>
-                <div class="tt-collapse open">
-                  <h3 class="tt-collapse-title">Lọc theo giá</h3>
-                  <div class="tt-collapse-content">
-                      <?php foreach($priceRanges as $row): ?>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="price" value='<?= json_encode(["min" => $row["min"], "max" => $row["max"]]) ?>' id="checkbox-<?= $row['min'] ?>">
-                          <label class="form-check-label" for="checkbox-<?= $row['min'] ?>">
-                            <?= formatCurrency($row['min']) ?> — <?= formatCurrency($row['max']) ?>
-                          </label>
-                        </div>
-                      <?php endforeach ?>
-                  </div>
+              </div>
+              <div class="tt-collapse open">
+                <h3 class="tt-collapse-title">Lọc theo giá</h3>
+                <div class="tt-collapse-content">
+                  <?php foreach ($priceRanges as $row): ?>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="price" value='<?= json_encode(["min" => $row["min"], "max" => $row["max"]]) ?>' id="checkbox-<?= $row['min'] ?>">
+                      <label class="form-check-label" for="checkbox-<?= $row['min'] ?>">
+                        <?= formatCurrency($row['min']) ?> — <?= formatCurrency($row['max']) ?>
+                      </label>
+                    </div>
+                  <?php endforeach ?>
                 </div>
-                <input type="submit" class="btn btn-outline-primary" name="submit" value="Lọc" class="w-100">
-              </form>
-            </div>
+              </div>
+              <input type="submit" class="btn btn-outline-primary" name="submit" value="Lọc" class="w-100">
+            </form>
+          </div>
 
 
 
@@ -159,7 +159,7 @@
                     <div class="tt-product thumbprod-center">
                       <div class="tt-image-box">
                         <a href="?act=productDetail&id=<?= $result['spid'] ?>" class="tt-btn-quickview" data-target="#ModalquickView" data-tooltip="Xem chi tiết" data-tposition="left"></a>
-                        <a href="?act=addFavorite&id=<?= $result['spid'] ?>" class="tt-btn-quickview" style="top: 70px" data-tooltip="Thêm vào sản phẩm yêu thích" data-tposition="left"></a>
+                        <a href="?act=addFavorite&id=<?= $result['spid'] ?>" class="tt-btn-wishlist" style="top: 70px" data-tooltip="Thêm vào sản phẩm yêu thích" data-tposition="left"></a>
                         <a href="?act=productDetail&id=<?= $result['spid'] ?>">
                           <span class="tt-img"><img src="images/loader.svg" data-src="admin/<?= $result['anh_dai_dien'] ?>" alt=""></span>
                           <span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-18-01.jpg" alt=""></span>
@@ -171,7 +171,7 @@
                             <li><a href="#"><?= $result['ten_danh_muc'] ?></a></li>
                           </ul>
                           <div class="tt-rating">
-                          <?php
+                            <?php
                             $point = ($this->ProductModel->getTotalRateAndCount($result['spid']))['trung_binh_diem'];
                             $rating = isset($point) ? $point : 0;
                             $fullStars = floor($rating);
@@ -244,9 +244,14 @@
   require_once "views/layouts/libs_js.php";
   ?>
   <script src="assets/separate-include/listing/listing.js"></script>
-
+  <script>
+    const elements =document.querySelectorAll('.tt-btn-wishlist')
+    for (const element of elements) {
+      const newElement = element.cloneNode(true);
+      element.parentNode.replaceChild(newElement, element);
+    }
+  </script>
   <a href="#" class="tt-back-to-top tt-show" id="js-back-to-top" style="right: 0px;">BACK TO TOP</a>
-
 </body>
 
 </html>

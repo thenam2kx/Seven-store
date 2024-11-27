@@ -43,9 +43,9 @@
             </h4>
             <div class="tt-collapse-content">
               <ul class="tt-list">
-                <li><a href="listing-collection.html">Quần áo Nữ</a></li>
-                <li><a href="listing-collection.html">Quần áo nam</a></li>
-                <li><a href="listing-collection.html">Mặt Hàng Mới</a></li>
+                <li><a href="?act=products">Quần áo Nữ</a></li>
+                <li><a href="?act=products">Quần áo nam</a></li>
+                <li><a href="?act=products">Mặt Hàng Mới</a></li>
               </ul>
             </div>
           </div>
@@ -57,10 +57,10 @@
             </h4>
             <div class="tt-collapse-content">
               <ul class="tt-list">
-                <li><a href="account_order.html">Đơn đặt hàng</a></li>
-                <li><a href="page404.html">Danh sách yêu thích</a></li>
-                <li><a href="login.html">Đăng nhập</a></li>
-                <li><a href="create-account.html">Đăng kí</a></li>
+                <li><a href="?act=listOrders">Đơn đặt hàng</a></li>
+                <li><a href="?act=listFavorite&id=<?= isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0 ?>">Danh sách yêu thích</a></li>
+                <li><a href="http://localhost/seven-store/admin/?act=signin" class="d-<?= isset($_SESSION['username']['id']) ? 'none' : 'block' ?>">Đăng nhập</a></li>
+                <li><a href="http://localhost/seven-store/?act=signup" class="d-<?= isset($_SESSION['username']['id']) ? 'none' : 'block' ?>">Đăng kí</a></li>
               </ul>
             </div>
           </div>

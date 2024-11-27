@@ -1,14 +1,14 @@
 <?php
-  $listProductsFromCardHeader = [];
-  $idUserCart = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
-  if(isset($idUserCart) && $idUserCart !== 0) {
-    $cartModelHeader = new CartModel();
-    $getGhid = $cartModelHeader->getCartOfUser($idUserCart);
-    $ghid = isset($getGhid) ? $getGhid['ghid'] : 0;
-    $totalPrice = $cartModelHeader->totalPriceFromCart($ghid);
-    $totalProductsFromCart = $cartModelHeader->totalProductsFromCart($ghid);
-    $listProductsFromCardHeader = $cartModelHeader->getProductsFromCard($idUserCart);
-  }
+$listProductsFromCardHeader = [];
+$idUserCart = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
+if (isset($idUserCart) && $idUserCart !== 0) {
+  $cartModelHeader = new CartModel();
+  $getGhid = $cartModelHeader->getCartOfUser($idUserCart);
+  $ghid = isset($getGhid) ? $getGhid['ghid'] : 0;
+  $totalPrice = $cartModelHeader->totalPriceFromCart($ghid);
+  $totalProductsFromCart = $cartModelHeader->totalProductsFromCart($ghid);
+  $listProductsFromCardHeader = $cartModelHeader->getProductsFromCard($idUserCart);
+}
 ?>
 <header id="tt-header">
   <nav class="panel-menu mobile-main-menu">
@@ -16,7 +16,7 @@
       <div class="mmpanel mmhidden" id="mm5">
         <ul>
           <li>
-          <a href="?act=products" title="Sản phẩm"><span>Sản phẩm</span></a>
+            <a href="?act=products" title="Sản phẩm"><span>Sản phẩm</span></a>
           </li>
           <li>
             <a href="?act=listDiscount" title="Mã khuyến mãi"><span>Khuyến mãi</span></a>
@@ -144,7 +144,7 @@
                   <div class="tt-cart-layout">
                     <div class="tt-cart-content">
                       <div class="tt-cart-list">
-                        <?php foreach($listProductsFromCardHeader as $row): ?>
+                        <?php foreach ($listProductsFromCardHeader as $row): ?>
                           <div class="tt-item">
                             <a href="?act=productDetail&id=<?= $row['spid'] ?>">
                               <div class="tt-item-img">
@@ -200,16 +200,16 @@
                 </div>
               <?php } else {  ?>
                 <div class="tt-dropdown-menu">
-                <div class="tt-mobile-add">
-                  <button class="tt-close">Close</button>
+                  <div class="tt-mobile-add">
+                    <button class="tt-close">Close</button>
+                  </div>
+                  <div class="tt-dropdown-inner">
+                    <ul>
+                      <li><a href="admin/?act=signin"><i class="icon-f-76"></i>Đăng nhập</a></li>
+                      <li><a href="<?php echo BASE_URL; ?>?act=signup"><i class="icon-f-94"></i>Đăng ký</a></li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="tt-dropdown-inner">
-                  <ul>
-                    <li><a href="admin/?act=signin"><i class="icon-f-76"></i>Đăng nhập</a></li>
-                    <li><a href="<?php echo BASE_URL; ?>?act=signup"><i class="icon-f-94"></i>Đăng ký</a></li>
-                  </ul>
-                </div>
-              </div>
               <?php } ?>
             </div>
           </div>

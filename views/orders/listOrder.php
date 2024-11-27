@@ -126,8 +126,18 @@
   </div>
 
   <!-- CONTENT -->
+  <div id="tt-pageContent" class="d-<?= empty($orders) ? 'block' : 'none' ?>">
+    <div class="container-indent nomargin">
+      <div class="tt-empty-cart">
+        <span class="tt-icon icon-f-39"></span>
+        <h1 class="tt-title">Bạn chưa có đơn hàng nào</h1>
+        <p>Mua hàng ngay để hưởng những ưu đãi hấp dẫn...</p>
+        <a href="?act=products" class="btn">Mua hàng ngay</a>
+      </div>
+    </div>
+  </div>
 
-  <div id="tt-pageContent">
+  <div id="tt-pageContent" class="d-<?= !empty($orders) ? 'block' : 'none' ?>">
     <div class="container-indent">
       <div class="container">
         <h1 class="tt-title-subpages noborder">Đơn hàng của tôi</h1>
