@@ -44,6 +44,11 @@ class OrderController
 
       $statusDiscount = true;
 
+      if ($name === '' || $email === '' || $phone === '' || $address === '') {
+        echo '<script>alert("Thông tin người nhận khong thể để trống")</script>';
+        exit('<script>window.location.href = "?act=order&cartId='.$cartId.'"</script>');
+      }
+
       $getDiscountCode = $this->OrderModel->getDiscountCode($discount);
       if ($discount !== '') {
         if (

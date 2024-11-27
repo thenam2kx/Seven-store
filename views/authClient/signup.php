@@ -109,29 +109,6 @@
                             Vui lòng nhập số điện thoại
                           </div>
                         </div>
-
-                        <div class="mb-3">
-                          <label for="gender" class="form-label">Giới tính <span class="text-danger">*</span></label>
-                          <select id="gender" class="form-select" name="gioi_tinh" value="gioi_tinh">
-                            <option value="0">Nam</option>
-                            <option value="1">Nữ</option>
-                          </select>
-                        </div>
-                        <div class="mb-3">
-                          <label for="birthdaytime" class="form-label">Ngày sinh <span class="text-danger">*</span></label>
-                          <input type="date" class="form-control" name="ngay_sinh" id="birthdaytime"required>
-                          <div class="invalid-feedback">
-                            Vui lòng nhập ngày sinh
-                          </div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label for="address" class="form-label">Địa chỉ <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" name="dia_chi" id="address" placeholder="Enter address" required>
-                          <div class="invalid-feedback">
-                            Vui lòng nhập địa chỉ
-                          </div>
-                        </div>
                         <div class="mb-3">
                           <label class="form-label" for="password-input">Mật khẩu <span class="text-danger">*</span></label>
                           <div class="position-relative auth-pass-inputgroup">

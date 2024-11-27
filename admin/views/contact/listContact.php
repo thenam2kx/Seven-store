@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Category | NN Shop</title>
+  <title>Liên hệ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -13,8 +13,6 @@
   <?php
   require_once "views/layouts/libs_css.php";
   ?>
-
-  <link rel="stylesheet" href="views/category/listCategory.css" type="text/css" />
 
 </head>
 
@@ -118,31 +116,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="card-footer d-flex justify-content-center">
-              <div class="d-flex align-content-center justify-content-center mt-3">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="?act=listProduct&page=<?= ($page - 1) <= 0 ? 1 : $page - 1 ?>&limit=<?= $limit ?>" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-                      <li class="page-item">
-                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?act=listProduct&page=<?= $i ?>&limit=<?= $limit ?>"><?= $i ?></a>
-                      </li>
-                    <?php }; ?>
-                    <li class="page-item">
-                      <a class="page-link" href="?act=listProduct&page=<?= ($page + 1) >= $totalPages ? $totalPages : $page + 1 ?>&limit=<?= $limit ?>" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div> -->
           </div>
         </div>
         <!-- container-fluid -->
@@ -159,7 +132,7 @@
             </div>
             <div class="col-sm-6">
               <div class="text-sm-end d-none d-sm-block">
-                Design & Develop by Themesbrand
+                Design & Develop by Seven-store
               </div>
             </div>
           </div>

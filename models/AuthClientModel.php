@@ -5,9 +5,25 @@ class AuthClientModel {
   public function __construct() {
     $this->db = new Connect();
   }
-  public function addUser($name, $email, $password, $address, $phone, $date, $gender, $status) {
-    $sql = "INSERT INTO nguoi_dungs (ho_ten, email, mat_khau, dia_chi, so_dien_thoai, ngay_sinh, gioi_tinh, trang_thai) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-    return $this->db->execute($sql, $name, $email, $password, $address, $phone, $date, $gender, $status);
+
+  public function checkUser($email, $phone) {
+    $sql = "select * from nguoi_dungs nd where nd.email = ? or nd.so_dien_thoai = ?";
+    return $this->db->queryOne($sql, $email, $phone );
+  }
+
+  public function getLastUser($email) {
+    $sql = "select * from nguoi_dungs nd where nd.email=?";
+    return $this->db->queryOne($sql, $email );
+  }
+
+  public function createCartForUser($id) {
+    $sql = "insert into gio_hangs( nguoi_dung_id ) values (?)";
+    return $this->db->queryOne($sql, $id );
+  }
+
+  public function addUser($name, $email, $password, $phone) {
+    $sql = "INSERT INTO nguoi_dungs (ho_ten, email, mat_khau, so_dien_thoai) VALUES (?, ?, ?, ?)";
+    return $this->db->execute($sql, $name, $email, $password, $phone);
   }
 
   public function getAccountById($id) {

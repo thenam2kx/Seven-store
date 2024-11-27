@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>User | NN Shop</title>
+  <title>Quản lý người dùng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -74,8 +74,7 @@
                   class="form-control me-2"
                   placeholder="Search..."
                   aria-label="Search"
-                  name="search"
-                />
+                  name="search" />
                 <input class="btn btn-outline-primary" type="submit" value="Search">
               </form>
               <!-- Sort Button -->
@@ -130,54 +129,55 @@
                           <td>
                             <div class="hstack gap-4 flex">
                               <a href="?act=editUser&id=<?= $user['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                              <a href="?act=deleteUser&id=<?= $user['id'] ?>" onclick="confirmDelete(event, <?= $user['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>                            </div>
+                              <a href="?act=deleteUser&id=<?= $user['id'] ?>" onclick="confirmDelete(event, <?= $user['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                            </div>
                           </td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
                   </table>
                   <script>
-                  function confirmDelete(event, id) {
-                    event.preventDefault();
+                    function confirmDelete(event, id) {
+                      event.preventDefault();
 
-                    if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                      window.location.href = "?act=deleteUser&id=" + id;
+                      if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                        window.location.href = "?act=deleteUser&id=" + id;
+                      }
                     }
-                  }
-                 </script>
+                  </script>
                 </div>
 
 
+              </div>
+              <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+          </div>
         </div>
-        <!-- container-fluid -->
-      </div>
-      <!-- End Page-content -->
-      </div>
-      </div>
       </div>
       <footer class="footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-6">
-                <script>
-                  document.write(new Date().getFullYear())
-                </script> © Velzon.
-              </div>
-              <div class="col-sm-6">
-                <div class="text-sm-end d-none d-sm-block">
-                  Design & Develop by Themesbrand
-                </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <script>
+                document.write(new Date().getFullYear())
+              </script> © Velzon.
+            </div>
+            <div class="col-sm-6">
+              <div class="text-sm-end d-none d-sm-block">
+                Design & Develop by Themesbrand
               </div>
             </div>
           </div>
-        </footer>
+        </div>
+      </footer>
     </div>
     <!-- end main content-->
   </div>
   <!-- END layout-wrapper -->
   </div>
-            </div>
-          </div>
+  </div>
+  </div>
 
 
 

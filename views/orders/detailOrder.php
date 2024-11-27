@@ -249,7 +249,7 @@
                   <input type="text" class="form-control" id="validationServer03" name="note" value="<?= $result[0]['ghi_chu'] ?>" disabled>
                 </div>
               </div>
-              <a href="?act=deleteOrder&id=<?= $result[0]['dhid'] ?>" class="btn btn-primary" style="color: #fff; pointer-events: <?= $result[0]['trang_thai_don_hang_id'] >= 4 || $result[0]['trang_thai_don_hang_id'] === 7 ? 'none' : 'auto' ?>;">Hủy đơn hàng</a>
+              <a href="?act=deleteOrder&id=<?= $result[0]['dhid'] ?>" class="btn btn-primary" style="color: #fff; display: <?= $result[0]['trang_thai_don_hang_id'] >= 4 || $result[0]['trang_thai_don_hang_id'] === 7 ? 'none' : 'inline' ?>;">Hủy đơn hàng</a>
             </form>
           </div>
         </div>

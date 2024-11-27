@@ -142,11 +142,11 @@
               <h1 class="tt-title"><?= $infoProduct['ten_san_pham'] ?></h1>
               <div class="tt-price">
                 <span class="new-price">
-                  <?= formatCurrency($infoProduct['gia_khuyen_mai']) ?>
+                  <?= formatCurrency($infoProduct['gia_khuyen_mai']) ?> <sup>đ</sup>
                 </span>
 
                 <span class="new-price" style="color: gray; font-size: 16px; text-decoration: line-through; margin-left: 10px;">
-                  <?= formatCurrency($infoProduct['gia_ban']) ?>
+                  <?= formatCurrency($infoProduct['gia_ban']) ?> <sup>đ</sup>
                 </span>
               </div>
               <div class="tt-review">
@@ -305,12 +305,6 @@
             <div class="tt-collapse-title tt-poin-comments">Bình luận (<?= sizeof($comment) ?>)</div>
             <div class="tt-collapse-content" style="display: none;">
               <div class="tt-review-block">
-                <!-- <div class="tt-row-custom-02">
-                  <div class="col-item"></div>
-                  <div class="col-item">
-                    <a href="#">Viết bình luận</a>
-                  </div>
-                </div> -->
                 <div class="tt-review-form #ffffff">
                   <div class="tt-message">
                     Viết bình luận của bạn cho sản phẩm
@@ -388,7 +382,7 @@
                   </div>
                   <h2 class="tt-title"><a href="?act=productDetail&id=<?= $item['spid'] ?>"><?= $item['ten_san_pham'] ?></a></h2>
                   <div class="tt-price">
-                    <?= preg_replace('/\.00$/', '', $infoProduct['gia_khuyen_mai']) ?> <sup>đ</sup>
+                    <?= formatCurrency($infoProduct['gia_khuyen_mai']) ?> <sup>đ</sup>
                   </div>
                   <div class="tt-product-inside-hover">
                     <div class="tt-row-btn">

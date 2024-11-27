@@ -114,7 +114,7 @@
                           <td>
                             <div class="hstack gap-3 flex">
                               <a href="?act=editDiscount&id=<?= $result['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                              <a href="?act=listDiscount" onclick="confirmDelete(<?= $result['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                              <button style="border: none; background-color: unset" onclick="confirmDelete(<?= $result['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></button>
                             </div>
                           </td>
                         </tr>

@@ -165,7 +165,7 @@
                       </div>
                       <div class="tt-cart-btn">
                         <div class="tt-item">
-                          <a href="#" class="btn">TIẾN HÀNH ĐẶT HÀNG</a>
+                          <a href="?act=order&cartId=<?= $ghid ?>" class="btn">TIẾN HÀNH ĐẶT HÀNG</a>
                         </div>
                         <div class="tt-item">
                           <a href="?act=listCart" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>

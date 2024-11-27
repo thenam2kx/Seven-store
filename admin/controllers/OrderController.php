@@ -86,19 +86,13 @@ class OrderController
       $listOrderStatus = $orderStatusModel->getAll();
       if (isset($_POST['save']) && ($_POST['save'])) {
         $id = $_POST['id'];
-        // $name = $_POST['name'];
-        // $user = $_POST['user'];
-        // $phone = $_POST['phone'];
-        // $address = $_POST['address'];
-        // $totalMoney = $_POST['totalMoney'];
-        // $pay = $_POST['pay'];
-        // $payForm = $_POST['payForm'];
         $OrderStatus = $_POST['OrderStatus'];
-        // $note = $_POST['note'];
-        // $email = $_POST['email'];
-        // $payStatus = $_POST['payStatus'];
-        // $date=$_POST['date'];
 
+        if ($OrderStatus == 9 || $OrderStatus == 6) {
+          $stt = 1;
+          $OrderDetailModel = new OrderDetailModel();
+          $OrderDetailModel->updatePayOrder($stt, $id);
+        }
 
         $orderModel = new OrderModel();
         $result = $orderModel->edit(
