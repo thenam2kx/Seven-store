@@ -8,13 +8,13 @@ class OrderDetailController {
         $resultInfoUserOrder = $OrderDetailModel->getInfoUserOrder($id);
         $resultInfoOrder = $OrderDetailModel->getInfoOrder($id);
         $resultAllProducts = $OrderDetailModel->getAllProducts($resultInfoOrder['id']);
-        $resultTotalPrice = $OrderDetailModel->getTotalPrice($id);
+        $resultTotalPrice = $OrderDetailModel->getTotalPrice($id)['tong_tien'];
+        $resultPriceFinal = $OrderDetailModel->getInfoOrder($id)['thanh_toan'];
+        $resultDiscount = (($resultTotalPrice - $resultPriceFinal) * 100) / $resultTotalPrice;
 
         $listStatusOrder = $OrderDetailModel->getAllStatusOrder();
-        $resultDiscount = 0.1;
         $getProductsByOrder = $OrderDetailModel->getProductsByOrder($id);
         $getUserAndInfoOrder = $OrderDetailModel->getUserAndInfoOrder($id);
-        $resultTotalMoneyFinal = $resultTotalPrice['tong_tien'] - ($resultTotalPrice['tong_tien'] * $resultDiscount);
 
         require_once "./views/orderDetail/listOrderDetail.php";
       } catch (\Throwable $th) {
@@ -28,9 +28,13 @@ class OrderDetailController {
         if (isset($_POST["save"]) && $_POST["save"]) {
           $status = $_POST["status"];
           $id = $_POST["id"];
+          if ($status == 9 || $status == 6) {
+            $stt = 1;
+            $OrderDetailModel->updatePayOrder($stt, $id);
+          }
           $result = $OrderDetailModel->updateDetailOrder($status, $id);
         }
-        header("Location: http://localhost/seven-store/admin/?act=listOrder");
+        header("Location: ?act=listOrder");
       } catch (\Throwable $th) {
         throw $th;
       }

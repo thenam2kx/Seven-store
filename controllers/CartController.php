@@ -25,7 +25,9 @@ class CartController
         }
         if ($isSuccess === false) {
           $result = $this->CartModel->addProductToCard($idCart, $idPrd);
-          header('Location: ?act=listCart');
+          // header('Location: ?act=listCart');
+          echo '<script>alert("Thêm vào giỏ hàng thành công")</script>';
+          exit('<script>window.location.href = "?act=products"</script>');
         } else {
           header('Location: ?act=listCart');
         }

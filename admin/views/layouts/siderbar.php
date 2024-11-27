@@ -52,7 +52,7 @@
         <!-- Dashboard -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="http://localhost/seven-store/admin/">
-            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Bảng điều khiển</span>
           </a>
         </li>
 
@@ -76,28 +76,6 @@
             </ul>
           </div>
         </li>
-
-        <!-- OrderStatus -->
-        <li class="nav-item">
-          <a class="nav-link menu-link" href="#sidebarOrderStatus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrderStatus">
-            <i class="ri-remixicon-line"></i> <span data-key="t-advance-ui">Trạng thái đơn hàng</span>
-          </a>
-          <div class="collapse menu-dropdown" id="sidebarOrderStatus">
-            <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a href="?act=listOrderStatus" class="nav-link" data-key="t-sweet-alerts">
-                  Danh sách
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?act=addOrderStatus" class="nav-link" data-key="t-nestable-list">
-                  Thêm mới
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <!-- end OrderStatus -->
 
         <!-- Blog -->
         <li class="nav-item">
@@ -165,9 +143,7 @@
         <!-- Contact -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarContact" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarContact">
-
             <i class="ri-customer-service-line"></i><span data-key="t-advance-ui">Quản lý liên hệ</span>
-
           </a>
           <div class="collapse menu-dropdown" id="sidebarContact">
             <ul class="nav nav-sm flex-column">
@@ -176,11 +152,6 @@
                   Danh sách
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="?act=addBanner" class="nav-link" data-key="t-nestable-list">
-                  Thêm mới
-                </a>
-              </li> -->
             </ul>
           </div>
         </li>
@@ -207,6 +178,7 @@
           </div>
         </li>
 
+        <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
         <!-- Discount -->
         <li class="nav-item">
           <a class="nav-link menu-link" href="#sidebarkhuyenmai" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarkhuyenmai">
@@ -227,6 +199,27 @@
             </ul>
           </div>
         </li>
+        <!-- OrderStatus -->
+        <li class="nav-item">
+          <a class="nav-link menu-link" href="#sidebarOrderStatus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrderStatus">
+            <i class="ri-remixicon-line"></i> <span data-key="t-advance-ui">Trạng thái đơn hàng</span>
+          </a>
+          <div class="collapse menu-dropdown" id="sidebarOrderStatus">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="?act=listOrderStatus" class="nav-link" data-key="t-sweet-alerts">
+                  Danh sách
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?act=addOrderStatus" class="nav-link" data-key="t-nestable-list">
+                  Thêm mới
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- end OrderStatus -->
 
         <!-- Order -->
         <li class="nav-item">
@@ -243,9 +236,6 @@
             </ul>
           </div>
         </li>
-
-        <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
-
       </ul>
     </div>
     <!-- Sidebar -->

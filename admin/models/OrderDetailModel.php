@@ -47,7 +47,13 @@ class OrderDetailModel
   public function updateDetailOrder($status, $id)
   {
     $sql = "UPDATE `don_hangs` SET `trang_thai_don_hang_id`=? WHERE id=?";
-    return $this->db->queryOne($sql, $status, $id);
+    return $this->db->execute($sql, $status, $id);
+  }
+
+  public function updatePayOrder($status, $id)
+  {
+    $sql = "UPDATE `don_hangs` SET `trang_thai_thanh_toan`=? WHERE id=?";
+    return $this->db->execute($sql, $status, $id);
   }
 
   public function getUserAndInfoOrder($don_hang_id)
@@ -65,6 +71,8 @@ class OrderDetailModel
       FROM `don_hang_cts` as dhct where don_hang_id=?";
     return $this->db->queryOne($sql, $don_hang_id);
   }
+
+
   public function getProductsByOrder($don_hang_id)
   {
     $sql = "select sp.id as san_pham_id, dhct.so_luong, dhct.gia_tien, sp.ten_san_pham, sp.anh_dai_dien

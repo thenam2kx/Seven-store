@@ -169,17 +169,17 @@
 
                         <div class="col-md-4 mt-3">
                           <label for="price" class="form-label">Tổng tiền</label>
-                          <input type="text" class="form-control" id="price" name="price" value="<?= $resultTotalPrice['tong_tien'] ?>" disabled>
+                          <input type="text" class="form-control" id="price" name="price" value="<?= formatCurrency($resultTotalPrice) ?>" disabled>
                         </div>
 
                         <div class="col-md-4 mt-3">
                           <label for="discount" class="form-label">Khuyến mãi</label>
-                          <input type="text" class="form-control" id="discount" name="discount" value="<?= $resultDiscount * 100 ?> %" disabled>
+                          <input type="text" class="form-control" id="discount" name="discount" value="<?= $resultDiscount ?>%" disabled>
                         </div>
 
                         <div class="col-md-4 mt-3">
                           <label for="name" class="form-label">Thành tiền</label>
-                          <input type="text" class="form-control" id="name" name="name" value="<?= $resultTotalMoneyFinal ?>" disabled>
+                          <input type="text" class="form-control" id="name" name="name" value="<?= formatCurrency($resultPriceFinal)  ?>" disabled>
                         </div>
                     </div>
                   </div>

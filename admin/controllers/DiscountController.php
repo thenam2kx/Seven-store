@@ -30,7 +30,7 @@ class DiscountController
         $newStartDate = new DateTime($startDate);
         $newEndDate = new DateTime($endDate);
 
-        if ($newStartDate < new DateTime() && $newEndDate < new DateTime() && $newStartDate < $newEndDate) {
+        if ($newStartDate > new DateTime() && $newEndDate > new DateTime() && $newStartDate < $newEndDate) {
           $status = 0; // sap dien ra
         } else if ($newStartDate <= new DateTime() && $newEndDate > new DateTime() && $newStartDate < $newEndDate) {
           $status = 1; // dang dien ra
@@ -78,7 +78,7 @@ class DiscountController
         $newStartDate = new DateTime($startDate);
         $newEndDate = new DateTime($endDate);
 
-        if ($newStartDate < new DateTime() && $newEndDate < new DateTime() && $newStartDate < $newEndDate) {
+        if ($newStartDate > new DateTime() && $newEndDate > new DateTime() && $newStartDate < $newEndDate) {
           $status = 0; // sap dien ra
         } else if ($newStartDate <= new DateTime() && $newEndDate > new DateTime() && $newStartDate < $newEndDate) {
           $status = 1; // dang dien ra
