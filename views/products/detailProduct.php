@@ -386,7 +386,7 @@
                   </div>
                   <div class="tt-product-inside-hover">
                     <div class="tt-row-btn">
-                      <a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                      <a href="?act=addToCard&idPrd=<?= $item['spid'] ?>" class="tt-btn-addtocart thumbprod-button-bg" data-target="#modalAddToCartProduct">ADD TO CART</a>
                     </div>
                     <div class="tt-row-btn">
                       <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>

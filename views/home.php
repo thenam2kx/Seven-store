@@ -211,7 +211,7 @@
                     ?>
                   </div>
                 </div>
-                <h2 class="tt-title"><a href="product.html" style="display: inline-block; margin: 4px 0;"><?= $result['ten_san_pham'] ?></a></h2>
+                <h2 class="tt-title"><a href="?act=productDetail&id=<?= $result['id'] ?>" style="display: inline-block; margin: 4px 0;"><?= $result['ten_san_pham'] ?></a></h2>
                 <div class="tt-price prdPrice">
                   <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= formatCurrency($result['gia_ban'])  ?> <sup>đ</sup></div>
                   <div><?= formatCurrency($result['gia_khuyen_mai']) ?><sup>đ</sup></div>
