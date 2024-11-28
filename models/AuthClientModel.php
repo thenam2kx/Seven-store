@@ -30,9 +30,9 @@ class AuthClientModel {
     $sql = "SELECT * FROM nguoi_dungs WHERE id = ?";
     return $this->db->queryOne($sql, $id);
   }
-  public function updateAccount($id, $name, $email, $address, $phone, $date, $gender) {
-    $sql = "UPDATE nguoi_dungs SET ho_ten = ?, email = ?, dia_chi = ?, so_dien_thoai = ?, ngay_sinh = ?, gioi_tinh = ? WHERE id = ?";
-    return $this->db->execute($sql, $name, $email, $address, $phone, $date, $gender, $id);
+  public function updateAccount($id, $name, $address, $gender) {
+    $sql = "UPDATE nguoi_dungs SET ho_ten = ?, dia_chi = ?, gioi_tinh = ? WHERE id = ?";
+    return $this->db->execute($sql, $name, $address, $gender, $id);
   }
 
   public function updatePassWord($id,$new_pass){

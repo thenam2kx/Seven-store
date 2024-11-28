@@ -96,4 +96,30 @@ class ProductModel {
     return $this->db->query($sql, $idProduct, $idUser, $content);
   }
 
+
+  public function checkOrderUser($ndid)
+  {
+    $sql= "select nd.id as ndid, dh.id as dhid, sp.id as spid, dhct.id as dhctid
+      from don_hangs dh
+      join nguoi_dungs nd on nd.id = dh.nguoi_dung_id
+      join don_hang_cts dhct on dhct.don_hang_id = dh.id
+      join san_phams sp on sp.id = dhct.san_pham_id
+      where nd.id = ? and dh.trang_thai_don_hang_id = 9";
+    return $this->db->query($sql, $ndid);
+  }
+
+  public function addRate($san_pham_id, $nguoi_dung_id, $diem_danh_gia, $noi_dung)
+  {
+    $sql= "insert into danh_gias (san_pham_id, nguoi_dung_id, diem_danh_gia, noi_dung)
+      values (?,?,?,?)";
+    return $this->db->execute($sql, $san_pham_id, $nguoi_dung_id, $diem_danh_gia, $noi_dung);
+  }
+
+  public function checkUserRated($san_pham_id, $nguoi_dung_id)
+  {
+    $sql= "select * from danh_gias dg
+      where dg.nguoi_dung_id = ? and dg.san_pham_id = ?";
+    return $this->db->queryOne($sql, $nguoi_dung_id, $san_pham_id);
+  }
+
 }
