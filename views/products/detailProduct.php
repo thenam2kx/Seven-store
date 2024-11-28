@@ -218,7 +218,7 @@
           </div>
           <div class="tt-item" id="rate">
             <div class="tt-collapse-title tt-poin-comments">Đánh giá (<?= sizeof($rateProduct) ?>)</div>
-            <div class="tt-collapse-content" style="display: none;">
+            <div class="tt-collapse-content">
               <div class="tt-review-block">
                 <div class="tt-row-custom-02">
                   <div class="col-item"></div>
@@ -263,7 +263,7 @@
                     </div>
                   <?php endforeach ?>
                 </div>
-                <div class="tt-review-form d-none">
+                <div class="tt-review-form mt-4 pt-2" style="display: <?= empty($checkOrderUser) && empty($isRate) && array_search($spid, $isRate) < 0 ? 'none' : 'block' ?>; border-top: 1px solid gray">
                   <div class="tt-message-info">
                     Viết đánh giá của bạn cho sản phẩm
                   </div>
@@ -279,15 +279,15 @@
                       <i class="icon-star-empty"></i>
                     </div>
                   </div>
-                  <form class="form-default">
-                    <div class="form-group">
+                  <form class="form-default" action="?act=addRateProduct&id=<?= $infoProduct['spid'] ?>" method="post">
+                    <!-- <div class="form-group">
                       <label for="inputName" class="control-label">Họ tên *</label>
                       <input type="email" class="form-control" id="inputName" placeholder="Enter your name">
                     </div>
                     <div class="form-group">
                       <label for="inputEmail" class="control-label">Email *</label>
                       <input type="password" class="form-control" id="inputEmail" placeholder="Enter your e-mail">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                       <label for="textarea" class="control-label">Nội dung *</label>
                       <textarea class="form-control" id="textarea" placeholder="Enter your review" rows="8"></textarea>
@@ -305,7 +305,7 @@
             <div class="tt-collapse-title tt-poin-comments">Bình luận (<?= sizeof($comment) ?>)</div>
             <div class="tt-collapse-content" style="display: none;">
               <div class="tt-review-block">
-                <div class="tt-review-form #ffffff">
+                <div class="tt-review-form #ffffff" style="display: <?= !isset($_SESSION['username']) ? 'none' : 'block' ?>;">
                   <div class="tt-message">
                     Viết bình luận của bạn cho sản phẩm
                   </div>

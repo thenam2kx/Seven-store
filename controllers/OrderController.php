@@ -93,6 +93,74 @@ class OrderController
           $updateQuantityProductAfterOrder = $this->OrderModel->updateQuantityProductAfterOrder($product['ghct_so_luong'], $product['spid']);
         }
         $deleteAllProductsFromCard = $this->OrderModel->deleteAllProductsFromCard($cartId);
+
+        if (isset($result) && $result) {
+          $emailUser = $email;
+          $subject = 'Đơn hàng của bạn đã được đặt thành công. vui lòng chú ý điện thoại để nhận hàng';
+          $content = '<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Thông báo đơn hàng</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f9f9f9;
+                    }
+                    .email-container {
+                        max-width: 600px;
+                        margin: 20px auto;
+                        background-color: #ffffff;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        overflow: hidden;
+                    }
+                    .header {
+                        background-color: #4CAF50;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .header h1 {
+                        margin: 0;
+                    }
+                    .content {
+                        padding: 20px;
+                        color: #333333;
+                    }
+                    .content p {
+                        margin: 10px 0;
+                    }
+                    .footer {
+                        text-align: center;
+                        padding: 20px;
+                        font-size: 12px;
+                        color: #666666;
+                        background-color: #f2f2f2;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="email-container">
+                    <div class="header">
+                        <h1>Thông báo đặt hàng thành công</h1>
+                    </div>
+                    <div class="content">
+                        <p>Xin chào '.$email.',</p>
+                        <p>Đơn hàng của bạn đã được đặt thành công!</p>
+                        <p>Cảm ơn bạn đã mua hàng ở cửa hàng của chúng tôi.</p>
+                    </div>
+                    <div class="footer">
+                        <p>&copy; 2024 Seven store. All rights reserved.</p>
+                    </div>
+                </div>
+            </body>
+            </html>';
+          sendEmail($emailUser, $subject, $content);
+        }
         header('Location: ?act=listOrders');
       } else {
         header('Location: ?act=order&cartId='.$cartId);

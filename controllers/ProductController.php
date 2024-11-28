@@ -68,6 +68,11 @@ class ProductController
     //comment
     $comment = $this->ProductModel->getComment($idPrd);
 
+    $checkOrderUser = [];
+    if (isset($_SESSION['username'])) {
+      $checkOrderUser = $this->ProductModel->checkOrderUser($_SESSION['username']['id']);
+    }
+
     require_once 'views/products/detailProduct.php';
   }
 
@@ -90,5 +95,18 @@ class ProductController
     } else {
       header('Location: http://localhost/seven-store/admin/?act=signin');
     }
+  }
+
+  public function addRate()
+  {
+    if (isset($_SESSION['username']) && $_SESSION['username']) {
+      $spid = $_GET['id'];
+      $isRate = [];
+      $checkOrderUser = $this->ProductModel->checkOrderUser($_SESSION['username']['id']);
+      foreach($checkOrderUser as $tem) {
+        array_push($isRate, $tem['spid']);
+      }
+    }
+    $this->detailProduct();
   }
 }
