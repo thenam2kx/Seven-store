@@ -22,10 +22,10 @@ if (isset($idUserCart) && $idUserCart !== 0) {
             <a href="?act=listDiscount" title="Mã khuyến mãi"><span>Khuyến mãi</span></a>
           </li>
           <li>
-            <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
+            <a href="?act=blog" title="Tin tức"><span>Tin tức</span></a>
           </li>
           <li>
-            <a href="#" title="Liên hệ"><span>Liên hệ</span></a>
+            <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>
           </li>
         </ul>
       </div>
@@ -88,7 +88,7 @@ if (isset($idUserCart) && $idUserCart !== 0) {
                     <a href="?act=listDiscount" title="khuyến mãi"><span>Khuyến mãi</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
+                    <a href="?act=blog" title="Tin tức"><span>Tin tức</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
                     <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>

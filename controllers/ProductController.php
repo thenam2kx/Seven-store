@@ -69,9 +69,20 @@ class ProductController
     $comment = $this->ProductModel->getComment($idPrd);
 
     $checkOrderUser = [];
+    $isRate = [];
+    $isRated = false;
     if (isset($_SESSION['username'])) {
       $checkOrderUser = $this->ProductModel->checkOrderUser($_SESSION['username']['id']);
+      foreach($checkOrderUser as $item) {
+        array_push($isRate, $item['spid']);
+      }
+
+      $checkUserRated = $this->ProductModel->checkUserRated($idPrd, $_SESSION['username']['id']);
+      if (isset($checkUserRated) && !empty($checkUserRated)) {
+        $isRated = true;
+      }
     }
+
 
     require_once 'views/products/detailProduct.php';
   }
@@ -83,7 +94,6 @@ class ProductController
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_SESSION['username'])) {
           $idPrd = $_GET['id'];
-          // var_dump($idPrd);die;
           $idUser = $_SESSION['username']['id'];
           $content = $_POST['content'];
           $this->ProductModel->addComment($idPrd, $idUser, $content);
@@ -99,13 +109,12 @@ class ProductController
 
   public function addRate()
   {
-    if (isset($_SESSION['username']) && $_SESSION['username']) {
+    if (isset($_SESSION['username']) && $_SESSION['username'] && isset($_POST['save']) && $_POST['save']) {
       $spid = $_GET['id'];
-      $isRate = [];
-      $checkOrderUser = $this->ProductModel->checkOrderUser($_SESSION['username']['id']);
-      foreach($checkOrderUser as $tem) {
-        array_push($isRate, $tem['spid']);
-      }
+      $content = $_POST['content'];
+      $userId = $_SESSION['username']['id'];
+      $rating = isset($_POST['ratingValue']) ? intval($_POST['ratingValue']) : 0;
+      $addRate = $this->ProductModel->addRate($spid, $userId, $rating, $content);
     }
     $this->detailProduct();
   }

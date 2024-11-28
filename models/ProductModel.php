@@ -112,7 +112,14 @@ class ProductModel {
   {
     $sql= "insert into danh_gias (san_pham_id, nguoi_dung_id, diem_danh_gia, noi_dung)
       values (?,?,?,?)";
-    return $this->db->query($sql, $san_pham_id, $nguoi_dung_id, $diem_danh_gia, $noi_dung);
+    return $this->db->execute($sql, $san_pham_id, $nguoi_dung_id, $diem_danh_gia, $noi_dung);
+  }
+
+  public function checkUserRated($san_pham_id, $nguoi_dung_id)
+  {
+    $sql= "select * from danh_gias dg
+      where dg.nguoi_dung_id = ? and dg.san_pham_id = ?";
+    return $this->db->queryOne($sql, $nguoi_dung_id, $san_pham_id);
   }
 
 }

@@ -28,8 +28,8 @@
   <div class="tt-breadcrumb">
     <div class="container">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>Blog</li>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li>Tin tức</li>
       </ul>
     </div>
   </div>

@@ -1,3 +1,15 @@
+<?php
+$AllowRate = false;
+if (isset($isRate) && !empty($isRate) && !$isRated === true) {
+  foreach ($isRate as $haveId) {
+    if ($haveId === $infoProduct['spid']) {
+      $AllowRate = true;
+    }
+  }
+}
+
+
+?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
@@ -76,6 +88,38 @@
       opacity: 0;
       pointer-events: none;
     }
+
+    /* Rating Star Widgets Style */
+    .rating-stars ul {
+      list-style-type: none;
+      padding: 0;
+
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .rating-stars ul>li.star {
+      display: inline-block;
+
+    }
+
+    /* Idle State of the stars */
+    .rating-stars ul>li.star>i.fa {
+      font-size: 1em;
+      /* Change the size of the stars */
+      color: #ccc;
+      /* Color on idle state */
+    }
+
+    /* Hover state of the stars */
+    .rating-stars ul>li.star.hover>i.fa {
+      color: #FFCC36;
+    }
+
+    /* Selected state of the stars */
+    .rating-stars ul>li.star.selected>i.fa {
+      color: #FF912C;
+    }
   </style>
 </head>
 
@@ -152,21 +196,21 @@
               <div class="tt-review">
                 <div class="tt-rating">
                   <?php
-                    $rating = isset($totalRateAndCount['trung_binh_diem']) ? $totalRateAndCount['trung_binh_diem'] : 0;
-                    $fullStars = floor($rating);
-                    $hasHalfStar = ($rating - $fullStars) >= 0.5;
-                    $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
-                    for ($i = 0; $i < $fullStars; $i++) {
-                      echo '<i class="icon-star"></i>';
-                    }
-                    // Render sao nửa (nếu có)
-                    if ($hasHalfStar) {
-                      echo '<i class="icon-star-half"></i>';
-                    }
-                    // Render sao rỗng
-                    for ($i = 0; $i < $emptyStars; $i++) {
-                      echo '<i class="icon-star-empty"></i>';
-                    }
+                  $rating = isset($totalRateAndCount['trung_binh_diem']) ? $totalRateAndCount['trung_binh_diem'] : 0;
+                  $fullStars = floor($rating);
+                  $hasHalfStar = ($rating - $fullStars) >= 0.5;
+                  $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
+                  for ($i = 0; $i < $fullStars; $i++) {
+                    echo '<i class="icon-star"></i>';
+                  }
+                  // Render sao nửa (nếu có)
+                  if ($hasHalfStar) {
+                    echo '<i class="icon-star-half"></i>';
+                  }
+                  // Render sao rỗng
+                  for ($i = 0; $i < $emptyStars; $i++) {
+                    echo '<i class="icon-star-empty"></i>';
+                  }
                   ?>
                 </div>
                 <a class="product-page-gotocomments-js" href="#rate">(<?= $totalRateAndCount['tong_danh_gia'] ?> Đánh giá)</a>
@@ -237,21 +281,21 @@
                       <div class="tt-content">
                         <div class="tt-rating">
                           <?php
-                            $rating = $item['diem_danh_gia'];
-                            $fullStars = floor($rating);
-                            $hasHalfStar = ($rating - $fullStars) >= 0.5;
-                            $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
-                            for ($i = 0; $i < $fullStars; $i++) {
-                              echo '<i class="icon-star"></i>';
-                            }
-                            // Render sao nửa (nếu có)
-                            if ($hasHalfStar) {
-                              echo '<i class="icon-star-half"></i>';
-                            }
-                            // Render sao rỗng
-                            for ($i = 0; $i < $emptyStars; $i++) {
-                              echo '<i class="icon-star-empty"></i>';
-                            }
+                          $rating = $item['diem_danh_gia'];
+                          $fullStars = floor($rating);
+                          $hasHalfStar = ($rating - $fullStars) >= 0.5;
+                          $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
+                          for ($i = 0; $i < $fullStars; $i++) {
+                            echo '<i class="icon-star"></i>';
+                          }
+                          // Render sao nửa (nếu có)
+                          if ($hasHalfStar) {
+                            echo '<i class="icon-star-half"></i>';
+                          }
+                          // Render sao rỗng
+                          for ($i = 0; $i < $emptyStars; $i++) {
+                            echo '<i class="icon-star-empty"></i>';
+                          }
                           ?>
                         </div>
                         <div class="tt-comments-title">
@@ -263,37 +307,44 @@
                     </div>
                   <?php endforeach ?>
                 </div>
-                <div class="tt-review-form mt-4 pt-2" style="display: <?= empty($checkOrderUser) && empty($isRate) && array_search($spid, $isRate) < 0 ? 'none' : 'block' ?>; border-top: 1px solid gray">
+                <div class="tt-review-form mt-4 pt-2" style="display: <?= !$AllowRate ? 'none' : 'block' ?>; border-top: 1px solid gray">
                   <div class="tt-message-info">
                     Viết đánh giá của bạn cho sản phẩm
                   </div>
-                  <div class="tt-rating-indicator">
-                    <div class="tt-title">
-                      Đánh giá của bạn *
-                    </div>
-                    <div class="tt-rating">
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star-half"></i>
-                      <i class="icon-star-empty"></i>
-                    </div>
-                  </div>
                   <form class="form-default" action="?act=addRateProduct&id=<?= $infoProduct['spid'] ?>" method="post">
-                    <!-- <div class="form-group">
-                      <label for="inputName" class="control-label">Họ tên *</label>
-                      <input type="email" class="form-control" id="inputName" placeholder="Enter your name">
+                    <div class="tt-rating-indicator">
+                      <div class="tt-title">
+                        Đánh giá của bạn *
+                      </div>
+                      <div class='rating-stars text-center'>
+                        <ul id='stars' style="margin: 0; padding: 0">
+                          <li class='star' title='Poor' data-value='1'>
+                            <i class='fa fa-star fa-fw'></i>
+                          </li>
+                          <li class='star' title='Fair' data-value='2'>
+                            <i class='fa fa-star fa-fw'></i>
+                          </li>
+                          <li class='star' title='Good' data-value='3'>
+                            <i class='fa fa-star fa-fw'></i>
+                          </li>
+                          <li class='star' title='Excellent' data-value='4'>
+                            <i class='fa fa-star fa-fw'></i>
+                          </li>
+                          <li class='star' title='WOW!!!' data-value='5'>
+                            <i class='fa fa-star fa-fw'></i>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputEmail" class="control-label">Email *</label>
-                      <input type="password" class="form-control" id="inputEmail" placeholder="Enter your e-mail">
-                    </div> -->
+                      <input type="hidden" id="rating-input" name="ratingValue" value="">
+                    </div>
                     <div class="form-group">
                       <label for="textarea" class="control-label">Nội dung *</label>
-                      <textarea class="form-control" id="textarea" placeholder="Enter your review" rows="8"></textarea>
+                      <textarea class="form-control" id="textarea" placeholder="Thêm đánh giá của bạn" name="content" rows="8"></textarea>
                     </div>
                     <div class="form-group">
-                      <button type="submit" class="btn">Lưu</button>
+                      <input type="submit" class="btn" name="save" value="Lưu" />
                     </div>
                   </form>
                 </div>
@@ -416,6 +467,7 @@
   ?>
   <!-- <script src="assets/separate-include/listing/listing.js"></script> -->
   <script src="assets/cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+  <script src="https://kit.fontawesome.com/24ddfb74da.js" crossorigin="anonymous"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> -->
   <script src="assets/separate-include/single-product/single-product.js"></script>
 
@@ -426,11 +478,55 @@
   </div>
 
   <script>
-    const elements =document.querySelectorAll('.tt-btn-wishlist')
+    const elements = document.querySelectorAll('.tt-btn-wishlist')
     for (const element of elements) {
       const newElement = element.cloneNode(true);
       element.parentNode.replaceChild(newElement, element);
     }
+
+    $(document).ready(function() {
+      /* 1. Visualizing things on Hover - See next part for action on click */
+      $('#stars li').on('mouseover', function() {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+        // Now highlight all the stars that's not after the current hovered star
+        $(this).parent().children('li.star').each(function(e) {
+          if (e < onStar) {
+            $(this).addClass('hover');
+          } else {
+            $(this).removeClass('hover');
+          }
+        });
+      }).on('mouseout', function() {
+        $(this).parent().children('li.star').each(function(e) {
+          $(this).removeClass('hover');
+        });
+      });
+
+      /* 2. Action to perform on click */
+      $('#stars li').on('click', function() {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var stars = $(this).parent().children('li.star');
+        for (i = 0; i < stars.length; i++) {
+          $(stars[i]).removeClass('selected');
+        }
+        for (i = 0; i < onStar; i++) {
+          $(stars[i]).addClass('selected');
+        }
+        // JUST RESPONSE (Not needed)
+        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+        console.log('🚀 ~ $ ~ ratingValue:', ratingValue)
+        var msg = "";
+        if (ratingValue > 1) {
+          msg = "Thanks! You rated this " + ratingValue + " stars.";
+        } else {
+          msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+        }
+
+        $('#rating-input').val(ratingValue);
+
+      });
+    });
+
   </script>
 
   <a href="#" class="tt-back-to-top tt-show" id="js-back-to-top" style="right: 0px;">BACK TO TOP</a>
