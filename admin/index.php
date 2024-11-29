@@ -140,19 +140,17 @@ match ($act) {
   'signout' => (new AuthController())->signOut(),
   'fogotPassword' => (new AuthController())->fogotPassword(),
 
-  
+
 
   // Order
   'listOrder' => (new OrderController())->getAll(),
-  'addOrder' => (new OrderController())->add(),
   'editOrder' => (new OrderController())->loadEditView(),
   'handleEditOrder' => (new OrderController())->handleEdit(),
-  'deleteOrder' => (new OrderController())->delete(),
 
   // Order detail
   'orderDetail' => (new OrderDetailController())->getDetail(),
   'editOrderDetail' => (new OrderDetailController())->editDetail(),
-  
+
   //comment
   'listComment' => (new ProductController())->listComments(),
 

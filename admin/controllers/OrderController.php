@@ -2,6 +2,7 @@
 
 class OrderController
 {
+
   public function getAll()
   {
     try {
@@ -18,64 +19,35 @@ class OrderController
     }
   }
 
-  public function add()
+  public function loadEditView()
   {
-    try {
+      $id = $_GET['id'];
       $userModel = new UserModel();
       $users = $userModel->getAll();
       $orderStatusModel = new OrderStatusModel();
       $listOrderStatus = $orderStatusModel->getAll();
-      if (isset($_POST['save']) && ($_POST['save'])) {
-        $name = $_POST['name'];
-        $user = $_POST['user'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $totalMoney = $_POST['totalMoney'];
-        $pay = $_POST['pay'];
-        $payForm = $_POST['payForm'];
-        $OrderStatus = $_POST['OrderStatus'];
-        $note = $_POST['note'];
-        $email = $_POST['email'];
-        $payStatus = $_POST['payStatus'];
-        $date = $_POST['date'];
+      $orderModel = new OrderModel();
+      $result = $orderModel->getOne($id);
 
-        $orderModel = new OrderModel();
-        $result = $orderModel->create(
-          $user,
-          $name,
-          $note,
-          $email,
-          $phone,
-          $address,
-          $totalMoney,
-          $pay,
-          $payForm,
-          $payStatus,
-          $OrderStatus,
-          $date
-        );
+      $validTransitions = [
+          1 => [2],
+          2 => [3],
+          3 => [4],
+          4 => [5],
+          5 => [6, 8],
+          6 => [9],
+          7 => [10],
+          8 => [10],
+          9 => [],
+          10 => []               
+      ];
 
-        if ($result) {
-          header("Location: ?act=listOrder");
-        }
-      }
-      require_once "./views/order/addOrder.php";
-    } catch (\Throwable $th) {
-      throw $th;
-    }
+      $currentStatus = $result['trang_thai_don_hang_id'];
+      $validStatuses = $validTransitions[$currentStatus] ?? [];
+
+      require_once "./views/order/editOrder.php";
   }
 
-  public function loadEditView()
-  {
-    $id = $_GET['id'];
-    $userModel = new UserModel();
-    $users = $userModel->getAll();
-    $orderStatusModel = new OrderStatusModel();
-    $listOrderStatus = $orderStatusModel->getAll();
-    $orderModel = new OrderModel();
-    $result = $orderModel->getOne($id);
-    require_once "./views/order/editOrder.php";
-  }
 
   public function handleEdit()
   {
@@ -103,17 +75,10 @@ class OrderController
           header("Location: ?act=listOrder");
         }
       }
-      require_once "./views/order/addOrder.php";
+      require_once "./views/order/listOrder.php";
     } catch (\Throwable $th) {
       throw $th;
     }
   }
 
-  public function delete()
-  {
-    $id = $_GET['id'];
-    $orderModel = new OrderModel();
-    $orderModel->delete($id);
-    $this->getAll();
-  }
 }
