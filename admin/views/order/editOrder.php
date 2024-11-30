@@ -22,6 +22,24 @@
           }
       }
   </script>
+  <style>
+    select.form-select option:disabled {
+      color: #aaa;
+      background-color: #f8f9fa;
+    }
+
+    select.form-select option {
+      color: #212529;
+      background-color: #ffffff;
+    }
+
+    select.form-select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  </style>
+
 </head>
 
 <body>
@@ -65,37 +83,29 @@
 
                   <div class="col-md-3">
                     <label for="OrderStatus" class="form-label">Trạng thái đơn hàng</label>
-                    <select class="form-select" name="OrderStatus" id="OrderStatus" <?= $result['trang_thai_don_hang_id'] === 9 ? 'disabled' : '' ?>>
+                    <select class="form-select" name="OrderStatus" id="OrderStatus">
                       <?php foreach ($listOrderStatus as $OrderStatus): ?>
-                        <option value="<?= $OrderStatus['id'] ?>" <?= $result['trang_thai_don_hang_id'] === $OrderStatus['id'] ? 'selected' : '' ?>><?= $OrderStatus['trang_thai'] ?></option>
-                      <?php endforeach ?>
+                        <option
+                          value="<?= $OrderStatus['id'] ?>"
+                          <?= $result['trang_thai_don_hang_id'] === $OrderStatus['id'] ? 'selected' : '' ?>
+                          <?= !in_array($OrderStatus['id'], $validStatuses) && $OrderStatus['id'] !== $result['trang_thai_don_hang_id'] ? 'disabled' : '' ?>>
+                          <?= $OrderStatus['trang_thai'] ?>
+                        </option>
+                      <?php endforeach; ?>
                     </select>
+
                     <div class="invalid-feedback">
                       Vui lòng chọn trạng thái đơn hàng.
                     </div>
                   </div>
-
-
                   <div class="col-12">
                     <input class="btn btn-primary" type="submit" name="save" value="Cập nhật" />
                     <a class="btn btn-outline-primary" href="?act=listOrder" type="reset">Hủy</a>
-                    <a href="?act=deleteOrder&id=<?= $order['id'] ?>" onclick="confirmDelete(event, <?= $order['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-
-          <script>
-            function confirmDelete(event, id) {
-              event.preventDefault();
-
-              if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                window.location.href = "?act=deleteOrder&id=" + id;
-              }
-            }
-          </script>
-
 
           <script type="module">
             import {

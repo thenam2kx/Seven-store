@@ -77,10 +77,7 @@
                   name="search" />
                 <input class="btn btn-outline-primary" type="submit" value="Search">
               </form>
-              <!-- Sort Button -->
-              <a class="btn btn-primary" href="?act=addOrder">
-                <i class="bi bi-funnel"></i> Thêm đơn hàng
-              </a>
+
             </div>
 
             <div class="card-body">
@@ -101,7 +98,7 @@
                       <?php foreach ($orders as $order): ?>
                         <tr>
                           <th scope="row"><a href="#" class="fw-medium">#<?= $order['id'] ?></a></th>
-                          <td><?= $order['ngay_tao'] ?></td>
+                          <td><?= date('d/m/Y', strtotime($order['ngay_tao'])) ?></td>
                           <td><?= $order['trang_thai'] ?></td>
                           <td>
                             <span class="badge <?= $order['hinh_thuc_thanh_toan'] == 1 ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' ?> ">
@@ -117,24 +114,12 @@
                             <div class="hstack gap-3 flex">
                               <a href="?act=orderDetail&id=<?= $order['id'] ?>" class="link-success fs-15"><i class="ri-eye-line"></i></a>
                               <a href="?act=editOrder&id=<?= $order['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                              <a href="?act=deleteOrder&id=<?= $order['id'] ?>" onclick="confirmDelete(event, <?= $order['id'] ?>)" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
                             </div>
                           </td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
                   </table>
-                  <script>
-                    function confirmDelete(event, id) {
-                      event.preventDefault();
-
-                      if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                        window.location.href = "?act=deleteOrder&id=" + id;
-                      }
-                    }
-                  </script>
-
-
                 </div>
               </div>
             </div>

@@ -159,8 +159,9 @@
                       <p>Ngày kết thúc: <?= $endDate->format("d/m/Y") ?></p>
                     <?php endif; ?>
                   </div>
-                  <button class="btn btn-primary btn-sm promotion-btn"
-                  onclick="handleCopy('<?= $result['ma_km'] ?>', '<?= $status ?>')">Sao chép</button>
+                  <button class="btn btn-primary btn-sm promotion-btn <?= $isDisabled ?>"
+                    onclick="handleCopy('<?= $result['ma_km'] ?>')"
+                    <?= $status === 'Hết hạn' ? 'disabled' : '' ?>>Sao chép</button>
                 </div>
 
               <?php endforeach ?>
