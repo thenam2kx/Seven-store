@@ -91,6 +91,20 @@ class OrderModel
     return false;
   }
 
+  public function getInfoOrderDetail($orderId)
+  {
+    $sql = "select * from don_hangs dh
+      join don_hang_cts dhct on dhct.don_hang_id = dh.id
+      where dh.id = ?";
+    return $this->db->query($sql, $orderId);
+  }
+
+  public function updateQuantityProductAfterDeleteOrder($quantity, $spid)
+  {
+    $sql = "update san_phams sp set sp.so_luong = sp.so_luong + ? where sp.id = ?";
+    return $this->db->execute($sql, $quantity, $spid);
+  }
+
   public function getAllDetailOrder($cartId, $userId)
   {
     $sql = "select *, nd.id as ndid, gh.id as ghid, ghct.id as ghctid, sp.id as spid, ghct.so_luong as so_luong_gh
@@ -137,7 +151,7 @@ class OrderModel
   }
 
   public function deleteAllProductsFromCard($ghid) {
-    $sql = "delete from gio_hang_cts ghct where  ghct.gio_hang_id = ?";
+    $sql = "delete from gio_hang_cts ghct where ghct.gio_hang_id = ?";
     return $this->db->execute($sql, $ghid);
   }
 }

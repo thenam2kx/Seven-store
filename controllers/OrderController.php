@@ -105,7 +105,7 @@ class OrderController
                 <title>Thông báo đơn hàng</title>
                 <style>
                     body {
-                        font-family: Arial, sans-serif;
+                        font-family: Arial, Helvetica, sans-serif;
                         margin: 0;
                         padding: 0;
                         background-color: #f9f9f9;
@@ -186,7 +186,12 @@ class OrderController
     $orderId = $_GET['id'] ?? null;
 
     if ($orderId) {
+      $getInfoOrderDetail = $this->OrderModel->getInfoOrderDetail($orderId);
+
       $result = $this->OrderModel->deleteOrder($orderId);
+      foreach ($getInfoOrderDetail as $content) {
+        $this->OrderModel->updateQuantityProductAfterDeleteOrder($content['so_luong'], $content['san_pham_id']);
+      }
 
       if ($result) {
         echo "<script>alert('Hủy đơn hàng thành công!'); window.location.href = '?act=listOrders';</script>";

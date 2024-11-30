@@ -72,6 +72,7 @@ match ($act) {
   'deleteAllProductFromCart' => (new CartController())->deleteAllProductFromCart(),
   'addQuantityProduct' => (new CartController())->addQuantityProduct(),
   'removeQuantityProduct' => (new CartController())->removeQuantityProduct(),
+  'updateInputQuantityProduct' => (new CartController())->updateInputQuantityProduct(),
 
 
   //Comment
