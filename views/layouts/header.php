@@ -1,49 +1,32 @@
 <?php
-  $listProductsFromCardHeader = [];
-  $idUserCart = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
-  if(isset($idUserCart) && $idUserCart !== 0) {
-    $cartModelHeader = new CartModel();
-    $getGhid = $cartModelHeader->getCartOfUser($idUserCart);
-    $ghid = isset($getGhid) ? $getGhid['ghid'] : 0;
-    $totalPrice = $cartModelHeader->totalPriceFromCart($ghid);
-    $totalProductsFromCart = $cartModelHeader->totalProductsFromCart($ghid);
-    $listProductsFromCardHeader = $cartModelHeader->getProductsFromCard($idUserCart);
-  }
+$listProductsFromCardHeader = [];
+$idUserCart = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
+if (isset($idUserCart) && $idUserCart !== 0) {
+  $cartModelHeader = new CartModel();
+  $getGhid = $cartModelHeader->getCartOfUser($idUserCart);
+  $ghid = isset($getGhid) ? $getGhid['ghid'] : 0;
+  $totalPrice = $cartModelHeader->totalPriceFromCart($ghid);
+  $totalProductsFromCart = $cartModelHeader->totalProductsFromCart($ghid);
+  $listProductsFromCardHeader = $cartModelHeader->getProductsFromCard($idUserCart);
+}
 ?>
 <header id="tt-header">
   <nav class="panel-menu mobile-main-menu">
-
     <div class="mmpanels">
       <div class="mmpanel mmhidden" id="mm5">
         <ul>
-          <li><a href="#" data-target="#" class="mm-prev-level">Back</a></li>
-          <li><a href="listing-left-column.html" class="mm-original-link">Danh mục sản phẩm</a></li>
           <li>
-            <a href="?act=products" data-target="?act=products" class="mm-next-level">Sản phẩm</a>
-
+            <a href="?act=products" title="Sản phẩm"><span>Sản phẩm</span></a>
           </li>
           <li>
-            <a href="#mm7" data-target="#mm7" class="mm-next-level">Sale</a>
-
+            <a href="?act=listDiscount" title="Mã khuyến mãi"><span>Khuyến mãi</span></a>
           </li>
           <li>
-            <a href="#mm8" data-target="#mm8" class="mm-next-level">Áo phông</a>
+            <a href="?act=blog" title="Tin tức"><span>Tin tức</span></a>
           </li>
           <li>
-            <a href="#mm8" data-target="#mm8" class="mm-next-level">Áo khoác</a>
+            <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>
           </li>
-          <li>
-            <a href="#mm8" data-target="#mm8" class="mm-next-level">Áo sơ mi</a>
-          </li>
-          <li>
-            <a href="#mm9" data-target="#mm9" class="mm-next-level">Quần nam</a>
-          </li>
-        </ul>
-      </div>
-      <div class="mmpanel mmhidden" id="mm6">
-        <ul>
-          <li><a href="#" data-target="#" class="mm-prev-level">Back</a></li>
-          <li><a href="#" class="mm-original-link">Sản phẩm mới</a></li>
         </ul>
       </div>
   </nav>
@@ -74,7 +57,7 @@
       <div class="row">
         <div class="tt-logo-container">
           <!-- mobile logo -->
-          <a class="tt-logo tt-logo-alignment" href="index.php"><img src="assets/images/custom/logo2.png" alt=""></a>
+          <a class="tt-logo tt-logo-alignment" href="http://localhost/seven-store/"><img src="assets/images/custom/logo2.png" alt=""></a>
           <!-- /mobile logo -->
         </div>
       </div>
@@ -105,7 +88,7 @@
                     <a href="?act=listDiscount" title="khuyến mãi"><span>Khuyến mãi</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="?act=blog" title="Bài viết"><span>Bài viết</span></a>
+                    <a href="?act=blog" title="Tin tức"><span>Tin tức</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
                     <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>
@@ -150,7 +133,7 @@
             <div class="tt-cart tt-dropdown-obj" data-tooltip="Giỏ hàng" data-tposition="bottom">
               <button class="tt-dropdown-toggle">
                 <i class="icon-f-39"></i>
-                <span class="tt-badge-cart"><?= $totalProductsFromCart['tong_so_luong'] ?></span>
+                <span class="tt-badge-cart"><?= isset($totalProductsFromCart['tong_so_luong']) ? $totalProductsFromCart['tong_so_luong'] : 0 ?></span>
               </button>
               <div class="tt-dropdown-menu">
                 <div class="tt-mobile-add">
@@ -161,7 +144,7 @@
                   <div class="tt-cart-layout">
                     <div class="tt-cart-content">
                       <div class="tt-cart-list">
-                        <?php foreach($listProductsFromCardHeader as $row): ?>
+                        <?php foreach ($listProductsFromCardHeader as $row): ?>
                           <div class="tt-item">
                             <a href="?act=productDetail&id=<?= $row['spid'] ?>">
                               <div class="tt-item-img">
@@ -178,11 +161,11 @@
                       </div>
                       <div class="tt-cart-total-row">
                         <div class="tt-cart-total-title">Tổng tiền:</div>
-                        <div class="tt-cart-total-price"><?= formatCurrency($totalPrice['tong_tien']) ?></div>
+                        <div class="tt-cart-total-price"><?= formatCurrency(isset($totalPrice['tong_tien']) ? $totalPrice['tong_tien'] : 0) ?></div>
                       </div>
                       <div class="tt-cart-btn">
                         <div class="tt-item">
-                          <a href="#" class="btn">TIẾN HÀNH ĐẶT HÀNG</a>
+                          <a href="?act=order&cartId=<?= $ghid ?>" class="btn">TIẾN HÀNH ĐẶT HÀNG</a>
                         </div>
                         <div class="tt-item">
                           <a href="?act=listCart" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>
@@ -210,22 +193,23 @@
                     <ul>
                       <li><a href="?act=account"><i class="icon-f-94"></i>Tài khoản</a></li>
                       <li><a href="?act=listFavorite&id=<?php echo $_SESSION['username']['id']; ?>"><i class="icon-n-072"></i>Danh sách yêu thích</a></li>
+                      <li><a href="?act=listOrders"><i class="icon-f-43"></i>Đơn hàng của tôi</a></li>
                       <li><a href="?act=signout"><i class="icon-f-77"></i>Đăng xuất</a></li>
                     </ul>
                   </div>
                 </div>
               <?php } else {  ?>
                 <div class="tt-dropdown-menu">
-                <div class="tt-mobile-add">
-                  <button class="tt-close">Close</button>
+                  <div class="tt-mobile-add">
+                    <button class="tt-close">Close</button>
+                  </div>
+                  <div class="tt-dropdown-inner">
+                    <ul>
+                      <li><a href="admin/?act=signin"><i class="icon-f-76"></i>Đăng nhập</a></li>
+                      <li><a href="<?php echo BASE_URL; ?>?act=signup"><i class="icon-f-94"></i>Đăng ký</a></li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="tt-dropdown-inner">
-                  <ul>
-                    <li><a href="admin/?act=signin"><i class="icon-f-76"></i>Đăng nhập</a></li>
-                    <li><a href="<?php echo BASE_URL; ?>?act=signup"><i class="icon-f-94"></i>Đăng ký</a></li>
-                  </ul>
-                </div>
-              </div>
               <?php } ?>
             </div>
           </div>

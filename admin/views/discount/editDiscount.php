@@ -101,7 +101,7 @@
                   <div class="col-12">
                     <input class="btn btn-primary" type="submit" name="save" value="Lưu" />
                     <button class="btn btn-outline-primary" type="reset">Xóa</button>
-                    <a class="btn" href="?act=listProduct" type="reset">Hủy</a>
+                    <a class="btn" href="?act=listDiscount">Hủy</a>
                   </div>
                 </form>
               </div>

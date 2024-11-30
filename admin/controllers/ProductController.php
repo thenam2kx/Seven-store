@@ -40,6 +40,15 @@ class ProductController
         $targetDir = 'uploads/products/';
         $thumbnail = uploadImage($file, $targetDir);
 
+        if (
+          $name === '' || $category === '' || $priceInput === '' ||
+          $priceSell === '' || $priceDiscount === '' || $inputDate === '' ||
+          $total === '' || $status === '' || $contentShort === '' || $file === '' || $thumbnail === ''
+        ) {
+          echo "<script>alert('Thông tin sản phẩm không được để trống')</script>";
+          exit('<script>window.location.href = "?act=addProduct"</script>');
+        }
+
         $ProductModel = new ProductModel();
         $result = $ProductModel->create(
           $category,

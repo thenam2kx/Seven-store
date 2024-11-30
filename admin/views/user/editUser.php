@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>User | NN Shop</title>
+  <title>Cập nhật thông tin người dùng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -13,16 +13,6 @@
   <?php
   require_once "views/layouts/libs_css.php";
   ?>
-  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.css" />
-  <script type="importmap">
-    {
-      "imports": {
-          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.js",
-          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.0/"
-          }
-      }
-  </script>
-
 </head>
 
 <body>
@@ -50,7 +40,7 @@
             <div class="page-title-right">
               <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="http://localhost/seven-store/admin/">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="?act=listUser">Danh sách người dùng</a></li>
+                <li class="breadcrumb-item"><a href="?act=users">Danh sách người dùng</a></li>
                 <li class="breadcrumb-item active">Cập nhật người dùng</li>
               </ol>
             </div>
@@ -157,7 +147,7 @@
             </div>
             <div class="col-sm-6">
               <div class="text-sm-end d-none d-sm-block">
-                Design & Develop by Themesbrand
+                Design & Develop by Seven-store
               </div>
             </div>
           </div>

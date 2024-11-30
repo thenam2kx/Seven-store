@@ -86,14 +86,14 @@
                           <div class="flex-shrink-0">
                             <h5 class="<?= $boolearnResultEarning >= 0 ? 'text-success' : 'text-danger' ?> fs-14 mb-0">
                               <i class="<?= $boolearnResultEarning >= 0 ? 'ri-arrow-right-up-line' : 'ri-arrow-right-down-line' ?> fs-13 align-middle"></i>
-                              <?= $boolearnResultEarning >= 0 ? '+' : '' ?><?= number_format($resultEarning, 2) ?> %
+                              <?= $boolearnResultEarning >= 0 ? '+' : '' ?><?= formatCurrency($resultEarning) ?> %
                             </h5>
                           </div>
                         </div>
                         <div class="d-flex align-items-end justify-content-between mt-4">
                           <div>
                             <h4 class="fs-22 fw-semibold ff-secondary mb-4">
-                              <span class="counter-value" data-target="<?= $getTotalEarningWithCurrentMonth['tong_thanh_toan'] ?>">0</span>k
+                              <span class="counter-value" data-target="<?= isset($getTotalEarningWithCurrentMonth['tong_thanh_toan']) ? $getTotalEarningWithCurrentMonth['tong_thanh_toan'] : 0 ?>">0</span>k
                             </h4>
                             <a href="#" class="text-decoration-underline">Xem chi tiết</a>
                           </div>
@@ -118,7 +118,7 @@
                           <div class="flex-shrink-0">
                             <h5 class="<?= $boolearnResultOrders > 0 ? 'text-success' : 'text-danger' ?> fs-14 mb-0">
                               <i class="<?= $boolearnResultOrders > 0 ? 'ri-arrow-right-up-line' : 'ri-arrow-right-down-line' ?> fs-13 align-middle"></i>
-                              <?= $boolearnResultOrders > 0 ? '+' : '' ?><?= number_format($resultOrders, 2) ?> %
+                              <?= $boolearnResultOrders > 0 ? '+' : '' ?><?= formatCurrency($resultOrders) ?> %
                             </h5>
                           </div>
                         </div>
@@ -148,7 +148,7 @@
                           <div class="flex-shrink-0">
                             <h5 class="<?= $boolearnResultProfit > 0 ? 'text-success' : 'text-danger' ?> fs-14 mb-0">
                               <i class="<?= $boolearnResultProfit > 0 ? 'ri-arrow-right-up-line' : 'ri-arrow-right-down-line' ?> fs-13 align-middle"></i>
-                              <?= $boolearnResultProfit > 0 ? '+' : '' ?><?= number_format($resultProfit, 2)  ?> %
+                              <?= $boolearnResultProfit > 0 ? '+' : '' ?><?= formatCurrency($resultProfit)  ?> %
                             </h5>
                           </div>
                         </div>
@@ -415,10 +415,10 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text-muted">$<?= $row['gia_khuyen_mai'] ?></span>
+                                    <span class="text-muted"><?= formatCurrency($row['gia_khuyen_mai']) ?><sup>đ</sup></span>
                                   </td>
                                   <td>
-                                    <h5 class="fs-14 mb-0"><?= number_format((($row['gia_ban'] - $row['gia_khuyen_mai']) / $row['gia_ban'] * 100), 1) ?>%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
+                                    <h5 class="fs-14 mb-0"><?= formatCurrency((($row['gia_ban'] - $row['gia_khuyen_mai']) / $row['gia_ban'] * 100)) ?>%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
                                   </td>
                                 </tr>
                               <?php endforeach ?>
@@ -471,7 +471,7 @@
                                   </td>
                                   <td><?= $row['email'] ?></td>
                                   <td>
-                                    <span class="text-success"><?= $row['tong_tien'] ?></span>
+                                    <span class="text-success"><?= formatCurrency($row['tong_tien']) ?><sup>đ</sup></span>
                                   </td>
                                   <td>
                                     <span class="badge bg-success-subtle text-success"><?= $row['trang_thai'] ?></span>

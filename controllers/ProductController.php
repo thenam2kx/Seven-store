@@ -16,7 +16,7 @@ class ProductController
     $sortLimit = isset($_GET['sortLimit']) ? $_GET['sortLimit'] : '';
 
     // Pagiante
-    $limit = isset($_GET['limit']) ? $_GET['limit'] : 16;
+    $limit = isset($_GET['limit']) ? $_GET['limit'] : 9;
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $totalResult = $this->ProductModel->getTotalPage();
     $totalPages = ceil($totalResult / $limit);
@@ -42,9 +42,9 @@ class ProductController
     }
 
     if ($keySearch !== '') {
-      $results = $this->ProductModel->getProducts($limit = 16, $page = 1, $keySearch);
+      $results = $this->ProductModel->getProducts($limit = 9, $page = 1, $keySearch);
     } else if ($sortPrice !== '') {
-      $results = $this->ProductModel->getProductsByPriceSort($limit = 16, $page = 1, $sortPrice);
+      $results = $this->ProductModel->getProductsByPriceSort($limit = 9, $page = 1, $sortPrice);
     } else if ($sortLimit !== '') {
       $results = $this->ProductModel->getProducts($sortLimit, $page = 1);
     } else if (isset($_POST['submit']) && $category !== '' || $priceMax) {
@@ -68,22 +68,54 @@ class ProductController
     //comment
     $comment = $this->ProductModel->getComment($idPrd);
 
+    $checkOrderUser = [];
+    $isRate = [];
+    $isRated = false;
+    if (isset($_SESSION['username'])) {
+      $checkOrderUser = $this->ProductModel->checkOrderUser($_SESSION['username']['id']);
+      foreach($checkOrderUser as $item) {
+        array_push($isRate, $item['spid']);
+      }
+
+      $checkUserRated = $this->ProductModel->checkUserRated($idPrd, $_SESSION['username']['id']);
+      if (isset($checkUserRated) && !empty($checkUserRated)) {
+        $isRated = true;
+      }
+    }
+
+
     require_once 'views/products/detailProduct.php';
   }
 
   public function addComment()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      if (isset($_SESSION['username'])) {
-        $idPrd = $_GET['id'];
-        // var_dump($idPrd);die;
-        $idUser = $_SESSION['username']['id'];
-        $content = $_POST['content'];
-        $this->ProductModel->addComment($idPrd, $idUser, $content);
-        header('location: ?act=productDetail&id='. $idPrd);
-        echo "<script>alert('Thêm bình luận thành công.');</script>";
-        exit;
+    $checkuser = isset($_SESSION['username']) ? $_SESSION['username']['id'] : null;
+    if ($checkuser) {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_SESSION['username'])) {
+          $idPrd = $_GET['id'];
+          $idUser = $_SESSION['username']['id'];
+          $content = $_POST['content'];
+          $this->ProductModel->addComment($idPrd, $idUser, $content);
+          header('location: ?act=productDetail&id='. $idPrd);
+          echo "<script>alert('Thêm bình luận thành công.');</script>";
+          exit;
+        }
       }
+    } else {
+      header('Location: http://localhost/seven-store/admin/?act=signin');
     }
+  }
+
+  public function addRate()
+  {
+    if (isset($_SESSION['username']) && $_SESSION['username'] && isset($_POST['save']) && $_POST['save']) {
+      $spid = $_GET['id'];
+      $content = $_POST['content'];
+      $userId = $_SESSION['username']['id'];
+      $rating = isset($_POST['ratingValue']) ? intval($_POST['ratingValue']) : 0;
+      $addRate = $this->ProductModel->addRate($spid, $userId, $rating, $content);
+    }
+    $this->detailProduct();
   }
 }

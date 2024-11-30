@@ -27,21 +27,32 @@ class DashboardController
     $getTotalEarning = $this->DashboardModel->getTotalEarning();
     $getTotalEarningWithCurrentMonth = $this->DashboardModel->getTotalEarningWithCurrentMonth();
     $getTotalEarningWithOldMonth = $this->DashboardModel->getTotalEarningWithOldMonth();
-    $resultEarning = $getTotalEarningWithCurrentMonth['tong_thanh_toan'] ? ((($getTotalEarningWithCurrentMonth['tong_thanh_toan'] - $getTotalEarningWithOldMonth['tong_thanh_toan']) * 100 ) / $getTotalEarningWithOldMonth['tong_thanh_toan']) : 0;
+    $resultEarning = isset($getTotalEarningWithCurrentMonth['tong_thanh_toan']) && isset($getTotalEarningWithOldMonth['tong_thanh_toan'])
+      ?
+        ((($getTotalEarningWithCurrentMonth['tong_thanh_toan'] - $getTotalEarningWithOldMonth['tong_thanh_toan']) * 100 )
+        /
+        $getTotalEarningWithOldMonth['tong_thanh_toan'])
+      :
+        0;
     $boolearnResultEarning = $resultEarning >= 0 ? 1 : -1;
 
     // ===
     $getTotalOrders = $this->DashboardModel->getTotalOrders();
     $getTotalOrdersWithCurrentMonth = $this->DashboardModel->getTotalOrdersWithCurrentMonth();
     $getTotalOrdersWithOldMonth = $this->DashboardModel->getTotalOrdersWithOldMonth();
-    $resultOrders = $getTotalOrdersWithCurrentMonth['tong_don_hang'] ? ((($getTotalOrdersWithCurrentMonth['tong_don_hang'] - $getTotalOrdersWithOldMonth['tong_don_hang']) * 100 ) / $getTotalOrdersWithOldMonth['tong_don_hang']) : 0;
+    $resultOrders = $getTotalOrdersWithCurrentMonth['tong_don_hang'] ?
+      ((($getTotalOrdersWithCurrentMonth['tong_don_hang'] - $getTotalOrdersWithOldMonth['tong_don_hang']) * 100 )
+        /
+        ($getTotalOrdersWithOldMonth['tong_don_hang'] === 0 ? 1 : $getTotalOrdersWithOldMonth['tong_don_hang']))
+        :
+        0;
     $boolearnResultOrders = $resultOrders >= 0 ? 1 : -1;
 
     // ===
     $getTotalProfit = $this->DashboardModel->getTotalProfit();
     $getTotalProfitWithCurrentMonth = $this->DashboardModel->getTotalProfitWithCurrentMonth();
     $getTotalProfitWithOldMonth = $this->DashboardModel->getTotalProfitWithOldMonth();
-    $resultProfit = $getTotalProfitWithCurrentMonth['loi_nhuan'] ? ((($getTotalProfitWithCurrentMonth['loi_nhuan'] - $getTotalProfitWithOldMonth['loi_nhuan']) * 100 ) / $getTotalProfitWithOldMonth['loi_nhuan']) : 0;
+    $resultProfit = $getTotalProfitWithCurrentMonth['loi_nhuan'] ? ((($getTotalProfitWithCurrentMonth['loi_nhuan'] - $getTotalProfitWithOldMonth['loi_nhuan']) * 100 ) / ($getTotalProfitWithOldMonth['loi_nhuan'] == 0 ? 1 : $getTotalProfitWithOldMonth['loi_nhuan'])) : 0;
     $boolearnResultProfit = $resultProfit >= 0 ? 1 : -1;
 
     // ===

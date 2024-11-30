@@ -168,13 +168,13 @@
         <h1 class="tt-title">Sản phẩm nổi bật</h1>
       </div>
       <div class="row tt-layout-product-item">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($resultProductPopular as $result): ?>
           <div class="col-6 col-md-4 col-lg-3">
             <div class="tt-product thumbprod-center">
               <div class="tt-image-box boxImage">
                 <a href="?act=productDetail&id=<?= $result['id'] ?>" class="tt-btn-quickview" data-target="#ModalquickView" data-tooltip="Xem chi tiết" data-tposition="left"></a>
                 <a href="?act=addFavorite&id=<?php echo $result['id']; ?>" class="tt-btn-wishlist" data-tooltip="Thêm vào sản phẩm yêu thích" data-tposition="left"></a>
-                <a href="product.html">
+                <a href="?act=productDetail&id=<?= $result['id'] ?>">
                   <span class="tt-img"><img src="admin/<?= $result['anh_dai_dien'] ?>" data-src="admin/<?= $result['anh_dai_dien'] ?>" alt="" class="loaded" data-was-processed="true"></span>
                   <span class="tt-img-roll-over"><img src="admin/<?= ($this->HomeModel->getImageSecond($result['id']))['duong_dan']  ?>" data-src="admin/<?= ($this->HomeModel->getImageSecond($result['id']))['duong_dan']  ?>" alt="" class="loaded" data-was-processed="true"></span>
                   <span class="tt-label-location">
@@ -192,29 +192,29 @@
                   </ul>
                   <div class="tt-rating">
                     <?php
-                    $point = ($this->HomeModel->getTotalRateAndCount($result['id']))['trung_binh_diem'];
-                    $rating = isset($point) ? $point : 0;
-                    $fullStars = floor($rating);
-                    $hasHalfStar = ($rating - $fullStars) >= 0.5;
-                    $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
-                    for ($i = 0; $i < $fullStars; $i++) {
-                      echo '<i class="icon-star"></i>';
-                    }
-                    // Render sao nửa (nếu có)
-                    if ($hasHalfStar) {
-                      echo '<i class="icon-star-half"></i>';
-                    }
-                    // Render sao rỗng
-                    for ($i = 0; $i < $emptyStars; $i++) {
-                      echo '<i class="icon-star-empty"></i>';
-                    }
+                      $point = ($this->HomeModel->getTotalRateAndCount($result['id']))['trung_binh_diem'];
+                      $rating = isset($point) ? $point : 0;
+                      $fullStars = floor($rating);
+                      $hasHalfStar = ($rating - $fullStars) >= 0.5;
+                      $emptyStars = 5 - $fullStars - ($hasHalfStar ? 1 : 0);
+                      for ($i = 0; $i < $fullStars; $i++) {
+                        echo '<i class="icon-star"></i>';
+                      }
+                      // Render sao nửa (nếu có)
+                      if ($hasHalfStar) {
+                        echo '<i class="icon-star-half"></i>';
+                      }
+                      // Render sao rỗng
+                      for ($i = 0; $i < $emptyStars; $i++) {
+                        echo '<i class="icon-star-empty"></i>';
+                      }
                     ?>
                   </div>
                 </div>
-                <h2 class="tt-title"><a href="product.html" style="display: inline-block; margin: 4px 0;"><?= $result['ten_san_pham'] ?></a></h2>
+                <h2 class="tt-title"><a href="?act=productDetail&id=<?= $result['id'] ?>" style="display: inline-block; margin: 4px 0;"><?= $result['ten_san_pham'] ?></a></h2>
                 <div class="tt-price prdPrice">
-                  <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= formatCurrency($result['gia_ban'])  ?> VND</div>
-                  <div><?= formatCurrency($result['gia_khuyen_mai']) ?></div>
+                  <div style="color: #b0b0b0; text-decoration: line-through; font-size: 14px"><?= formatCurrency($result['gia_ban'])  ?> <sup>đ</sup></div>
+                  <div><?= formatCurrency($result['gia_khuyen_mai']) ?><sup>đ</sup></div>
                 </div>
               </div>
             </div>

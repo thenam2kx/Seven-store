@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Tài khoản cá nhân</title>
+  <title>Trang chủ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -79,18 +79,18 @@
   <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="index.html">Trâng chủ</a></li>
-			<li>Tài khoản</li>
+			<li><a href="index.html">Home</a></li>
+			<li>Account</li>
 		</ul>
 	</div>
 </div>
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container container-fluid-custom-mobile-padding">
-			<h1 class="tt-title-subpages noborder">Tài khoản cá nhân</h1>
+			<h1 class="tt-title-subpages noborder">ACCOUNT</h1>
 			<div class="tt-shopping-layout">
 				<div class="tt-wrapper">
-					<h2 class="tt-title">Chi tiết</h2>
+					<h2 class="tt-title">Profile</h2>
 					<div class="tt-table-responsive">
 						<table class="tt-table-shop-02">
 							<tbody>
@@ -131,17 +131,17 @@
 									L7.7,19.6c0,0-0.1,0-0.1,0.1c0,0-0.1,0-0.1,0c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0,0L2.3,20.4z M2.9,19.1l2.9-0.4
 									l-2.6-2.6L2.9,19.1z M3.7,14.8L5,16.1l9.7-9.7L13.5,5L3.7,14.8z M7.2,18.3L17,8.5l-1.3-1.3L5.9,17L7.2,18.3z M15.5,3l-1.2,1.2
 									l3.5,3.5L19,6.5c0.1-0.1,0.2-0.3,0.2-0.4c0-0.2-0.1-0.3-0.2-0.4L16.4,3c-0.1-0.1-0.3-0.2-0.4-0.2C15.8,2.8,15.6,2.8,15.5,3z"></path>
-							</g>
-							</svg>
-							<span class="tt-text">Sửa thông tin</span>
-						</a>
-                        <a class="btn-link" href="?act=changePassword"><i class="icon-e-10"></i>Đổi mật khẩu</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                  </g>
+                </svg>
+                <span class="tt-text">Sửa thông tin</span>
+              </a>
+              <a class="btn-link" href="?act=changePassword"><i class="icon-e-10"></i>Đổi mật khẩu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <?php
