@@ -20,10 +20,12 @@ class OrderController
     $userId = isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0;
     $cartId = isset($_GET['cartId']) ? $_GET['cartId'] : 0;
     if ($userId !== 0 && $cartId !== 0) {
+      $inforUser = $_SESSION['username'];
       $totalPriceProducts = $this->OrderModel->totalPriceProducts($cartId);
       $result = $this->OrderModel->getAllDetailOrder($cartId, $userId);
     }
-    require_once "./views/orders/order.php";
+    require_once "./views/orders/orderPage.php";
+    // require_once "./views/orders/order.php";
   }
 
   public function addOrder()
@@ -46,7 +48,7 @@ class OrderController
 
       if ($name === '' || $email === '' || $phone === '' || $address === '') {
         echo '<script>alert("Thông tin người nhận khong thể để trống")</script>';
-        exit('<script>window.location.href = "?act=order&cartId='.$cartId.'"</script>');
+        exit('<script>window.location.href = "?act=order&cartId=' . $cartId . '"</script>');
       }
 
       $getDiscountCode = $this->OrderModel->getDiscountCode($discount);
@@ -57,8 +59,8 @@ class OrderController
           $getDiscountCode["ngay_ket_thuc"] < date("Y-m-d H:i:s")
         ) {
           echo '<script>alert("Mã khuyến mãi không hợp lệ")</script>';
-          $statusDiscount= false;
-          exit('<script>window.location.href = "?act=order&cartId='.$cartId.'"</script>');
+          $statusDiscount = false;
+          exit('<script>window.location.href = "?act=order&cartId=' . $cartId . '"</script>');
         } else {
           $priceDiscount = $totalMoney - ($totalMoney * $getDiscountCode['phan_tram'] / 100);
         }
@@ -69,7 +71,7 @@ class OrderController
         $getInfoProduct = $this->OrderModel->getInfoProduct($product['spid']);
         if ($product['ghct_so_luong'] > $getInfoProduct['so_luong']) {
           echo '<script>alert("Số lượng sản phẩm không hợp lệ")</script>';
-          exit('<script>window.location.href = "?act=order&cartId='.$cartId.'"</script>');
+          exit('<script>window.location.href = "?act=order&cartId=' . $cartId . '"</script>');
         }
       }
 
@@ -92,80 +94,133 @@ class OrderController
           $createOrderDetail = $this->OrderModel->createOrderDetail($idOrderRecent, $product['san_pham_id'], $product['ghct_so_luong'], $product['gia_khuyen_mai']);
           $updateQuantityProductAfterOrder = $this->OrderModel->updateQuantityProductAfterOrder($product['ghct_so_luong'], $product['spid']);
         }
-        $deleteAllProductsFromCard = $this->OrderModel->deleteAllProductsFromCard($cartId);
 
         if (isset($result) && $result) {
+          $totalPriceProducts = $this->OrderModel->totalPriceProducts($cartId)['tong_tien'];
           $emailUser = $email;
           $subject = 'Đơn hàng của bạn đã được đặt thành công. vui lòng chú ý điện thoại để nhận hàng';
           $content = '<!DOCTYPE html>
             <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Thông báo đơn hàng</title>
+              <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Order Confirmation</title>
                 <style>
-                    body {
-                        font-family: Arial, Helvetica, sans-serif;
-                        margin: 0;
-                        padding: 0;
-                        background-color: #f9f9f9;
-                    }
-                    .email-container {
-                        max-width: 600px;
-                        margin: 20px auto;
-                        background-color: #ffffff;
-                        border: 1px solid #e0e0e0;
-                        border-radius: 8px;
-                        overflow: hidden;
-                    }
-                    .header {
-                        background-color: #4CAF50;
-                        color: #ffffff;
-                        text-align: center;
-                        padding: 20px;
-                    }
-                    .header h1 {
-                        margin: 0;
-                    }
-                    .content {
-                        padding: 20px;
-                        color: #333333;
-                    }
-                    .content p {
-                        margin: 10px 0;
-                    }
-                    .footer {
-                        text-align: center;
-                        padding: 20px;
-                        font-size: 12px;
-                        color: #666666;
-                        background-color: #f2f2f2;
-                    }
+                  body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    margin: 0;
+                    padding: 0;
+                  }
+                  .email-container {
+                    max-width: 600px;
+                    margin: 20px auto;
+                    background: #fff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  }
+                  .email-header {
+                    text-align: center;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #ddd;
+                  }
+                  .email-header h1 {
+                    color: #333;
+                  }
+                  .email-body {
+                    padding: 20px 0;
+                  }
+                  .order-info {
+                    margin-bottom: 20px;
+                  }
+                  .order-info p {
+                    margin: 5px 0;
+                  }
+                  .product-list {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 20px;
+                  }
+                  .product-list th,
+                  .product-list td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: left;
+                  }
+                  .product-list th {
+                    background-color: #f8f8f8;
+                    color: #333;
+                  }
+                  .total {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: right;
+                    margin-top: 10px;
+                  }
+                  .email-footer {
+                    text-align: center;
+                    padding: 10px 0;
+                    border-top: 1px solid #ddd;
+                    color: #777;
+                    font-size: 14px;
+                  }
                 </style>
-            </head>
-            <body>
+              </head>
+              <body>
                 <div class="email-container">
-                    <div class="header">
-                        <h1>Thông báo đặt hàng thành công</h1>
+                  <div class="email-header">
+                    <h1>Thông báo đơn hàng</h1>
+                  </div>
+
+                  <div class="email-body">
+                    <div class="order-info">
+                      <p><strong>Mã đơn hàng:</strong> #'.$idOrderRecent.'</p>
+                      <p><strong>Tên khách hàng:</strong> '.$name.'</p>
+                      <p><strong>Email:</strong> '.$email.'</p>
+                      <p><strong>Ngày đặt hàng:</strong> '.date("d/m/Y").'</p>
                     </div>
-                    <div class="content">
-                        <p>Xin chào '.$email.',</p>
-                        <p>Đơn hàng của bạn đã được đặt thành công!</p>
-                        <p>Cảm ơn bạn đã mua hàng ở cửa hàng của chúng tôi.</p>
-                    </div>
-                    <div class="footer">
-                        <p>&copy; 2024 Seven store. All rights reserved.</p>
-                    </div>
+
+                    <table class="product-list">
+                      <thead>
+                        <tr>
+                          <th>Sản phẩm</th>
+                          <th>Số lượng</th>
+                          <th>Giá</th>
+                          <th>Tổng giá</th>
+                        </tr>
+                      </thead>
+                      <tbody>';
+                      foreach ($getAllProductFromCart as $product) {
+                        $content .= '<tr>
+                            <td>'.$product['ten_san_pham'].'</td>
+                            <td>'.$product['ghct_so_luong'].'</td>
+                            <td>'.formatCurrency($product['gia_khuyen_mai']).'</td>
+                            <td>'.formatCurrency($product['gia_khuyen_mai'] * $product['ghct_so_luong']).'</td>
+                          </tr>';
+                      }
+          $content .= '</tbody>
+                    </table>
+
+                    <div class="total">Tổng tiền: '.formatCurrency($totalPriceProducts).'</div>
+                  </div>
+
+                  <div class="email-footer">
+                    <p>Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi!</p>
+                    <p>Mọi thắc mắc, xin vui lòng liên hệ sevenstore@gmail.com</p>
+                  </div>
                 </div>
-            </body>
-            </html>';
+              </body>
+            </html>
+            ';
           sendEmail($emailUser, $subject, $content);
         }
+
+        $deleteAllProductsFromCard = $this->OrderModel->deleteAllProductsFromCard($cartId);
         header('Location: ?act=listOrders');
       } else {
-        header('Location: ?act=order&cartId='.$cartId);
+        header('Location: ?act=order&cartId=' . $cartId);
       }
-
     }
   }
 
