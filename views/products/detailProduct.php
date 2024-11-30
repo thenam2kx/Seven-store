@@ -226,12 +226,30 @@ if (isset($isRate) && !empty($isRate) && !$isRated === true) {
                   </ul>
                 </div>
               </div>
-              <div class="tt-wrapper">
+              <form action="?act=addToCard&idPrd=<?= $infoProduct['spid'] ?>" method="post">
+                <div class="tt-wrapper">
+                  <div class="tt-row-custom-01">
+                    <div class="col-item">
+                      <div class="tt-input-counter style-01">
+                        <span class="minus-btn"></span>
+                        <input type="text" value="1" size="<?= $infoProduct['so_luong'] ?>" name="quantity">
+                        <span class="plus-btn"></span>
+                      </div>
+                    </div>
+                    <div class="col-item">
+                      <!-- <a href="?act=addToCard&idPrd=<?= $infoProduct['spid'] ?>" class="btn btn-lg"><i class="icon-f-39"></i>Thêm vào giỏ hàng</a> -->
+                      <!-- <input type="submit" value="Thêm vào giỏ hàng" style="background-color: transparent; border: none; color: #fff" /> -->
+                      <button class="btn btn-lg" type="submit"><i class="icon-f-39"></i>Thêm vào giỏ hàng</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- <div class="tt-wrapper">
                 <div class="tt-row-custom-01">
                   <div class="col-item">
                     <div class="tt-input-counter style-01">
                       <span class="minus-btn"></span>
-                      <input type="text" value="1" size="<?= $infoProduct['so_luong'] ?>">
+                      <input type="text" value="1" size="<?= $infoProduct['so_luong'] ?>" >
                       <span class="plus-btn"></span>
                     </div>
                   </div>
@@ -239,7 +257,7 @@ if (isset($isRate) && !empty($isRate) && !$isRated === true) {
                     <a href="?act=addToCard&idPrd=<?= $infoProduct['spid'] ?>" class="btn btn-lg"><i class="icon-f-39"></i>Thêm vào giỏ hàng</a>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="tt-wrapper">
                 <ul class="tt-list-btn">
                   <li><a class="btn-link" href="?act=addFavorite&id=<?= $idPrd ?>"><i class="icon-n-072"></i>Thêm vào danh sách yêu thích</a></li>

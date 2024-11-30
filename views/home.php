@@ -174,7 +174,7 @@
               <div class="tt-image-box boxImage">
                 <a href="?act=productDetail&id=<?= $result['id'] ?>" class="tt-btn-quickview" data-target="#ModalquickView" data-tooltip="Xem chi tiết" data-tposition="left"></a>
                 <a href="?act=addFavorite&id=<?php echo $result['id']; ?>" class="tt-btn-wishlist" data-tooltip="Thêm vào sản phẩm yêu thích" data-tposition="left"></a>
-                <a href="product.html">
+                <a href="?act=productDetail&id=<?= $result['id'] ?>">
                   <span class="tt-img"><img src="admin/<?= $result['anh_dai_dien'] ?>" data-src="admin/<?= $result['anh_dai_dien'] ?>" alt="" class="loaded" data-was-processed="true"></span>
                   <span class="tt-img-roll-over"><img src="admin/<?= ($this->HomeModel->getImageSecond($result['id']))['duong_dan']  ?>" data-src="admin/<?= ($this->HomeModel->getImageSecond($result['id']))['duong_dan']  ?>" alt="" class="loaded" data-was-processed="true"></span>
                   <span class="tt-label-location">

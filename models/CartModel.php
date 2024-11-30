@@ -18,6 +18,16 @@ class CartModel {
     return $this->db->execute($sql, $id);
   }
 
+  public function checkQuantityProductBeforAddToCart($id) {
+    $sql = "select * from san_phams sp where sp.id = ?";
+    return $this->db->queryOne($sql, $id);
+  }
+
+  public function checkQuantityProductFromCart($gio_hang_id, $san_pham_id) {
+    $sql = "select * from gio_hang_cts ghct where ghct.gio_hang_id = ? and ghct.san_pham_id = ?";
+    return $this->db->queryOne($sql, $gio_hang_id, $san_pham_id);
+  }
+
   public function getProductsFromCard($nguoi_dung_id) {
     $sql = "select ghct.id as ghctid, gh.id as ghid, sp.id as spid, sp.anh_dai_dien, sp.ten_san_pham, sp.gia_khuyen_mai, ghct.so_luong
       from gio_hang_cts ghct
@@ -27,9 +37,14 @@ class CartModel {
     return $this->db->query($sql, $nguoi_dung_id);
   }
 
-  public function updateProductsFromCard($gio_hang_id, $san_pham_id, $gio_hang_ct_id) {
-    $sql = "update gio_hang_cts ghct set ghct.so_luong = ghct.so_luong + 1 where ghct.gio_hang_id = ? and ghct.san_pham_id = ? and ghct.id = ?";
-    return $this->db->query($sql, $gio_hang_id, $san_pham_id, $gio_hang_ct_id);
+  public function updateProductsFromCard($gio_hang_id, $san_pham_id, $gio_hang_ct_id, $so_luong) {
+    $sql = "update gio_hang_cts ghct set ghct.so_luong = ghct.so_luong + ? where ghct.gio_hang_id = ? and ghct.san_pham_id = ? and ghct.id = ?";
+    return $this->db->query($sql, $so_luong, $gio_hang_id, $san_pham_id, $gio_hang_ct_id);
+  }
+
+  public function updateQuantityProductsFromCard($gio_hang_id, $san_pham_id, $gio_hang_ct_id, $so_luong) {
+    $sql = "update gio_hang_cts ghct set ghct.so_luong = ? where ghct.gio_hang_id = ? and ghct.san_pham_id = ? and ghct.id = ?";
+    return $this->db->query($sql, $so_luong, $gio_hang_id, $san_pham_id, $gio_hang_ct_id);
   }
 
   public function addProductToCard($gio_hang_id, $san_pham_id, $so_luong = 1) {
