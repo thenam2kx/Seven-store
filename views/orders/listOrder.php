@@ -107,6 +107,37 @@
     .status-cancele {
       background-color: red;
     }
+
+    .tt-product-img {
+      border-radius: 15%;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+    }
+
+    .space-between {
+      display: flex;
+      justify-content: space-between !important;
+    }
+
+    .tt-col-description {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tt-col-description span {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+
+    .tt-img {
+      min-width: 185px;
+      text-align: center;
+    }
   </style>
 
 </head>
@@ -151,37 +182,49 @@
             <?php if (!empty($orders)): ?>
               <?php foreach ($orders as $order): ?>
                 <div class="tt-item">
-                  <div class="tt-col-description">
-                    <div class="tt-img"><?= $counter++ ?></div>
-                    <div class="tt-description">
-                      <h2 class="tt-title <?= $order['trang_thai_don_hang_id'] == 7 ? 'status-canceled' : '' ?>">
-                        MÃ ĐƠN HÀNG:<a href="#"><?= $order['id'] ?></a>
-                      </h2>
-                      <div class="tt-price">
-                        Ngày tạo: <?= $order['ngay_tao'] ?>
+                  <div class="tt-col space-between">
+                    <h3 class="tt-col-title tt-title me-3"><?= $counter++ ?></h3>
+                    <div class="tt-description me-3">
+                      <div class="tt-col-description me-3">
+                        <div class="tt-img me-3 <?= $order['trang_thai_don_hang_id'] == 7 ? 'status-canceled' : '' ?>">
+                          Mã đơn hàng:<a href="#"><?= $order['id'] ?></a>
+                        </div>
+                        <div class="tt-img me-3">
+                          Ngày đặt: <?= date('d-m-Y', strtotime($order['ngay_tao'])) ?>
+                        </div>
+                        <div class="tt-img me-3"> Trạng thái đơn hàng:
+                          <span class="text-success fw-bold border-success flex-wrap <?= $order['trang_thai_don_hang_id'] == 7 ? ' text-danger' : '' ?>">
+                            <?= $order['trang_thai'] ?>
+                          </span>
+                        </div>
+                        <div class="tt-img me-3">
+                          Hình thức thanh toán: <span class="fw-bold text-success flex-wrap"> <?= $order['hinh_thuc_thanh_toan'] == 0 ? 'COD' : 'MOMO' ?> </span>
+                        </div>
+                        <div class="tt-img me-3">
+                          Trạng thái thanh toán: <span class="fw-bold text-success flex-wrap"> <?= $order['trang_thai_thanh_toan'] == 0 ? 'Chưa thanh toán' : 'Đã thanh toán' ?> </span>
+                        </div>
                       </div>
-                      <div class="tt-price"> Trạng thái đơn hàng:
-                        <span class="<?= $order['trang_thai_don_hang_id'] == 7 ? 'status-cancele' : '' ?>">
-                          <?= $order['trang_thai'] ?>
-                        </span>
-                      </div>
-                      <div class="tt-price">
-                        Hình thức thanh toán: <?= $order['hinh_thuc_thanh_toan'] == 0 ? 'COD' : 'MOMO' ?>
-                      </div>
-                      <div class="tt-price">
-                        Trạng thái thanh toán: <?= $order['trang_thai_thanh_toan'] == 0 ? 'Chưa thanh toán' : 'Đã thanh toán' ?>
+                      <!-- <div class="tt-col-description mt-3">
+                        <div class="tt-img tt-product-img">
+                          <img src="admin/<?= $product['anh_dai_dien'] ?>" alt="aaaaaaaa" >
+                        </div>
+                        <div class="tt-description mt-3">
+                          <h2 class="tt-title "><a href="?act=productDetail&id=<?= $product['id'] ?>"><?= $product['ten_san_pham'] ?></a></h2>
+                          <div class="tt-description"><?= substr($product['mo_ta_ngan'], 0, 100) ?>...</div>
+                        </div>
+                      </div> -->
+
+                      <div class="tt-btn me-3 mt-3 float-end">
+                        <a class="btn-link" href="?act=detailOrder&orderId=<?= $order['dhid'] ?>" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem chi tiết</a>
+                        <a class="btn-link js-removeitem <?= $order['trang_thai_don_hang_id'] == 7 ? 'disabled' : '' ?>"
+                          href="<?= $order['trang_thai_don_hang_id'] != 7 ? '?act=deleteOrder&id=' . $order['id'] : '#' ?>"
+                          onclick="<?= $order['trang_thai_don_hang_id'] != 7 ? "return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');" : "return false;" ?>"
+                          style="<?= $order['trang_thai_don_hang_id'] == 7 ? 'pointer-events: none; opacity: 0.6; cursor: not-allowed;' : '' ?>">
+                          <i class="icon-h-02"></i>
+                          <?= $order['trang_thai_don_hang_id'] == 7 ? 'Hủy đơn hàng' : 'Hủy đơn hàng' ?>
+                        </a>
                       </div>
                     </div>
-                  </div>
-                  <div class="tt-col-btn">
-                    <a class="btn-link" href="?act=detailOrder&orderId=<?= $order['dhid'] ?>" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem chi tiết</a>
-                    <a class="btn-link js-removeitem <?= $order['trang_thai_don_hang_id'] == 7 ? 'disabled' : '' ?>"
-                      href="<?= $order['trang_thai_don_hang_id'] != 7 ? '?act=deleteOrder&id=' . $order['id'] : '#' ?>"
-                      onclick="<?= $order['trang_thai_don_hang_id'] != 7 ? "return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');" : "return false;" ?>"
-                      style="<?= $order['trang_thai_don_hang_id'] == 7 ? 'pointer-events: none; opacity: 0.6; cursor: not-allowed;' : '' ?>">
-                      <i class="icon-h-02"></i>
-                      <?= $order['trang_thai_don_hang_id'] == 7 ? 'Hủy đơn hàng' : 'Hủy đơn hàng' ?>
-                    </a>
                   </div>
                 </div>
               <?php endforeach; ?>
