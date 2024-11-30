@@ -16,7 +16,7 @@ if (isset($idUserCart) && $idUserCart !== 0) {
       <div class="mmpanel mmhidden" id="mm5">
         <ul>
           <li>
-            <a href="?act=products" title="Sản phẩm"><span>Sản phẩm</span></a>
+            <a href="?act=products" title="Sản phẩm" style="text-decoration: none;"><span>Sản phẩm</span></a>
           </li>
           <li>
             <a href="?act=listDiscount" title="Mã khuyến mãi"><span>Khuyến mãi</span></a>
@@ -79,19 +79,19 @@ if (isset($idUserCart) && $idUserCart !== 0) {
               <nav>
                 <ul>
                   <li class="dropdown megamenu selected tt-submenu">
-                    <a href="http://localhost/seven-store/" title="Trang chủ"><span>Trang chủ</span></a>
+                    <a href="http://localhost/seven-store/" title="Trang chủ" style="text-decoration: none;"><span>Trang chủ</span></a>
                   </li>
                   <li class="dropdown megamenu tt-submenu">
-                    <a href="?act=products" title="Sản phẩm mới"><span>Sản phẩm</span></a>
+                    <a href="?act=products" title="Sản phẩm mới" style="text-decoration: none;"><span>Sản phẩm</span></a>
                   </li>
                   <li class="dropdown megamenu tt-submenu">
-                    <a href="?act=listDiscount" title="khuyến mãi"><span>Khuyến mãi</span></a>
+                    <a href="?act=listDiscount" title="khuyến mãi" style="text-decoration: none;"><span>Khuyến mãi</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="?act=blog" title="Tin tức"><span>Tin tức</span></a>
+                    <a href="?act=blog" title="Tin tức" style="text-decoration: none;"><span>Tin tức</span></a>
                   </li>
                   <li class="dropdown tt-megamenu-col-01 tt-submenu">
-                    <a href="?act=contact" title="Liên hệ"><span>Liên hệ</span></a>
+                    <a href="?act=contact" title="Liên hệ" style="text-decoration: none;"><span>Liên hệ</span></a>
                   </li>
                 </ul>
               </nav>
