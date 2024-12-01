@@ -154,4 +154,10 @@ class OrderModel
     $sql = "delete from gio_hang_cts ghct where ghct.gio_hang_id = ?";
     return $this->db->execute($sql, $ghid);
   }
+
+
+  public function updateOrderByUser($dhid, $ndid) {
+    $sql = "update don_hangs dh set dh.trang_thai_don_hang_id = 9 where dh.id = ? and dh.nguoi_dung_id = ?";
+    return $this->db->execute($sql, $dhid, $ndid);
+  }
 }
