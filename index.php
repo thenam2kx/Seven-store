@@ -101,6 +101,7 @@ match ($act) {
   'listOrders' => (new OrderController())->index(),
   'deleteOrder' => (new OrderController())->deleteOrder(),
   'detailOrder' => (new OrderController())->detailOrder(),
+  'updateOrderByUser' => (new OrderController())->updateOrderByUser(),
 
 
   // contact

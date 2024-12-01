@@ -236,6 +236,19 @@ class OrderController
     require_once "./views/orders/detailOrder.php";
   }
 
+
+  public function updateOrderByUser()
+  {
+    $userId = isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0;
+    $orderId = isset($_GET['orderId']) ? $_GET['orderId'] : 0;
+    if ($userId !== 0 && $orderId !== 0) {
+      $result = $this->OrderModel->updateOrderByUser($orderId, $userId);
+    }
+    // require_once "./views/orders/detailOrder.php";
+    $this->index();
+  }
+
+
   public function deleteOrder()
   {
     $orderId = $_GET['id'] ?? null;
@@ -243,7 +256,12 @@ class OrderController
     if ($orderId) {
       $getInfoOrderDetail = $this->OrderModel->getInfoOrderDetail($orderId);
 
+      if ($getInfoOrderDetail['trang_thai_don_hang_id'] >= 4) {
+        echo '<script>alert("Không thể hủy đơn hàng")</script>';
+        exit('<script>window.location.href = "?act=listOrders"</script>');
+      }
       $result = $this->OrderModel->deleteOrder($orderId);
+
       foreach ($getInfoOrderDetail as $content) {
         $this->OrderModel->updateQuantityProductAfterDeleteOrder($content['so_luong'], $content['san_pham_id']);
       }

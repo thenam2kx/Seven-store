@@ -214,12 +214,15 @@
                         </div>
                       </div> -->
 
-                      <div class="tt-btn me-3 mt-3 float-end">
+                      <div class="tt-btn me-3 mt-3 d-flex justify-content-end gap-4">
+                        <a class="btn-link" href="?act=updateOrderByUser&orderId=<?= $order['dhid'] ?>" data-target="#ModalquickView" style="display: <?= $order['trang_thai_don_hang_id'] === 6 ? 'block' : 'none' ?>">
+                          <i class="icon-f-73"></i>Đã nhận hàng
+                        </a>
                         <a class="btn-link" href="?act=detailOrder&orderId=<?= $order['dhid'] ?>" data-target="#ModalquickView"><i class="icon-f-73"></i>Xem chi tiết</a>
                         <a class="btn-link js-removeitem <?= $order['trang_thai_don_hang_id'] == 7 ? 'disabled' : '' ?>"
                           href="<?= $order['trang_thai_don_hang_id'] != 7 ? '?act=deleteOrder&id=' . $order['id'] : '#' ?>"
                           onclick="<?= $order['trang_thai_don_hang_id'] != 7 ? "return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');" : "return false;" ?>"
-                          style="<?= $order['trang_thai_don_hang_id'] == 7 ? 'pointer-events: none; opacity: 0.6; cursor: not-allowed;' : '' ?>">
+                          style="<?= $order['trang_thai_don_hang_id'] == 7 || $order['trang_thai_don_hang_id'] == 6 ? 'pointer-events: none; opacity: 0.6; cursor: not-allowed;' : '' ?>">
                           <i class="icon-h-02"></i>
                           <?= $order['trang_thai_don_hang_id'] == 7 ? 'Hủy đơn hàng' : 'Hủy đơn hàng' ?>
                         </a>
