@@ -2,8 +2,9 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 <head>
+
   <meta charset="utf-8" />
-  <title>Đặt hàng</title>
+  <title>Chi tiết đơn hàng</title>
   <link rel="shortcut icon" href="assets/images/custom/logo2.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
@@ -102,6 +103,7 @@
       font-size: 20px;
     }
   </style>
+
 </head>
 
 <body>
@@ -113,17 +115,40 @@
     <div class="container">
       <ul>
         <li><a href="http://localhost/seven-store/">Trang chủ</a></li>
-        <li>Đặt hàng</li>
+        <li>Đơn hàng</li>
+        <li>Chi tiết đơn hàng</li>
       </ul>
     </div>
   </div>
 
-
+  <!-- CONTENT -->
 
   <div class="container my-4">
     <div class="row">
+      <!-- Order Summary -->
+      <div class="col-lg-8">
+        <p class="row-header">Tóm tắt đơn hàng</p>
+        <?php foreach ($result as $row): ?>
+          <div class="product-item">
+            <div class="product-info">
+              <img src="admin/<?= $row['anh_dai_dien'] ?>" alt="Product 1" />
+              <div>
+                <div><?= $row['ten_san_pham'] ?></div>
+                <small class="text-muted"> <?= formatCurrency($row['gia_khuyen_mai']) ?><sup>đ</sup></small>
+                <small class="text-muted">x <?= $row['dhct_so_luong'] ?></small>
+              </div>
+            </div>
+            <span><?= formatCurrency($row['gia_khuyen_mai'] * $row['dhct_so_luong']) ?><sup>đ</sup></span>
+          </div>
+        <?php endforeach ?>
+        <div class="d-flex justify-content-between mt-3">
+          <div class="total">Tổng tiền</div>
+          <div class="total"><?= formatCurrency($totalMoney) ?><sup>đ</sup></div>
+        </div>
+      </div>
+
       <!-- Billing Details -->
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <p class="row-header">Thông tin thanh toán</p>
         <form action="?act=createOrder" method="post">
           <div class="mb-3">
@@ -133,9 +158,9 @@
               id="fullName"
               class="form-control"
               placeholder="Nhập tên người nhận hàng"
-              value="<?= $inforUser['ho_ten'] ?>"
+              value="<?= $result[0]['ho_ten'] ?>"
               name="name"
-              required />
+              disabled />
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -144,9 +169,9 @@
               id="email"
               class="form-control"
               placeholder="example@example.com"
-              value="<?= $inforUser['email'] ?>"
+              value="<?= $result[0]['email'] ?>"
               name="email"
-              required />
+              disabled />
           </div>
           <div class="mb-3">
             <label for="phone" class="form-label">Số điện thoại</label>
@@ -155,9 +180,9 @@
               id="phone"
               class="form-control"
               placeholder="0123456789"
-              value="<?= $inforUser['so_dien_thoai'] ?>"
+              value="<?= $result[0]['so_dien_thoai'] ?>"
               name="phone"
-              required />
+              disabled />
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">Địa chỉ</label>
@@ -166,9 +191,9 @@
               id="address"
               class="form-control"
               placeholder="123 Hà Nội"
-              value="<?= $inforUser['dia_chi'] ?>"
+              value="<?= $result[0]['dia_chi'] ?>"
               name="address"
-              required />
+              disabled />
           </div>
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -178,11 +203,12 @@
                 id="promoCode"
                 class="form-control"
                 name="discount"
-                placeholder="Nhập mã khuyến mãi" />
+                value="<?= formatCurrency($totalMoney - $result[0]['thanh_toan']) ?>"
+                placeholder="Nhập mã khuyến mãi" disabled />
             </div>
             <div class="col-md-6 mb-3">
               <label for="paymentMethod" class="form-label">Phương thức thanh toán</label>
-              <select id="paymentMethod" class="form-select" name="actionPay" required>
+              <select id="paymentMethod" class="form-select" name="actionPay" disabled>
                 <option value="0" selected>Cod</option>
                 <option value="1">VNPay</option>
               </select>
@@ -190,41 +216,20 @@
           </div>
           <div class="mb-3">
             <label for="notes" class="form-label">Ghi chú</label>
-            <textarea id="notes" class="form-control" name="note" placeholder="Thêm ghi chú đơn hàng của bạn"></textarea>
+            <textarea id="notes" class="form-control" name="note" placeholder="Thêm ghi chú đơn hàng của bạn" disabled><?= $result[0]['ghi_chu'] ?></textarea>
           </div>
 
           <div class="mb-3">
-            <!-- <button class="btn btn-primary w-100 mt-3">Đặt hàng</button> -->
-            <input class="btn btn-primary w-100 mt-3" type="submit" name="orderbtn" value="Đặt hàng" />
+          </div>
+          <div class="action-button row">
+            <!-- <div class="col-8"><a href="" class="btn btn-primary w-100" style="color: #fff !important">Đã nhận hàng</a></div>
+            <div class="col-4"><a href="" class="btn btn-outline-danger w-100">Hủy đơn hàng</a></div> -->
           </div>
         </form>
       </div>
 
-      <!-- Order Summary -->
-      <div class="col-lg-6">
-        <p class="row-header">Tóm tắt đơn hàng</p>
-        <?php foreach ($result as $row): ?>
-          <div class="product-item">
-            <div class="product-info">
-              <img src="admin/<?= $row['anh_dai_dien'] ?>" alt="Product 1" />
-              <div>
-                <div><?= $row['ten_san_pham'] ?></div>
-                <small class="text-muted"><?= formatCurrency($row['gia_khuyen_mai']) ?><sup>đ</sup></small>
-                <small class="text-muted">x <?= $row['so_luong_gh'] ?></small>
-              </div>
-            </div>
-            <span><?= formatCurrency($row['gia_khuyen_mai'] * $row['so_luong_gh']) ?><sup>đ</sup></span>
-          </div>
-        <?php endforeach ?>
-        <div class="d-flex justify-content-between mt-3">
-          <div class="total">Tổng tiền</div>
-          <div class="total"><?= formatCurrency($totalPriceProducts['tong_tien']) ?></div>
-        </div>
-      </div>
     </div>
   </div>
-
-
 
   <!-- FOOTER -->
   <?php require_once "views/layouts/footer.php"; ?>

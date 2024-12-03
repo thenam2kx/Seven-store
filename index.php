@@ -20,6 +20,7 @@ require_once './controllers/CartController.php';
 require_once './controllers/ContactController.php';
 require_once './controllers/DiscountCilentController.php';
 require_once './controllers/OrderController.php';
+require_once './controllers/NotFoundController.php';
 
 
 
@@ -107,4 +108,6 @@ match ($act) {
   // contact
   'contact'  => (new ContactController())->create(),
   'addContact'  => (new  ContactController())->add(),
+
+  default => (new  NotFoundController())->index(),
 };

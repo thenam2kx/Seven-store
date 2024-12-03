@@ -125,6 +125,7 @@ class CartController
   public function ListCart() {
     try {
       $idUser = isset($_SESSION['username']) ? $_SESSION['username']['id'] : 0;
+      if ($idUser == 0) { header('Location: http://localhost/seven-store/'); }
       if ($idUser !== 0) {
         $listProductsFromCard = $this->CartModel->getProductsFromCard($idUser);
 

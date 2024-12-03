@@ -10,14 +10,16 @@ class OrderController
 
   public function index()
   {
-    $userId = $_SESSION['username']['id'];
+    $userId = isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0;
+    if ($userId == 0) { header('Location: http://localhost/seven-store/'); }
     $orders = $this->OrderModel->getAllOrders($userId);
-    require_once "./views/orders/listOrder.php";
+    require_once "./views/orders/historyOrder.php";
   }
 
   public function order()
   {
     $userId = isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0;
+    if ($userId == 0) { header('Location: http://localhost/seven-store/'); }
     $cartId = isset($_GET['cartId']) ? $_GET['cartId'] : 0;
     if ($userId !== 0 && $cartId !== 0) {
       $inforUser = $_SESSION['username'];
@@ -31,6 +33,7 @@ class OrderController
   public function addOrder()
   {
     $userId = isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0;
+    if ($userId == 0) { header('Location: http://localhost/seven-store/'); }
     if ($userId !== 0 && isset($_POST['orderbtn']) && $_POST['orderbtn']) {
       $cartId = ($this->OrderModel->selectCartByUser($userId))['ghid'];
       $totalMoney = ($this->OrderModel->totalPriceProducts($cartId))['tong_tien'];
@@ -175,10 +178,10 @@ class OrderController
 
                   <div class="email-body">
                     <div class="order-info">
-                      <p><strong>Mã đơn hàng:</strong> #'.$idOrderRecent.'</p>
-                      <p><strong>Tên khách hàng:</strong> '.$name.'</p>
-                      <p><strong>Email:</strong> '.$email.'</p>
-                      <p><strong>Ngày đặt hàng:</strong> '.date("d/m/Y").'</p>
+                      <p><strong>Mã đơn hàng:</strong> #' . $idOrderRecent . '</p>
+                      <p><strong>Tên khách hàng:</strong> ' . $name . '</p>
+                      <p><strong>Email:</strong> ' . $email . '</p>
+                      <p><strong>Ngày đặt hàng:</strong> ' . date("d/m/Y") . '</p>
                     </div>
 
                     <table class="product-list">
@@ -191,18 +194,18 @@ class OrderController
                         </tr>
                       </thead>
                       <tbody>';
-                      foreach ($getAllProductFromCart as $product) {
-                        $content .= '<tr>
-                            <td>'.$product['ten_san_pham'].'</td>
-                            <td>'.$product['ghct_so_luong'].'</td>
-                            <td>'.formatCurrency($product['gia_khuyen_mai']).'</td>
-                            <td>'.formatCurrency($product['gia_khuyen_mai'] * $product['ghct_so_luong']).'</td>
+          foreach ($getAllProductFromCart as $product) {
+            $content .= '<tr>
+                            <td>' . $product['ten_san_pham'] . '</td>
+                            <td>' . $product['ghct_so_luong'] . '</td>
+                            <td>' . formatCurrency($product['gia_khuyen_mai']) . '</td>
+                            <td>' . formatCurrency($product['gia_khuyen_mai'] * $product['ghct_so_luong']) . '</td>
                           </tr>';
-                      }
+          }
           $content .= '</tbody>
                     </table>
 
-                    <div class="total">Tổng tiền: '.formatCurrency($totalPriceProducts).'</div>
+                    <div class="total">Tổng tiền: ' . formatCurrency($totalPriceProducts) . '</div>
                   </div>
 
                   <div class="email-footer">
@@ -227,13 +230,14 @@ class OrderController
   public function detailOrder()
   {
     $userId = isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : 0;
+    if ($userId == 0) { header('Location: http://localhost/seven-store/'); }
     $orderId = isset($_GET['orderId']) ? $_GET['orderId'] : 0;
     if ($userId !== 0 && $orderId !== 0) {
       $totalMoney = ($this->OrderModel->totalPriceProductsFromOrderDetail($orderId))['tong_tien'];
       $selectOrderStatus = $this->OrderModel->selectOrderStatus();
       $result = $this->OrderModel->detailOrder($orderId, $userId);
     }
-    require_once "./views/orders/detailOrder.php";
+    require_once "./views/orders/detailOrderPage.php";
   }
 
 
