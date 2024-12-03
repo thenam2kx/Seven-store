@@ -10,12 +10,21 @@ class OrderModel
 
   public function getAllOrders($userId)
   {
-    $sql = "SELECT don_hangs.*, don_hangs.id as dhid, trang_thai_don_hangs.trang_thai AS trang_thai
-      FROM don_hangs
-      INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_don_hang_id = trang_thai_don_hangs.id
-      WHERE nguoi_dung_id = ?
-      ORDER BY ngay_tao DESC";
+    $sql = "select *, dh.id as dhid from don_hangs dh
+      join trang_thai_don_hangs ttdh on dh.trang_thai_don_hang_id = ttdh.id
+      where dh.nguoi_dung_id = ?
+      order by dh.id desc";
     return $this->db->query($sql, $userId);
+  }
+
+  public function getAllProductFromOrder($dhid)
+  {
+    $sql = "select *, dh.id as dhid, dhct.id as dhctid, sp.id as spid, dhct.so_luong as dhct_so_luong, dhct.gia_tien as dhct_gia_tien
+      from don_hang_cts dhct
+      join don_hangs dh on dh.id = dhct.don_hang_id
+      join san_phams sp on sp.id = dhct.san_pham_id
+      where dh.id = ?";
+    return $this->db->query($sql, $dhid);
   }
 
   public function createOrder($userId, $name, $note, $email, $phone, $address, $totalMoney, $totalPay, $actionPay, $statusOrder = 1, $statusPay = 0)

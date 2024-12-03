@@ -5,6 +5,7 @@
 
   <meta charset="utf-8" />
   <title>Trang chủ</title>
+  <link rel="shortcut icon" href="assets/images/custom/logo2.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -64,6 +65,7 @@
       height: 100%;
       object-fit: cover;
     }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </head>

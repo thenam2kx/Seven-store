@@ -47,7 +47,7 @@ class FavoriteProductController
 
   public function index()
   {
-    $id = $_GET['id'];
+    $id = isset($_GET['id']) ? $_GET['id'] : 0;
     $results = $this->FavoriteProductModel->getAllFavorite($id);
     require_once "./views/favorites/listFavorite.php";
   }
